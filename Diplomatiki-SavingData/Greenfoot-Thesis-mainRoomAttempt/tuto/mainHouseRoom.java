@@ -10,8 +10,9 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
 public class mainHouseRoom extends World
 {
     Level_1 oldLevel1;
-    
-    Alex alex = new Alex();
+    SpriteSheet spriteSheet = new SpriteSheet();
+
+    Alex alex;
     Elder elder;
     Door door, door2;
     Lumber lumber, lumber2;
@@ -24,6 +25,7 @@ public class mainHouseRoom extends World
     private ArrayList<Clay> clayList = new ArrayList<Clay>();
     HealthBar healthBar;
     HealthLogo healthLogo;
+    GreenfootImage alexImg = new GreenfootImage("alex.png");
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -35,12 +37,11 @@ public class mainHouseRoom extends World
         prepare();
 
     }
-    
+
     public mainHouseRoom(Level_1 myLevel1)
     {
         super(1000, 600, 1);
         oldLevel1 = myLevel1;
-        addObject(alex,80, 90);
         prepare();
     }
 
@@ -95,7 +96,8 @@ public class mainHouseRoom extends World
 
         addWall();
 
-        
+        alex = new Alex();
+        addObject(alex,80, 90);
 
         elder = new Elder();
         addObject(elder,900,500);
@@ -218,9 +220,20 @@ public class mainHouseRoom extends World
             }
         }
         if (counter < 0){
+            int img_cell = 32;
+            counter = 50;
             removeObject(textPanel);
+            initVar();
+            alex.setImage(spriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, 64, 64));
+            alex.setLocation(alex.getX() + 100, alex.getY());
             Greenfoot.setWorld(oldLevel1);
         }      
+    }
+    
+    public void initVar(){
+        flag = 0;
+        isActive = false;
+        
     }
 
     public HealthBar getHealthBar(){

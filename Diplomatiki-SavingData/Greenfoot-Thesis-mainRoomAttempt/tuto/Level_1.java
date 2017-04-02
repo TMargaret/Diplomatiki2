@@ -17,12 +17,13 @@ public class Level_1 extends World
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
     HealthBar healthBar;
     HealthLogo healthLogo;
+    boolean isEDown = false;
 
     mainHouseRoom usedMainHouseRoom;
     Level_1 level1;
 
     int counter = 100;
-    boolean isActive = false, displayMessage = false;
+    boolean isActive = false;
     private TextPanel textPanel;
 
     /**
@@ -35,24 +36,6 @@ public class Level_1 extends World
         super(1000, 600, 1);       
         prepare();
         usedMainHouseRoom = new mainHouseRoom(this);
-    }
-
-    // protected void addedToWorld(World w)
-    // {
-    // level1 = (Level_1) w;
-    // }
-
-    // public Level_1(mainHouseRoom myMainHouseRoom)
-    // {  
-    // super(1000, 600, 1);       
-    // usedMainHouseRoom = myMainHouseRoom;
-    // }
-
-    public Level_1(Level_1 oldLevel1, mainHouseRoom usedMainHouseRoom)
-    {  
-        super(1000, 600, 1); 
-        this.usedMainHouseRoom = usedMainHouseRoom;
-        oldLevel1.prepare();
     }
 
     public void act(){
@@ -156,21 +139,26 @@ public class Level_1 extends World
     public void enterInRoom(){
         if (alex.getAnIntersectingObject(mainHouse.class) != null){
             counter--;
-            if (!isActive){
+            if (Greenfoot.isKeyDown("e")){
+                isEDown = true;
+            }
+
+            if (isEDown && !isActive){
+                counter = 100;
                 textPanel = new TextPanel("enteringRoom");
                 addObject(textPanel, getWidth()/2, getHeight()/2);
                 isActive = true;
-                displayMessage = true;
             }
-        }
-        if (counter < 0){
-            removeObject(textPanel);
-            counter = 30;
-            displayMessage = false;
-            isActive = false;
-            alex.setLocation(alex.getX(), alex.getY() + 100);
-            Greenfoot.setWorld(usedMainHouseRoom);
-        }      
-    } 
+            if (counter < 0 && isEDown && isActive){
+                removeObject(textPanel);
+                counter = 100;
+                isActive = false;
+                isEDown = false;
+                alex.setLocation(alex.getX(), alex.getY() + 100);
+                Greenfoot.setWorld(usedMainHouseRoom);
+            }  
+
+        } 
+    }
 
 }
