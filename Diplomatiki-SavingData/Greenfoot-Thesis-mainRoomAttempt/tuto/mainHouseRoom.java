@@ -9,7 +9,9 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
  */
 public class mainHouseRoom extends World
 {
-    Alex alex;
+    Level_1 oldLevel1;
+    
+    Alex alex = new Alex();
     Elder elder;
     Door door, door2;
     Lumber lumber, lumber2;
@@ -32,6 +34,14 @@ public class mainHouseRoom extends World
         super(1000, 600, 1);
         prepare();
 
+    }
+    
+    public mainHouseRoom(Level_1 myLevel1)
+    {
+        super(1000, 600, 1);
+        oldLevel1 = myLevel1;
+        addObject(alex,80, 90);
+        prepare();
     }
 
     public void act(){
@@ -85,8 +95,7 @@ public class mainHouseRoom extends World
 
         addWall();
 
-        alex = new Alex();
-        addObject(alex,80, 90);
+        
 
         elder = new Elder();
         addObject(elder,900,500);
@@ -210,7 +219,7 @@ public class mainHouseRoom extends World
         }
         if (counter < 0){
             removeObject(textPanel);
-            Greenfoot.setWorld(new Level_1());
+            Greenfoot.setWorld(oldLevel1);
         }      
     }
 

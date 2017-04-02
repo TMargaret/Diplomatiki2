@@ -18,6 +18,13 @@ public class Level_1 extends World
     HealthBar healthBar;
     HealthLogo healthLogo;
 
+    mainHouseRoom usedMainHouseRoom;
+    Level_1 level1;
+
+    int counter = 100;
+    boolean isActive = false, displayMessage = false;
+    private TextPanel textPanel;
+
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -25,18 +32,38 @@ public class Level_1 extends World
     public Level_1()
     {    
         // Create a new world with 1000x600 cells with a cell size of 1x1 pixels.
-        super(1000, 600, 1); 
+        super(1000, 600, 1);       
         prepare();
+        usedMainHouseRoom = new mainHouseRoom(this);
+    }
+
+    // protected void addedToWorld(World w)
+    // {
+    // level1 = (Level_1) w;
+    // }
+
+    // public Level_1(mainHouseRoom myMainHouseRoom)
+    // {  
+    // super(1000, 600, 1);       
+    // usedMainHouseRoom = myMainHouseRoom;
+    // }
+
+    public Level_1(Level_1 oldLevel1, mainHouseRoom usedMainHouseRoom)
+    {  
+        super(1000, 600, 1); 
+        this.usedMainHouseRoom = usedMainHouseRoom;
+        oldLevel1.prepare();
     }
 
     public void act(){
         boolean found = false;
         for(Hut hut : hutList){
-            if ((hut.getActive()) || (my_mainHouse.getActive()) ){
+            if ((hut.getActive()) || (isActive) ){
                 found  = true;
             }
         }
         alex.setCanMove(!found);
+        enterInRoom();
     }
 
     /**
@@ -122,5 +149,28 @@ public class Level_1 extends World
             addObject(grass2[j],j*grass[j].getImage().getWidth(),getHeight()/2 + grass[j].getImage().getHeight()/2); 
         }
     }
+
+    /**
+     * shows a message before entering the house
+     */
+    public void enterInRoom(){
+        if (alex.getAnIntersectingObject(mainHouse.class) != null){
+            counter--;
+            if (!isActive){
+                textPanel = new TextPanel("enteringRoom");
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+                isActive = true;
+                displayMessage = true;
+            }
+        }
+        if (counter < 0){
+            removeObject(textPanel);
+            counter = 30;
+            displayMessage = false;
+            isActive = false;
+            alex.setLocation(alex.getX(), alex.getY() + 100);
+            Greenfoot.setWorld(usedMainHouseRoom);
+        }      
+    } 
 
 }

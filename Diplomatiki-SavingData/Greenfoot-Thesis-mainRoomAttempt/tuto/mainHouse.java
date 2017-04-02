@@ -16,33 +16,33 @@ public class mainHouse extends Actor
      * Act - do whatever the Place2 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
-        enterInRoom();
-    } 
+    // public void act() 
+    // {
+        // enterInRoom();
+    // } 
 
-    public boolean getActive(){
-        return displayMessage;
-    }
+    // public boolean getActive(){
+        // return displayMessage;
+    // }
 
-    /**
-     * shows a message before entering the house
-     */
-    public void enterInRoom(){
-        if (getOneIntersectingObject(Alex.class) != null){
-            counter--;
-            if (!isActive){
-                textPanel = new TextPanel("enteringRoom");
-                getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
-                isActive = true;
-                displayMessage = true;
-            }
-        }
-        if (counter < 0){
-            getWorld().removeObject(textPanel);
-            displayMessage = false;
-            isActive = false;
-            Greenfoot.setWorld(new mainHouseRoom());
-        }      
-    }  
+    // /**
+     // * shows a message before entering the house
+     // */
+    // public void enterInRoom(){
+        // if (getOneIntersectingObject(Alex.class) != null){
+            // counter--;
+            // if (!isActive){
+                // textPanel = new TextPanel("enteringRoom");
+                // getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                // isActive = true;
+                // displayMessage = true;
+            // }
+        // }
+        // if (counter < 0){
+            // getWorld().removeObject(textPanel);
+            // displayMessage = false;
+            // isActive = false;
+            // Greenfoot.setWorld(new mainHouseRoom());
+        // }      
+    // }  
 }
