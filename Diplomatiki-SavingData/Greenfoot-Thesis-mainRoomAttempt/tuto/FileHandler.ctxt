@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=FileHandler
+comment1.params=myWorld
+comment1.target=FileHandler(java.lang.Object)
+comment2.params=
+comment2.target=void\ writeToBinaryFile()
+numComments=3

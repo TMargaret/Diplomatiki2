@@ -1,4 +1,5 @@
 import greenfoot.*;
+import java.io.*;
 import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Level_1 extends World
+public class Level_1 extends World implements Serializable
 {
     public int X_ROAD_HUT = 130;
     public int X_ROAD_HOUSE = 550;
@@ -26,6 +27,8 @@ public class Level_1 extends World
     boolean isActive = false;
     private TextPanel textPanel;
 
+    FileHandler fh;
+
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -35,7 +38,7 @@ public class Level_1 extends World
         // Create a new world with 1000x600 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1);       
         prepare();
-        usedMainHouseRoom = new mainHouseRoom(this);
+        //usedMainHouseRoom = new mainHouseRoom(this);
     }
 
     public void act(){
@@ -155,10 +158,29 @@ public class Level_1 extends World
                 isActive = false;
                 isEDown = false;
                 alex.setLocation(alex.getX(), alex.getY() + 100);
-                Greenfoot.setWorld(usedMainHouseRoom);
+                writeToBin();
+                Greenfoot.setWorld(new mainHouseRoom());
             }  
 
         } 
+    }
+
+    public void writeToBin(){
+        fh = new FileHandler(this);
+
+        try
+        {           
+            fh.writeToBinaryFile();
+
+        }
+        catch(IOException e)
+        {
+            System.out.println("Error saving to file...");
+        }
+        // catch(ClassNotFoundException e)
+        // {
+        // System.out.println("********** The songs collection class is missing...");
+        // }
     }
 
 }

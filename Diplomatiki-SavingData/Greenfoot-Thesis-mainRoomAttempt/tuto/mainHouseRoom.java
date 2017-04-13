@@ -223,14 +223,14 @@ public class mainHouseRoom extends World
             int img_cell = 32;
             counter = 50;
             removeObject(textPanel);
-            initVar();
+            initVariables();
             alex.setImage(spriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, 64, 64));
             alex.setLocation(alex.getX() + 100, alex.getY());
             Greenfoot.setWorld(oldLevel1);
         }      
     }
     
-    public void initVar(){
+    public void initVariables(){
         flag = 0;
         isActive = false;
         
