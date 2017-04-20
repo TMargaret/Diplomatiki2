@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.io.*;
 
 /**
  * Write a description of class Grass here.
@@ -6,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Grass extends Actor
+public class Grass extends Actor implements Serializable
 {
     /**
      * Act - do whatever the Grass wants to do. This method is called whenever

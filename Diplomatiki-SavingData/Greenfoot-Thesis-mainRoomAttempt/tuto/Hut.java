@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.io.*;
 
 /**
  * Write a description of class Place here.
@@ -6,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Hut extends Actor
+public class Hut extends Actor implements Serializable
 {
     int counter = 10;
     boolean isActive = false, displayMessage = false;

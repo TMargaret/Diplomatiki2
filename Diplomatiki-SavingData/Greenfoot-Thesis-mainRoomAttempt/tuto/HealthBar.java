@@ -1,5 +1,6 @@
 import greenfoot.*;
 import java.awt.Color;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.io.*;
 
 /**
  * Write a description of class HealthBar here.
@@ -7,7 +8,7 @@ import java.awt.Color;  // (World, Actor, GreenfootImage, Greenfoot and MouseInf
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class HealthBar extends Actor
+public class HealthBar extends Actor implements Serializable
 {
     int health = 4;
     int healthBarWidth = 80;

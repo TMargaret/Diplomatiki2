@@ -153,13 +153,14 @@ public class Level_1 extends World implements Serializable
                 isActive = true;
             }
             if (counter < 0 && isEDown && isActive){
+                writeToBin();
                 removeObject(textPanel);
                 counter = 100;
                 isActive = false;
                 isEDown = false;
                 alex.setLocation(alex.getX(), alex.getY() + 100);
-                writeToBin();
-                Greenfoot.setWorld(new mainHouseRoom());
+                
+               // Greenfoot.setWorld(new mainHouseRoom());
             }  
 
         } 

@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 
-public class FileHandler
+public class FileHandler implements Serializable
 {
     private Object obj;
     private static final String TextFILE = "master.txt";
@@ -74,6 +74,7 @@ public class FileHandler
         os.writeObject(obj);
         System.out.println("5");
         os.close();
+        System.out.println("6");
     }
 
     // public SongsDB readFromBinaryFile() throws IOException, ClassNotFoundException

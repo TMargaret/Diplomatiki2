@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.io.*;
 
 /**
  * Write a description of class SpriteSheet here.
@@ -6,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SpriteSheet extends Actor
+public class SpriteSheet extends Actor implements Serializable
 {
     /**
      * The if you switch your inputs for topLeftX, and bottomRightX the image will be flipped horizontilly,

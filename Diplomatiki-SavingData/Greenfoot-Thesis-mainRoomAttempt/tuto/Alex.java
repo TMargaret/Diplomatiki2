@@ -1,5 +1,6 @@
 import greenfoot.*; 
 import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.io.*;
 
 /**
  * Write a description of class Alex here.
@@ -7,7 +8,7 @@ import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo
  * @author (Margaret) 
  * @version (a version number or a date)
  */
-public class Alex extends SpriteSheet{
+public class Alex extends SpriteSheet implements Serializable{
     private Level_1 myworld;
     private boolean canMove = true, isMoving = false;
     boolean flagForImage = false, bothDirections = false;

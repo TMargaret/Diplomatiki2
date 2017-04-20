@@ -1,13 +1,14 @@
 import greenfoot.*;
 import java.awt.Color;
 import java.awt.Font;
+import java.io.*;
 
 //κλάση του τελικού πίνακα ScoreBoard ο οποίος χρησιμοποιείται είτε σε περίπτωση νίκης, είτε ήττας
 //author M Kölling
 //modifications Trifou Margaret
 //BrokenHutMessage, RoomEntranceText, welcomeMsg, taskText1-6,lockedDoor, warningForDoor
 
-public class TextPanel extends Actor
+public class TextPanel extends Actor implements Serializable
 {
     public static final float FONT_SIZE = 24.0f;
     public static final int WIDTH = 540;
