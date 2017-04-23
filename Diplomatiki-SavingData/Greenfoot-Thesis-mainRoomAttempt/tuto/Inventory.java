@@ -25,7 +25,7 @@ public class Inventory extends Actor
     public Inventory()
     {
         created = false;
-        open = false;
+        open = true;
 
         // moneyImg = new GreenfootImage(100, 20);
         // Font font = new Font("Year supply of fairy cakes (True Type)", 0, 10);
@@ -116,7 +116,7 @@ public class Inventory extends Actor
             //getWorld().addObject(new Button(), x,y);    
             created =  true;
         }
-        redraw();
+        //redraw();
     }    
 
     public static void setOpen(boolean opens)

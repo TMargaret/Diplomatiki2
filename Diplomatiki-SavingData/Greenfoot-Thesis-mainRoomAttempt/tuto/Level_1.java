@@ -14,21 +14,24 @@ public class Level_1 extends World implements Serializable, ButtonResponder
     public int X_ROAD_HOUSE = 550;
     public int X_ROAD_HUT2 = 885;
     private Alex alex;
+    private InvBar invBar;
     private mainHouse my_mainHouse;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
     HealthBar healthBar;
     HealthLogo healthLogo;
+    Inventory inv;
     boolean isEDown = false;
+    boolean invIsOpen = false;
 
     mainHouseRoom usedMainHouseRoom;
     Level_1 level1;
 
-    int counter = 100;
+    int counter = 100, btn_counter = 50;
     boolean isActive = false;
     private TextPanel textPanel;
 
     FileHandler fh;
-    
+
     Button inventoryBtn, exitBtn;
 
     /**
@@ -80,15 +83,15 @@ public class Level_1 extends World implements Serializable, ButtonResponder
         ExitBar exitBar = new ExitBar();
         addObject(exitBar,984,18);
 
-        InvBar invBar = new InvBar();
+        invBar = new InvBar();
         addObject(invBar,947,18);
 
         inventoryBtn = new Button(invBar.getImage().getWidth(), invBar.getImage().getHeight());
         inventoryBtn.setResponder(this);
         addObject(inventoryBtn, 947, 18);
     }
-    
-        public void addWall(){
+
+    public void addWall(){
         Wall[] wall = new Wall[25];
 
         for(int j=0; j<wall.length; j++){
@@ -182,8 +185,8 @@ public class Level_1 extends World implements Serializable, ButtonResponder
                 isActive = false;
                 isEDown = false;
                 alex.setLocation(alex.getX(), alex.getY() + 100);
-                
-               // Greenfoot.setWorld(new mainHouseRoom());
+
+                // Greenfoot.setWorld(new mainHouseRoom());
             }  
 
         } 
@@ -206,13 +209,22 @@ public class Level_1 extends World implements Serializable, ButtonResponder
         // System.out.println("********** The songs collection class is missing...");
         // }
     }
-    
-        public void buttonClicked(Button button)
-    {
+
+    public void buttonClicked(Button button)
+    {   
         //button event listener
-        if (Greenfoot.mouseClicked(inventoryBtn))
+        if (Greenfoot.mouseClicked(inventoryBtn) && !invIsOpen)
         {
-           System.out.println("yes");
+            inv = new Inventory();
+            addObject(inv, invBar.getX() - (inv.getImage().getWidth()/2), 
+                invBar.getY() + (invBar.getImage().getHeight()/3) + (inv.getImage().getHeight()/2));
+            invIsOpen = true;
+        }
+        else if (Greenfoot.mouseClicked(inventoryBtn) && invIsOpen)
+        {
+            removeObject(inv);
+            invIsOpen = false;
+            //removeObject(inv);
         }
 
     }
