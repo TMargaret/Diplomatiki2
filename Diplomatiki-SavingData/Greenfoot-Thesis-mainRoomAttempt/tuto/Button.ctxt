@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Button
+comment0.text=\r\n\ Creates\ Buttons\r\n\ \r\n\ @author\ erdelf\r\n\ @version\ 1.0\r\n
+comment1.params=
+comment1.target=Button()
+comment2.params=x\ y\ function2\ versions
+comment2.target=Button(int,\ int,\ java.lang.String,\ int)
+comment3.params=
+comment3.target=void\ act()
+numComments=4

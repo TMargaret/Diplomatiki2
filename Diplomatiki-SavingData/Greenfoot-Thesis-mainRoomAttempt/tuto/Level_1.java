@@ -61,6 +61,7 @@ public class Level_1 extends World implements Serializable
         addGrass();
         addRoad();
         addHut();
+        addWall();
 
         my_mainHouse = new mainHouse();
         addObject(my_mainHouse,506,303);
@@ -73,6 +74,22 @@ public class Level_1 extends World implements Serializable
 
         healthLogo = new HealthLogo();
         addObject(healthLogo,20,20);
+
+        ExitBar exitbar = new ExitBar();
+        addObject(exitbar,984,18);
+        
+        InvBar invbar = new InvBar();
+        addObject(invbar,947,18);
+    }
+    
+        public void addWall(){
+        Wall[] wall = new Wall[25];
+
+        for(int j=0; j<wall.length; j++){
+            wall[j]=new Wall();
+            addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
+        }
+
     }
 
     /**
