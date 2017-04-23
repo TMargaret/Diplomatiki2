@@ -8,7 +8,7 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Level_1 extends World implements Serializable
+public class Level_1 extends World implements Serializable, ButtonResponder
 {
     public int X_ROAD_HUT = 130;
     public int X_ROAD_HOUSE = 550;
@@ -28,6 +28,8 @@ public class Level_1 extends World implements Serializable
     private TextPanel textPanel;
 
     FileHandler fh;
+    
+    Button inventoryBtn, exitBtn;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -73,13 +75,17 @@ public class Level_1 extends World implements Serializable
         addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
 
         healthLogo = new HealthLogo();
-        addObject(healthLogo,20,20);
+        addObject(healthLogo,21,19);
 
-        ExitBar exitbar = new ExitBar();
-        addObject(exitbar,984,18);
-        
-        InvBar invbar = new InvBar();
-        addObject(invbar,947,18);
+        ExitBar exitBar = new ExitBar();
+        addObject(exitBar,984,18);
+
+        InvBar invBar = new InvBar();
+        addObject(invBar,947,18);
+
+        inventoryBtn = new Button(invBar.getImage().getWidth(), invBar.getImage().getHeight());
+        inventoryBtn.setResponder(this);
+        addObject(inventoryBtn, 947, 18);
     }
     
         public void addWall(){
@@ -199,6 +205,16 @@ public class Level_1 extends World implements Serializable
         // {
         // System.out.println("********** The songs collection class is missing...");
         // }
+    }
+    
+        public void buttonClicked(Button button)
+    {
+        //button event listener
+        if (Greenfoot.mouseClicked(inventoryBtn))
+        {
+           System.out.println("yes");
+        }
+
     }
 
 }

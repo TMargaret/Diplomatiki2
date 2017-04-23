@@ -35,7 +35,7 @@ public class ExitBar extends SpriteSheet
     public void act() 
     {
         if(!created)
-        getWorld().addObject(new Button(), 648, 488);
+        //getWorld().addObject(new Button(), 648, 488);
         // {
         // created = true;
         // switch(version)
