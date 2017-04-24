@@ -31,7 +31,7 @@ public class Straw extends Actor
     }
 
     protected void addHiddenSprite() {   
-        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/4, 100, 10, 5, true);  
+        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2, 100, 10, 5, true);  
         getWorld().addObject(hs, getX(), getY()); 
     }
 
@@ -47,7 +47,7 @@ public class Straw extends Actor
                         continue;        
                     if( a instanceof Alex) {
                         counter--;
-                        if (Greenfoot.isKeyDown("e") & !isEDown){
+                        if (counter<0 && Greenfoot.isKeyDown("e") & !isEDown){
                             isEDown = true;
                         }
                         if (counter<0 && !isActive && isEDown){
