@@ -17,7 +17,7 @@ public class HiddenSprite extends Actor {
             // Transparency values range from 0 (invisible) to 255 (opaque) 
             body.setColor(Color.RED);
             body.fill();
-            body.setTransparency(0);          
+            body.setTransparency(200);          
         }    
         setImage(body);  
     }    

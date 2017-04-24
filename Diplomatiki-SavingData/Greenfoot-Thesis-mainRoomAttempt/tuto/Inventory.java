@@ -12,9 +12,6 @@ public class Inventory extends Actor
     private int[] item1PosX = {15, 53, 90, 128, 166, 204, 242, 15, 53, 90, 128, 166, 204, 242};
     private int[] item1PosY = {36, 36, 36, 36, 36, 36, 36, 71, 71, 71, 71, 71, 71, 71};
 
-    // private int[] item2PosX = {25, 63, 101, 139, 177, 215, 25, 63, 101, 139, 177, 215};
-    // private int[] item2PosY = {63, 63, 63, 63, 63, 63, 100, 100, 100, 100, 100, 100};
-
     private boolean created;
     private static boolean open;
     GreenfootImage moneyImg;
@@ -27,11 +24,6 @@ public class Inventory extends Actor
         created = false;
         open = true;
 
-        // moneyImg = new GreenfootImage(100, 20);
-        // Font font = new Font("Year supply of fairy cakes (True Type)", 0, 10);
-        // moneyImg.setFont(font);
-        // moneyImg.setColor(Color.WHITE);       
-        // moneyImg.drawString(Player.getMoney() + "", 0, moneyImg.getHeight()/2);
         int x = 50;
         int y = 10;
         // // switch(version)
@@ -59,43 +51,7 @@ public class Inventory extends Actor
         // }
         // }
     }
-    // public Inventory(int versions)
-    // {
-    // created = false;
-    // open = true;
-    // imgInventory = new GreenfootImage("hud.png");
-    // // moneyImg = new GreenfootImage(100, 20);
-    // // Font font = new Font("Year supply of fairy cakes (True Type)", 0, 10);
-    // // moneyImg.setFont(font);
-    // // moneyImg.setColor(Color.WHITE);       
-    // // moneyImg.drawString(Player.getMoney() + "", 0, moneyImg.getHeight()/2);
-    // int x = 50;
-    // int y = 10;
-    // // // switch(version)
-    // // //  {
-    // // case 1: x = 50; y = 10; break;
-    // // case 2: x = 200; y = 170; break;
-    // // }
-    // bg.drawImage(moneyImg, x,y);
-    // setImage(bg);
-    // //String[] items = Player.getItems();
-    // int[] itemPosX = new int[1];
-    // int[] itemPosY = new int[1];
-    // // switch(version)
-    // // {
-    // // case 1: itemPosX = item1PosX; itemPosY = item1PosY; break;
-    // // case 2: itemPosX = item2PosX; itemPosY = item2PosY; break;
-    // // }
-    // itemPosX = item1PosX; itemPosY = item1PosY;
-    // // for(int i = 1;  i < items.length; i++)
-    // // {
-    // // if(i < 15)
-    // // {
-    // // String item = items[i];
-    // // bg.drawImage(new GreenfootImage(item + ".png"), itemPosX[i-1], itemPosY[i-1]);
-    // // }
-    // // }
-    // }
+ 
 
     /**
      * Act - do whatever the Inventory wants to do. This method is called whenever

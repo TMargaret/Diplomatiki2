@@ -16,7 +16,9 @@ public class Level_1 extends World implements Serializable, ButtonResponder
     private Alex alex;
     private InvBar invBar;
     private mainHouse my_mainHouse;
+    private Straw straw, straw2;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
+    private ArrayList <Straw> strawList = new ArrayList<Straw>();
     HealthBar healthBar;
     HealthLogo healthLogo;
     Inventory inv;
@@ -50,6 +52,11 @@ public class Level_1 extends World implements Serializable, ButtonResponder
         boolean found = false;
         for(Hut hut : hutList){
             if ((hut.getActive()) || (isActive) ){
+                found  = true;
+            }
+        }
+        for(Straw straw : strawList){
+            if (straw.getActive()){
                 found  = true;
             }
         }
@@ -89,6 +96,15 @@ public class Level_1 extends World implements Serializable, ButtonResponder
         inventoryBtn = new Button(invBar.getImage().getWidth(), invBar.getImage().getHeight());
         inventoryBtn.setResponder(this);
         addObject(inventoryBtn, 947, 18);
+
+        straw = new Straw();
+        addObject(straw,957,513);
+
+        straw2 = new Straw();
+        addObject(straw2,614,511);
+
+        strawList.add(straw);
+        strawList.add(straw2);    
     }
 
     public void addWall(){
@@ -227,6 +243,15 @@ public class Level_1 extends World implements Serializable, ButtonResponder
             //removeObject(inv);
         }
 
+    }
+
+    public HealthBar getHealthBar(){
+        return healthBar;
+    }
+
+    public void gameOver(){
+        if (healthBar.getHealth() <= 0)
+            Greenfoot.stop();
     }
 
 }
