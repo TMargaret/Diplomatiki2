@@ -28,13 +28,15 @@ public class Level_1 extends World implements Serializable, ButtonResponder
     mainHouseRoom usedMainHouseRoom;
     Level_1 level1;
 
-    int counter = 100, btn_counter = 50;
+    int counter = 100, counter2 = 100, btn_counter = 50;
     boolean isActive = false;
     private TextPanel textPanel;
 
     FileHandler fh;
 
     Button inventoryBtn, exitBtn;
+    private static String[] items;
+    public double time;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -45,6 +47,7 @@ public class Level_1 extends World implements Serializable, ButtonResponder
         // Create a new world with 1000x600 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1);       
         prepare();
+        items = new String[1];
         //usedMainHouseRoom = new mainHouseRoom(this);
     }
 
@@ -62,6 +65,22 @@ public class Level_1 extends World implements Serializable, ButtonResponder
         }
         alex.setCanMove(!found);
         enterInRoom();
+
+        counter2--;
+        if(System.currentTimeMillis() > time + 500){
+            if(Greenfoot.isKeyDown("1"))
+            {
+                addItem("straw");
+                time = System.currentTimeMillis();
+
+            }
+            if(Greenfoot.isKeyDown("2"))
+            {
+                addItem("lumber");
+                time = System.currentTimeMillis();
+
+            }
+        }
     }
 
     /**
@@ -240,9 +259,30 @@ public class Level_1 extends World implements Serializable, ButtonResponder
         {
             removeObject(inv);
             invIsOpen = false;
-            //removeObject(inv);
         }
 
+    }
+
+    public static String[] getItems()
+    {
+        return items;
+    }
+
+    public static void changeItems(String[] newItems)
+    {
+        items = newItems;
+    }
+
+    public static void addItem(String newItem)  
+    {  
+        int x = items.length;  
+        String[] temp = new String[x];  
+        for (int i = 0; i < x; i++) 
+            temp[i] = items[i];  
+        items = new String[x + 1];  
+        for (int i = 0; i < x; i++) 
+            items[i] = temp[i];  
+        items[x] = newItem;  
     }
 
     public HealthBar getHealthBar(){

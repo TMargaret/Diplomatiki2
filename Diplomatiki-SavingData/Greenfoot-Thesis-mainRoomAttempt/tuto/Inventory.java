@@ -33,7 +33,7 @@ public class Inventory extends Actor
         // }
         //bg.drawImage(moneyImg, x,y);
         setImage(imgInventory);
-        //String[] items = Player.getItems();
+        String[] items = Level_1.getItems();
         int[] itemPosX = new int[1];
         int[] itemPosY = new int[1];
         // switch(version)
@@ -41,17 +41,17 @@ public class Inventory extends Actor
         // case 1: itemPosX = item1PosX; itemPosY = item1PosY; break;
         // case 2: itemPosX = item2PosX; itemPosY = item2PosY; break;
         // }
-        itemPosX = item1PosX; itemPosY = item1PosY;
-        // for(int i = 1;  i < items.length; i++)
-        // {
-        // if(i < 15)
-        // {
-        // String item = items[i];
-        // bg.drawImage(new GreenfootImage(item + ".png"), itemPosX[i-1], itemPosY[i-1]);
-        // }
-        // }
+        itemPosX = item1PosX; 
+        itemPosY = item1PosY;
+        for(int i = 1;  i < items.length; i++)
+        {
+            if(i < 15)
+            {
+                String item = items[i];
+                imgInventory.drawImage(new GreenfootImage(item + "icon" + ".png"), itemPosX[i-1], itemPosY[i-1]);
+            }
+        }
     }
- 
 
     /**
      * Act - do whatever the Inventory wants to do. This method is called whenever
@@ -72,7 +72,7 @@ public class Inventory extends Actor
             //getWorld().addObject(new Button(), x,y);    
             created =  true;
         }
-        //redraw();
+        redraw();
     }    
 
     public static void setOpen(boolean opens)
@@ -90,6 +90,7 @@ public class Inventory extends Actor
         // moneyImg.clear();
         //moneyImg.drawString(Player.getMoney() + "", 0, moneyImg.getHeight()/2);
         //bg.clear();
+        
         imgInventory.drawImage(new GreenfootImage("hud.png"),0,0);
         // switch(version)
         // {
@@ -106,7 +107,7 @@ public class Inventory extends Actor
         // }
         //bg.drawImage(moneyImg, x,y);
 
-        //String[] items = Player.getItems();
+        String[] items = Level_1.getItems();
 
         int[] itemPosX = new int[1];
         int[] itemPosY = new int[1];
@@ -123,13 +124,13 @@ public class Inventory extends Actor
         // case 1: max = 14; break;
         // case 2: max = 12; break;
         // }
-        // for(int i = 1;  i < items.length; i++)
-        // {
-        // if(i < max+1)
-        // {
-        // String item = items[i];
-        // bg.drawImage(new GreenfootImage(item + ".png"), itemPosX[i-1], itemPosY[i-1]);
-        // }
-        // }
+        for(int i = 1;  i < items.length; i++)
+        {
+            if(i < max+1)
+            {
+                String item = items[i];
+                imgInventory.drawImage(new GreenfootImage(item + "icon" + ".png"), itemPosX[i-1], itemPosY[i-1]);
+            }
+        }
     }
 }
