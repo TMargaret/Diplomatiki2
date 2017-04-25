@@ -105,5 +105,9 @@ public class Straw extends Actor
     public boolean getActive(){
         return isActive;
     }
+    
+    public boolean getRemovedObject(){
+        return isActive;
+    }
 
 }
