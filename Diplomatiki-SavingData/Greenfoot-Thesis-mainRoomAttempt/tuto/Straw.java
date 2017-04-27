@@ -12,6 +12,7 @@ public class Straw extends Actor
     private HiddenSprite hs;
     boolean isEDown = false, isActive = false, tryAgainOrLeave = false;
     boolean wrongCommand = false;
+    boolean addToInv = false;
     TextField textField;
     int counter = 40;
     String my_text = "";
@@ -55,7 +56,7 @@ public class Straw extends Actor
                             textField = new TextField(700, 45, "Δημιούργησε ένα αντικείμενο Straw και πάτα enter");
                             getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
                         }
-                        if (Greenfoot.mouseClicked(textField)){
+                        if (Greenfoot.mouseClicked(textField) && isEDown){
                             textField.setText("");
                         }
                         if (Greenfoot.isKeyDown("enter") && isEDown){
@@ -67,6 +68,7 @@ public class Straw extends Actor
                                 getWorld().removeObject(textField);
                                 getWorld().removeObject(this);
                                 isActive = false;
+                                addToInv = true;
                                 break;
                             }
                             else {
@@ -105,9 +107,13 @@ public class Straw extends Actor
     public boolean getActive(){
         return isActive;
     }
-    
-    public boolean getRemovedObject(){
-        return isActive;
+
+    public boolean getAddToInv(){
+        return addToInv;
+    }
+
+    public void setAddToInv(){
+        addToInv = false;
     }
 
 }

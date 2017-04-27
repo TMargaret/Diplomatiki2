@@ -28,7 +28,7 @@ public class Level_1 extends World implements Serializable, ButtonResponder
     mainHouseRoom usedMainHouseRoom;
     Level_1 level1;
 
-    int counter = 100, counter2 = 100, btn_counter = 50;
+    int counter = 100, btn_counter = 50;
     boolean isActive = false;
     private TextPanel textPanel;
 
@@ -66,21 +66,7 @@ public class Level_1 extends World implements Serializable, ButtonResponder
         alex.setCanMove(!found);
         enterInRoom();
 
-        counter2--;
-        if(System.currentTimeMillis() > time + 500){
-            if(Greenfoot.isKeyDown("1"))
-            {
-                addItem("straw");
-                time = System.currentTimeMillis();
-
-            }
-            if(Greenfoot.isKeyDown("2"))
-            {
-                addItem("lumber");
-                time = System.currentTimeMillis();
-
-            }
-        }
+        addToInventory();
     }
 
     /**
@@ -261,6 +247,23 @@ public class Level_1 extends World implements Serializable, ButtonResponder
             invIsOpen = false;
         }
 
+    }
+
+    public void addToInventory(){
+        if(System.currentTimeMillis() > time + 500){
+            if(straw.getAddToInv())
+            {
+                addItem("straw");
+                straw.setAddToInv();
+                time = System.currentTimeMillis();
+            }
+            if(straw2.getAddToInv())
+            {
+                addItem("straw");
+                straw2.setAddToInv();
+                time = System.currentTimeMillis();
+            }
+        }
     }
 
     public static String[] getItems()

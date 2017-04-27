@@ -62,7 +62,7 @@ public class Lumber extends Actor
                             textField = new TextField(700, 45, "Δημιούργησε ένα αντικείμενο Wood και πάτα enter");
                             getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
                         }
-                        if (Greenfoot.mouseClicked(textField)){
+                        if (Greenfoot.mouseClicked(textField) && isEDown){
                             textField.setText("");
                         }
                         if (Greenfoot.isKeyDown("enter") && isEDown){
