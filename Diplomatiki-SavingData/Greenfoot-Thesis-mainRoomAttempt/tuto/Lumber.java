@@ -16,6 +16,7 @@ public class Lumber extends Actor
     int counter = 30;
     String my_text = "";
     TextPanel textPanel;
+     boolean addToInv = false;
     /**
      * Act - do whatever the Lumber wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -74,6 +75,7 @@ public class Lumber extends Actor
                                 getWorld().removeObject(textField);
                                 getWorld().removeObject(this);
                                 isActive = false;
+                                addToInv = true;
                                 break;
                             }
                             else {
@@ -111,5 +113,13 @@ public class Lumber extends Actor
 
     public boolean getActive(){
         return isActive;
+    }
+    
+        public boolean getAddToInv(){
+        return addToInv;
+    }
+
+    public void setAddToInv(){
+        addToInv = false;
     }
 }

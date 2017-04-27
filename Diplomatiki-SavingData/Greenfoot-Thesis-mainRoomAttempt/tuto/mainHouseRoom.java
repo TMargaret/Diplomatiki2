@@ -26,6 +26,8 @@ public class mainHouseRoom extends World
     HealthBar healthBar;
     HealthLogo healthLogo;
     GreenfootImage alexImg = new GreenfootImage("alex.png");
+    private static String[] items;
+    public double time;
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -68,6 +70,7 @@ public class mainHouseRoom extends World
                 doNotMove  = true;
             }
         }
+        addToInventory();
         alex.setCanMove(!doNotMove);
     }
 
@@ -229,11 +232,51 @@ public class mainHouseRoom extends World
             Greenfoot.setWorld(oldLevel1);
         }      
     }
-    
+
+    public void addToInventory(){
+        if(System.currentTimeMillis() > time + 500){
+            if(clay.getAddToInv())
+            {
+                addItem("clay");
+                clay.setAddToInv();
+                time = System.currentTimeMillis();
+            }
+            if(clay2.getAddToInv())
+            {
+                addItem("straw");
+                clay2.setAddToInv();
+                time = System.currentTimeMillis();
+            }
+
+        }
+    }
+
+    public static String[] getItems()
+    {
+        return items;
+    }
+
+    public static void changeItems(String[] newItems)
+    {
+        items = newItems;
+    }
+
+    public static void addItem(String newItem)  
+    {  
+        int x = items.length;  
+        String[] temp = new String[x];  
+        for (int i = 0; i < x; i++) 
+            temp[i] = items[i];  
+        items = new String[x + 1];  
+        for (int i = 0; i < x; i++) 
+            items[i] = temp[i];  
+        items[x] = newItem;  
+    }
+
     public void initVariables(){
         flag = 0;
         isActive = false;
-        
+
     }
 
     public HealthBar getHealthBar(){

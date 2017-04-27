@@ -263,6 +263,8 @@ public class Level_1 extends World implements Serializable, ButtonResponder
                 straw2.setAddToInv();
                 time = System.currentTimeMillis();
             }
+
+            
         }
     }
 
