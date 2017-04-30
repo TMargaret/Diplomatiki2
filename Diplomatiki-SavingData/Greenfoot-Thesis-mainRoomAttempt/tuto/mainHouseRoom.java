@@ -21,8 +21,9 @@ public class mainHouseRoom extends World
     boolean isActive = false;
     private TextPanel textPanel, entranceText;
     private ArrayList <Door> doorList = new ArrayList<Door>();
-    private ArrayList <Lumber> lumberList = new ArrayList<Lumber>();
-    private ArrayList<Clay> clayList = new ArrayList<Clay>();
+    
+    private ArrayList<Material> materialList = new ArrayList<Material>();
+    
     HealthBar healthBar;
     HealthLogo healthLogo;
     GreenfootImage alexImg = new GreenfootImage("alex.png");
@@ -60,17 +61,12 @@ public class mainHouseRoom extends World
                 doNotMove  = true;
             }
         }
-        for(Lumber lumber : lumberList){
-            if (lumber.getActive()){
+        for (Material material : materialList){
+            if (material.getActive()){
                 doNotMove  = true;
             }
         }
-        for(Clay clay : clayList){
-            if (clay.getActive()){
-                doNotMove  = true;
-            }
-        }
-        addToInventory();
+        //addToInventory();
         alex.setCanMove(!doNotMove);
     }
 
@@ -87,6 +83,7 @@ public class mainHouseRoom extends World
         image.setColor(java.awt.Color.BLACK);
         image.fill();
         setBackground(image);
+        
 
         door = new Door();
         addObject(door,713,225);
@@ -110,16 +107,15 @@ public class mainHouseRoom extends World
         clay2 = new Clay();
         addObject(clay2,910,230);
 
-        clayList.add(clay);
-        clayList.add(clay2);
-
         lumber = new Lumber();
         addObject(lumber,100,400);
         lumber2 = new Lumber();
         addObject(lumber2,100,528);  
-
-        lumberList.add(lumber);
-        lumberList.add(lumber2);
+        
+        materialList.add(lumber);
+        materialList.add(lumber2);
+        materialList.add(clay);
+        materialList.add(clay2);
 
         healthBar = new HealthBar();
         addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
@@ -234,21 +230,21 @@ public class mainHouseRoom extends World
     }
 
     public void addToInventory(){
-        if(System.currentTimeMillis() > time + 500){
-            if(clay.getAddToInv())
-            {
-                addItem("clay");
-                clay.setAddToInv();
-                time = System.currentTimeMillis();
-            }
-            if(clay2.getAddToInv())
-            {
-                addItem("straw");
-                clay2.setAddToInv();
-                time = System.currentTimeMillis();
-            }
+        // if(System.currentTimeMillis() > time + 500){
+            // if(clay.getAddToInv())
+            // {
+                // addItem("clay");
+                // clay.setAddToInv();
+                // time = System.currentTimeMillis();
+            // }
+            // if(clay2.getAddToInv())
+            // {
+                // addItem("straw");
+                // clay2.setAddToInv();
+                // time = System.currentTimeMillis();
+            // }
 
-        }
+        // }
     }
 
     public static String[] getItems()
