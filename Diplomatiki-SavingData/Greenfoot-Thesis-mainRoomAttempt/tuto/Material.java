@@ -11,8 +11,8 @@ public class Material extends Actor
 {
     private HiddenSprite hs;
     private int hsWidth, hsHeight = 40;
-    private final int HS_OFFSET_X = 10;
-    private final int HS_OFFSET_Y = 5;
+    private final int HS_OFFSET_X = 0;
+    private final int HS_OFFSET_Y = 0;
 
     boolean isEDown = false, isActive = false, tryAgainOrLeave = false;
     boolean wrongCommand = false;
@@ -56,6 +56,7 @@ public class Material extends Actor
                         counter--;
                         if (Greenfoot.isKeyDown("e") & !isEDown){
                             isEDown = true;
+                            counter = 20;
                         }
                         if (counter<0 && !isActive && isEDown){
                             isActive = true;

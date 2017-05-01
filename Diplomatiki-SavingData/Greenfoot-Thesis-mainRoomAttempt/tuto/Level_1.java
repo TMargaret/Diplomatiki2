@@ -19,6 +19,8 @@ public class Level_1 extends World implements Serializable, ButtonResponder
     private Straw straw, straw2;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
     private ArrayList <Straw> strawList = new ArrayList<Straw>();
+    
+    private ArrayList <Material> matList = new ArrayList<Material>();
     HealthBar healthBar;
     HealthLogo healthLogo;
     Inventory inv;
@@ -58,7 +60,7 @@ public class Level_1 extends World implements Serializable, ButtonResponder
                 found  = true;
             }
         }
-        for(Straw straw : strawList){
+        for(Material material : matList){
             if (straw.getActive()){
                 found  = true;
             }
@@ -108,8 +110,8 @@ public class Level_1 extends World implements Serializable, ButtonResponder
         straw2 = new Straw();
         addObject(straw2,614,511);
 
-        strawList.add(straw);
-        strawList.add(straw2);    
+        matList.add(straw);
+        matList.add(straw2);    
     }
 
     public void addWall(){
