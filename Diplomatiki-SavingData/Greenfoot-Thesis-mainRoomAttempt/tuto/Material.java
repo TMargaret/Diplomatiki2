@@ -24,6 +24,7 @@ public class Material extends Actor
 
     public Material(){
     }
+
     /**
      * Act - do whatever the Material wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -107,12 +108,23 @@ public class Material extends Actor
     }
 
     public void checkHealthBar(){
-        mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
-        HealthBar healthBar = mainHouseRoom.getHealthBar();
-        getWorld().removeObject(textField);
-        if (!wrongCommand){
-            wrongCommand = true;
-            healthBar.looseHealth();
+        if (getWorld() instanceof Level_1){
+            Level_1 level1 = (Level_1) getWorld();
+            HealthBar healthBar = level1.getHealthBar();
+            getWorld().removeObject(textField);
+            if (!wrongCommand){
+                wrongCommand = true;
+                healthBar.looseHealth();
+            }
+        }
+        if (getWorld() instanceof mainHouseRoom){
+            mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
+            HealthBar healthBar = mainHouseRoom.getHealthBar();
+            getWorld().removeObject(textField);
+            if (!wrongCommand){
+                wrongCommand = true;
+                healthBar.looseHealth();
+            }
         }
     }
 
