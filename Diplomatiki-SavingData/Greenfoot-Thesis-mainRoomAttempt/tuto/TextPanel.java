@@ -1,6 +1,4 @@
 import greenfoot.*;
-
-
 import java.io.*;
 
 //κλάση του τελικού πίνακα ScoreBoard ο οποίος χρησιμοποιείται είτε σε περίπτωση νίκης, είτε ήττας
@@ -128,7 +126,7 @@ public class TextPanel extends Actor implements Serializable
         image.fillRect(0, 0, image.getWidth(),image.getHeight());
         image.setColor(new Color(200, 163, 92, 100));
         image.fillRect(5, 5, image.getWidth()- 10, image.getHeight()-10);
-       // image.setFont(new Font(Font., Font.BOLD, 22));
+        image.setFont(new Font("Monospaced", 22));
         image.setColor(Color.WHITE);
         image.drawString(title, 30, 50);
         //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα

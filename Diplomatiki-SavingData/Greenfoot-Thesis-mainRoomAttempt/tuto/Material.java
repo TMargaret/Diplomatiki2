@@ -110,20 +110,18 @@ public class Material extends Actor
     public void checkHealthBar(){
         if (getWorld() instanceof Level_1){
             Level_1 level1 = (Level_1) getWorld();
-            HealthBar healthBar = Alex.getHealthBar();
             getWorld().removeObject(textField);
             if (!wrongCommand){
                 wrongCommand = true;
-                healthBar.looseHealth();
+                Alex.getHealthBar().looseHealth();
             }
         }
         if (getWorld() instanceof mainHouseRoom){
             mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
-            HealthBar healthBar = Alex.getHealthBar();
             getWorld().removeObject(textField);
             if (!wrongCommand){
                 wrongCommand = true;
-                healthBar.looseHealth();
+                Alex.getHealthBar().looseHealth();
             }
         }
     }
