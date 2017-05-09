@@ -23,9 +23,7 @@ public class mainHouseRoom extends World
     private ArrayList <Door> doorList = new ArrayList<Door>();
     
     private ArrayList<Material> materialList = new ArrayList<Material>();
-    
-    HealthBar healthBar;
-    HealthLogo healthLogo;
+
     GreenfootImage alexImg = new GreenfootImage("alex.png");
     private static String[] items;
     public double time;
@@ -49,7 +47,7 @@ public class mainHouseRoom extends World
     }
 
     public void act(){
-        gameOver();
+        //gameOver();
         enterRoomText();
         exitRoom();
         boolean doNotMove = false;
@@ -80,7 +78,7 @@ public class mainHouseRoom extends World
     {
         // put your code here
         GreenfootImage image = new GreenfootImage(getWidth(), getHeight());
-        image.setColor(java.awt.Color.BLACK);
+        image.setColor(Color.BLACK);
         image.fill();
         setBackground(image);
         
@@ -116,12 +114,6 @@ public class mainHouseRoom extends World
         materialList.add(lumber2);
         materialList.add(clay);
         materialList.add(clay2);
-
-        healthBar = new HealthBar();
-        addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
-
-        healthLogo = new HealthLogo();
-        addObject(healthLogo,20,20);
     }
 
     public void addWall(){
@@ -274,14 +266,4 @@ public class mainHouseRoom extends World
         isActive = false;
 
     }
-
-    public HealthBar getHealthBar(){
-        return healthBar;
-    }
-
-    public void gameOver(){
-        if (healthBar.getHealth() <= 0)
-            Greenfoot.stop();
-    }
-
 }

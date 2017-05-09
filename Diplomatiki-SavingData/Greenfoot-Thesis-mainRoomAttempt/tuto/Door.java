@@ -1,6 +1,6 @@
 import greenfoot.*; 
 import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.awt.Color;
+
 
 /**
  * Write a description of class Door here.

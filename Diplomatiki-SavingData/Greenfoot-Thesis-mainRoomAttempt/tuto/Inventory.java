@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Font;
-import java.awt.Color;
+
 /**
  * The frame for inventory
  * 

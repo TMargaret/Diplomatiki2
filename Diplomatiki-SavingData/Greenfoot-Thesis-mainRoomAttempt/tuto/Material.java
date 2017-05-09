@@ -110,7 +110,7 @@ public class Material extends Actor
     public void checkHealthBar(){
         if (getWorld() instanceof Level_1){
             Level_1 level1 = (Level_1) getWorld();
-            HealthBar healthBar = level1.getHealthBar();
+            HealthBar healthBar = Alex.getHealthBar();
             getWorld().removeObject(textField);
             if (!wrongCommand){
                 wrongCommand = true;
@@ -119,7 +119,7 @@ public class Material extends Actor
         }
         if (getWorld() instanceof mainHouseRoom){
             mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
-            HealthBar healthBar = mainHouseRoom.getHealthBar();
+            HealthBar healthBar = Alex.getHealthBar();
             getWorld().removeObject(textField);
             if (!wrongCommand){
                 wrongCommand = true;

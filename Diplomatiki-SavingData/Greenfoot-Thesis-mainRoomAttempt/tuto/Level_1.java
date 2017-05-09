@@ -21,8 +21,6 @@ public class Level_1 extends World implements Serializable, ButtonResponder
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
 
     private ArrayList <Material> matList = new ArrayList<Material>();
-    HealthBar healthBar;
-    HealthLogo healthLogo;
     Inventory inv;
     boolean isEDown = false;
     boolean invIsOpen = false;
@@ -85,12 +83,6 @@ public class Level_1 extends World implements Serializable, ButtonResponder
 
         alex = new Alex();
         addObject(alex,79,525);
-
-        healthBar = new HealthBar();
-        addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
-
-        healthLogo = new HealthLogo();
-        addObject(healthLogo,21,19);
 
         ExitBar exitBar = new ExitBar();
         addObject(exitBar,984,18);
@@ -279,14 +271,4 @@ public class Level_1 extends World implements Serializable, ButtonResponder
             items[i] = temp[i];  
         items[x] = newItem;  
     }
-
-    public HealthBar getHealthBar(){
-        return healthBar;
-    }
-
-    public void gameOver(){
-        if (healthBar.getHealth() <= 0)
-            Greenfoot.stop();
-    }
-
 }

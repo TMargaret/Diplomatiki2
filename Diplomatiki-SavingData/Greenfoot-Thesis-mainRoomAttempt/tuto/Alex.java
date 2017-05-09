@@ -20,6 +20,9 @@ public class Alex extends SpriteSheet implements Serializable{
     final int IMG_WIDTH = alex.getWidth()/6;
     final int IMG_HEIGHT = alex.getHeight()/4;
 
+    static HealthBar healthBar;
+    HealthLogo healthLogo;
+
     /**
      * Constructor
      */
@@ -28,12 +31,25 @@ public class Alex extends SpriteSheet implements Serializable{
     }
 
     /**
+     * Method addedToWorld
+     *
+     * @param world A parameter
+     */
+    protected void addedToWorld(World world){
+        healthBar = new HealthBar();
+        getWorld().addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
+
+        healthLogo = new HealthLogo();
+        getWorld().addObject(healthLogo,21,19);
+    }
+
+    /**
      * Act - do whatever the Alex wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
-        move(5);  
+    public void act() {
+        move(5); 
+        gameOver();
     }
 
     /**
@@ -241,5 +257,23 @@ public class Alex extends SpriteSheet implements Serializable{
     public void initGetKey(){
         getKey = "";
         getKeyBoth = "";
+    }
+
+    /**
+     * Method getHealthBar
+     *
+     * @return The return value
+     */
+    public static HealthBar getHealthBar(){
+        return healthBar;
+    }
+ 
+    /**
+     * Method gameOver, Checks the healthbar and terminates the game if no health is left
+     *
+     */
+    public void gameOver(){
+        if (healthBar.getHealth() <= 0)
+            Greenfoot.stop();
     }
 }

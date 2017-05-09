@@ -1,5 +1,5 @@
 import greenfoot.*;
-import java.awt.Color;
+
 
 /**
  * Something you can click on, and it will send messages to it's responder.
