@@ -34,7 +34,7 @@ public class Inventory extends DragAndDrop
         // }
         //bg.drawImage(moneyImg, x,y);
         setImage(imgInventory);
-        items = Level_1.getItems();
+        items = Alex.getItems();
         int[] itemPosX = new int[1];
         int[] itemPosY = new int[1];
         // switch(version)
@@ -178,7 +178,7 @@ public class Inventory extends DragAndDrop
         // }
         //bg.drawImage(moneyImg, x,y);
 
-        items = Level_1.getItems();
+        items = Alex.getItems();
 
         int[] itemPosX = new int[1];
         int[] itemPosY = new int[1];

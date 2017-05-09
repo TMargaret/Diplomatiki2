@@ -8,7 +8,7 @@ import java.io.*;
  * @author (Margaret) 
  * @version (a version number or a date)
  */
-public class Alex extends SpriteSheet implements Serializable{
+public class Alex extends SpriteSheet implements ButtonResponder{
     private Level_1 myworld;
     private boolean canMove = true, isMoving = false;
     boolean flagForImage = false, bothDirections = false;
@@ -22,12 +22,19 @@ public class Alex extends SpriteSheet implements Serializable{
 
     static HealthBar healthBar;
     HealthLogo healthLogo;
+    InvBar invBar;
+    Inventory inv;
+    boolean invIsOpen = false;
+    Button inventoryBtn;
+    private static String[] items;
+    public double time;
 
     /**
      * Constructor
      */
     public Alex(){
         setImage(getSprite(alex, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, IMG_WIDTH, IMG_HEIGHT));
+        items = new String[1];
     }
 
     /**
@@ -41,6 +48,13 @@ public class Alex extends SpriteSheet implements Serializable{
 
         healthLogo = new HealthLogo();
         getWorld().addObject(healthLogo,21,19);
+        
+        invBar = new InvBar();
+        getWorld().addObject(invBar,947,18);
+
+        inventoryBtn = new Button(invBar.getImage().getWidth(), invBar.getImage().getHeight());
+        inventoryBtn.setResponder(this);
+        getWorld().addObject(inventoryBtn, 947, 18);
     }
 
     /**
@@ -50,6 +64,7 @@ public class Alex extends SpriteSheet implements Serializable{
     public void act() {
         move(5); 
         gameOver();
+        addToInventory();
     }
 
     /**
@@ -275,5 +290,69 @@ public class Alex extends SpriteSheet implements Serializable{
     public void gameOver(){
         if (healthBar.getHealth() <= 0)
             Greenfoot.stop();
+    }
+    
+     public void buttonClicked(Button button)
+    {   
+        //button event listener
+        if (Greenfoot.mouseClicked(inventoryBtn) && !invIsOpen)
+        {
+            inv = new Inventory();
+            getWorld().addObject(inv, invBar.getX() - (inv.getImage().getWidth()/2), 
+                invBar.getY() + (invBar.getImage().getHeight()/3) + (inv.getImage().getHeight()/2));
+            invIsOpen = true;
+        }
+        else if (Greenfoot.mouseClicked(inventoryBtn) && invIsOpen)
+        {
+            getWorld().removeObject(inv);
+            invIsOpen = false;
+        }
+
+    }
+
+    public void addToInventory(){
+        // if(System.currentTimeMillis() > time + 500){
+            // if(straw.getAddToInv())
+            // {
+                // addItem("straw");
+                // straw.setAddToInv();
+                // time = System.currentTimeMillis();
+            // }
+            // if(straw2.getAddToInv())
+            // {
+                // addItem("straw");
+                // straw2.setAddToInv();
+                // time = System.currentTimeMillis();
+            // }
+            // if(clay.getAddToInv())
+            // {
+                // addItem("clay");
+                // clay.setAddToInv();
+                // time = System.currentTimeMillis();
+            // }
+
+        // }
+    }
+
+    public static String[] getItems()
+    {
+        return items;
+    }
+
+    public static void changeItems(String[] newItems)
+    {
+        items = newItems;
+    }
+
+    public static void addItem(String newItem)  
+    {  
+        int x = items.length;  
+        String[] temp = new String[x];  
+        for (int i = 0; i < x; i++) 
+            temp[i] = items[i];  
+        items = new String[x + 1];  
+        for (int i = 0; i < x; i++) 
+            items[i] = temp[i];  
+        items[x] = newItem;  
     }
 }
