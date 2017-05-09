@@ -14,16 +14,13 @@ public class Level_1 extends World
     public int X_ROAD_HOUSE = 550;
     public int X_ROAD_HUT2 = 885;
     private Alex alex;
-    //private InvBar invBar;
     private mainHouse my_mainHouse;
     private Straw straw, straw2;
     private Clay clay;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
-
     private ArrayList <Material> matList = new ArrayList<Material>();
-    //Inventory inv;
+
     boolean isEDown = false;
-    //boolean invIsOpen = false;
 
     mainHouseRoom usedMainHouseRoom;
     Level_1 level1;
@@ -31,10 +28,6 @@ public class Level_1 extends World
     int counter = 100, btn_counter = 50;
     boolean isActive = false;
     private TextPanel textPanel;
-
-    //Button inventoryBtn, exitBtn;
-    //private static String[] items;
-    public double time;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -45,7 +38,6 @@ public class Level_1 extends World
         // Create a new world with 1000x600 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1);       
         prepare();
-        // items = new String[1];
         //usedMainHouseRoom = new mainHouseRoom(this);
     }
 
@@ -63,8 +55,6 @@ public class Level_1 extends World
         }
         alex.setCanMove(!found);
         enterInRoom();
-
-        //addToInventory();
     }
 
     /**
@@ -87,13 +77,6 @@ public class Level_1 extends World
         ExitBar exitBar = new ExitBar();
         addObject(exitBar,984,18);
 
-        // invBar = new InvBar();
-        // addObject(invBar,947,18);
-
-        // inventoryBtn = new Button(invBar.getImage().getWidth(), invBar.getImage().getHeight());
-        // inventoryBtn.setResponder(this);
-        // addObject(inventoryBtn, 947, 18);
-
         straw = new Straw();
         addObject(straw,957,513);
 
@@ -102,10 +85,6 @@ public class Level_1 extends World
 
         matList.add(straw);
         matList.add(straw2);
-        
-        clay = new Clay();
-        addObject(clay,309,389);
-        matList.add(clay);
     }
 
     public void addWall(){
@@ -207,68 +186,4 @@ public class Level_1 extends World
 
         } 
     }
-
-    // public void buttonClicked(Button button)
-    // {   
-        // //button event listener
-        // if (Greenfoot.mouseClicked(inventoryBtn) && !invIsOpen)
-        // {
-            // inv = new Inventory();
-            // addObject(inv, invBar.getX() - (inv.getImage().getWidth()/2), 
-                // invBar.getY() + (invBar.getImage().getHeight()/3) + (inv.getImage().getHeight()/2));
-            // invIsOpen = true;
-        // }
-        // else if (Greenfoot.mouseClicked(inventoryBtn) && invIsOpen)
-        // {
-            // removeObject(inv);
-            // invIsOpen = false;
-        // }
-
-    // }
-
-    // public void addToInventory(){
-        // if(System.currentTimeMillis() > time + 500){
-            // if(straw.getAddToInv())
-            // {
-                // addItem("straw");
-                // straw.setAddToInv();
-                // time = System.currentTimeMillis();
-            // }
-            // if(straw2.getAddToInv())
-            // {
-                // addItem("straw");
-                // straw2.setAddToInv();
-                // time = System.currentTimeMillis();
-            // }
-            // if(clay.getAddToInv())
-            // {
-                // addItem("clay");
-                // clay.setAddToInv();
-                // time = System.currentTimeMillis();
-            // }
-
-        // }
-    // }
-
-    // public static String[] getItems()
-    // {
-        // return items;
-    // }
-
-    // public static void changeItems(String[] newItems)
-    // {
-        // items = newItems;
-    // }
-
-    // public static void addItem(String newItem)  
-    // {  
-        // int x = items.length;  
-        // String[] temp = new String[x];  
-        // for (int i = 0; i < x; i++) 
-            // temp[i] = items[i];  
-        // items = new String[x + 1];  
-        // for (int i = 0; i < x; i++) 
-            // items[i] = temp[i];  
-        // items[x] = newItem;  
-    // }
 }

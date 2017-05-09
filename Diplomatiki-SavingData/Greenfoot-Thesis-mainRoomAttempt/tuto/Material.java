@@ -20,7 +20,7 @@ public class Material extends Actor
     int counter = 30;
     String my_text = "";
     TextPanel textPanel;
-    boolean addToInv = false;
+    static boolean addToInv = false;
 
     public Material(){
     }
@@ -142,11 +142,11 @@ public class Material extends Actor
         return isActive;
     }
 
-    public boolean getAddToInv(){
+    public static boolean getAddToInv(){
         return addToInv;
     }
 
-    public void setAddToInv(){
+    public static void setAddToInv(){
         addToInv = false;
     }
 }

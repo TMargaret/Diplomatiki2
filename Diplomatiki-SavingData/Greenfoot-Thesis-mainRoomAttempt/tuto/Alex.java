@@ -3,10 +3,10 @@ import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo
 import java.io.*;
 
 /**
- * Write a description of class Alex here.
+ * Alex is the main character of the game
  * 
  * @author (Margaret) 
- * @version (a version number or a date)
+ * @9/5/2017
  */
 public class Alex extends SpriteSheet implements ButtonResponder{
     private Level_1 myworld;
@@ -19,7 +19,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     GreenfootImage alex = new GreenfootImage("alex.png");
     final int IMG_WIDTH = alex.getWidth()/6;
     final int IMG_HEIGHT = alex.getHeight()/4;
-
     static HealthBar healthBar;
     HealthLogo healthLogo;
     InvBar invBar;
@@ -292,6 +291,12 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             Greenfoot.stop();
     }
     
+     /**
+      * Method buttonClicked. Checks if the inventory button is clicked.
+      * if so, then the inventory opens. If button is clicked again the inventory closes.
+      *
+      * @param button A parameter
+      */
      public void buttonClicked(Button button)
     {   
         //button event listener
@@ -311,27 +316,14 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     }
 
     public void addToInventory(){
-        // if(System.currentTimeMillis() > time + 500){
-            // if(straw.getAddToInv())
-            // {
-                // addItem("straw");
-                // straw.setAddToInv();
-                // time = System.currentTimeMillis();
-            // }
-            // if(straw2.getAddToInv())
-            // {
-                // addItem("straw");
-                // straw2.setAddToInv();
-                // time = System.currentTimeMillis();
-            // }
-            // if(clay.getAddToInv())
-            // {
-                // addItem("clay");
-                // clay.setAddToInv();
-                // time = System.currentTimeMillis();
-            // }
-
-        // }
+        if(System.currentTimeMillis() > time + 500){
+            if(Straw.getAddToInv())
+            {
+                addItem("straw");
+                Straw.setAddToInv();
+                time = System.currentTimeMillis();
+            }
+        }
     }
 
     public static String[] getItems()

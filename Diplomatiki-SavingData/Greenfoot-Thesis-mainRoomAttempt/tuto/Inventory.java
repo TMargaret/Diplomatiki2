@@ -203,19 +203,19 @@ public class Inventory extends DragAndDrop
                 String item = items[i];
                 itemImg = new GreenfootImage(item + "icon" + ".png");
                 imgInventory.drawImage(itemImg, itemPosX[i-1], itemPosY[i-1]);
-                int mouseX = Greenfoot.getMouseInfo().getX();
+                // int mouseX = Greenfoot.getMouseInfo().getX();
 
-                int mouseY = Greenfoot.getMouseInfo().getY();
-                if(mouseX < (getX() - getImage().getWidth()/2) + (itemPosX[i-1] + itemImg.getWidth())&& 
-                mouseX > (getX() - getImage().getWidth()/2) + itemPosX[i-1]&&
-                mouseY < (getY() - getImage().getHeight()/2 ) + (itemPosY[i-1] + itemImg.getHeight())&& 
-                mouseY > (getY() - getImage().getHeight()/2) + itemPosY[i-1])
-                {
-                    System.out.println("yes");
-                }
-                else {
-                    System.out.println("no");
-                }
+                // int mouseY = Greenfoot.getMouseInfo().getY();
+                // if(mouseX < (getX() - getImage().getWidth()/2) + (itemPosX[i-1] + itemImg.getWidth())&& 
+                // mouseX > (getX() - getImage().getWidth()/2) + itemPosX[i-1]&&
+                // mouseY < (getY() - getImage().getHeight()/2 ) + (itemPosY[i-1] + itemImg.getHeight())&& 
+                // mouseY > (getY() - getImage().getHeight()/2) + itemPosY[i-1])
+                // {
+                    // System.out.println("yes");
+                // }
+                // else {
+                    // System.out.println("no");
+                // }
 
             }
         }
