@@ -19,7 +19,6 @@ public class Level_1 extends World implements Serializable, ButtonResponder
     private Straw straw, straw2;
     private Clay clay;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
-    private ArrayList <Straw> strawList = new ArrayList<Straw>();
 
     private ArrayList <Material> matList = new ArrayList<Material>();
     HealthBar healthBar;
@@ -34,8 +33,6 @@ public class Level_1 extends World implements Serializable, ButtonResponder
     int counter = 100, btn_counter = 50;
     boolean isActive = false;
     private TextPanel textPanel;
-
-    FileHandler fh;
 
     Button inventoryBtn, exitBtn;
     private static String[] items;
@@ -207,7 +204,6 @@ public class Level_1 extends World implements Serializable, ButtonResponder
                 isActive = true;
             }
             if (counter < 0 && isEDown && isActive){
-                writeToBin();
                 removeObject(textPanel);
                 counter = 100;
                 isActive = false;
@@ -218,24 +214,6 @@ public class Level_1 extends World implements Serializable, ButtonResponder
             }  
 
         } 
-    }
-
-    public void writeToBin(){
-        fh = new FileHandler(this);
-
-        try
-        {           
-            fh.writeToBinaryFile();
-
-        }
-        catch(IOException e)
-        {
-            System.out.println("Error saving to file...");
-        }
-        // catch(ClassNotFoundException e)
-        // {
-        // System.out.println("********** The songs collection class is missing...");
-        // }
     }
 
     public void buttonClicked(Button button)
