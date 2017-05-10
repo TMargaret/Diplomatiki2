@@ -7,7 +7,7 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Material extends Actor
+public class Material extends Actor 
 {
     private HiddenSprite hs;
     private int hsWidth, hsHeight = 40;
@@ -129,7 +129,6 @@ public class Material extends Actor
     public String setMaterial(){
         String material = "";
         return material;
-
     }
 
     public String checkMaterial(){
