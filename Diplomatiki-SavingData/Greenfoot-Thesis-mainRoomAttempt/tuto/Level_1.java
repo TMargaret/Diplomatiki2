@@ -19,12 +19,7 @@ public class Level_1 extends World
     private Clay clay;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
     private ArrayList <Material> matList = new ArrayList<Material>();
-
     boolean isEDown = false;
-
-    mainHouseRoom usedMainHouseRoom;
-    Level_1 level1;
-
     int counter = 100, btn_counter = 50;
     boolean isActive = false;
     private TextPanel textPanel;
@@ -38,7 +33,6 @@ public class Level_1 extends World
         // Create a new world with 1000x600 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1);       
         prepare();
-        //usedMainHouseRoom = new mainHouseRoom(this);
     }
 
     public void act(){
@@ -74,9 +68,6 @@ public class Level_1 extends World
         alex = new Alex();
         addObject(alex,79,525);
 
-        ExitBar exitBar = new ExitBar();
-        addObject(exitBar,984,18);
-
         straw = new Straw();
         addObject(straw,957,513);
 
@@ -87,6 +78,10 @@ public class Level_1 extends World
         matList.add(straw2);
     }
 
+    /**
+     * Method addWall. Builds the wall that holds healthbar, inventory and exit
+     *
+     */
     public void addWall(){
         Wall[] wall = new Wall[25];
 
@@ -94,7 +89,6 @@ public class Level_1 extends World
             wall[j]=new Wall();
             addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
         }
-
     }
 
     /**
@@ -144,6 +138,10 @@ public class Level_1 extends World
         }
     }
 
+    /**
+     * Method that adds the grass to the scenery
+     *
+     */
     public void addGrass(){
         //creates a new array that holds the grass actor
         Grass[] grass =new Grass[25];
@@ -180,8 +178,7 @@ public class Level_1 extends World
                 isActive = false;
                 isEDown = false;
                 alex.setLocation(alex.getX(), alex.getY() + 100);
-
-                // Greenfoot.setWorld(new mainHouseRoom());
+                Greenfoot.setWorld(new mainHouseRoom(alex));
             }  
 
         } 

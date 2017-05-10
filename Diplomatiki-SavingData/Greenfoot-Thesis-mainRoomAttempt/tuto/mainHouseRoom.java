@@ -9,9 +9,8 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
  */
 public class mainHouseRoom extends World
 {
-    Level_1 oldLevel1;
-    SpriteSheet spriteSheet = new SpriteSheet();
 
+    SpriteSheet spriteSheet = new SpriteSheet();
     Alex alex;
     Elder elder;
     Door door, door2;
@@ -21,10 +20,11 @@ public class mainHouseRoom extends World
     boolean isActive = false;
     private TextPanel textPanel, entranceText;
     private ArrayList <Door> doorList = new ArrayList<Door>();
-    
-    private ArrayList<Material> materialList = new ArrayList<Material>();
-
+    int img_cell = 32;
     GreenfootImage alexImg = new GreenfootImage("alex.png");
+    final int IMG_WIDTH = alexImg.getWidth()/6;
+    final int IMG_HEIGHT = alexImg.getHeight()/4;
+    private ArrayList<Material> materialList = new ArrayList<Material>();
     private static String[] items;
     public double time;
 
@@ -39,10 +39,10 @@ public class mainHouseRoom extends World
 
     }
 
-    public mainHouseRoom(Level_1 myLevel1)
+    public mainHouseRoom(Alex oldAlex)
     {
         super(1000, 600, 1);
-        oldLevel1 = myLevel1;
+        alex = oldAlex;
         prepare();
     }
 
@@ -94,7 +94,7 @@ public class mainHouseRoom extends World
 
         addWall();
 
-        alex = new Alex();
+        alex.setImage(SpriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, IMG_WIDTH, IMG_HEIGHT));
         addObject(alex,80, 90);
 
         elder = new Elder();
@@ -217,7 +217,7 @@ public class mainHouseRoom extends World
             initVariables();
             alex.setImage(spriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, 64, 64));
             alex.setLocation(alex.getX() + 100, alex.getY());
-            Greenfoot.setWorld(oldLevel1);
+            //Greenfoot.setWorld(oldLevel1);
         }      
     }
 

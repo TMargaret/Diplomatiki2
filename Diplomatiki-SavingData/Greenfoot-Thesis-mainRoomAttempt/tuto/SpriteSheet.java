@@ -14,7 +14,7 @@ public class SpriteSheet extends Actor implements Serializable
      * if you do the same with the topLeftY and bottomRightY the image will be flipped vertically. The width
      * and height are the dimesions of the returned image.
      */
-    public GreenfootImage getSprite(GreenfootImage spriteSheet, int topLeftX, int topLeftY, int bottomRightX, int bottomRightY, int width, int height) {
+    public static GreenfootImage getSprite(GreenfootImage spriteSheet, int topLeftX, int topLeftY, int bottomRightX, int bottomRightY, int width, int height) {
         int tempWidth;
         int tempHeight;
         if(topLeftX<bottomRightX)

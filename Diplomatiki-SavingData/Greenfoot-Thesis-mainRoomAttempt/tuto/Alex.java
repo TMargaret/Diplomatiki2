@@ -54,6 +54,10 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         inventoryBtn = new Button(invBar.getImage().getWidth(), invBar.getImage().getHeight());
         inventoryBtn.setResponder(this);
         getWorld().addObject(inventoryBtn, 947, 18);
+        
+        ExitBar exitBar = new ExitBar();
+        inventoryBtn.setResponder(this);
+        getWorld().addObject(exitBar,984,18);
     }
 
     /**
