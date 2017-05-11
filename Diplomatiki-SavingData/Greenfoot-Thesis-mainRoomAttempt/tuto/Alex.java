@@ -320,14 +320,14 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     }
 
     public void addToInventory(){
-        if(System.currentTimeMillis() > time + 500){
-            if(Straw.getAddToInv())
-            {
-                addItem("straw");
-                Straw.setAddToInv();
-                time = System.currentTimeMillis();
-            }
-        }
+        // if(System.currentTimeMillis() > time + 500){
+            // if(Lumber.getAddToInv())
+            // {
+                // addItem("lumber");
+                // Straw.setAddToInv();
+                // time = System.currentTimeMillis();
+            // }
+        // }
     }
 
     public static String[] getItems()

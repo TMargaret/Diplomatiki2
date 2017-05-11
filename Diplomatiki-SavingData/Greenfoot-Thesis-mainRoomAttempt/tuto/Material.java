@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +22,7 @@ public class Material extends Actor
     String my_text = "";
     TextPanel textPanel;
     static boolean addToInv = false;
+    ArrayList<Material> materialList = new ArrayList<Material>();
 
     public Material(){
     }
@@ -74,6 +76,7 @@ public class Material extends Actor
                             {
                                 getWorld().removeObject(textField);
                                 getWorld().removeObject(this);
+                                materialList.add(this);
                                 isActive = false;
                                 addToInv = true;
                                 break;
@@ -103,7 +106,7 @@ public class Material extends Actor
     }
 
     public void textFieldCreation(){
-        textField = new TextField(700, 45, "Δημιούργησε ένα αντικείμενο " + setMaterial() + " και πάτα enter");
+        textField = new TextField(700, 45, "Δημιούργησε ένα αντικείμενο " + getMaterial() + " και πάτα enter");
         getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
     }
 
@@ -126,7 +129,7 @@ public class Material extends Actor
         }
     }
 
-    public String setMaterial(){
+    public String getMaterial(){
         String material = "";
         return material;
     }
@@ -148,4 +151,5 @@ public class Material extends Actor
     public static void setAddToInv(){
         addToInv = false;
     }
+
 }

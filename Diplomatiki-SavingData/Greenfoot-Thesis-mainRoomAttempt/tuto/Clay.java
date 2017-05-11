@@ -30,11 +30,11 @@ public class Clay extends Material
     } 
 
     /**
-     * Method setMaterial
+     * Method getMaterial
      *
      * @return The material value, for the info message that appears in inputField
      */
-    public String setMaterial(){
+    public String getMaterial(){
         String material = "Clay";
         return material;
     }
