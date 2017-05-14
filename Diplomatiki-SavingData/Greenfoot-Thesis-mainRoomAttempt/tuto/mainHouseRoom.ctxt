@@ -19,4 +19,6 @@ comment7.params=
 comment7.target=void\ exitRoom()
 comment8.params=
 comment8.target=void\ initVariables()
-numComments=9
+comment9.params=
+comment9.target=java.util.ArrayList\ getMaterialList()
+numComments=10

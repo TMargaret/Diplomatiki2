@@ -19,10 +19,14 @@ public class Level_1 extends World
     private Clay clay;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
     private ArrayList <Material> matList = new ArrayList<Material>();
+
+    private ArrayList <Material> pickUpList = new ArrayList<Material>();
     boolean isEDown = false;
     int counter = 100, btn_counter = 50;
     boolean isActive = false;
     private TextPanel textPanel;
+
+    Material mat;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -43,10 +47,16 @@ public class Level_1 extends World
             }
         }
         for(Material material : matList){
+            if(material.getWorldOfType(Level_1.class) == null){
+                pickUpList.add(material);
+                mat = material; //save to material to mat so as to remove without concurrent exception
+
+            }
             if (material.getActive()){
                 found  = true;
             }
         }
+        matList.remove(mat);
         alex.setCanMove(!found);
         enterInRoom();
     }
@@ -182,5 +192,9 @@ public class Level_1 extends World
             }  
 
         } 
+    }
+
+    public ArrayList getMaterialList(){
+        return pickUpList;
     }
 }

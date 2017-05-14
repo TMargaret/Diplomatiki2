@@ -25,8 +25,10 @@ public class mainHouseRoom extends World
     final int IMG_WIDTH = alexImg.getWidth()/6;
     final int IMG_HEIGHT = alexImg.getHeight()/4;
     private ArrayList<Material> materialList = new ArrayList<Material>();
+    private ArrayList <Material> pickUpList = new ArrayList<Material>();
     private static String[] items;
     public double time;
+    Material mat;
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -60,10 +62,16 @@ public class mainHouseRoom extends World
             }
         }
         for (Material material : materialList){
+            if(material.getWorldOfType(mainHouseRoom.class) == null){
+                pickUpList.add(material);
+                mat = material; //save to material to mat so as to remove without concurrent exception
+
+            }
             if (material.getActive()){
                 doNotMove  = true;
             }
         }
+        materialList.remove(mat);
         alex.setCanMove(!doNotMove);
     }
 
@@ -223,6 +231,9 @@ public class mainHouseRoom extends World
     public void initVariables(){
         flag = 0;
         isActive = false;
-
+    }
+    
+    public ArrayList getMaterialList(){
+        return pickUpList;
     }
 }

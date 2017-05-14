@@ -1,6 +1,7 @@
 import greenfoot.*; 
 import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Alex is the main character of the game
@@ -9,7 +10,7 @@ import java.io.*;
  * @9/5/2017
  */
 public class Alex extends SpriteSheet implements ButtonResponder{
-    private Level_1 myworld;
+
     private boolean canMove = true, isMoving = false;
     boolean flagForImage = false, bothDirections = false;
     String getKeyBoth = "", getKey = "";
@@ -28,12 +29,17 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     private static String[] items;
     public double time;
 
+    ArrayList<Material> materialList;
+    Material myMaterial;
+    ArrayList<Material> inventoryList = new ArrayList<Material>();
+
     /**
      * Constructor
      */
     public Alex(){
         setImage(getSprite(alex, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, IMG_WIDTH, IMG_HEIGHT));
         items = new String[1];
+
     }
 
     /**
@@ -47,14 +53,14 @@ public class Alex extends SpriteSheet implements ButtonResponder{
 
         healthLogo = new HealthLogo();
         getWorld().addObject(healthLogo,21,19);
-        
+
         invBar = new InvBar();
         getWorld().addObject(invBar,947,18);
 
         inventoryBtn = new Button(invBar.getImage().getWidth(), invBar.getImage().getHeight());
         inventoryBtn.setResponder(this);
         getWorld().addObject(inventoryBtn, 947, 18);
-        
+
         ExitBar exitBar = new ExitBar();
         inventoryBtn.setResponder(this);
         getWorld().addObject(exitBar,984,18);
@@ -68,6 +74,18 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         move(5); 
         gameOver();
         addToInventory();
+        checkWorld();
+    }
+
+    public void checkWorld(){
+        if (getWorld() instanceof Level_1){
+            Level_1 level1 = (Level_1) getWorld();
+            materialList = level1.getMaterialList();
+        }
+        if (getWorld() instanceof mainHouseRoom){
+            mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
+            materialList = mainHouseRoom.getMaterialList();
+        }
     }
 
     /**
@@ -285,7 +303,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     public static HealthBar getHealthBar(){
         return healthBar;
     }
- 
+
     /**
      * Method gameOver, Checks the healthbar and terminates the game if no health is left
      *
@@ -294,14 +312,14 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         if (healthBar.getHealth() <= 0)
             Greenfoot.stop();
     }
-    
-     /**
-      * Method buttonClicked. Checks if the inventory button is clicked.
-      * if so, then the inventory opens. If button is clicked again the inventory closes.
-      *
-      * @param button A parameter
-      */
-     public void buttonClicked(Button button)
+
+    /**
+     * Method buttonClicked. Checks if the inventory button is clicked.
+     * if so, then the inventory opens. If button is clicked again the inventory closes.
+     *
+     * @param button A parameter
+     */
+    public void buttonClicked(Button button)
     {   
         //button event listener
         if (Greenfoot.mouseClicked(inventoryBtn) && !invIsOpen)
@@ -320,14 +338,20 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     }
 
     public void addToInventory(){
-        // if(System.currentTimeMillis() > time + 500){
-            // if(Lumber.getAddToInv())
-            // {
-                // addItem("lumber");
-                // Straw.setAddToInv();
-                // time = System.currentTimeMillis();
-            // }
-        // }
+        if (materialList != null){
+            if(System.currentTimeMillis() > time + 500){
+                for (Material myMat : materialList){
+                    if(myMat.getAddToInv())
+                    {
+                        addItem(myMat.getMaterial());
+                        myMat.setAddToInv();
+                        myMaterial = myMat; 
+                        time = System.currentTimeMillis();
+                    }
+                }
+            }
+            materialList.remove(myMaterial);
+        }       
     }
 
     public static String[] getItems()
@@ -351,4 +375,5 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             items[i] = temp[i];  
         items[x] = newItem;  
     }
+
 }

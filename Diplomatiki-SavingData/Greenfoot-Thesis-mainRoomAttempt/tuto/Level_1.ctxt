@@ -24,4 +24,6 @@ comment7.text=\r\n\ Method\ that\ adds\ the\ grass\ to\ the\ scenery\r\n\r\n
 comment8.params=
 comment8.target=void\ enterInRoom()
 comment8.text=\r\n\ shows\ a\ message\ before\ entering\ the\ house\r\n
-numComments=9
+comment9.params=
+comment9.target=java.util.ArrayList\ getMaterialList()
+numComments=10
