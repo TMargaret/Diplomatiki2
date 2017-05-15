@@ -86,6 +86,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
             materialList = mainHouseRoom.getMaterialList();
         }
+        System.out.println(inventoryList);
     }
 
     /**
@@ -347,6 +348,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                         myMat.setAddToInv();
                         myMaterial = myMat; 
                         time = System.currentTimeMillis();
+                        //this list holds the items in total
+                        inventoryList.add(myMat);
                     }
                 }
             }
