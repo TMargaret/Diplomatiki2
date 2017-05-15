@@ -28,6 +28,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     Button inventoryBtn;
     private static String[] items;
     public double time;
+    static int alexHealth = 4;
+    Level_1 level1;
 
     ArrayList<Material> materialList;
     Material myMaterial;
@@ -41,29 +43,29 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         items = new String[1];
 
     }
-
     /**
      * Method addedToWorld
      *
      * @param world A parameter
      */
     protected void addedToWorld(World world){
-        healthBar = new HealthBar();
-        getWorld().addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
 
-        healthLogo = new HealthLogo();
-        getWorld().addObject(healthLogo,21,19);
+            healthBar = new HealthBar(alexHealth);
+            getWorld().addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
 
-        invBar = new InvBar();
-        getWorld().addObject(invBar,947,18);
+            healthLogo = new HealthLogo();
+            getWorld().addObject(healthLogo,21,19);
 
-        inventoryBtn = new Button(invBar.getImage().getWidth(), invBar.getImage().getHeight());
-        inventoryBtn.setResponder(this);
-        getWorld().addObject(inventoryBtn, 947, 18);
+            invBar = new InvBar();
+            getWorld().addObject(invBar,947,18);
 
-        ExitBar exitBar = new ExitBar();
-        inventoryBtn.setResponder(this);
-        getWorld().addObject(exitBar,984,18);
+            inventoryBtn = new Button(invBar.getImage().getWidth(), invBar.getImage().getHeight());
+            inventoryBtn.setResponder(this);
+            getWorld().addObject(inventoryBtn, 947, 18);
+
+            ExitBar exitBar = new ExitBar();
+            inventoryBtn.setResponder(this);
+            getWorld().addObject(exitBar,984,18);
     }
 
     /**
@@ -75,18 +77,18 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         gameOver();
         addToInventory();
         checkWorld();
+        //healthBar.update();
     }
 
     public void checkWorld(){
         if (getWorld() instanceof Level_1){
-            Level_1 level1 = (Level_1) getWorld();
+            level1 = (Level_1) getWorld();
             materialList = level1.getMaterialList();
         }
         if (getWorld() instanceof mainHouseRoom){
             mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
             materialList = mainHouseRoom.getMaterialList();
         }
-        System.out.println(inventoryList);
     }
 
     /**
@@ -301,8 +303,13 @@ public class Alex extends SpriteSheet implements ButtonResponder{
      *
      * @return The return value
      */
-    public static HealthBar getHealthBar(){
+    public HealthBar getHealthBar(){
         return healthBar;
+    }
+
+    public static void looseHealth(){
+        alexHealth--;
+        healthBar.setHealth(alexHealth);
     }
 
     /**
@@ -310,7 +317,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
      *
      */
     public void gameOver(){
-        if (healthBar.getHealth() <= 0)
+        if (alexHealth <= 0)
             Greenfoot.stop();
     }
 

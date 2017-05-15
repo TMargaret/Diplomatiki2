@@ -40,8 +40,8 @@ public class Level_1 extends World
         alex = new Alex();
         prepare();
     }
-    
-        /**
+
+    /**
      * Constructor for objects of class MyWorld.
      * 
      */
@@ -86,9 +86,7 @@ public class Level_1 extends World
         my_mainHouse = new mainHouse();
         addObject(my_mainHouse,506,303);
 
-        
         addObject(alex,79,525);
-
         straw = new Straw();
         addObject(straw,957,513);
 
@@ -98,7 +96,6 @@ public class Level_1 extends World
         matList.add(straw);
         matList.add(straw2);
     }
-    
 
     /**
      * Method addWall. Builds the wall that holds healthbar, inventory and exit
@@ -214,7 +211,7 @@ public class Level_1 extends World
     public ArrayList getMaterialList(){
         return pickUpList;
     }
-    
+
     public boolean dataToSave(){
         if (matList == null){
             return noMaterial = true;

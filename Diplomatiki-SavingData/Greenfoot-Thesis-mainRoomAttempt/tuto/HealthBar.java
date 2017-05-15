@@ -15,7 +15,8 @@ public class HealthBar extends Actor
     int healthBarHeight = 15;
     int pixelsPerHealthPoint = (int)healthBarWidth / health;
 
-    public HealthBar(){
+    public HealthBar(int health){
+        this.health = health;
         update();
     }
 
@@ -37,11 +38,15 @@ public class HealthBar extends Actor
         myImage.fillRect(1, 1, health*pixelsPerHealthPoint, healthBarHeight);       
     }
 
-    public void looseHealth(){
-        health--;
+    // public void looseHealth(){
+        // health--;
+    // }
+    
+    public void setHealth(int alexHealth){
+        health = alexHealth;
     }
 
-    public int getHealth(){
-        return health;
-    }
+    // public int getHealth(){
+        // return health;
+    // }
 }

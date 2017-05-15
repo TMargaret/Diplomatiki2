@@ -116,7 +116,7 @@ public class Material extends Actor
             getWorld().removeObject(textField);
             if (!wrongCommand){
                 wrongCommand = true;
-                Alex.getHealthBar().looseHealth();
+                Alex.looseHealth();
             }
         }
         if (getWorld() instanceof mainHouseRoom){
@@ -124,7 +124,7 @@ public class Material extends Actor
             getWorld().removeObject(textField);
             if (!wrongCommand){
                 wrongCommand = true;
-                Alex.getHealthBar().looseHealth();
+                Alex.looseHealth();
             }
         }
     }
