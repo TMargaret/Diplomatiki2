@@ -18,10 +18,11 @@ public class Level_1 extends World
     private Straw straw, straw2;
     private Clay clay;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
-    private ArrayList <Material> matList = new ArrayList<Material>();
+    private ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
 
-    private ArrayList <Material> pickUpList = new ArrayList<Material>();
+    private ArrayList <Material> pickUpList = new ArrayList<Material>(); //this is the list that Alex is retrieving
     boolean isEDown = false;
+    boolean noMaterial = false;
     int counter = 100, btn_counter = 50;
     boolean isActive = false;
     private TextPanel textPanel;
@@ -35,8 +36,18 @@ public class Level_1 extends World
     public Level_1()
     {    
         // Create a new world with 1000x600 cells with a cell size of 1x1 pixels.
-        super(1000, 600, 1);       
+        super(1000, 600, 1);
+        alex = new Alex();
         prepare();
+    }
+    
+        /**
+     * Constructor for objects of class MyWorld.
+     * 
+     */
+    public void setAlex(Alex oldAlex){
+        alex = oldAlex;
+        addObject(alex,79,525);
     }
 
     public void act(){
@@ -75,7 +86,7 @@ public class Level_1 extends World
         my_mainHouse = new mainHouse();
         addObject(my_mainHouse,506,303);
 
-        alex = new Alex();
+        
         addObject(alex,79,525);
 
         straw = new Straw();
@@ -87,6 +98,7 @@ public class Level_1 extends World
         matList.add(straw);
         matList.add(straw2);
     }
+    
 
     /**
      * Method addWall. Builds the wall that holds healthbar, inventory and exit
@@ -188,13 +200,26 @@ public class Level_1 extends World
                 isActive = false;
                 isEDown = false;
                 alex.setLocation(alex.getX(), alex.getY() + 100);
-                Greenfoot.setWorld(new mainHouseRoom(alex));
+                Greenfoot.setWorld(new mainHouseRoom(alex,this));
             }  
 
         } 
     }
 
+    /**
+     * Method getMaterialList
+     *
+     * @return The return value
+     */
     public ArrayList getMaterialList(){
         return pickUpList;
+    }
+    
+    public boolean dataToSave(){
+        if (matList == null){
+            return noMaterial = true;
+        }else{
+            return noMaterial = false;
+        }    
     }
 }
