@@ -20,16 +20,19 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     GreenfootImage alex = new GreenfootImage("alex.png");
     final int IMG_WIDTH = alex.getWidth()/6;
     final int IMG_HEIGHT = alex.getHeight()/4;
-    static HealthBar healthBar;
+
     HealthLogo healthLogo;
+    HealthBar healthBar;
     InvBar invBar;
     Inventory inv;
+    ExitBar exitBar;
     boolean invIsOpen = false;
     Button inventoryBtn;
     private static String[] items;
     public double time;
     static int alexHealth = 4;
     Level_1 level1;
+    boolean isAdded = false;
 
     ArrayList<Material> materialList;
     Material myMaterial;
@@ -43,6 +46,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         items = new String[1];
 
     }
+
     /**
      * Method addedToWorld
      *
@@ -50,24 +54,27 @@ public class Alex extends SpriteSheet implements ButtonResponder{
      */
     protected void addedToWorld(World world){
 
+        if (!isAdded){
+            isAdded = true;
             healthBar = new HealthBar(alexHealth);
-            getWorld().addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
 
             healthLogo = new HealthLogo();
-            getWorld().addObject(healthLogo,21,19);
 
             invBar = new InvBar();
-            getWorld().addObject(invBar,947,18);
-
             inventoryBtn = new Button(invBar.getImage().getWidth(), invBar.getImage().getHeight());
-            inventoryBtn.setResponder(this);
-            getWorld().addObject(inventoryBtn, 947, 18);
 
-            ExitBar exitBar = new ExitBar();
-            inventoryBtn.setResponder(this);
-            getWorld().addObject(exitBar,984,18);
+            exitBar = new ExitBar();
+
+        }
+        getWorld().addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
+        getWorld().addObject(healthLogo,21,19);
+        getWorld().addObject(invBar,947,18);
+        inventoryBtn.setResponder(this);
+        getWorld().addObject(inventoryBtn, 947, 18);
+        inventoryBtn.setResponder(this);
+        getWorld().addObject(exitBar,984,18);
+
     }
-
     /**
      * Act - do whatever the Alex wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -77,7 +84,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         gameOver();
         addToInventory();
         checkWorld();
-        //healthBar.update();
     }
 
     public void checkWorld(){
@@ -307,11 +313,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         return healthBar;
     }
 
-    public static void looseHealth(){
-        alexHealth--;
-        healthBar.setHealth(alexHealth);
-    }
-
     /**
      * Method gameOver, Checks the healthbar and terminates the game if no health is left
      *
@@ -385,5 +386,10 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             items[i] = temp[i];  
         items[x] = newItem;  
     }
+
+    public void setIsAdded(boolean isAdded){
+        this.isAdded = isAdded;
+    }
+
 
 }

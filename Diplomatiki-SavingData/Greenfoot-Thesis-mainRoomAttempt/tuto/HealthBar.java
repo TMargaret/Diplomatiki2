@@ -10,10 +10,10 @@ import java.io.*;
  */
 public class HealthBar extends Actor
 {
-    int health = 4;
+    static int health;
     int healthBarWidth = 80;
     int healthBarHeight = 15;
-    int pixelsPerHealthPoint = (int)healthBarWidth / health;
+    int pixelsPerHealthPoint = (int)healthBarWidth / 4;
 
     public HealthBar(int health){
         this.health = health;
@@ -38,15 +38,15 @@ public class HealthBar extends Actor
         myImage.fillRect(1, 1, health*pixelsPerHealthPoint, healthBarHeight);       
     }
 
-    // public void looseHealth(){
-        // health--;
-    // }
+    public static void looseHealth(){
+        health--;
+    }
     
     public void setHealth(int alexHealth){
         health = alexHealth;
     }
 
-    // public int getHealth(){
-        // return health;
-    // }
+    public int getHealth(){
+        return health;
+    }
 }

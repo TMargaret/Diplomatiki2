@@ -46,6 +46,7 @@ public class mainHouseRoom extends World
     {
         super(1000, 600, 1);
         alex = oldAlex;
+        //alex.setIsAdded(false);
         level1 = oldLevel1;
         prepare();
     }
