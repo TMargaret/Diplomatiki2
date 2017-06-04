@@ -25,9 +25,11 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     HealthBar healthBar;
     InvBar invBar;
     Inventory inv;
+    HintBar hintBar;
     ExitBar exitBar;
-    boolean invIsOpen = false;
-    Button inventoryBtn;
+    HintRules hintRules;
+    boolean invIsOpen = false, hintIsOpen = false;
+    Button inventoryBtn, hintBtn;
     private static String[] items;
     public double time;
     static int alexHealth = 4;
@@ -54,6 +56,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
      */
     protected void addedToWorld(World world){
 
+        //check if objects already added
         if (!isAdded){
             isAdded = true;
             healthBar = new HealthBar(alexHealth);
@@ -62,19 +65,28 @@ public class Alex extends SpriteSheet implements ButtonResponder{
 
             invBar = new InvBar();
             inventoryBtn = new Button(invBar.getImage().getWidth(), invBar.getImage().getHeight());
+            inventoryBtn.setResponder(this);
 
             exitBar = new ExitBar();
+            
+            hintBar = new HintBar();
+            hintBtn = new Button(hintBar.getImage().getWidth(), hintBar.getImage().getHeight());
+            hintBtn.setResponder(this);
 
         }
         getWorld().addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
         getWorld().addObject(healthLogo,21,19);
         getWorld().addObject(invBar,947,18);
-        inventoryBtn.setResponder(this);
-        getWorld().addObject(inventoryBtn, 947, 18);
-        inventoryBtn.setResponder(this);
-        getWorld().addObject(exitBar,984,18);
 
+        getWorld().addObject(inventoryBtn, 947, 18);
+        
+        getWorld().addObject(exitBar,984,18);
+        getWorld().addObject(hintBar, 910, 18);
+        getWorld().addObject(hintBtn, 910, 18);
+        
+       
     }
+
     /**
      * Act - do whatever the Alex wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -323,14 +335,27 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     }
 
     /**
-     * Method buttonClicked. Checks if the inventory button is clicked.
-     * if so, then the inventory opens. If button is clicked again the inventory closes.
+     * Method buttonClicked. Checks if a button is clicked.
+     * if so, then the appropriate dialogue opens.
      *
      * @param button A parameter
      */
     public void buttonClicked(Button button)
     {   
-        //button event listener
+        //opens the hint dialogue
+        if (Greenfoot.mouseClicked(hintBtn) && !hintIsOpen){
+            hintRules = new HintRules();
+            getWorld().addObject(hintRules, hintBar.getX() - (hintRules.getImage().getWidth()/2), 
+                hintBar.getY() + (hintBar.getImage().getHeight()/3) + (hintRules.getImage().getHeight()/2));
+            hintIsOpen = true;
+        }
+        //closes the hint dialogue
+        else if (Greenfoot.mouseClicked(hintBtn) && hintIsOpen)
+        {
+            getWorld().removeObject(hintRules);
+            hintIsOpen = false;
+        }
+        //opens the inventory
         if (Greenfoot.mouseClicked(inventoryBtn) && !invIsOpen)
         {
             inv = new Inventory();
@@ -338,11 +363,14 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                 invBar.getY() + (invBar.getImage().getHeight()/3) + (inv.getImage().getHeight()/2));
             invIsOpen = true;
         }
+        //closes the inventory
         else if (Greenfoot.mouseClicked(inventoryBtn) && invIsOpen)
         {
             getWorld().removeObject(inv);
             invIsOpen = false;
         }
+        
+        
 
     }
 
@@ -390,6 +418,5 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     public void setIsAdded(boolean isAdded){
         this.isAdded = isAdded;
     }
-
 
 }

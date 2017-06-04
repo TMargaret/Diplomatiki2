@@ -60,7 +60,7 @@ public class Level_1 extends World
         for(Material material : matList){
             if(material.getWorldOfType(Level_1.class) == null){
                 pickUpList.add(material);
-                mat = material; //save to material to mat so as to remove without concurrent exception
+                mat = material; //save material to mat so as to remove without concurrent exception
 
             }
             if (material.getActive()){

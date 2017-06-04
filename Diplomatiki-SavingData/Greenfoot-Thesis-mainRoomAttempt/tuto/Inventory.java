@@ -75,7 +75,7 @@ public class Inventory extends DragAndDrop
             //getWorld().addObject(new Button(), x,y);    
             created =  true;
         }
-        drag();
+        //drag();
         redraw();
     }
 
@@ -211,10 +211,10 @@ public class Inventory extends DragAndDrop
                 // mouseY < (getY() - getImage().getHeight()/2 ) + (itemPosY[i-1] + itemImg.getHeight())&& 
                 // mouseY > (getY() - getImage().getHeight()/2) + itemPosY[i-1])
                 // {
-                    // System.out.println("yes");
+                // System.out.println("yes");
                 // }
                 // else {
-                    // System.out.println("no");
+                // System.out.println("no");
                 // }
 
             }
