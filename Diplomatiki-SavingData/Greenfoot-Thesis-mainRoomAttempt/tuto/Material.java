@@ -38,12 +38,12 @@ public class Material extends Actor
 
     protected void addedToWorld(World w)
     {
-        addHiddenSprite();
+        addHiddenSprite(w);
     }
 
-    protected void addHiddenSprite() {   
+    protected void addHiddenSprite(World w) {   
         hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , hsHeight, HS_OFFSET_X, HS_OFFSET_Y, true);  
-        getWorld().addObject(hs, getX(), getY()); 
+        w.addObject(hs, getX(), getY()); 
     }
 
     public void materialCreation(){

@@ -16,6 +16,7 @@ public class mainHouseRoom extends World
     Door door, door2;
     Lumber lumber, lumber2;
     Clay clay, clay2;
+    StoneOven stoneOven;
     int counter = 100, counter2 = 25, flag = 0;
     boolean isActive = false;
     private TextPanel textPanel, entranceText;
@@ -38,6 +39,7 @@ public class mainHouseRoom extends World
     public mainHouseRoom()
     {
         super(1000, 600, 1);
+        alex = new Alex();
         prepare();
 
     }
@@ -46,7 +48,6 @@ public class mainHouseRoom extends World
     {
         super(1000, 600, 1);
         alex = oldAlex;
-        //alex.setIsAdded(false);
         level1 = oldLevel1;
         prepare();
     }
@@ -91,7 +92,6 @@ public class mainHouseRoom extends World
         image.setColor(Color.BLACK);
         image.fill();
         setBackground(image);
-        
 
         door = new Door();
         addObject(door,713,225);
@@ -119,11 +119,14 @@ public class mainHouseRoom extends World
         addObject(lumber,100,400);
         lumber2 = new Lumber();
         addObject(lumber2,100,528);  
-        
+
         materialList.add(lumber);
         materialList.add(lumber2);
         materialList.add(clay);
         materialList.add(clay2);
+        
+        stoneOven = new StoneOven();
+        addObject(stoneOven,595,129);
     }
 
     public void addWall(){
