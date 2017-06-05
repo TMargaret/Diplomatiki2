@@ -8,26 +8,26 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Level_1 extends World implements Serializable
+public class Level_1 extends World
 {
     public int X_ROAD_HUT = 130;
     public int X_ROAD_HOUSE = 550;
     public int X_ROAD_HUT2 = 885;
     private Alex alex;
     private mainHouse my_mainHouse;
+    private Straw straw, straw2;
+    private Clay clay;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
-    HealthBar healthBar;
-    HealthLogo healthLogo;
+    private ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
+
+    private ArrayList <Material> pickUpList = new ArrayList<Material>(); //this is the list that Alex is retrieving
     boolean isEDown = false;
-
-    mainHouseRoom usedMainHouseRoom;
-    Level_1 level1;
-
-    int counter = 100;
+    boolean noMaterial = false;
+    int counter = 100, btn_counter = 50;
     boolean isActive = false;
     private TextPanel textPanel;
 
-    FileHandler fh;
+    Material mat;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -36,9 +36,18 @@ public class Level_1 extends World implements Serializable
     public Level_1()
     {    
         // Create a new world with 1000x600 cells with a cell size of 1x1 pixels.
-        super(1000, 600, 1);       
+        super(1000, 600, 1);
+        alex = new Alex();
         prepare();
-        //usedMainHouseRoom = new mainHouseRoom(this);
+    }
+
+    /**
+     * Constructor for objects of class MyWorld.
+     * 
+     */
+    public void setAlex(Alex oldAlex){
+        alex = oldAlex;
+        addObject(alex,79,525);
     }
 
     public void act(){
@@ -48,6 +57,17 @@ public class Level_1 extends World implements Serializable
                 found  = true;
             }
         }
+        for(Material material : matList){
+            if(material.getWorldOfType(Level_1.class) == null){
+                pickUpList.add(material);
+                mat = material; //save material to mat so as to remove without concurrent exception
+
+            }
+            if (material.getActive()){
+                found  = true;
+            }
+        }
+        matList.remove(mat);
         alex.setCanMove(!found);
         enterInRoom();
     }
@@ -61,18 +81,33 @@ public class Level_1 extends World implements Serializable
         addGrass();
         addRoad();
         addHut();
+        addWall();
 
         my_mainHouse = new mainHouse();
         addObject(my_mainHouse,506,303);
 
-        alex = new Alex();
         addObject(alex,79,525);
+        straw = new Straw();
+        addObject(straw,957,513);
 
-        healthBar = new HealthBar();
-        addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
+        straw2 = new Straw();
+        addObject(straw2,614,511);
 
-        healthLogo = new HealthLogo();
-        addObject(healthLogo,20,20);
+        matList.add(straw);
+        matList.add(straw2);
+    }
+
+    /**
+     * Method addWall. Builds the wall that holds healthbar, inventory and exit
+     *
+     */
+    public void addWall(){
+        Wall[] wall = new Wall[25];
+
+        for(int j=0; j<wall.length; j++){
+            wall[j]=new Wall();
+            addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
+        }
     }
 
     /**
@@ -122,6 +157,10 @@ public class Level_1 extends World implements Serializable
         }
     }
 
+    /**
+     * Method that adds the grass to the scenery
+     *
+     */
     public void addGrass(){
         //creates a new array that holds the grass actor
         Grass[] grass =new Grass[25];
@@ -153,35 +192,31 @@ public class Level_1 extends World implements Serializable
                 isActive = true;
             }
             if (counter < 0 && isEDown && isActive){
-                writeToBin();
                 removeObject(textPanel);
                 counter = 100;
                 isActive = false;
                 isEDown = false;
                 alex.setLocation(alex.getX(), alex.getY() + 100);
-                
-               // Greenfoot.setWorld(new mainHouseRoom());
+                Greenfoot.setWorld(new mainHouseRoom(alex,this));
             }  
 
         } 
     }
 
-    public void writeToBin(){
-        fh = new FileHandler(this);
-
-        try
-        {           
-            fh.writeToBinaryFile();
-
-        }
-        catch(IOException e)
-        {
-            System.out.println("Error saving to file...");
-        }
-        // catch(ClassNotFoundException e)
-        // {
-        // System.out.println("********** The songs collection class is missing...");
-        // }
+    /**
+     * Method getMaterialList
+     *
+     * @return The return value
+     */
+    public ArrayList getMaterialList(){
+        return pickUpList;
     }
 
+    public boolean dataToSave(){
+        if (matList == null){
+            return noMaterial = true;
+        }else{
+            return noMaterial = false;
+        }    
+    }
 }

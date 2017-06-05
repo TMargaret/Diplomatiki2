@@ -1,5 +1,5 @@
 import greenfoot.*;
-import java.awt.Color;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.io.*;
 
 /**
@@ -8,14 +8,15 @@ import java.io.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class HealthBar extends Actor implements Serializable
+public class HealthBar extends Actor
 {
-    int health = 4;
+    static int health;
     int healthBarWidth = 80;
     int healthBarHeight = 15;
-    int pixelsPerHealthPoint = (int)healthBarWidth / health;
+    int pixelsPerHealthPoint = (int)healthBarWidth / 4;
 
-    public HealthBar(){
+    public HealthBar(int health){
+        this.health = health;
         update();
     }
 
@@ -37,8 +38,12 @@ public class HealthBar extends Actor implements Serializable
         myImage.fillRect(1, 1, health*pixelsPerHealthPoint, healthBarHeight);       
     }
 
-    public void looseHealth(){
+    public static void looseHealth(){
         health--;
+    }
+    
+    public void setHealth(int alexHealth){
+        health = alexHealth;
     }
 
     public int getHealth(){

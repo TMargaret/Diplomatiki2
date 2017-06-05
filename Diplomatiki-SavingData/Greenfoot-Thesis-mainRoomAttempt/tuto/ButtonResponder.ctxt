@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=ButtonResponder
+comment0.text=\r\n\ Implement\ this\ to\ respond\ to\ the\ actions\ of\ a\ button.\r\n\ \r\n\ @author\ Sven\ van\ Nigtevecht\r\n\ @version\ 1.0\r\n
+comment1.params=button
+comment1.target=void\ buttonClicked(Button)
+comment1.text=\r\n\ This\ gets\ called\ on\ you\ when\ the\ button\ you\ are\ the\ responder\r\n\ of\ is\ clicked.\r\n\ @param\ button\ The\ button\ which\ is\ clicked\ and\ sends\ you\ this\ message.\r\n
+numComments=2

@@ -10,6 +10,7 @@ import java.io.*;
 public class Hut extends Actor implements Serializable
 {
     int counter = 10;
+    boolean isEDown = false;
     boolean isActive = false, displayMessage = false;
     private TextPanel textPanel;
 
@@ -23,31 +24,33 @@ public class Hut extends Actor implements Serializable
     } 
 
     public boolean getActive(){
-        return displayMessage;
+        return isActive;
     }
 
     public void canSeeAlex(){
         if (isTouching(Alex.class))
         {
             counter--;
-            if (counter<0 && !isActive){
+            if (Greenfoot.isKeyDown("e")){
+                isEDown = true;
+            }
+            if (isEDown && !isActive && !displayMessage){
 
                 textPanel = new TextPanel("BrokenHutMessage");
                 getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                 isActive = true;
                 displayMessage = true;
             }
-        }
-        if (Greenfoot.isKeyDown("enter")){
-            counter = 10;
-            getWorld().removeObject(textPanel);
-            displayMessage = false;
 
-        }
-        if (!isTouching(Alex.class))
-        {
-            isActive = false;
+            if (Greenfoot.isKeyDown("enter")){
+                counter = 10;
+                getWorld().removeObject(textPanel);
+                isActive = false;
+                isEDown = false;
 
+            }
+            if (isEDown && displayMessage){
+            }
         }
     }
 }

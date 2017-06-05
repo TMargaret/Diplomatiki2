@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.awt.Color;
+
 
 /**
  * Write a description of class TextField here.
@@ -26,28 +26,28 @@ public class TextField extends Actor
     private String text = "";
     private String temp = "";
     
-    private Color bgColor = Color.white;
-    private Color textColor = Color.black;
+    private Color bgColor = Color.WHITE;
+    private Color textColor = Color.BLACK;
     
     /**
-     * Creates a new TextField of a default size of 250 x 50 with black letters on white background.
+     * Creates a new TextField of a default size of 250 x 50 with BLACK letters on WHITE background.
      */
     public TextField() {
-        this(250, 50, false, true, Color.white, Color.black, "");
+        this(250, 50, false, true, Color.WHITE, Color.BLACK, "");
     }
     
     /**
-     * Creates a new TextField with a default size of 250 x 50 with black letters on white background and a starting text.
+     * Creates a new TextField with a default size of 250 x 50 with BLACK letters on WHITE background and a starting text.
      * 
      * @param text
      *      The text that is shown directly.
      */
     public TextField(String text) {
-        this(250, 50, false, true, Color.white, Color.black, text);
+        this(250, 50, false, true, Color.WHITE, Color.BLACK, text);
     }
     
     /**
-     * Creates a new TextField with a default size of 250 x 50 with black letters on white background and a starting text.
+     * Creates a new TextField with a default size of 250 x 50 with BLACK letters on WHITE background and a starting text.
      * 
      * @param text
      *      The text that is shown directly.
@@ -56,11 +56,11 @@ public class TextField extends Actor
      *      If you want the textfield to be enabled (able to write in it) this boolean has to be true.
      */
     public TextField(String text, boolean enabled) {
-        this(250, 50, false, enabled, Color.white, Color.black, text);
+        this(250, 50, false, enabled, Color.WHITE, Color.BLACK, text);
     }
     
     /**
-     * Creates a new TextField of the given size with black letters on white background.
+     * Creates a new TextField of the given size with BLACK letters on WHITE background.
      * 
      * @param width
      *      The TextFields width (which has to be greater than 50).
@@ -69,11 +69,11 @@ public class TextField extends Actor
      *      The TextFields height (which has to be greater than 20).
      */
     public TextField(int width, int height) throws IllegalArgumentException {
-        this(width, height, false, true, Color.white, Color.black, "");
+        this(width, height, false, true, Color.WHITE, Color.BLACK, "");
     }
     
     /**
-     * Creates a new TextField of the given size with black letters on white background.
+     * Creates a new TextField of the given size with BLACK letters on WHITE background.
      * 
      * @param width
      *      The TextFields width (which has to be greater than 50).
@@ -85,11 +85,11 @@ public class TextField extends Actor
      *      If you want the textfield to be enabled (able to write in it) this boolean has to be true.
      */
     public TextField(int width, int height, boolean enabled) throws IllegalArgumentException {
-        this(width, height, false, enabled, Color.white, Color.black, "");
+        this(width, height, false, enabled, Color.WHITE, Color.BLACK, "");
     }
     
     /**
-     * Creates a new TextField of the given size with black letters on white background and a starting text.
+     * Creates a new TextField of the given size with BLACK letters on WHITE background and a starting text.
      * 
      * @param width
      *      The TextFields width (which has to be greater than 50).
@@ -101,11 +101,11 @@ public class TextField extends Actor
      *      The text that is shown directly.
      */
     public TextField(int width, int height, String text) throws IllegalArgumentException {
-        this(width, height, false, true, Color.white, Color.black, text);
+        this(width, height, false, true, Color.WHITE, Color.BLACK, text);
     }
     
     /**
-     * Creates a new TextField of the given size with black letters on white background and a starting text.
+     * Creates a new TextField of the given size with BLACK letters on WHITE background and a starting text.
      * 
      * @param width
      *      The TextFields width (which has to be greater than 50).
@@ -120,7 +120,7 @@ public class TextField extends Actor
      *      The text that is shown directly.
      */
     public TextField(int width, int height, boolean displayKeyNames, String text) throws IllegalArgumentException {
-        this(width, height, displayKeyNames, true, Color.white, Color.black, text);
+        this(width, height, displayKeyNames, true, Color.WHITE, Color.BLACK, text);
     }
     
     /**
@@ -372,7 +372,7 @@ public class TextField extends Actor
     private void resetImage() {
         getImage().setColor(bgColor);
         getImage().fill();
-        getImage().setColor(Color.black);
+        getImage().setColor(Color.BLACK);
         getImage().fillRect(0, getImage().getHeight()-2, getImage().getWidth(), 3);
         getImage().fillRect(getImage().getWidth()-2, 0, 3, getImage().getHeight());
     }

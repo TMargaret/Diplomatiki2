@@ -1,5 +1,5 @@
 import greenfoot.*; 
-import java.awt.Color; 
+ 
 import java.util.*;
 
 public class HiddenSprite extends Actor {  
@@ -24,7 +24,8 @@ public class HiddenSprite extends Actor {
     
     public void act() {    
         if( host.getWorld() != null ) {      
-            setLocation(host.getX()+offsetX, host.getY()+offsetY);    
+            // setLocation(host.getX()+offsetX, host.getY()+offsetY); 
+            setLocation(host.getX(), host.getY());
         } else {      
             getWorld().removeObject(this);    
         }  

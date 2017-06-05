@@ -9,9 +9,8 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
  */
 public class mainHouseRoom extends World
 {
-    Level_1 oldLevel1;
-    SpriteSheet spriteSheet = new SpriteSheet();
 
+    SpriteSheet spriteSheet = new SpriteSheet();
     Alex alex;
     Elder elder;
     Door door, door2;
@@ -21,11 +20,16 @@ public class mainHouseRoom extends World
     boolean isActive = false;
     private TextPanel textPanel, entranceText;
     private ArrayList <Door> doorList = new ArrayList<Door>();
-    private ArrayList <Lumber> lumberList = new ArrayList<Lumber>();
-    private ArrayList<Clay> clayList = new ArrayList<Clay>();
-    HealthBar healthBar;
-    HealthLogo healthLogo;
+    int img_cell = 32;
     GreenfootImage alexImg = new GreenfootImage("alex.png");
+    final int IMG_WIDTH = alexImg.getWidth()/6;
+    final int IMG_HEIGHT = alexImg.getHeight()/4;
+    private ArrayList<Material> materialList = new ArrayList<Material>();
+    private ArrayList <Material> pickUpList = new ArrayList<Material>();
+    private static String[] items;
+    public double time;
+    Level_1 level1;
+    Material mat;
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -38,15 +42,17 @@ public class mainHouseRoom extends World
 
     }
 
-    public mainHouseRoom(Level_1 myLevel1)
+    public mainHouseRoom(Alex oldAlex, Level_1 oldLevel1)
     {
         super(1000, 600, 1);
-        oldLevel1 = myLevel1;
+        alex = oldAlex;
+        //alex.setIsAdded(false);
+        level1 = oldLevel1;
         prepare();
     }
 
     public void act(){
-        gameOver();
+        //gameOver();
         enterRoomText();
         exitRoom();
         boolean doNotMove = false;
@@ -58,16 +64,17 @@ public class mainHouseRoom extends World
                 doNotMove  = true;
             }
         }
-        for(Lumber lumber : lumberList){
-            if (lumber.getActive()){
+        for (Material material : materialList){
+            if(material.getWorldOfType(mainHouseRoom.class) == null){
+                pickUpList.add(material);
+                mat = material; //save to material to mat so as to remove without concurrent exception
+
+            }
+            if (material.getActive()){
                 doNotMove  = true;
             }
         }
-        for(Clay clay : clayList){
-            if (clay.getActive()){
-                doNotMove  = true;
-            }
-        }
+        materialList.remove(mat);
         alex.setCanMove(!doNotMove);
     }
 
@@ -81,9 +88,10 @@ public class mainHouseRoom extends World
     {
         // put your code here
         GreenfootImage image = new GreenfootImage(getWidth(), getHeight());
-        image.setColor(java.awt.Color.BLACK);
+        image.setColor(Color.BLACK);
         image.fill();
         setBackground(image);
+        
 
         door = new Door();
         addObject(door,713,225);
@@ -96,7 +104,7 @@ public class mainHouseRoom extends World
 
         addWall();
 
-        alex = new Alex();
+        alex.setImage(SpriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, IMG_WIDTH, IMG_HEIGHT));
         addObject(alex,80, 90);
 
         elder = new Elder();
@@ -107,22 +115,15 @@ public class mainHouseRoom extends World
         clay2 = new Clay();
         addObject(clay2,910,230);
 
-        clayList.add(clay);
-        clayList.add(clay2);
-
         lumber = new Lumber();
         addObject(lumber,100,400);
         lumber2 = new Lumber();
         addObject(lumber2,100,528);  
-
-        lumberList.add(lumber);
-        lumberList.add(lumber2);
-
-        healthBar = new HealthBar();
-        addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
-
-        healthLogo = new HealthLogo();
-        addObject(healthLogo,20,20);
+        
+        materialList.add(lumber);
+        materialList.add(lumber2);
+        materialList.add(clay);
+        materialList.add(clay2);
     }
 
     public void addWall(){
@@ -226,23 +227,17 @@ public class mainHouseRoom extends World
             initVariables();
             alex.setImage(spriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, 64, 64));
             alex.setLocation(alex.getX() + 100, alex.getY());
-            Greenfoot.setWorld(oldLevel1);
+            level1.setAlex(alex);
+            Greenfoot.setWorld(level1);
         }      
     }
-    
+
     public void initVariables(){
         flag = 0;
         isActive = false;
-        
     }
-
-    public HealthBar getHealthBar(){
-        return healthBar;
+    
+    public ArrayList getMaterialList(){
+        return pickUpList;
     }
-
-    public void gameOver(){
-        if (healthBar.getHealth() <= 0)
-            Greenfoot.stop();
-    }
-
 }
