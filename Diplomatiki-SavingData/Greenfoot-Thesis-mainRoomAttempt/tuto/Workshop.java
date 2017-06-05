@@ -1,16 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
-import java.util.List;
-
+import java.util.List; 
 /**
- * Write a description of class Material here.
+ * Write a description of class Workshop here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Material extends Actor 
+public class Workshop extends Actor
 {
-    private HiddenSprite hs;
+ private HiddenSprite hs;
     private int hsWidth, hsHeight = 40;
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
@@ -22,9 +21,9 @@ public class Material extends Actor
     String my_text = "";
     TextPanel textPanel;
     static boolean addToInv = false;
-    ArrayList<Material> materialList = new ArrayList<Material>();
+    //ArrayList<Material> materialList = new ArrayList<Material>();
 
-    public Material(){
+    public Workshop(){
     }
 
     /**
@@ -59,7 +58,7 @@ public class Material extends Actor
                         counter--;
                         if (Greenfoot.isKeyDown("e") & !isEDown){
                             isEDown = true;
-                            counter = 20;
+                            counter = 30;
                         }
                         if (counter<0 && !isActive && isEDown){
                             isActive = true;
@@ -75,8 +74,8 @@ public class Material extends Actor
                             if (my_text.contains(checkMaterial()))
                             {
                                 getWorld().removeObject(textField);
-                                getWorld().removeObject(this);
-                                materialList.add(this);
+                                //getWorld().removeObject(this);
+                                //Alex.removeFromInv("clay");
                                 isActive = false;
                                 addToInv = true;
                                 break;
@@ -106,7 +105,8 @@ public class Material extends Actor
     }
 
     public void textFieldCreation(){
-        textField = new TextField(700, 45,"Δημιούργησε ένα αντικείμενο " + getMaterial() + " και πάτα enter");
+        textField = new TextField(700, 45, true);
+        textField.setText("Κάνε τη σωστή ενέργεια και πάτα enter");
         getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
     }
 
@@ -150,6 +150,5 @@ public class Material extends Actor
 
     public static void setAddToInv(){
         addToInv = false;
-    }
-
+    }   
 }

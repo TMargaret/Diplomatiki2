@@ -1,20 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class StoneOven here.
+ * Write a description of class Brick here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class StoneOven extends Workshop
+public class Brick extends Material
 {
-    HiddenSprite hs;
-
-    public StoneOven(){
+    /**
+     * Clay Constructor
+     *
+     */
+    public Brick() 
+    {
     }
 
     /**
-     * Act - do whatever the StoveOven wants to do. This method is called whenever
+     * Act - do whatever the Clay wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
@@ -28,7 +31,7 @@ public class StoneOven extends Workshop
      * @return The material value, for the info message that appears in inputField
      */
     public String getMaterial(){
-        String material = "";
+        String material = "Brick";
         return material;
     }
 
@@ -38,8 +41,8 @@ public class StoneOven extends Workshop
      * @return The correct answer value to be check
      */
     public String checkMaterial(){
-        String materialAnswer = "putDown(clay)";
+        String materialAnswer = "new Brick();";
         return materialAnswer;
 
-    } 
+    }   
 }

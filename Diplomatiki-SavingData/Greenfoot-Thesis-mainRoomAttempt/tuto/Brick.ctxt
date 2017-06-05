@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Brick
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Brick\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Brick()
+comment1.text=\r\n\ Clay\ Constructor\r\n\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Clay\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=java.lang.String\ getMaterial()
+comment3.text=\r\n\ Method\ getMaterial\r\n\r\n\ @return\ The\ material\ value,\ for\ the\ info\ message\ that\ appears\ in\ inputField\r\n
+comment4.params=
+comment4.target=java.lang.String\ checkMaterial()
+comment4.text=\r\n\ Method\ checkMaterial\r\n\r\n\ @return\ The\ correct\ answer\ value\ to\ be\ check\r\n
+numComments=5

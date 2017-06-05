@@ -17,6 +17,7 @@ public class mainHouseRoom extends World
     Lumber lumber, lumber2;
     Clay clay, clay2;
     StoneOven stoneOven;
+    Brick brick, brick2;
     int counter = 100, counter2 = 25, flag = 0;
     boolean isActive = false;
     private TextPanel textPanel, entranceText;
@@ -109,11 +110,11 @@ public class mainHouseRoom extends World
 
         elder = new Elder();
         addObject(elder,900,500);
-
-        clay = new Clay();
-        addObject(clay,910,85);
-        clay2 = new Clay();
-        addObject(clay2,910,230);
+        
+        brick = new Brick();
+        addObject(brick,910,85);
+        brick2 = new Brick();
+        addObject(brick2,910,230);
 
         lumber = new Lumber();
         addObject(lumber,100,400);
@@ -122,11 +123,9 @@ public class mainHouseRoom extends World
 
         materialList.add(lumber);
         materialList.add(lumber2);
-        materialList.add(clay);
-        materialList.add(clay2);
+        materialList.add(brick);
+        materialList.add(brick2);
         
-        stoneOven = new StoneOven();
-        addObject(stoneOven,595,129);
     }
 
     public void addWall(){

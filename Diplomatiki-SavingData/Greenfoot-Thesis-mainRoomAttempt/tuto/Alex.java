@@ -38,7 +38,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
 
     ArrayList<Material> materialList;
     Material myMaterial;
-    ArrayList<Material> inventoryList = new ArrayList<Material>();
+    static ArrayList<Material>  inventoryList = new ArrayList<Material>();
 
     /**
      * Constructor
@@ -178,7 +178,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             (getOneIntersectingObject(Lumber.class) !=null) ||
             (getOneIntersectingObject(Clay.class) !=null) ||
             (getOneIntersectingObject(Straw.class) !=null) ||
-            (getOneIntersectingObject(StoneOven.class) !=null)){ 
+            (getOneIntersectingObject(StoneOven.class) !=null) ||
+            (getOneIntersectingObject(Brick.class) !=null)){ 
                 setLocation(getX() - dx, getY());
             }
             setLocation(getX(), getY() + dy);
@@ -189,7 +190,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             || (getOneIntersectingObject(Lumber.class) !=null)
             || (getOneIntersectingObject(Clay.class) !=null)
             || (getOneIntersectingObject(Straw.class) !=null) ||
-            (getOneIntersectingObject(StoneOven.class) !=null)){
+            (getOneIntersectingObject(StoneOven.class) !=null) ||
+            (getOneIntersectingObject(Brick.class) !=null)){
                 setLocation(getX(), getY() - dy);
             }
         }
@@ -388,12 +390,24 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                         time = System.currentTimeMillis();
                         //this list holds the items in total
                         inventoryList.add(myMat);
+                        System.out.println(myMat);
                     }
                 }
             }
             materialList.remove(myMaterial);
         }       
     }
+    
+    // public static void removeFromInv(Material mat){
+        // Material m = null;
+        // for (Material material : inventoryList)
+        // {
+            // if(mat==material){
+                // m = mat;
+            // }
+        // }
+        // inventoryList.remove(m);
+    // }
 
     public static String[] getItems()
     {
