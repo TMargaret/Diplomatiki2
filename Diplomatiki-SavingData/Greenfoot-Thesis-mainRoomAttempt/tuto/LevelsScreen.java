@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class LevelsScreen here.
@@ -10,8 +11,12 @@ public class LevelsScreen extends World implements ButtonResponder
 {
     Label lbl;
     Button menuBtn;
+    HoverFrame hoverFrame1, hoverFrame2, hoverFrame3, hoverFrame4, hoverFrame5, hoverFrame6;
+
     LockLevel locklevel, locklevel2, locklevel3, locklevel4, locklevel5;
-    boolean mouseOver = false;
+    boolean mouseOver = false, mouseOver2 = false;
+
+    ArrayList<HoverFrame> hoverFrame = new ArrayList<HoverFrame>();
     /**
      * Constructor for objects of class LevelsScreen.
      * 
@@ -25,6 +30,7 @@ public class LevelsScreen extends World implements ButtonResponder
 
     public void act(){
         menuHover();
+        planetHover();
     }
 
     public void prepare(){
@@ -50,6 +56,31 @@ public class LevelsScreen extends World implements ButtonResponder
 
         locklevel5 = new LockLevel();
         addObject(locklevel5,473,170);
+
+        hoverFrame1 = new HoverFrame();
+        addObject(hoverFrame1,165,200);
+        hoverFrame.add(hoverFrame1);
+
+        hoverFrame2 = new HoverFrame();
+        addObject(hoverFrame2,490,200);
+        hoverFrame.add(hoverFrame2);
+
+        hoverFrame3 = new HoverFrame();
+        addObject(hoverFrame3,815,200);
+        hoverFrame.add(hoverFrame3);
+
+        hoverFrame4 = new HoverFrame();
+        addObject(hoverFrame4,165,460);
+        hoverFrame.add(hoverFrame4);
+
+        hoverFrame5 = new HoverFrame();
+        addObject(hoverFrame5,490,460);
+        hoverFrame.add(hoverFrame5);
+
+        hoverFrame6 = new HoverFrame();
+        addObject(hoverFrame6,815,460);
+        hoverFrame.add(hoverFrame6);
+
     }
 
     public void menuHover(){
@@ -62,6 +93,25 @@ public class LevelsScreen extends World implements ButtonResponder
         {
             lbl.setFillColor(Color.WHITE);
             mouseOver = false;
+        }
+    }
+
+    public void planetHover(){
+        if (mouseOver2 && Greenfoot.mouseMoved(null)){
+            hoverFrame1.setTrans(0);
+            hoverFrame2.setTrans(0);
+            hoverFrame3.setTrans(0);
+            hoverFrame4.setTrans(0);
+            hoverFrame5.setTrans(0);
+            hoverFrame6.setTrans(0);
+            mouseOver2 = false;
+        }
+        for (HoverFrame h: hoverFrame){
+            if (Greenfoot.mouseMoved(h))
+            {
+                h.setTrans(100);
+                mouseOver2 = true;
+            }
         }
     }
 
