@@ -86,7 +86,7 @@ public class LevelsScreen extends World implements ButtonResponder
     public void menuHover(){
         if (Greenfoot.mouseMoved(menuBtn))
         {
-            lbl.setFillColor(new Color(181,23,200));
+            lbl.setFillColor(new Color(128,128,128));
             mouseOver = true;
         }
         if (mouseOver && !Greenfoot.mouseMoved(menuBtn) && Greenfoot.mouseMoved(null))
