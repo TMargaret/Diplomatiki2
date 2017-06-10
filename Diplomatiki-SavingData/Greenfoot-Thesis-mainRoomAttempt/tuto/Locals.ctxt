@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Locals
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Locals\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Locals()
+comment10.params=forActive
+comment10.target=void\ setActive(boolean)
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Elder\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=w
+comment3.target=void\ addedToWorld(greenfoot.World)
+comment4.params=
+comment4.target=void\ addHiddenSprite()
+comment5.params=
+comment5.target=void\ localsDialogue()
+comment6.params=isItTalking
+comment6.target=void\ setTalking(boolean)
+comment7.params=
+comment7.target=boolean\ getTalking()
+comment8.params=
+comment8.target=boolean\ getDoneWithDialogue()
+comment9.params=dialogue
+comment9.target=void\ setDialogue(boolean)
+numComments=11

@@ -390,7 +390,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                         time = System.currentTimeMillis();
                         //this list holds the items in total
                         inventoryList.add(myMat);
-                        System.out.println(myMat);
+                       
                     }
                 }
             }
