@@ -180,7 +180,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             (getOneIntersectingObject(Straw.class) !=null) ||
             (getOneIntersectingObject(StoneOven.class) !=null) ||
             (getOneIntersectingObject(Brick.class) !=null) ||
-            (getOneIntersectingObject(Alien.class) !=null)){ 
+            (getOneIntersectingObject(Alien.class) !=null)||
+            (getOneIntersectingObject(House.class) !=null)){ 
                 setLocation(getX() - dx, getY());
             }
             setLocation(getX(), getY() + dy);
@@ -193,7 +194,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             || (getOneIntersectingObject(Straw.class) !=null) ||
             (getOneIntersectingObject(StoneOven.class) !=null) ||
             (getOneIntersectingObject(Brick.class) !=null) ||
-            (getOneIntersectingObject(Alien.class) !=null)){
+            (getOneIntersectingObject(Alien.class) !=null) ||
+            (getOneIntersectingObject(House.class) !=null)){
                 setLocation(getX(), getY() - dy);
             }
         }

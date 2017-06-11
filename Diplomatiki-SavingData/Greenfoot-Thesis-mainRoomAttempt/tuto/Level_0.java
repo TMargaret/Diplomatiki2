@@ -8,8 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level_0 extends World
 {
-    private Alex alex;
+    Alex alex;
     Alien alien;
+    House house;
+    Lumber lumber, lumber1, lumber2;
+    Brick brick, brick1;
 
     GreenfootImage img = new GreenfootImage("level0.png");
 
@@ -39,13 +42,32 @@ public class Level_0 extends World
     {
         addWall();
         addGrass();
-        
+
         alien = new Alien();
-        addObject(alien,911,450);
+        addObject(alien,911,490);
 
         alex = new Alex();
-        addObject(alex,79,525);
+        addObject(alex,679,525);
 
+        house = new House();
+        addObject(house,728,380);
+
+        lumber = new Lumber();
+        addObject(lumber,71,564);
+
+        lumber1 = new Lumber();
+        addObject(lumber1,62,486);
+
+        lumber2 = new Lumber();
+        addObject(lumber2,59,407);
+
+        brick1 = new Brick();
+        addObject(brick1,406,500);
+        
+        brick = new Brick();
+        addObject(brick,399,561);
+
+        
     }
     
         /**
