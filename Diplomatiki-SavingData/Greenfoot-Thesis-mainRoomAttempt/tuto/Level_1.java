@@ -87,6 +87,7 @@ public class Level_1 extends World
         addObject(my_mainHouse,506,303);
 
         addObject(alex,79,525);
+        
         straw = new Straw();
         addObject(straw,957,513);
 

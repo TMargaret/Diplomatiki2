@@ -27,22 +27,22 @@ public class Locals extends Actor
     {
 
         localsDialogue();
-        //blink();   
+        blink();   
     }
 
     protected void addedToWorld(World w){
         addHiddenSprite();
     }
 
-    // public void blink(){
-        // if (++eyes_counter == 150){
-            // eyes_counter = 0;
-            // setImage(knight);
-        // }
-        // else if (eyes_counter == 140){
-            // setImage(knight_eyes);
-        // }
-    // }
+    public void blink(){
+        if (++eyes_counter == 150){
+            eyes_counter = 0;
+            setImage1();
+        }
+        else if (eyes_counter == 140){
+            setImage2();
+        }
+    }
 
     protected void addHiddenSprite() {   
         hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/8 , getImage().getHeight() + getImage().getHeight()/4, 0, 5, true);  
@@ -128,17 +128,16 @@ public class Locals extends Actor
             }
         }
     }
-    
+
     public int getCount_Enter(){
         return count_enter;
     }
-    
+
     public String getTextMessage(){
         String textMsg = "";
         return textMsg;
     }
-    
-    
+
     //if isItTalking is true, then the robot can't move
     public void setTalking(boolean isItTalking){
         doNotMoveWhileTalking = isItTalking;
@@ -160,5 +159,13 @@ public class Locals extends Actor
     public void setActive(boolean forActive){
         isActive = forActive;
         count_enter =0;
+    }
+
+    public void setImage1(){
+
+    }
+
+    public void setImage2(){
+
     }
 }
