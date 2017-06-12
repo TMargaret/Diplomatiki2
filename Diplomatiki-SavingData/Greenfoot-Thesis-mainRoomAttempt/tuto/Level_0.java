@@ -15,6 +15,7 @@ public class Level_0 extends World
     Lumber lumber, lumber1;
     Brick brick, brick1;
     Material mat;
+    int count = 0;
     
     private ArrayList<Material> materialList = new ArrayList<Material>();
     private ArrayList <Material> pickUpList = new ArrayList<Material>();
@@ -42,7 +43,7 @@ public class Level_0 extends World
             if(material.getWorldOfType(Level_0.class) == null){
                 pickUpList.add(material);
                 mat = material; //save to material to mat so as to remove without concurrent exception
-                System.out.println(mat);
+                
             }
             if (material.getActive()){
                 doNotMove  = true;
@@ -50,8 +51,6 @@ public class Level_0 extends World
         }
         materialList.remove(mat);
         alex.setCanMove(!doNotMove);
-        checkMatList();
-
     }
 
     /**
@@ -135,22 +134,23 @@ public class Level_0 extends World
             addObject(grass[j],j*grass[j].getImage().getWidth(),getHeight()/2+getHeight()/11);
         }
     }
+       
+    public ArrayList getMaterialList(){
+        return pickUpList;
+    }
     
-    public boolean checkMatList(){
-        int count = 0;
+       public int checkMatList(){
+        if (pickUpList != null){
         for (Material mat: pickUpList){
-            if (mat.getMaterial() == "Lumber"){
+            if (mat.getMaterial() == "Wood"){
                 count++;
             }
             if (mat.getMaterial() == "Brick"){
                 count++;
             }
-            System.out.println(count);
+            
         }
-        return true;
     }
-    
-    public ArrayList getMaterialList(){
-        return pickUpList;
+        return count;
     }
 }
