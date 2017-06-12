@@ -62,10 +62,10 @@ public class Level_0 extends World
         addObject(lumber2,59,407);
 
         brick1 = new Brick();
-        addObject(brick1,406,500);
+        addObject(brick1,406,490);
         
         brick = new Brick();
-        addObject(brick,399,561);
+        addObject(brick,399,571);
 
         
     }

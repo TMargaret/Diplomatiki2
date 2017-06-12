@@ -19,6 +19,7 @@ public class Material extends Actor
     boolean wrongCommand = false;
     TextField textField;
     int counter = 30;
+    int version = 0;
     String my_text = "";
     TextPanel textPanel;
     static boolean addToInv = false;
@@ -33,6 +34,7 @@ public class Material extends Actor
      */
     public void act() 
     {
+        checkWorld();
         materialCreation();
     }    
 
@@ -44,6 +46,19 @@ public class Material extends Actor
     protected void addHiddenSprite(World w) {   
         hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , hsHeight, HS_OFFSET_X, HS_OFFSET_Y, true);  
         w.addObject(hs, getX(), getY()); 
+    }
+
+    public void checkWorld(){
+        if (getWorld() instanceof Level_0){
+            version = 0;
+        }
+        if (getWorld() instanceof Level_1){
+            version = 1;
+        }
+        if (getWorld() instanceof mainHouseRoom){
+            version = 2;
+        }
+        System.out.println(version);
     }
 
     public void materialCreation(){
@@ -106,41 +121,54 @@ public class Material extends Actor
     }
 
     public void textFieldCreation(){
-        if (getWorld() instanceof Level_0 ){
+        switch(version){
+            case 0:
             textField = new TextField(700, 45,"Κάλεσε την αντίστοιχη μέθοδο και πάτα enter");
             getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
-        }
-        if (getWorld() instanceof Level_1 || getWorld() instanceof mainHouseRoom ){
+            break;
+            case 1:
+            case 2:
             textField = new TextField(700, 45,"Δημιούργησε ένα αντικείμενο " + getMaterial() + " και πάτα enter");
             getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
+            break;
         }
+        // if (getWorld() instanceof Level_0 ){
+        // textField = new TextField(700, 45,"Κάλεσε την αντίστοιχη μέθοδο και πάτα enter");
+        // getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
+        // }
+        // if (getWorld() instanceof Level_1 || getWorld() instanceof mainHouseRoom ){
+        // textField = new TextField(700, 45,"Δημιούργησε ένα αντικείμενο " + getMaterial() + " και πάτα enter");
+        // getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
+        // }
 
     }
 
     public void checkHealthBar(){
-        if (getWorld() instanceof Level_1){
-            Level_1 level1 = (Level_1) getWorld();
-            getWorld().removeObject(textField);
-            if (!wrongCommand){
-                wrongCommand = true;
-                HealthBar.looseHealth();
-            }
-        }
-        if (getWorld() instanceof mainHouseRoom){
-            mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
-            getWorld().removeObject(textField);
-            if (!wrongCommand){
-                wrongCommand = true;
-                HealthBar.looseHealth();
-            }
-        }       
-        if (getWorld() instanceof Level_0){
+        switch(version){
+            case 0:
             Level_0 lvl0 = (Level_0)getWorld();
             getWorld().removeObject(textField);
             if (!wrongCommand){
                 wrongCommand = true;
                 HealthBar.looseHealth();
             }
+            break;
+            case 1:
+            Level_1 level1 = (Level_1) getWorld();
+            getWorld().removeObject(textField);
+            if (!wrongCommand){
+                wrongCommand = true;
+                HealthBar.looseHealth();
+            }
+            break;
+            case 2: 
+            mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
+            getWorld().removeObject(textField);
+            if (!wrongCommand){
+                wrongCommand = true;
+                HealthBar.looseHealth();
+            }
+           break;
         }
     }
 

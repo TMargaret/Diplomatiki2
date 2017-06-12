@@ -22,6 +22,7 @@ public class Brick extends Material
      */
     public void act() 
     {
+        checkWorld();
         materialCreation();
     } 
 

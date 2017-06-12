@@ -28,6 +28,7 @@ public class Lumber extends Material
      */
     public void act() 
     {
+        checkWorld();
         materialCreation();
     } 
 
