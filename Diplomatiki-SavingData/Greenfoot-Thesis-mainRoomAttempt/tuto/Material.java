@@ -58,7 +58,6 @@ public class Material extends Actor
         if (getWorld() instanceof mainHouseRoom){
             version = 2;
         }
-        System.out.println(version);
     }
 
     public void materialCreation(){
@@ -132,15 +131,6 @@ public class Material extends Actor
             getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
             break;
         }
-        // if (getWorld() instanceof Level_0 ){
-        // textField = new TextField(700, 45,"Κάλεσε την αντίστοιχη μέθοδο και πάτα enter");
-        // getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
-        // }
-        // if (getWorld() instanceof Level_1 || getWorld() instanceof mainHouseRoom ){
-        // textField = new TextField(700, 45,"Δημιούργησε ένα αντικείμενο " + getMaterial() + " και πάτα enter");
-        // getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
-        // }
-
     }
 
     public void checkHealthBar(){

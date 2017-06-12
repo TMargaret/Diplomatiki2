@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class Level_0 here.
@@ -11,8 +12,12 @@ public class Level_0 extends World
     Alex alex;
     Alien alien;
     House house;
-    Lumber lumber, lumber1, lumber2;
+    Lumber lumber, lumber1;
     Brick brick, brick1;
+    Material mat;
+    
+    private ArrayList<Material> materialList = new ArrayList<Material>();
+    private ArrayList <Material> pickUpList = new ArrayList<Material>();
 
     GreenfootImage img = new GreenfootImage("level0.png");
 
@@ -29,8 +34,21 @@ public class Level_0 extends World
     }
 
     public void act(){
-        boolean found = false;
-        alex.setCanMove(!found);
+        boolean doNotMove = false;
+        if (alien.getTalking()){
+            doNotMove  = true;
+        }
+        for (Material material : materialList){
+            if(material.getWorldOfType(Level_0.class) == null){
+                pickUpList.add(material);
+                mat = material; //save to material to mat so as to remove without concurrent exception
+            }
+            if (material.getActive()){
+                doNotMove  = true;
+            }
+        }
+        materialList.remove(mat);
+        alex.setCanMove(!doNotMove);
 
     }
 
@@ -58,14 +76,16 @@ public class Level_0 extends World
         lumber1 = new Lumber();
         addObject(lumber1,62,486);
 
-        lumber2 = new Lumber();
-        addObject(lumber2,59,407);
-
         brick1 = new Brick();
         addObject(brick1,406,490);
         
         brick = new Brick();
         addObject(brick,399,571);
+        
+        materialList.add(lumber);
+        materialList.add(lumber1);
+        materialList.add(brick);
+        materialList.add(brick1);
 
         
     }
@@ -97,5 +117,9 @@ public class Level_0 extends World
             grass[j]=new Grass();
             addObject(grass[j],j*grass[j].getImage().getWidth(),getHeight()/2+getHeight()/11);
         }
+    }
+    
+    public ArrayList getMaterialList(){
+        return pickUpList;
     }
 }

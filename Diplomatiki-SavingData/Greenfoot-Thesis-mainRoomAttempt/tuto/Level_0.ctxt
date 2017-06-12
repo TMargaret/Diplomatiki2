@@ -15,4 +15,6 @@ comment4.text=\r\n\ Method\ addWall.\ Builds\ the\ wall\ that\ holds\ healthbar,
 comment5.params=
 comment5.target=void\ addGrass()
 comment5.text=\r\n\ Method\ that\ adds\ the\ grass\ to\ the\ scenery\r\n\r\n
-numComments=6
+comment6.params=
+comment6.target=java.util.ArrayList\ getMaterialList()
+numComments=7

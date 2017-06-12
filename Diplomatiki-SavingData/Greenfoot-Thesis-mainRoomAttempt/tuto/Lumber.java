@@ -48,7 +48,12 @@ public class Lumber extends Material
      * @return The correct answer value to be check
      */
     public String checkMaterial(){
-        String materialAnswer = "new Wood();";
+        String materialAnswer = "";
+        switch(version){
+            case 0: materialAnswer = "pickUp"; break;
+            case 1:
+            case 2: materialAnswer = "new Brick();"; break;
+        }
         return materialAnswer;
 
     }
