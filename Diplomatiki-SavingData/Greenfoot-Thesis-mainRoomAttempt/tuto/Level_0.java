@@ -35,13 +35,14 @@ public class Level_0 extends World
 
     public void act(){
         boolean doNotMove = false;
-        if (alien.getTalking()){
+        if (alien.getTalking() || house.getActive()){
             doNotMove  = true;
         }
         for (Material material : materialList){
             if(material.getWorldOfType(Level_0.class) == null){
                 pickUpList.add(material);
                 mat = material; //save to material to mat so as to remove without concurrent exception
+                System.out.println(mat);
             }
             if (material.getActive()){
                 doNotMove  = true;
@@ -49,6 +50,7 @@ public class Level_0 extends World
         }
         materialList.remove(mat);
         alex.setCanMove(!doNotMove);
+        checkMatList();
 
     }
 
@@ -62,13 +64,13 @@ public class Level_0 extends World
         addGrass();
 
         alien = new Alien();
-        addObject(alien,911,490);
+        addObject(alien,941,490);
+        
+        house = new House();
+        addObject(house,728,380);
 
         alex = new Alex();
         addObject(alex,679,525);
-
-        house = new House();
-        addObject(house,728,380);
 
         lumber = new Lumber();
         addObject(lumber,71,564);
@@ -78,10 +80,10 @@ public class Level_0 extends World
 
         brick1 = new Brick();
         addObject(brick1,406,490);
-        
+
         brick = new Brick();
         addObject(brick,399,571);
-        
+
         materialList.add(lumber);
         materialList.add(lumber1);
         materialList.add(brick);
@@ -108,6 +110,21 @@ public class Level_0 extends World
      *
      */
     public void addGrass(){
+        Grass grass51 = new Grass();
+        addObject(grass51,684,370);
+        
+        Grass grass52 = new Grass();
+        addObject(grass52,727,370);
+        
+        Grass grass53 = new Grass();
+        addObject(grass53,768,370);
+        
+        Grass grass54 = new Grass();
+        addObject(grass54,812,370);
+
+        Grass grass55 = new Grass();
+        addObject(grass55,651,360);
+
         //creates a new array that holds the grass actor
         Grass[] grass =new Grass[25];
         Grass[] grass2 =new Grass[25];
@@ -117,6 +134,20 @@ public class Level_0 extends World
             grass[j]=new Grass();
             addObject(grass[j],j*grass[j].getImage().getWidth(),getHeight()/2+getHeight()/11);
         }
+    }
+    
+    public boolean checkMatList(){
+        int count = 0;
+        for (Material mat: pickUpList){
+            if (mat.getMaterial() == "Lumber"){
+                count++;
+            }
+            if (mat.getMaterial() == "Brick"){
+                count++;
+            }
+            System.out.println(count);
+        }
+        return true;
     }
     
     public ArrayList getMaterialList(){

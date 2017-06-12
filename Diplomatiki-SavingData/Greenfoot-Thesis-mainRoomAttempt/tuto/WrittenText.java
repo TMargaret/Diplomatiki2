@@ -55,6 +55,10 @@ public class WrittenText implements Serializable
     public String taskText6L0(){
         return "Είσαι έτοιμος για την αποστολή σου!\n\nΚαλή επιτυχία!";
     }
+    
+    public String toFixHouse(){
+        return "Χρειάζομαι 2 ξύλα και 2 τούβλα για να φτιάξω το\nσπίτι του Methodius.";
+    }
 
     //level_1
     public String brokenHut(){

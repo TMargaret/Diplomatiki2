@@ -76,6 +76,11 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.warningDoor();
             makeImage(mytext, "alien");
         }
+        if (status == "houseMsgL0"){
+            String mytext = text.toFixHouse();
+            makeImage(mytext);
+        }
+        
     }
 
     private void makeTextL1(){
@@ -150,7 +155,7 @@ public class TextPanel extends Actor implements Serializable
         //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα
         if ((status == "BrokenHutMessage") || (status == "RoomEntranceText")
         || (status == "welcomeMsg")) image.drawString("Πάτα ENTER", 30, 290);
-        if (status == "lockedDoor") image.drawString("Πάτα ENTER", 30, 290);
+        if (status == "lockedDoor" || status=="houseMsgL0") image.drawString("Πάτα ENTER", 30, 290);
         // if (status == "start1_1" | status == "start2_1") image.drawString("Πάτα το ΚΑΤΩ ΒΕΛΟΣ", 60, 300);
         // if (status == "start1_2") image.drawString("Πάτα SPACE για να ξεκινήσεις", 60, 300);
         // if (status == "start2") image.drawString("Πάτα ENTER", 200, 280);
