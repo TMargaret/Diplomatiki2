@@ -363,6 +363,7 @@ public class TextField extends Actor
      * Display the text onto the TextField.
      */
     private void displayText() {
+        
         GreenfootImage textImage = new GreenfootImage(text, textFontSize, textColor, new Color(0, 0, 0, 0));
         GreenfootImage textBeforeCursor = new GreenfootImage(text.substring(0, cursorPosition), textFontSize, textColor, new Color(0, 0, 0, 0));
         resetImage();
@@ -373,6 +374,8 @@ public class TextField extends Actor
         }
         getImage().setColor(bgColor);
         getImage().fillRect(0, 0, 3, getImage().getHeight()-2);
+        // GreenfootImage close = new GreenfootImage("closebtn.png");
+        // getImage().drawImage(close, getX(), getY());
     }
 
     /**

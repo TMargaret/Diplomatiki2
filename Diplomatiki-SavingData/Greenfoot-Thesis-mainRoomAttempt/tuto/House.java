@@ -10,12 +10,17 @@ public class House extends Actor
 {
     int counter = 10;
     int isEDownTwice= 0;
+    int countMat = 0;
+    int countUse = 0;
     boolean isEDown = false;
+    boolean tryAgainOrLeave = false;
+    boolean endOfUse = false;
     boolean isActive = false, displayMessage = false;
     boolean wrongCommand = false;
     private TextPanel textPanel;
-    Level_0 lvl_0 = (Level_0)getWorld();
+    Level_0 lvl_0;
     TextField textField;
+    String my_text = "";
 
     public House(){
     }
@@ -39,6 +44,12 @@ public class House extends Actor
         return actor != null;        
     }
 
+    public void textFieldCreation(){
+
+        textField = new TextField(700, 45,"Χρησιμοποίησε τα υλικά, ένα-ένα...");
+        getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
+    }
+
     public void canSeeAlex(){
         if (getOneIntersectingObject(Alex.class) != null)
         {
@@ -46,38 +57,82 @@ public class House extends Actor
             if (Greenfoot.isKeyDown("e")){
                 isEDown = true;
             }
-            if (isEDown && !isActive && isEDownTwice ==0){
-
-                textPanel = new TextPanel("houseMsgL0");
-                getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
-                isActive = true;
-                isEDownTwice++;
-                
-
+            if (getCheckList()< 4){
+                if (isEDown && !isActive){
+                    counter = 30;
+                    textPanel = new TextPanel("houseMsgL0");
+                    getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                    isActive = true;
+                }
+                if (counter<0 && Greenfoot.isKeyDown("enter") && isActive && !displayMessage){
+                    isActive = false;
+                    isEDown = false;
+                    counter = 20;
+                    getWorld().removeObject(textPanel);
+                }
             }
-            if (Greenfoot.isKeyDown("enter")){
-                counter = 20;
-                getWorld().removeObject(textPanel);
-                isActive = false;
-                isEDown = false;
-                displayMessage = true;
+            if (getCheckList() == 4 && !endOfUse){
+                if (isEDown && !isActive && !endOfUse){
+                    counter = 30;
+                    textPanel = new TextPanel("allMaterial");
+                    getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                    isActive = true;
+                }
+                if (counter<0 && Greenfoot.isKeyDown("enter") && isActive && !displayMessage){
+                    counter = 20;
+                    getWorld().removeObject(textPanel);
+                    textFieldCreation();
+                    displayMessage = true;
+                }
 
-            }
-            if (counter < 0 && isEDown && isEDownTwice>0 && displayMessage && lvl_0.checkMatList()==4) {
-                isActive = true;
-                textFieldCreation();
-            }
-       
-            if (Greenfoot.mouseClicked(textField) && isEDown){
-                textField.setText("");
+                if (Greenfoot.mouseClicked(textField) && isEDown){
+                    textField.setText("");
+                }
+                if (counter < 0 && Greenfoot.isKeyDown("enter") && isEDown){
+                    counter = 30;
+                    my_text = textField.getText();
+
+                    if (my_text.contains("use();"))
+                    {
+                        switch(countUse){
+                            case 0: 
+                            countUse++;
+                            textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
+                            break;
+                            case 1: 
+                            countUse++;
+                            textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
+                            break;
+                            case 2:
+                            countUse++;
+                            textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
+                            break;
+                            case 3: 
+                            getWorld().removeObject(textField);
+                            isActive = false;
+                            endOfUse = true;
+                            break;
+                        } 
+                    }
+                    else {
+                        checkHealthBar();
+                        getWorld().removeObject(textField);
+                        textPanel= new TextPanel("wrongKey");
+                        getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                        tryAgainOrLeave = true;
+                        isEDown = false;
+                    }
+                }
+                if (Greenfoot.isKeyDown("enter") && counter < 0 && tryAgainOrLeave){
+                    counter = 40;
+                    isEDown = false;
+                    isActive = false;
+                    tryAgainOrLeave = false;
+                    getWorld().removeObject(textPanel);
+                }
             }
 
         }
-    }
-
-    public void textFieldCreation(){
-        textField = new TextField(700, 45,"Κάλεσε την αντίστοιχη μέθοδο και πάτα enter");
-        getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
     }
 
     public void checkHealthBar(){
@@ -87,6 +142,15 @@ public class House extends Actor
             wrongCommand = true;
             HealthBar.looseHealth();
         }
+    }
+
+    public void setCheckList(int count_mat){
+        //countMat = count_mat;
+        //System.out.println(countMat);
+    }
+
+    public int getCheckList(){
+        return countMat = 4;
     }
 
 }

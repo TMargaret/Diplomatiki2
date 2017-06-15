@@ -42,8 +42,8 @@ public class Level_0 extends World
         for (Material material : materialList){
             if(material.getWorldOfType(Level_0.class) == null){
                 pickUpList.add(material);
-                mat = material; //save to material to mat so as to remove without concurrent exception
                 
+                mat = material; //save to material to mat so as to remove without concurrent exception
             }
             if (material.getActive()){
                 doNotMove  = true;
@@ -51,6 +51,7 @@ public class Level_0 extends World
         }
         materialList.remove(mat);
         alex.setCanMove(!doNotMove);
+        setHouseMatList(checkMatList());
     }
 
     /**
@@ -136,6 +137,7 @@ public class Level_0 extends World
     }
        
     public ArrayList getMaterialList(){
+        
         return pickUpList;
     }
     
@@ -152,5 +154,9 @@ public class Level_0 extends World
         }
     }
         return count;
+    }
+    
+    public void setHouseMatList(int count){
+        house.setCheckList(count);
     }
 }

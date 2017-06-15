@@ -49,15 +49,19 @@ public class WrittenText implements Serializable
     public String taskText5L0(){
         return "Για να χρησιμοποιήσεις κάποιο\nαντικείμενο γράψε: use();"+
         "\n\nΠρόσεξε!\nΟι λάθος απαντήσεις θα σου κοστίσουν\nενέργεια!";
-        
+
     }
 
     public String taskText6L0(){
         return "Είσαι έτοιμος για την αποστολή σου!\n\nΚαλή επιτυχία!";
     }
-    
+
     public String toFixHouse(){
         return "Χρειάζομαι 2 ξύλα και 2 τούβλα για να φτιάξω το\nσπίτι του Methodius.";
+    }
+
+    public String allMaterial(){
+        return "Έχω όλα τα υλικά.\nΤώρα θα πρέπει να τα χρησιμοποιήσω.";
     }
 
     //level_1
@@ -121,6 +125,5 @@ public class WrittenText implements Serializable
         return "Έκανες λάθος! Έχασες ενέργεια!\n\nΠροσπάθησε ξανά ή μίλα πάλι μαζί μου\nγια βοήθεια.";
     }
 
-    
     
 }

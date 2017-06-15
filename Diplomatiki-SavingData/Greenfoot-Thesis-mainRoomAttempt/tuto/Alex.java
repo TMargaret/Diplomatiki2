@@ -396,12 +396,21 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                         time = System.currentTimeMillis();
                         //this list holds the items in total
                         inventoryList.add(myMat);
+                        //System.out.println(inventoryList);
                        
                     }
                 }
             }
             materialList.remove(myMaterial);
         }       
+    }
+        /**
+     * Method getMaterialList
+     *
+     * @return The return value
+     */
+    public ArrayList getMaterialList(){
+        return inventoryList;
     }
     
     // public static void removeFromInv(Material mat){
