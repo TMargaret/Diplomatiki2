@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sun Jun 18 13:49:52 EEST 2017
+#Sun Jun 18 17:37:18 EEST 2017
 target24.type=ClassTarget
 target16.name=HiddenSprite
 target43.name=HoverFrame
@@ -309,7 +309,7 @@ target4.type=ClassTarget
 dependency62.from=Clay
 dependency38.type=UsesDependency
 dependency54.to=HintRules
-editor.fx.0.height=899
+editor.fx.0.height=878
 class.LockLevel.superclass=greenfoot.Actor
 class.InvBar.superclass=SpriteSheet
 target28.type=ClassTarget
@@ -758,7 +758,7 @@ dependency32.type=UsesDependency
 dependency109.to=HealthBar
 dependency84.type=UsesDependency
 target36.typeParameters=
-editor.fx.0.width=1100
+editor.fx.0.width=983
 dependency83.to=mainHouseRoom
 target39.name=DragAndDrop
 target22.type=ClassTarget
@@ -819,8 +819,8 @@ dependency19.to=ButtonResponder
 dependency9.type=UsesDependency
 class.DragAndDrop.superclass=greenfoot.Actor
 dependency72.to=Clay
-editor.fx.0.y=49
-editor.fx.0.x=367
+editor.fx.0.y=30
+editor.fx.0.x=293
 dependency8.to=Alex
 target44.typeParameters=
 target26.showInterface=false

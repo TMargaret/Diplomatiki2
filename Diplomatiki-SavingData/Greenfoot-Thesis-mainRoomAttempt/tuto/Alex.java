@@ -35,6 +35,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     static int alexHealth = 4;
     Level_1 level1;
     boolean isAdded = false;
+    boolean is = false;
 
     ArrayList<Material> materialList;
     Material myMaterial;
@@ -68,7 +69,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             inventoryBtn.setResponder(this);
 
             exitBar = new ExitBar();
-            
+
             hintBar = new HintBar();
             hintBtn = new Button(hintBar.getImage().getWidth(), hintBar.getImage().getHeight());
             hintBtn.setResponder(this);
@@ -79,12 +80,11 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         getWorld().addObject(invBar,947,18);
 
         getWorld().addObject(inventoryBtn, 947, 18);
-        
+
         getWorld().addObject(exitBar,984,18);
         getWorld().addObject(hintBar, 910, 18);
         getWorld().addObject(hintBtn, 910, 18);
-        
-       
+
     }
 
     /**
@@ -96,6 +96,12 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         gameOver();
         addToInventory();
         checkWorld();
+        if (inventoryList.size() >1 && !is){
+            is = true;
+            removeItem("Wood");
+        }
+        for (int i = 0;i<items.length;i++)
+        System.out.println(i + items[i]);
     }
 
     public void checkWorld(){
@@ -379,8 +385,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             getWorld().removeObject(inv);
             invIsOpen = false;
         }
-        
-        
 
     }
 
@@ -397,14 +401,15 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                         //this list holds the items in total
                         inventoryList.add(myMat);
                         //System.out.println(inventoryList);
-                       
+
                     }
                 }
             }
             materialList.remove(myMaterial);
         }       
     }
-        /**
+
+    /**
      * Method getMaterialList
      *
      * @return The return value
@@ -412,16 +417,16 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     public ArrayList getMaterialList(){
         return inventoryList;
     }
-    
+
     // public static void removeFromInv(Material mat){
-        // Material m = null;
-        // for (Material material : inventoryList)
-        // {
-            // if(mat==material){
-                // m = mat;
-            // }
-        // }
-        // inventoryList.remove(m);
+    // Material m = null;
+    // for (Material material : inventoryList)
+    // {
+    // if(mat==material){
+    // m = mat;
+    // }
+    // }
+    // inventoryList.remove(m);
     // }
 
     public static String[] getItems()
@@ -441,10 +446,50 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         for (int i = 0; i < x; i++) 
             temp[i] = items[i];  
         items = new String[x + 1];  
-        for (int i = 0; i < x; i++) 
-            items[i] = temp[i];  
+        for (int i = 0; i < x; i++) {
+            items[i] = temp[i]; 
+            //System.out.println(items[i]);
+        }  
         items[x] = newItem;  
     }
+
+    public static void removeItem(String newItem)  
+    {  
+        int x = items.length;  
+        // int y = 0;
+        // //String[] temp = new String[x]; 
+        // //int x = temp.length;
+        // String[] temp = new String[x];
+        // //int x = temp.length;
+        // for (int i = 0; i < x; i++) {
+            // temp[i] = items[i];
+            // System.out.println(temp[i]);}
+        for (int i = 0; i < x; i++) {
+            if (items[i] != null){
+                if (items[i].equals(newItem))
+                {
+                    items[i] = null;
+                    break;
+                }
+            }
+        }
+    }
+
+    // if (temp[i] != null){
+    //    int v = temp[x].contains(newItem);
+
+    // temp[i] = items[i];  
+    // items = new String[x + 1];  
+    // for (int i = 0; i < x; i++) {
+    // items[i] = temp[i]; 
+    // System.out.println(items[i]);
+    // }
+    // for (int i = 0; i < x; i++) {
+    // // items[x] = newItem;
+    // if( items[i].compareTo(newItem)){
+    // temp[i] = items[i]; 
+    // }
+    // }
 
     public void setIsAdded(boolean isAdded){
         this.isAdded = isAdded;

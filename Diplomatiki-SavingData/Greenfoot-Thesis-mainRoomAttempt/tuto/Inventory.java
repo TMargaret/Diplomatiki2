@@ -50,8 +50,12 @@ public class Inventory extends DragAndDrop
             {
                 GreenfootImage itemImg;
                 String item = items[i];
-                itemImg = new GreenfootImage(item + "icon" + ".png");
-                imgInventory.drawImage(itemImg, itemPosX[i-1], itemPosY[i-1]);
+                //if item has been used is equal to null, so we don't want to draw anything
+                if (item != null){
+
+                    itemImg = new GreenfootImage(item + "icon" + ".png");
+                    imgInventory.drawImage(itemImg, itemPosX[i-1], itemPosY[i-1]);
+                }
             }
         }
     }
@@ -201,8 +205,11 @@ public class Inventory extends DragAndDrop
             {
                 GreenfootImage itemImg;
                 String item = items[i];
-                itemImg = new GreenfootImage(item + "icon" + ".png");
-                imgInventory.drawImage(itemImg, itemPosX[i-1], itemPosY[i-1]);
+                if (item != null){
+
+                    itemImg = new GreenfootImage(item + "icon" + ".png");
+                    imgInventory.drawImage(itemImg, itemPosX[i-1], itemPosY[i-1]);
+                }
                 // int mouseX = Greenfoot.getMouseInfo().getX();
 
                 // int mouseY = Greenfoot.getMouseInfo().getY();
