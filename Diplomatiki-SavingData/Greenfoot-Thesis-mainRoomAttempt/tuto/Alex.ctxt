@@ -26,6 +26,7 @@ comment17.params=newItem
 comment17.target=void\ addItem(java.lang.String)
 comment18.params=newItem
 comment18.target=void\ removeItem(java.lang.String)
+comment18.text=\r\n\ Method\ removeItem\ from\ inventory.\ We\ just\ replace\ the\ item\ with\ null\r\n\r\n\ @param\ newItem\ A\ parameter\r\n
 comment19.params=isAdded
 comment19.target=void\ setIsAdded(boolean)
 comment2.params=world

@@ -100,8 +100,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             is = true;
             removeItem("Wood");
         }
-        for (int i = 0;i<items.length;i++)
-        System.out.println(i + items[i]);
     }
 
     public void checkWorld(){
@@ -400,8 +398,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                         time = System.currentTimeMillis();
                         //this list holds the items in total
                         inventoryList.add(myMat);
-                        //System.out.println(inventoryList);
-
                     }
                 }
             }
@@ -448,22 +444,19 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         items = new String[x + 1];  
         for (int i = 0; i < x; i++) {
             items[i] = temp[i]; 
-            //System.out.println(items[i]);
         }  
         items[x] = newItem;  
     }
 
+    
+    /**
+     * Method removeItem from inventory. We just replace the item with null
+     *
+     * @param newItem A parameter
+     */
     public static void removeItem(String newItem)  
     {  
         int x = items.length;  
-        // int y = 0;
-        // //String[] temp = new String[x]; 
-        // //int x = temp.length;
-        // String[] temp = new String[x];
-        // //int x = temp.length;
-        // for (int i = 0; i < x; i++) {
-            // temp[i] = items[i];
-            // System.out.println(temp[i]);}
         for (int i = 0; i < x; i++) {
             if (items[i] != null){
                 if (items[i].equals(newItem))
@@ -475,21 +468,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         }
     }
 
-    // if (temp[i] != null){
-    //    int v = temp[x].contains(newItem);
-
-    // temp[i] = items[i];  
-    // items = new String[x + 1];  
-    // for (int i = 0; i < x; i++) {
-    // items[i] = temp[i]; 
-    // System.out.println(items[i]);
-    // }
-    // for (int i = 0; i < x; i++) {
-    // // items[x] = newItem;
-    // if( items[i].compareTo(newItem)){
-    // temp[i] = items[i]; 
-    // }
-    // }
 
     public void setIsAdded(boolean isAdded){
         this.isAdded = isAdded;
