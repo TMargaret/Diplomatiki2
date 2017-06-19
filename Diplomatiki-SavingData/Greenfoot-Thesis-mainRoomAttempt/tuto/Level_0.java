@@ -16,7 +16,7 @@ public class Level_0 extends World
     Brick brick, brick1;
     Material mat;
     int count = 0;
-    
+
     private ArrayList<Material> materialList = new ArrayList<Material>();
     private ArrayList <Material> pickUpList = new ArrayList<Material>();
 
@@ -42,7 +42,7 @@ public class Level_0 extends World
         for (Material material : materialList){
             if(material.getWorldOfType(Level_0.class) == null){
                 pickUpList.add(material);
-                
+
                 mat = material; //save to material to mat so as to remove without concurrent exception
             }
             if (material.getActive()){
@@ -65,7 +65,7 @@ public class Level_0 extends World
 
         alien = new Alien();
         addObject(alien,941,490);
-        
+
         house = new House();
         addObject(house,728,380);
 
@@ -89,10 +89,8 @@ public class Level_0 extends World
         materialList.add(brick);
         materialList.add(brick1);
 
-        
     }
-    
-        /**
+    /**
      * Method addWall. Builds the wall that holds healthbar, inventory and exit
      *
      */
@@ -104,21 +102,21 @@ public class Level_0 extends World
             addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
         }
     }
-    
-        /**
+
+    /**
      * Method that adds the grass to the scenery
      *
      */
     public void addGrass(){
         Grass grass51 = new Grass();
         addObject(grass51,684,370);
-        
+
         Grass grass52 = new Grass();
         addObject(grass52,727,370);
-        
+
         Grass grass53 = new Grass();
         addObject(grass53,768,370);
-        
+
         Grass grass54 = new Grass();
         addObject(grass54,812,370);
 
@@ -135,28 +133,29 @@ public class Level_0 extends World
             addObject(grass[j],j*grass[j].getImage().getWidth(),getHeight()/2+getHeight()/11);
         }
     }
-       
+
     public ArrayList getMaterialList(){
-        
         return pickUpList;
     }
-    
-       public int checkMatList(){
+
+    public int checkMatList(){
         if (pickUpList != null){
-        for (Material mat: pickUpList){
-            if (mat.getMaterial() == "Wood"){
-                count++;
+            for (Material mat: pickUpList){
+                if (mat.getMaterial() == "Wood"){
+                    count++;
+                }
+                if (mat.getMaterial() == "Brick"){
+                    count++;
+                }
             }
-            if (mat.getMaterial() == "Brick"){
-                count++;
-            }
-            
         }
-    }
         return count;
     }
-    
+
     public void setHouseMatList(int count){
         house.setCheckList(count);
     }
+
+
+    
 }

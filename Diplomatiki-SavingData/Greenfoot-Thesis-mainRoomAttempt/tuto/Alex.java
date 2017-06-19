@@ -20,6 +20,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     GreenfootImage alex = new GreenfootImage("alex.png");
     final int IMG_WIDTH = alex.getWidth()/6;
     final int IMG_HEIGHT = alex.getHeight()/4;
+    static boolean flagForRemovedItem = false;
 
     HealthLogo healthLogo;
     HealthBar healthBar;
@@ -35,7 +36,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     static int alexHealth = 4;
     Level_1 level1;
     boolean isAdded = false;
-    boolean is = false;
 
     ArrayList<Material> materialList;
     Material myMaterial;
@@ -96,10 +96,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         gameOver();
         addToInventory();
         checkWorld();
-        if (inventoryList.size() >1 && !is){
-            is = true;
-            removeItem("Wood");
-        }
     }
 
     public void checkWorld(){
@@ -414,16 +410,18 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         return inventoryList;
     }
 
-    // public static void removeFromInv(Material mat){
-    // Material m = null;
-    // for (Material material : inventoryList)
-    // {
-    // if(mat==material){
-    // m = mat;
-    // }
-    // }
-    // inventoryList.remove(m);
-    // }
+    public static void removeFromInv(boolean flag){
+        Material m = null;
+        for (Material material : inventoryList)
+        {
+            if(flag && !flagForRemovedItem){
+                removeItem(material.getMaterial());
+                m = material;
+                flagForRemovedItem = true;
+            }
+        }
+        inventoryList.remove(m);
+    }
 
     public static String[] getItems()
     {
@@ -448,7 +446,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         items[x] = newItem;  
     }
 
-    
     /**
      * Method removeItem from inventory. We just replace the item with null
      *
@@ -467,7 +464,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             }
         }
     }
-
 
     public void setIsAdded(boolean isAdded){
         this.isAdded = isAdded;

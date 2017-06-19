@@ -98,17 +98,24 @@ public class House extends Actor
                             case 0: 
                             countUse++;
                             textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
+                            Alex.removeFromInv(true);
                             break;
                             case 1: 
                             countUse++;
                             textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
+                            Alex.flagForRemovedItem = false;
+                            Alex.removeFromInv(true);
                             break;
                             case 2:
                             countUse++;
                             textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
+                            Alex.flagForRemovedItem = false;
+                            Alex.removeFromInv(true);
                             break;
                             case 3: 
                             getWorld().removeObject(textField);
+                            Alex.flagForRemovedItem = false;
+                            Alex.removeFromInv(true);
                             isActive = false;
                             endOfUse = true;
                             break;
@@ -131,7 +138,6 @@ public class House extends Actor
                     getWorld().removeObject(textPanel);
                 }
             }
-
         }
     }
 
@@ -145,12 +151,10 @@ public class House extends Actor
     }
 
     public void setCheckList(int count_mat){
-        //countMat = count_mat;
-        //System.out.println(countMat);
+        countMat = count_mat;
     }
 
     public int getCheckList(){
-        return countMat = 4;
+        return countMat;
     }
-
 }
