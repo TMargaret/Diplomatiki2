@@ -91,6 +91,7 @@ public class Material extends Actor
                                 getWorld().removeObject(textField);
                                 getWorld().removeObject(this);
                                 materialList.add(this);
+                               // InvBar.specialEffect();
                                 isActive = false;
                                 addToInv = true;
                                 break;
