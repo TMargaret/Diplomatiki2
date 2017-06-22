@@ -388,6 +388,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                 for (Material myMat : materialList){
                     if(myMat.getAddToInv())
                     {
+                        invBar.specialEffect();
                         addItem(myMat.getMaterial());
                         myMat.setAddToInv();
                         myMaterial = myMat; 
