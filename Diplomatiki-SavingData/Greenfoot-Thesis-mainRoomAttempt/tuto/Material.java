@@ -64,14 +64,27 @@ public class Material extends Actor
         if( hs.getWorld() != null ) {   
             List<Actor> things = hs.getHitBoxIntersections();    
             if( things.size() > 1 ) {      
-                int infront = 0;      
+                /*
+                 * 
+                 * showMenu(things)
+                 * chooseThing
+                 * interactThign
+                 * 
+                 * 
+                 */
+                
+                System.out.println(things);
+                
+                int infront = 0;      // TODO Show list of intersecting objects. Pick the one to interact with 1,2,3,4...
                 for(int i=0; i < things.size(); i++ ) {       
-                    Actor a = things.get(i);        
+                    Actor a = things.get(i); 
+                    
+                   // System.out.println(a);
                     if(a instanceof HiddenSprite)        
                         continue;        
                     if( a instanceof Alex) {
                         counter--;
-                        if (Greenfoot.isKeyDown("e") & !isEDown){
+                        if (Greenfoot.isKeyDown("e") && !isEDown){
                             isEDown = true;
                             counter = 20;
                         }
@@ -82,16 +95,23 @@ public class Material extends Actor
                         if (Greenfoot.mouseClicked(textField) && isEDown){
                             textField.setText("");
                         }
+                        if (Greenfoot.isKeyDown("escape") && isEDown){
+                            getWorld().removeObject(textField); 
+                            isActive = false;
+                            isEDown = false;
+                        }   
+                        
                         if (Greenfoot.isKeyDown("enter") && isEDown){
                             counter = 30;
                             my_text = textField.getText();
 
                             if (my_text.contains(checkMaterial()))
                             {
+                                InvBar invBar = new InvBar();
                                 getWorld().removeObject(textField);
                                 getWorld().removeObject(this);
                                 materialList.add(this);
-                               // InvBar.specialEffect();
+                                invBar.specialEffect();
                                 isActive = false;
                                 addToInv = true;
                                 break;
