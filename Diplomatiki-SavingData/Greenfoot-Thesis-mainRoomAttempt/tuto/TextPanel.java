@@ -42,6 +42,45 @@ public class TextPanel extends Actor implements Serializable
         }
     }
 
+    public void makeTextL0(String status1){
+
+        if (status1 == "wellDone") {
+            String mytext = text.welcomeMsgL0();
+            makeImage(mytext, "alien");
+        }
+        if (status == "welcomeMsgL0") {
+            String mytext = text.welcomeMsgL0();
+           
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText1L0") {
+            String mytext = text.taskText1L0();
+            System.out.println(mytext);
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText2L0") {
+            String mytext = text.taskText2L0();
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText3L0") {
+            String mytext = text.taskText3L0();
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText4L0") {
+            String mytext = text.taskText4L0();
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText5L0") {
+            String mytext = text.taskText5L0();
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText6L0") {
+            String mytext = text.taskText6L0();
+            makeImage(mytext, "alien");
+        }
+
+    }
+
     private void makeTextL0(){
 
         if (status == "welcomeMsgL0") {
@@ -84,7 +123,7 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.allMaterial();
             makeImage(mytext);
         }
-        
+
     }
 
     private void makeTextL1(){
@@ -181,7 +220,7 @@ public class TextPanel extends Actor implements Serializable
             image.fillRect(5, 5, image.getWidth()- 10, image.getHeight()-10);
             image.setFont(new Font("Lucida Sans Unicode", 22));
             image.setColor(Color.WHITE);
-
+System.out.println("ok");
             if (status == "welcomeMsgL0" || status == "taskText1L0" || status == "taskText2L0") image.drawString("Πάτα ENTER", 30, 290);
             if (status == "taskText3L0" || status == "taskText4L0" || status == "taskText5L0") image.drawString("Πάτα ENTER", 30, 290);
             if (status == "taskText6L0" || status == "wrongKey") image.drawString("Πάτα ENTER", 30, 290);

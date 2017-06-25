@@ -76,10 +76,10 @@ public class Level_0 extends World
         addObject(lumber,71,564);
 
         lumber1 = new Lumber();
-        addObject(lumber1,62,486);
+        addObject(lumber1,54,402);
 
         brick1 = new Brick();
-        addObject(brick1,406,490);
+        addObject(brick1,385,395);
 
         brick = new Brick();
         addObject(brick,399,571);
@@ -88,8 +88,8 @@ public class Level_0 extends World
         materialList.add(lumber1);
         materialList.add(brick);
         materialList.add(brick1);
+    }
 
-    }
     /**
      * Method addWall. Builds the wall that holds healthbar, inventory and exit
      *

@@ -14,7 +14,7 @@ public class Locals extends Actor
     private boolean isActive = false, doNotMoveWhileTalking = false, isEDown = false;
     private int count_enter = 0;
     private boolean doneDialogue = false;
-    private TextPanel helloText, taskText1, taskText2, taskText3, taskText4, taskText5, taskText6, taskTextEnd;
+    private TextPanel taskText;
 
     public Locals(){
     }
@@ -65,57 +65,57 @@ public class Locals extends Actor
                             isEDown = true;
                         }
                         if (counter<0 && !isActive && isEDown && count_enter == 0){
-                            helloText = new TextPanel(getTextMessage());
-                            getWorld().addObject(helloText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            taskText = new TextPanel(getTextMessage());
+                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             setActive(true);
                             setTalking(true);
                             count_enter = 1;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 1 && counter<0 && isEDown){
                             counter = 20;
-                            getWorld().removeObject(helloText);
-                            taskText1 = new TextPanel(getTextMessage());
-                            getWorld().addObject(taskText1, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            getWorld().removeObject(taskText);
+                            taskText = new TextPanel(getTextMessage());
+                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 2;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 2 && counter <0 && isEDown){
                             counter = 30;
-                            getWorld().removeObject(taskText1);
-                            taskText2 = new TextPanel(getTextMessage());
-                            getWorld().addObject(taskText2, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            getWorld().removeObject(taskText);
+                            taskText = new TextPanel(getTextMessage());
+                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 3;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 3 && counter <0 && isEDown){
                             counter = 30;
-                            getWorld().removeObject(taskText2);
-                            taskText3 = new TextPanel(getTextMessage());
-                            getWorld().addObject(taskText3, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            getWorld().removeObject(taskText);
+                            taskText = new TextPanel(getTextMessage());
+                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 4;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 4 && counter <0 && isEDown){
                             counter = 30;
-                            getWorld().removeObject(taskText3);
-                            taskText4 = new TextPanel(getTextMessage());
-                            getWorld().addObject(taskText4, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            getWorld().removeObject(taskText);
+                            taskText = new TextPanel(getTextMessage());
+                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 5;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 5 && counter <0 && isEDown){
                             counter = 30;
-                            getWorld().removeObject(taskText4);
-                            taskText5 = new TextPanel(getTextMessage());
-                            getWorld().addObject(taskText5, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            getWorld().removeObject(taskText);
+                            taskText = new TextPanel(getTextMessage());
+                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 6;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 6 && counter <0 && isEDown){
                             counter = 30;
-                            getWorld().removeObject(taskText5);
-                            taskText6 = new TextPanel(getTextMessage());
-                            getWorld().addObject(taskText6, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            getWorld().removeObject(taskText);
+                            taskText = new TextPanel(getTextMessage());
+                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             count_enter = 7;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 7 && counter <0 && isEDown){
                             counter = 30;
-                            getWorld().removeObject(taskText6);
+                            getWorld().removeObject(taskText);
                             count_enter = 0;
                             isEDown = false;
                             setActive(false);

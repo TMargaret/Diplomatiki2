@@ -118,6 +118,8 @@ public class House extends Actor
                             Alex.removeFromInv(true);
                             isActive = false;
                             endOfUse = true;
+                            textPanel.makeTextL0("wellDone");
+                            getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             break;
                         } 
                     }
