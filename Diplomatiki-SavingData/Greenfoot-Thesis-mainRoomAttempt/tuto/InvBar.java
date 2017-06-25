@@ -18,7 +18,7 @@ public class InvBar extends SpriteSheet
     int img_cell_x = 37;
     int img_cell_y = 43;
 
-    int counter = 0;
+    int counter = 50;
 
     final int OFFSET = 4;
 
@@ -28,13 +28,18 @@ public class InvBar extends SpriteSheet
     }
 
     public void act(){
+        if (getImage().equals(myEffect2)){
+            counter--;
+            if (counter <= 0){
+                setImage(myEffect);
+                counter = 50;
+            }
+        }
     }
 
     public void specialEffect(){
         myEffect2 = getSprite(bar2, img_cell_x*14,  0, img_cell_x*15, img_cell_y - OFFSET, img_cell_x, img_cell_y);
         setImage(myEffect2);
-
-
     }
 
 }
