@@ -92,7 +92,7 @@ public class House extends Actor
                     counter = 30;
                     my_text = textField.getText();
 
-                    if (my_text.contains("use();"))
+                    if (my_text.contains("Alex.use();"))
                     {
                         switch(countUse){
                             case 0: 

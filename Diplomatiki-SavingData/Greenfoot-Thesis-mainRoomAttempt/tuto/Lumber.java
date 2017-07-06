@@ -50,7 +50,7 @@ public class Lumber extends Material
     public String checkMaterial(){
         String materialAnswer = "";
         switch(version){
-            case 0: materialAnswer = "pickUp"; break;
+            case 0: materialAnswer = "Alex.pickUp"; break;
             case 1:
             case 2: materialAnswer = "new Brick();"; break;
         }
