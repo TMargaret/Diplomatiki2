@@ -15,6 +15,7 @@ public class Locals extends Actor
     private int count_enter = 0;
     private boolean doneDialogue = false;
     private TextPanel taskText;
+    Bubble bubble;
 
     public Locals(){
     }
@@ -32,6 +33,8 @@ public class Locals extends Actor
 
     protected void addedToWorld(World w){
         addHiddenSprite();
+        bubble = new Bubble();
+        getWorld().addObject(bubble,hs.getX() - 20,hs.getY() -  100);
     }
 
     public void blink(){
@@ -63,6 +66,7 @@ public class Locals extends Actor
                         counter--;
                         if (Greenfoot.isKeyDown("e")){
                             isEDown = true;
+                            getWorld().removeObject(bubble);
                         }
                         if (counter<0 && !isActive && isEDown && count_enter == 0){
                             taskText = new TextPanel(getTextMessage());

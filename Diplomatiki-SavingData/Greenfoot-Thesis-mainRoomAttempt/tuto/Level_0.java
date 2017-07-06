@@ -12,7 +12,7 @@ public class Level_0 extends World
     Alex alex;
     Alien alien;
     House house;
-    Bubble bubble;
+    
     Lumber lumber, lumber1;
     Brick brick, brick1;
     Material mat;
@@ -89,9 +89,7 @@ public class Level_0 extends World
         materialList.add(lumber1);
         materialList.add(brick);
         materialList.add(brick1);
-        
-        bubble = new Bubble();
-        addObject(bubble,939,384);
+ 
     }
 
 
