@@ -92,6 +92,10 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.allMaterial();
             makeImage(mytext);
         }
+        if (status == "wellDone"){
+            String mytext = text.wellDone();
+            makeImage(mytext, "alien");
+        }
 
     }
 

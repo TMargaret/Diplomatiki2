@@ -52,7 +52,7 @@ public class WrittenText implements Serializable
     public String taskText5L0(){
         return "Οι δυνάμεις πλέον σου ανήκουν.\nΓια να λειτουργήσουν σωστά"
         +" χρειάζονται\nτο όνομά σου: Alex.pickUp();"
-        +"\n\nΤα ΚΕΦΑΛΑΙΑ από τα πεζά γράμματα,\nέχουν σημασία!";
+        +"\n\nΤα ΚΕΦΑΛΑΙΑ και τα πεζά γράμματα,\nέχουν σημασία!";
     }
 
     public String taskText6L0(){
@@ -66,6 +66,10 @@ public class WrittenText implements Serializable
 
     public String allMaterial(){
         return "Έχω όλα τα υλικά.\nΤώρα θα πρέπει να τα χρησιμοποιήσω.";
+    }
+    
+    public String wellDone(){
+        return "well Done";
     }
 
     //level_1

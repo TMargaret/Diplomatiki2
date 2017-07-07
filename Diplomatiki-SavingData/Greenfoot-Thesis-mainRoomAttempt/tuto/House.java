@@ -17,10 +17,12 @@ public class House extends Actor
     boolean endOfUse = false;
     boolean isActive = false, displayMessage = false;
     boolean wrongCommand = false;
+    boolean buildHouse = false;
     private TextPanel textPanel;
     Level_0 lvl_0;
     TextField textField;
     String my_text = "";
+    GreenfootImage bH = new GreenfootImage("fixedHouse.png");
 
     public House(){
     }
@@ -118,8 +120,10 @@ public class House extends Actor
                             Alex.removeFromInv(true);
                             isActive = false;
                             endOfUse = true;
-                            //textPanel.makeTextL0("wellDone");
-                            getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            setImage(bH);
+                            setBuildHouse(true);
+                            // textPanel = new TextPanel("wellDone");
+                            // getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             break;
                         } 
                     }
@@ -158,5 +162,13 @@ public class House extends Actor
 
     public int getCheckList(){
         return countMat;
+    }
+    
+    public void setBuildHouse(boolean buildH){
+        buildHouse = buildH;
+    }
+    
+    public boolean getBuildHouse(){
+        return buildHouse;
     }
 }
