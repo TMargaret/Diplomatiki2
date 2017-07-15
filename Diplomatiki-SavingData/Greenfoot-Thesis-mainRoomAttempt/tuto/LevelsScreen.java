@@ -31,7 +31,10 @@ public class LevelsScreen extends World implements ButtonResponder
     public void act(){
         menuHover();
         planetHover();
+        setLevel();      
     }
+    
+    
 
     public void prepare(){
         lbl = new Label("Μενού", 50);
@@ -56,11 +59,11 @@ public class LevelsScreen extends World implements ButtonResponder
 
         locklevel5 = new LockLevel();
         addObject(locklevel5,473,170);
-
+        
         hoverFrame1 = new HoverFrame();
         addObject(hoverFrame1,165,200);
         hoverFrame.add(hoverFrame1);
-
+        
         hoverFrame2 = new HoverFrame();
         addObject(hoverFrame2,490,200);
         hoverFrame.add(hoverFrame2);
@@ -81,6 +84,12 @@ public class LevelsScreen extends World implements ButtonResponder
         addObject(hoverFrame6,815,460);
         hoverFrame.add(hoverFrame6);
 
+    }
+    
+    public void setLevel(){
+        if (Greenfoot.mouseClicked(hoverFrame1)){
+            Greenfoot.setWorld(new Level_0());
+        }
     }
 
     public void menuHover(){
@@ -119,6 +128,7 @@ public class LevelsScreen extends World implements ButtonResponder
         if (Greenfoot.mouseClicked(menuBtn)){
             Greenfoot.setWorld(new StartScreen());
         }
+        
 
     }
 

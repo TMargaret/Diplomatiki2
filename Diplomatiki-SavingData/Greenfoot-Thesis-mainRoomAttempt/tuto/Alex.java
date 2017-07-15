@@ -30,7 +30,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     ExitBar exitBar;
     HintRules hintRules;
     boolean invIsOpen = false, hintIsOpen = false;
-    Button inventoryBtn, hintBtn;
+    Button inventoryBtn, hintBtn, exitBtn;
     private static String[] items;
     public double time;
     static int alexHealth = 4;
@@ -69,6 +69,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             inventoryBtn.setResponder(this);
 
             exitBar = new ExitBar();
+            exitBtn = new Button(exitBar.getImage().getWidth(), exitBar.getImage().getHeight());
+            exitBtn.setResponder(this);
 
             hintBar = new HintBar();
             hintBtn = new Button(hintBar.getImage().getWidth(), hintBar.getImage().getHeight());
@@ -82,8 +84,10 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         getWorld().addObject(inventoryBtn, 947, 18);
 
         getWorld().addObject(exitBar,984,18);
+        getWorld().addObject(exitBtn, 984, 18);
         getWorld().addObject(hintBar, 910, 18);
         getWorld().addObject(hintBtn, 910, 18);
+        
 
     }
 
@@ -378,6 +382,11 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         {
             getWorld().removeObject(inv);
             invIsOpen = false;
+        }
+        //exitButton
+        if (Greenfoot.mouseClicked(exitBtn))
+        {
+            Greenfoot.setWorld(new LevelsScreen());
         }
 
     }
