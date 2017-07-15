@@ -165,6 +165,7 @@ public class Level_0 extends World
         //makes the food appear within the borders
 
         Tree tree  = new Tree();
+        Fireball fireBall = new Fireball();
         int random_x = Greenfoot.getRandomNumber(getWidth() - (OFFSET*2));
         random_x += 20;
 
@@ -174,11 +175,10 @@ public class Level_0 extends World
         {
             if (random == 0 & count_item == 80)
             {
-                addObject(tree, random_x, -tree.getImage().getHeight());
+                addObject(fireBall, random_x, -fireBall.getImage().getHeight());
                 count_item = 0;
             }
         }
-
     }
 
     
