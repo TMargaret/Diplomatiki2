@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Tree extends Actor
+public class Tree extends DropItem
 {
     /**
      * Act - do whatever the Tree wants to do. This method is called whenever
@@ -14,6 +14,7 @@ public class Tree extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        move();
+        if (getY() >= getWorld().getHeight() - 40) getWorld().removeObject(this);
     }    
 }

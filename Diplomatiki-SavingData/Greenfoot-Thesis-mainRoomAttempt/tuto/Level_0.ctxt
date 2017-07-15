@@ -21,4 +21,6 @@ comment7.params=
 comment7.target=int\ checkMatList()
 comment8.params=count
 comment8.target=void\ setHouseMatList(int)
-numComments=9
+comment9.params=
+comment9.target=void\ fireBall()
+numComments=10

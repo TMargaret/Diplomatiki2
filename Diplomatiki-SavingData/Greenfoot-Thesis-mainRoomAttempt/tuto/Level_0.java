@@ -12,11 +12,13 @@ public class Level_0 extends World
     Alex alex;
     Alien alien;
     House house;
-    
+
     Lumber lumber, lumber1;
     Brick brick, brick1;
     Material mat;
     int count = 0;
+    int count_item = 0;
+    private int OFFSET = 30;
 
     private ArrayList<Material> materialList = new ArrayList<Material>();
     private ArrayList <Material> pickUpList = new ArrayList<Material>();
@@ -33,6 +35,7 @@ public class Level_0 extends World
         super(1000, 600, 1);
         setBackground(img);
         prepare();
+        fireBall();
     }
 
     public void act(){
@@ -89,9 +92,8 @@ public class Level_0 extends World
         materialList.add(lumber1);
         materialList.add(brick);
         materialList.add(brick1);
- 
-    }
 
+    }
 
     /**
      * Method addWall. Builds the wall that holds healthbar, inventory and exit
@@ -159,6 +161,25 @@ public class Level_0 extends World
         house.setCheckList(count);
     }
 
+    public void fireBall(){
+        //makes the food appear within the borders
+
+        Tree tree  = new Tree();
+        int random_x = Greenfoot.getRandomNumber(getWidth() - (OFFSET*2));
+        random_x += 20;
+
+        int random = Greenfoot.getRandomNumber(2);
+        count_item++;
+      //  for (int i = 0; i < 4; i++)
+        {
+            //count++;
+            if (random == 0 & count_item < 80)
+            {
+                addObject(tree, random_x, -tree.getImage().getHeight());
+                count = 0;
+            }
+        }
+    }
 
     
 }
