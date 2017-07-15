@@ -80,7 +80,7 @@ public class SpriteSheet extends Actor implements Serializable
      * the dimesions of each individual cells on your sprite sheet. The width and height are the dimesions
      * of the returned image.
      */
-    public GreenfootImage getSprite(GreenfootImage spriteSheet, int ID, int spriteCellWidth, int spriteCellHeight, int width, int height) {
+    public static GreenfootImage getSprite(GreenfootImage spriteSheet, int ID, int spriteCellWidth, int spriteCellHeight, int width, int height) {
         int topX = 0;
         int topY = 0;
         int rowSize = spriteSheet.getWidth()/spriteCellWidth;

@@ -162,23 +162,21 @@ public class Level_0 extends World
     }
 
     public void fireBall(){
-        //makes the food appear within the borders
-
-        Tree tree  = new Tree();
+        //makes the fireball appear within the borders
         Fireball fireBall = new Fireball();
         int random_x = Greenfoot.getRandomNumber(getWidth() - (OFFSET*2));
         random_x += 20;
 
         int random = Greenfoot.getRandomNumber(1);
         count_item++;
-        for (int i = 0; i < 4; i++)
-        {
-            if (random == 0 & count_item == 80)
-            {
-                addObject(fireBall, random_x, -fireBall.getImage().getHeight());
-                count_item = 0;
-            }
-        }
+        // for (int i = 0; i < 4; i++)
+        // {
+            // if (random == 0 & count_item == 80)
+            // {
+                // addObject(fireBall, random_x, -fireBall.getImage().getHeight());
+                // count_item = 0;
+            // }
+        // }
     }
 
     

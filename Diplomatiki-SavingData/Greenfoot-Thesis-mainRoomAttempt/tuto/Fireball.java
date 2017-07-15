@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
  * Write a description of class FireBall here.
@@ -26,11 +27,12 @@ public class Fireball extends DropItem
      */
     public void act() 
     {
+        explosion();
         fireballAnimation();
         move();
 
     }
-    
+
     public void fireballAnimation(){
         for (int i=1;i<=8;i++){
             count++;
@@ -40,5 +42,14 @@ public class Fireball extends DropItem
             }
         }
     }
+
+    public void explosion(){
+        if (isTouching(House.class) || isTouching(Lumber.class) || isTouching(Brick.class)){         
+            getMovement().setNeutral();
+            Explosion exp = new Explosion();
+            getWorld().addObject(exp, this.getX(),this.getY());
+        }
+
+    }
 }
-    
+
