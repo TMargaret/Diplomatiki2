@@ -34,8 +34,7 @@ public class Level_0 extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1);
         setBackground(img);
-        prepare();
-        fireBall();
+        prepare();       
     }
 
     public void act(){
@@ -56,6 +55,7 @@ public class Level_0 extends World
         materialList.remove(mat);
         alex.setCanMove(!doNotMove);
         setHouseMatList(checkMatList());
+        fireBall();
     }
 
     /**
@@ -168,17 +168,17 @@ public class Level_0 extends World
         int random_x = Greenfoot.getRandomNumber(getWidth() - (OFFSET*2));
         random_x += 20;
 
-        int random = Greenfoot.getRandomNumber(2);
+        int random = Greenfoot.getRandomNumber(1);
         count_item++;
-      //  for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
-            //count++;
-            if (random == 0 & count_item < 80)
+            if (random == 0 & count_item == 80)
             {
                 addObject(tree, random_x, -tree.getImage().getHeight());
-                count = 0;
+                count_item = 0;
             }
         }
+
     }
 
     
