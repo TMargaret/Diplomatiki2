@@ -51,6 +51,11 @@ public class Fireball extends DropItem
             getWorld().addObject(exp, getX(), getY());
             getWorld().removeObject(this);
         }
+        else if (isTouching(Alex.class)){
+            HealthBar.looseHealth();
+            getWorld().addObject(exp, getX(), getY());
+            getWorld().removeObject(this);
+        }
 
     }
 }

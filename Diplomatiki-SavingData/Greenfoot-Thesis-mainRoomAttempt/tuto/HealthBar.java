@@ -13,9 +13,10 @@ public class HealthBar extends Actor
     static int health;
     int healthBarWidth = 80;
     int healthBarHeight = 15;
-    int pixelsPerHealthPoint = (int)healthBarWidth / 4;
+    int pixelsPerHealthPoint = (int)healthBarWidth / 6;
 
     public HealthBar(int health){
+        
         this.health = health;
         update();
     }

@@ -33,7 +33,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     Button inventoryBtn, hintBtn, exitBtn;
     private static String[] items;
     public double time;
-    static int alexHealth = 4;
+    static int alexHealth = 6;
     Level_1 level1;
     boolean isAdded = false;
 
@@ -331,20 +331,11 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     }
 
     /**
-     * Method getHealthBar
-     *
-     * @return The return value
-     */
-    public HealthBar getHealthBar(){
-        return healthBar;
-    }
-
-    /**
      * Method gameOver, Checks the healthbar and terminates the game if no health is left
      *
      */
     public void gameOver(){
-        if (alexHealth <= 0)
+        if (healthBar.getHealth() <= 0)
             Greenfoot.stop();
     }
 
