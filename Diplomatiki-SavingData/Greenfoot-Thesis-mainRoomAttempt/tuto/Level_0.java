@@ -58,7 +58,6 @@ public class Level_0 extends World
         alex.setCanMove(!doNotMove);
         setHouseMatList(checkMatList());
        if (!doNotMove){
-
             fireBall();
        }
     }
@@ -170,7 +169,6 @@ public class Level_0 extends World
         //makes the fireball appear within the borders
         int random_x = Greenfoot.getRandomNumber(getWidth() - (alien.getImage().getWidth() + alien.getImage().getWidth()/2));
         random_x += 20;
-
         int random = Greenfoot.getRandomNumber(1);
         count_item++;
         for (int i = 0; i < 4; i++)
