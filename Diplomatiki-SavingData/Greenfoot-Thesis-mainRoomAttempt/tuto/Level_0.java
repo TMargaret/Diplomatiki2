@@ -12,13 +12,14 @@ public class Level_0 extends World
     Alex alex;
     Alien alien;
     House house;
+    Fireball fireBall = new Fireball();
 
     Lumber lumber, lumber1;
     Brick brick, brick1;
     Material mat;
     int count = 0;
     int count_item = 0;
-    private int OFFSET = 30;
+    //private int OFFSET = alien.getImage().getWidth();
 
     private ArrayList<Material> materialList = new ArrayList<Material>();
     private ArrayList <Material> pickUpList = new ArrayList<Material>();
@@ -162,22 +163,20 @@ public class Level_0 extends World
     }
 
     public void fireBall(){
-        //makes the fireball appear within the borders
-        Fireball fireBall = new Fireball();
-        int random_x = Greenfoot.getRandomNumber(getWidth() - (OFFSET*2));
+        //makes the fireball appear within the borders        
+        int random_x = Greenfoot.getRandomNumber(getWidth() - (alien.getImage().getWidth() + alien.getImage().getWidth()/2));
         random_x += 20;
 
         int random = Greenfoot.getRandomNumber(1);
         count_item++;
-        // for (int i = 0; i < 4; i++)
-        // {
-            // if (random == 0 & count_item == 80)
-            // {
-                // addObject(fireBall, random_x, -fireBall.getImage().getHeight());
-                // count_item = 0;
-            // }
-        // }
+        for (int i = 0; i < 4; i++)
+        {
+            if (random == 0 & count_item == 80)
+            {
+                addObject(fireBall, random_x, -fireBall.getImage().getHeight());
+                count_item = 0;
+            }
+        }
     }
 
-    
 }

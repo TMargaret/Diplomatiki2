@@ -30,12 +30,14 @@ public class Explosion extends DropItem
     }
 
     public void explosion(){
-        for (int i=0; i<40; i++){
+        for (int i=0; i<41; i++){
             count++;
-            if (count>200){
+            if (count>1000){
                 setImage(SpriteSheet.getSprite(explosion, i,  img_cell, img_cell, IMG_WIDTH, IMG_HEIGHT));
-                count = 0;
+                count = 0;               
             }
         }
+        getWorld().removeObject(this);
+        
     }    
 }

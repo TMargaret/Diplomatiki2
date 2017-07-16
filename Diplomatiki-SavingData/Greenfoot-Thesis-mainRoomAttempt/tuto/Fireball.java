@@ -11,6 +11,7 @@ import java.util.List;
 public class Fireball extends DropItem
 {
     GreenfootImage fireball = new GreenfootImage("fireball.png");
+    Explosion exp = new Explosion();
     int img_cell = 64;
     final int IMG_WIDTH = fireball.getWidth()/8;
     final int IMG_HEIGHT = fireball.getHeight()/8;
@@ -28,11 +29,12 @@ public class Fireball extends DropItem
     public void act() 
     {
         explosion();
+        //if (getY() >= getWorld().getHeight() - 30) getWorld().removeObject(this);
         fireballAnimation();
         move();
+        
 
     }
-
     public void fireballAnimation(){
         for (int i=1;i<=8;i++){
             count++;
@@ -44,10 +46,10 @@ public class Fireball extends DropItem
     }
 
     public void explosion(){
-        if (isTouching(House.class) || isTouching(Lumber.class) || isTouching(Brick.class)){         
-            getMovement().setNeutral();
-            Explosion exp = new Explosion();
-            getWorld().addObject(exp, this.getX(),this.getY());
+        if ((getY() >= getWorld().getHeight() - getWorld().getHeight()/4) || isTouching(House.class) || isTouching(Lumber.class) || isTouching(Brick.class)){         
+            //this.getMovement().setNeutral();
+            //getWorld().addObject(exp, getX(), getY());
+            getWorld().removeObject(this);
         }
 
     }
