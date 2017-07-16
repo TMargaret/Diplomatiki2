@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sun Jul 16 14:18:30 EEST 2017
+#Sun Jul 16 16:11:49 EEST 2017
 target49.type=ClassTarget
 target24.type=ClassTarget
 target16.name=Explosion
@@ -748,7 +748,7 @@ target38.name=Hut
 target21.type=ClassTarget
 mainWindow.y=32
 target13.name=Vector
-mainWindow.x=39
+mainWindow.x=21
 class.Straw.image=straw2.png
 target16.y=0
 target16.x=0
@@ -903,8 +903,8 @@ dependency19.to=Wall
 dependency9.type=UsesDependency
 class.DragAndDrop.superclass=greenfoot.Actor
 dependency72.to=HealthBar
-editor.fx.0.y=30
-editor.fx.0.x=278
+editor.fx.0.y=51
+editor.fx.0.x=272
 dependency8.to=Grass
 target44.typeParameters=
 target26.showInterface=false

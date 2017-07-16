@@ -48,7 +48,7 @@ public class Fireball extends DropItem
     public void explosion(){
         if ((getY() >= getWorld().getHeight() - getWorld().getHeight()/4) || isTouching(House.class) || isTouching(Lumber.class) || isTouching(Brick.class)){         
             //this.getMovement().setNeutral();
-            //getWorld().addObject(exp, getX(), getY());
+            getWorld().addObject(exp, getX(), getY());
             getWorld().removeObject(this);
         }
 

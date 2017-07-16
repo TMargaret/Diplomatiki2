@@ -12,7 +12,7 @@ public class Explosion extends DropItem
     int img_cell = 128;
     final int IMG_WIDTH = explosion.getWidth()/8;
     final int IMG_HEIGHT = explosion.getHeight()/5;
-    int count = 0;
+    int imageID = 0;
 
     public Explosion(){
         setImage(SpriteSheet.getSprite(explosion, 0,  img_cell, img_cell, IMG_WIDTH, IMG_HEIGHT));
@@ -29,15 +29,17 @@ public class Explosion extends DropItem
 
     }
 
+    /**
+     * Method explosion - gets the spritesheet of explosion image and show the images based on ID
+     *
+     */
     public void explosion(){
-        for (int i=0; i<41; i++){
-            count++;
-            if (count>1000){
-                setImage(SpriteSheet.getSprite(explosion, i,  img_cell, img_cell, IMG_WIDTH, IMG_HEIGHT));
-                count = 0;               
-            }
+        if (imageID < 41){
+            setImage(SpriteSheet.getSprite(explosion, imageID,  img_cell, img_cell, IMG_WIDTH, IMG_HEIGHT));
+            imageID++;
+        }else {
+            imageID = 0;
+            getWorld().removeObject(this);
         }
-        getWorld().removeObject(this);
-        
     }    
 }
