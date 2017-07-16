@@ -29,12 +29,10 @@ public class Fireball extends DropItem
     public void act() 
     {
         explosion();
-        //if (getY() >= getWorld().getHeight() - 30) getWorld().removeObject(this);
         fireballAnimation();
         move();
-        
-
     }
+    
     public void fireballAnimation(){
         for (int i=1;i<=8;i++){
             count++;
@@ -47,7 +45,6 @@ public class Fireball extends DropItem
 
     public void explosion(){
         if ((getY() >= getWorld().getHeight() - getWorld().getHeight()/4) || isTouching(House.class) || isTouching(Lumber.class) || isTouching(Brick.class)){         
-            //this.getMovement().setNeutral();
             getWorld().addObject(exp, getX(), getY());
             getWorld().removeObject(this);
         }
@@ -56,7 +53,6 @@ public class Fireball extends DropItem
             getWorld().addObject(exp, getX(), getY());
             getWorld().removeObject(this);
         }
-
     }
 }
 

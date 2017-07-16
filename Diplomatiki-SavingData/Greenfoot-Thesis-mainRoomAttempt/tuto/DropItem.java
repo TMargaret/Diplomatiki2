@@ -13,8 +13,6 @@ public class DropItem extends SmoothMover
      */
     public DropItem()
     {
-        //this(Greenfoot.getRandomNumber(10));
-
         this(2);
     }
 
@@ -39,6 +37,5 @@ public class DropItem extends SmoothMover
     {         
         move();
     }
-
 
 }

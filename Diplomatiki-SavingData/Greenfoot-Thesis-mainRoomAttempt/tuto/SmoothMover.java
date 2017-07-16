@@ -42,6 +42,7 @@ public abstract class SmoothMover extends Actor
         exactY = exactY + movement.getY();
         super.setLocation((int) exactX, (int) exactY);
     }
+
     
     /**
      * Set the location from exact coordinates.
@@ -122,4 +123,5 @@ public abstract class SmoothMover extends Actor
     {
         return movement;
     }
+
 }

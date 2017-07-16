@@ -58,7 +58,7 @@ public final class Vector
     public void add(Vector other) 
     {
         dx += other.dx;
-        //dy += other.dy;
+        dy += other.dy;
         updatePolar();
     }
 

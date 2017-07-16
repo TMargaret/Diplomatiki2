@@ -19,6 +19,7 @@ public class Level_0 extends World
     Material mat;
     int count = 0;
     int count_item = 0;
+    Vector myCopy;
     //private int OFFSET = alien.getImage().getWidth();
 
     private ArrayList<Material> materialList = new ArrayList<Material>();
@@ -56,7 +57,10 @@ public class Level_0 extends World
         materialList.remove(mat);
         alex.setCanMove(!doNotMove);
         setHouseMatList(checkMatList());
-        fireBall();
+       if (!doNotMove){
+
+            fireBall();
+       }
     }
 
     /**
@@ -163,7 +167,7 @@ public class Level_0 extends World
     }
 
     public void fireBall(){
-        //makes the fireball appear within the borders        
+        //makes the fireball appear within the borders
         int random_x = Greenfoot.getRandomNumber(getWidth() - (alien.getImage().getWidth() + alien.getImage().getWidth()/2));
         random_x += 20;
 
