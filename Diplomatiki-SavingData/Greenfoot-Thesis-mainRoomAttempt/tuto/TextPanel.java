@@ -81,7 +81,7 @@ public class TextPanel extends Actor implements Serializable
             makeImage(mytext, "alien");
         }
         if (status == "wrongKey"){
-            String mytext = text.warningDoor();
+            String mytext = text.debugger();
             makeImage(mytext, "alien");
         }
         if (status == "houseMsgL0"){
@@ -149,7 +149,7 @@ public class TextPanel extends Actor implements Serializable
             makeImage(mytext);
         }
         if (status == "wrongKey"){
-            String mytext = text.warningDoor();
+            String mytext = text.debugger();
             makeImage(mytext, "elder");
         }
     }

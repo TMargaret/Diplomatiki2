@@ -18,13 +18,11 @@ public class House extends Actor
     boolean isActive = false;
     boolean wrongCommand = false;
     boolean buildHouse = false;
-    //boolean displayMessage = false;
     private TextPanel textPanel;
     Level_0 lvl_0;
     TextField textField;
     String my_text = "";
     GreenfootImage bH = new GreenfootImage("fixedHouse.png");
-    //int counterEnd = 300;
     
     
     public House(){
@@ -37,18 +35,6 @@ public class House extends Actor
     public void act() 
     {
         canSeeAlex();
-        // if (endOfUse){
-            // counterEnd--;
-            // if (counterEnd<0 && !displayMessage){
-                // displayMessage = true;
-                // textPanel = new TextPanel("wellDone");
-                // getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
-            // }
-            // if (Greenfoot.isKeyDown("enter") && displayMessage){
-                // getWorld().removeObject(textPanel);
-                // Greenfoot.setWorld(new LevelsScreen());
-            // }
-        // }
     } 
 
     public boolean getActive(){

@@ -9,6 +9,8 @@ import java.io.*;
  */
 public class WrittenText implements Serializable
 {
+    
+    String debuggerMsg = "Έχασες ενέργεια!\n\nΠροσπάθησε ξανά ή μίλα πάλι μαζί μου\nγια βοήθεια.";
     /**
      * Act - do whatever the WrittenText wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -129,8 +131,12 @@ public class WrittenText implements Serializable
         return "Είναι κλειδωμένη...\n\nΆραγε μπορώ να την ανοίξω...;";
     }
 
-    public String warningDoor(){
-        return "Έκανες λάθος! Έχασες ενέργεια!\n\nΠροσπάθησε ξανά ή μίλα πάλι μαζί μου\nγια βοήθεια.";
+    public String debugger(){
+        return debuggerMsg;
+    }
+    
+    private void setDebugger(String msg){
+        debuggerMsg = msg;
     }
 
     
