@@ -19,7 +19,9 @@ public class Level_0 extends World
     Material mat;
     int count = 0;
     int count_item = 0;
-    Vector myCopy;
+    int counterEnd = 300;
+    TextPanel textPanel;
+    boolean displayMessage = false;
     //private int OFFSET = alien.getImage().getWidth();
 
     private ArrayList<Material> materialList = new ArrayList<Material>();
@@ -41,25 +43,27 @@ public class Level_0 extends World
 
     public void act(){
         boolean doNotMove = false;
-        if (alien.getTalking() || house.getActive()){
+        if (alien.getTalking() || house.getActive() || house.getEndOfUse()){
             doNotMove  = true;
+            fireBall.stop();
         }
         for (Material material : materialList){
             if(material.getWorldOfType(Level_0.class) == null){
                 pickUpList.add(material);
-
                 mat = material; //save to material to mat so as to remove without concurrent exception
             }
             if (material.getActive()){
                 doNotMove  = true;
+                fireBall.stop();
             }
         }
         materialList.remove(mat);
         alex.setCanMove(!doNotMove);
         setHouseMatList(checkMatList());
-       if (!doNotMove){
+        if (!doNotMove && alien.getDoneWithDialogue()){
             fireBall();
-       }
+        }
+        endGame();
     }
 
     /**
@@ -72,7 +76,7 @@ public class Level_0 extends World
         addGrass();
 
         alien = new Alien();
-        addObject(alien,941,490);
+        addObject(alien,950,523);
 
         house = new House();
         addObject(house,728,380);
@@ -97,6 +101,20 @@ public class Level_0 extends World
         materialList.add(brick);
         materialList.add(brick1);
 
+        Grass grass31 = new Grass();
+        addObject(grass31,848,409);
+
+        Grass grass32 = new Grass();
+        addObject(grass32,837,434);
+
+        Grass grass34 = new Grass();
+        addObject(grass34,816,444);
+
+        Grass grass35 = new Grass();
+        addObject(grass35,859,445);
+
+        setPaintOrder(HealthLogo.class,HealthBar.class, HintBar.class,
+            InvBar.class, ExitBar.class,Wall.class);
     }
 
     /**
@@ -104,7 +122,7 @@ public class Level_0 extends World
      *
      */
     public void addWall(){
-        Wall[] wall = new Wall[25];
+        Wall[] wall = new Wall[13];
 
         for(int j=0; j<wall.length; j++){
             wall[j]=new Wall();
@@ -167,6 +185,9 @@ public class Level_0 extends World
 
     public void fireBall(){
         //makes the fireball appear within the borders
+        if (fireBall.getSpeed() == 0){
+            fireBall.addForce(new Vector(0.0, 2));
+        }
         int random_x = Greenfoot.getRandomNumber(getWidth() - (alien.getImage().getWidth() + alien.getImage().getWidth()/2));
         random_x += 20;
         int random = Greenfoot.getRandomNumber(1);
@@ -174,11 +195,26 @@ public class Level_0 extends World
         for (int i = 0; i < 4; i++)
         {
             if (random == 0 & count_item == 80)
-            {
+            {             
                 addObject(fireBall, random_x, -fireBall.getImage().getHeight());
                 count_item = 0;
             }
         }
     }
+
+    public void endGame(){
+        if (house.getEndOfUse()){
+            counterEnd--;
+            if (counterEnd<0 && !displayMessage){
+                displayMessage = true;
+                textPanel = new TextPanel("wellDone");
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+            }
+            if (Greenfoot.isKeyDown("enter") && displayMessage){
+                removeObject(textPanel);
+                Greenfoot.setWorld(new LevelsScreen());
+            }
+        }
+    }	
 
 }

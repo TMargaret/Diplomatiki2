@@ -187,9 +187,9 @@ public class TextPanel extends Actor implements Serializable
         //level 0
         if (icon == "alien"){
             image = new GreenfootImage(WIDTH, HEIGHT);
-            image.setColor(new Color(34,114,1, 255));
+            image.setColor(new Color(200,0,1, 100));
             image.fillRect(0, 0, image.getWidth(),image.getHeight());
-            image.setColor(new Color(0, 0, 0, 100));
+            image.setColor(new Color(50, 200, 100, 180));
             image.fillRect(5, 5, image.getWidth()- 10, image.getHeight()-10);
             image.setFont(new Font("Lucida Sans Unicode", 22));
             image.setColor(Color.WHITE);

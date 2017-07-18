@@ -57,7 +57,7 @@ public class WrittenText implements Serializable
 
     public String taskText6L0(){
         return "Οι λάθος απαντήσεις θα σου κοστίσουν\nενέργεια."
-        +"\n\nΦυλάξου από εχθρούς που μπορεί να\nείναι κρυμμένοι!";
+        +"\n\nΦυλάξου από τη βροχή μετεωριτών που\nπλησιάζει!";
     }
 
     public String toFixHouse(){

@@ -124,6 +124,7 @@ public class Locals extends Actor
                             isEDown = false;
                             setActive(false);
                             setTalking(false);
+                            setDialogue(true);
 
                         }
                     }
@@ -142,7 +143,7 @@ public class Locals extends Actor
         return textMsg;
     }
 
-    //if isItTalking is true, then the robot can't move
+    //if isItTalking is true, then alex can't move
     public void setTalking(boolean isItTalking){
         doNotMoveWhileTalking = isItTalking;
     }

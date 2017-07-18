@@ -15,15 +15,18 @@ public class House extends Actor
     boolean isEDown = false;
     boolean tryAgainOrLeave = false;
     boolean endOfUse = false;
-    boolean isActive = false, displayMessage = false;
+    boolean isActive = false;
     boolean wrongCommand = false;
     boolean buildHouse = false;
+    //boolean displayMessage = false;
     private TextPanel textPanel;
     Level_0 lvl_0;
     TextField textField;
     String my_text = "";
     GreenfootImage bH = new GreenfootImage("fixedHouse.png");
-
+    //int counterEnd = 300;
+    
+    
     public House(){
     }
 
@@ -34,6 +37,18 @@ public class House extends Actor
     public void act() 
     {
         canSeeAlex();
+        // if (endOfUse){
+            // counterEnd--;
+            // if (counterEnd<0 && !displayMessage){
+                // displayMessage = true;
+                // textPanel = new TextPanel("wellDone");
+                // getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+            // }
+            // if (Greenfoot.isKeyDown("enter") && displayMessage){
+                // getWorld().removeObject(textPanel);
+                // Greenfoot.setWorld(new LevelsScreen());
+            // }
+        // }
     } 
 
     public boolean getActive(){
@@ -66,7 +81,7 @@ public class House extends Actor
                     getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                     isActive = true;
                 }
-                if (counter<0 && Greenfoot.isKeyDown("enter") && isActive && !displayMessage){
+                if (counter<0 && Greenfoot.isKeyDown("enter") && isActive){
                     isActive = false;
                     isEDown = false;
                     counter = 20;
@@ -75,16 +90,9 @@ public class House extends Actor
             }
             if (getCheckList() == 4 && !endOfUse){
                 if (isEDown && !isActive && !endOfUse){
-                    counter = 30;
-                    textPanel = new TextPanel("allMaterial");
-                    getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                     isActive = true;
-                }
-                if (counter<0 && Greenfoot.isKeyDown("enter") && isActive && !displayMessage){
                     counter = 20;
-                    getWorld().removeObject(textPanel);
                     textFieldCreation();
-                    displayMessage = true;
                 }
 
                 if (Greenfoot.mouseClicked(textField) && isEDown){
@@ -121,9 +129,7 @@ public class House extends Actor
                             isActive = false;
                             endOfUse = true;
                             setImage(bH);
-                            setBuildHouse(true);
-                            // textPanel = new TextPanel("wellDone");
-                            // getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            setBuildHouse(true);                          
                             break;
                         } 
                     }
@@ -163,12 +169,16 @@ public class House extends Actor
     public int getCheckList(){
         return countMat;
     }
-    
+
     public void setBuildHouse(boolean buildH){
         buildHouse = buildH;
     }
-    
+
     public boolean getBuildHouse(){
         return buildHouse;
+    }
+    
+    public boolean getEndOfUse(){
+        return endOfUse;
     }
 }
