@@ -16,6 +16,7 @@ public class TextPanel extends Actor implements Serializable
     private WrittenText text;
     private int counter = 1;
     private int count_slide = 0;
+    String debugMsg = null;
     //private int iScore, lives, wrong_answers = 0;
 
     private GreenfootImage image;
@@ -27,6 +28,13 @@ public class TextPanel extends Actor implements Serializable
         //this.iScore = iScore;
         //wrong_answers = TOTAL_ANSWERS - iScore;
 
+    }
+
+    public TextPanel(String status, String debugMsg)
+    {
+        this.status = status;
+        this.debugMsg = debugMsg;
+        text = new WrittenText();
     }
 
     public void act()
@@ -80,9 +88,9 @@ public class TextPanel extends Actor implements Serializable
             count_slide = 7;
             makeImage(mytext, "alien");
         }
+        //debugger message
         if (status == "wrongKey"){
-            String mytext = text.debugger();
-            makeImage(mytext, "alien");
+            makeImage(debugMsg, "alien");
         }
         if (status == "houseMsgL0"){
             String mytext = text.toFixHouse();
@@ -148,9 +156,9 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.lockedDoor();
             makeImage(mytext);
         }
+        //method for debug messages
         if (status == "wrongKey"){
-            String mytext = text.debugger();
-            makeImage(mytext, "elder");
+            makeImage(debugMsg, "elder");
         }
     }
 
@@ -195,11 +203,12 @@ public class TextPanel extends Actor implements Serializable
             image.setColor(Color.WHITE);
             if (status == "welcomeMsgL0" || status == "taskText1L0" || status == "taskText2L0"
             || status == "taskText3L0" || status == "taskText4L0" || status == "taskText5L0"
-            || status == "taskText6L0" || status == "wrongKey")
+            || status == "taskText6L0" )
             {
                 image.drawString("Πάτα ENTER", 30, 290);
                 image.drawString(count_slide+"/7", 450, 290);
             }
+            if (status == "wrongKey") image.drawString("Πάτα ENTER", 30, 290);
 
         }
         //level 1

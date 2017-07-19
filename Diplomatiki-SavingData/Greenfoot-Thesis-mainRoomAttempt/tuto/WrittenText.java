@@ -129,15 +129,5 @@ public class WrittenText implements Serializable
 
     public String lockedDoor(){
         return "Είναι κλειδωμένη...\n\nΆραγε μπορώ να την ανοίξω...;";
-    }
-
-    public String debugger(){
-        return debuggerMsg;
-    }
-    
-    private void setDebugger(String msg){
-        debuggerMsg = msg;
-    }
-
-    
+    }  
 }

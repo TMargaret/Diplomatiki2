@@ -113,7 +113,7 @@ public class Level_0 extends World
         Grass grass35 = new Grass();
         addObject(grass35,859,445);
 
-        setPaintOrder(HealthLogo.class,HealthBar.class, HintBar.class,
+        setPaintOrder(Button.class,HealthLogo.class,HealthBar.class, HintBar.class,
             InvBar.class, ExitBar.class,Wall.class);
     }
 

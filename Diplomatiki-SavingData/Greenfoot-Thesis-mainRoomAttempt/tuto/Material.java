@@ -25,6 +25,8 @@ public class Material extends Actor
     static boolean addToInv = false;
     ArrayList<Material> materialList = new ArrayList<Material>();
     InvBar invBar = new InvBar();
+    WrittenText writtenText = new WrittenText();
+    Debugger db = new Debugger();
 
     public Material(){
     }
@@ -108,8 +110,8 @@ public class Material extends Actor
                             }
                             else {
                                 checkHealthBar();
-                                getWorld().removeObject(textField);
-                                textPanel= new TextPanel("wrongKey");
+                                getWorld().removeObject(textField);                             
+                                textPanel= new TextPanel("wrongKey", db.checkSpelling(my_text));
                                 getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                                 tryAgainOrLeave = true;
                                 isEDown = false;

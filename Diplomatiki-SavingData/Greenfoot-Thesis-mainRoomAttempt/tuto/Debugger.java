@@ -21,7 +21,8 @@ public class Debugger
 
     }
     
-    public String checkSpelling(){
+    public String checkSpelling(String playersCode){
+        this.playersCode = playersCode;
         if (!playersCode.contains(";")){
             message = "Το ερωτηματικό μπαίνει απαραίτητα στο\nτέλος κάθε γραμμής κώδικα.\n";
         }
