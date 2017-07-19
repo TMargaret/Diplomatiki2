@@ -7,7 +7,9 @@
 public class Debugger  
 {
     String playersCode = null;
-    String message = null;
+    String message = "Αναφορά Σφαλμάτων\n";
+    String err = "error found: ";
+    String correctAnswer = null;
 
     /**
      * Constructor for objects of class Debugger
@@ -21,13 +23,26 @@ public class Debugger
 
     }
     
-    public String checkSpelling(String playersCode){
-        this.playersCode = playersCode;
+    public Debugger(String playersCode, String correctAnswer){
+        this.playersCode = playersCode; 
+        this.correctAnswer = correctAnswer;
+
+    }
+    
+    public boolean checkSpelling(){
+        playersCode.replaceAll("\\s", "");
+        return playersCode.contains(correctAnswer); 
+    }
+    
+    public String feedback(){
         if (!playersCode.contains(";")){
-            message = "Το ερωτηματικό μπαίνει απαραίτητα στο\nτέλος κάθε γραμμής κώδικα.\n";
+            message = err + "missing ;\n";
         }
         if (!playersCode.contains("()")){
-            message += "Οι παρενθέσεις συνοδεύουν πάντα το\nόνομα της μεθόδου.\n";
+            message += err + "missing ()\n";
+        }
+        if (!playersCode.equals(playersCode.toLowerCase()) || !playersCode.equals(playersCode.toUpperCase())){
+            message += err + "words are Case Sensitive\n";
         }
         return message;
     }

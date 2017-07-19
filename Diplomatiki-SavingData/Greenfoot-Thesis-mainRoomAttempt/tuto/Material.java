@@ -26,7 +26,7 @@ public class Material extends Actor
     ArrayList<Material> materialList = new ArrayList<Material>();
     InvBar invBar = new InvBar();
     WrittenText writtenText = new WrittenText();
-    Debugger db = new Debugger();
+    Debugger db;
 
     public Material(){
     }
@@ -97,9 +97,12 @@ public class Material extends Actor
                         
                         if (Greenfoot.isKeyDown("enter") && isEDown){
                             counter = 30;
-                            my_text = textField.getText();
+                            //my_text = textField.getText();
+                            db = new Debugger(textField.getText(), checkMaterial());
 
-                            if (my_text.contains(checkMaterial()))
+                           // if (my_text.contains(checkMaterial()))
+                            //if ((db.checkSpelling()).contains(checkMaterial()))
+                            if (db.checkSpelling())
                             {
                                 getWorld().removeObject(textField);
                                 getWorld().removeObject(this);
@@ -111,7 +114,7 @@ public class Material extends Actor
                             else {
                                 checkHealthBar();
                                 getWorld().removeObject(textField);                             
-                                textPanel= new TextPanel("wrongKey", db.checkSpelling(my_text));
+                                textPanel= new TextPanel("wrongKey", db.feedback());
                                 getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                                 tryAgainOrLeave = true;
                                 isEDown = false;
