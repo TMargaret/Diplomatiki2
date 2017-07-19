@@ -71,7 +71,8 @@ public class WrittenText implements Serializable
     }
     
     public String wellDone(){
-        return "well Done";
+        return "Τα κατάφερες!\n\nΟι Μεθοδιανοί σου είναι ευγνώμονες.\nΤώρα μπορείς να αποχωρήσεις"
+        +" από τον\nMethodis.\n\nLive long and prosper!";
     }
 
     //level_1

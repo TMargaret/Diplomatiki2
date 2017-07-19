@@ -23,8 +23,8 @@ public class House extends Actor
     TextField textField;
     String my_text = "";
     GreenfootImage bH = new GreenfootImage("fixedHouse.png");
-    
-    
+    Debugger db;
+
     public House(){
     }
 
@@ -84,11 +84,15 @@ public class House extends Actor
                 if (Greenfoot.mouseClicked(textField) && isEDown){
                     textField.setText("");
                 }
+                if (Greenfoot.isKeyDown("escape") && isEDown){
+                    getWorld().removeObject(textField); 
+                    isActive = false;
+                    isEDown = false;
+                } 
                 if (counter < 0 && Greenfoot.isKeyDown("enter") && isEDown){
                     counter = 30;
-                    my_text = textField.getText();
-
-                    if (my_text.contains("Alex.use();"))
+                    db = new Debugger(textField.getText(),"Alex.use();");
+                    if (db.checkSpelling())
                     {
                         switch(countUse){
                             case 0: 
@@ -122,7 +126,7 @@ public class House extends Actor
                     else {
                         checkHealthBar();
                         getWorld().removeObject(textField);
-                        textPanel= new TextPanel("wrongKey");
+                        textPanel= new TextPanel("wrongKey", db.feedback());
                         getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                         tryAgainOrLeave = true;
                         isEDown = false;
@@ -149,7 +153,7 @@ public class House extends Actor
     }
 
     public void setCheckList(int count_mat){
-        countMat = count_mat;
+        countMat = 4;
     }
 
     public int getCheckList(){
@@ -163,7 +167,7 @@ public class House extends Actor
     public boolean getBuildHouse(){
         return buildHouse;
     }
-    
+
     public boolean getEndOfUse(){
         return endOfUse;
     }

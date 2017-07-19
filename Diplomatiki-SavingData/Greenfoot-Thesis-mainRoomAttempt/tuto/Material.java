@@ -25,7 +25,6 @@ public class Material extends Actor
     static boolean addToInv = false;
     ArrayList<Material> materialList = new ArrayList<Material>();
     InvBar invBar = new InvBar();
-    WrittenText writtenText = new WrittenText();
     Debugger db;
 
     public Material(){

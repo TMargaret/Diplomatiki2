@@ -208,7 +208,7 @@ public class TextPanel extends Actor implements Serializable
                 image.drawString("Πάτα ENTER", 30, 290);
                 image.drawString(count_slide+"/7", 450, 290);
             }
-            if (status == "wrongKey") image.drawString("Πάτα ENTER", 30, 290);
+            if (status == "wrongKey" || status=="wellDone") image.drawString("Πάτα ENTER", 30, 290);
 
         }
         //level 1
