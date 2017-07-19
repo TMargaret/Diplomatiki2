@@ -153,7 +153,7 @@ public class House extends Actor
     }
 
     public void setCheckList(int count_mat){
-        countMat = 4;
+        countMat = count_mat;
     }
 
     public int getCheckList(){
