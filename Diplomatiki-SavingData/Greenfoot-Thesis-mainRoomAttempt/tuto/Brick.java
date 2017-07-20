@@ -50,5 +50,10 @@ public class Brick extends Material
         }
         return materialAnswer;
 
-    }   
+    } 
+    
+        public void textFieldCreation(){
+            textField = new TextField(700, 45,"Κάλεσε την αντίστοιχη μέθοδο και πάτα enter");
+            getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
+        }
 }
