@@ -25,6 +25,7 @@ public class Door extends Material
      */
     public void act() 
     {
+        checkWorld();
         materialCreation();
     } 
 

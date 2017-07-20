@@ -26,6 +26,7 @@ public class Clay extends Material
      */
     public void act() 
     {
+        checkWorld();
         materialCreation();
     } 
 

@@ -23,6 +23,7 @@ public class Straw extends Material
      */
     public void act() 
     {
+        checkWorld();
         materialCreation();
     } 
 

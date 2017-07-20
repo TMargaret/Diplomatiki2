@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.awt.*;
-import java.awt.GraphicsEnvironment;
+//import java.awt.*;
+//import java.awt.GraphicsEnvironment;
+import java.util.*;
 /**
  * Image of the main interface
  * 
@@ -10,17 +11,35 @@ import java.awt.GraphicsEnvironment;
 public class InvBar extends SpriteSheet
 {
 
-    GreenfootImage bar = new GreenfootImage("bar.png");;
+    GreenfootImage bar = new GreenfootImage("bar.png");
+    GreenfootImage bar2 = new GreenfootImage("oldBar.jpg");
+    GreenfootImage myEffect, myEffect2;
 
     int img_cell_x = 37;
     int img_cell_y = 43;
 
-    private int[] coordinates = {0,0,0,0,0,0};
+    int counter = 50;
 
     final int OFFSET = 4;
 
     public InvBar(){
-        setImage(getSprite(bar, img_cell_x*14,  0, img_cell_x*15, img_cell_y - OFFSET, img_cell_x, img_cell_y));
+        myEffect = getSprite(bar, img_cell_x*14,  0, img_cell_x*15, img_cell_y - OFFSET, img_cell_x, img_cell_y);
+        setImage(myEffect);
     }
-   
+
+    public void act(){
+        if (getImage().equals(myEffect2)){
+            counter--;
+            if (counter <= 0){
+                setImage(myEffect);
+                counter = 50;
+            }
+        }
+    }
+
+    public void specialEffect(){
+        myEffect2 = getSprite(bar2, img_cell_x*14,  0, img_cell_x*15, img_cell_y - OFFSET, img_cell_x, img_cell_y);
+        setImage(myEffect2);
+    }
+
 }

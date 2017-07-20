@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=LevelsScreen
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ LevelsScreen\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=LevelsScreen()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ LevelsScreen.\r\n\ \r\n
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ prepare()
+comment4.params=
+comment4.target=void\ setLevel()
+comment5.params=
+comment5.target=void\ menuHover()
+comment6.params=
+comment6.target=void\ planetHover()
+comment7.params=button
+comment7.target=void\ buttonClicked(Button)
+numComments=8

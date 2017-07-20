@@ -11,10 +11,12 @@ public class TextPanel extends Actor implements Serializable
     public static final float FONT_SIZE = 24.0f;
     public static final int WIDTH = 540;
     public static final int HEIGHT = 330;
-   // public static final int TOTAL_ANSWERS = 6;
+    // public static final int TOTAL_ANSWERS = 6;
     private String status = null;
     private WrittenText text;
     private int counter = 1;
+    private int count_slide = 0;
+    String debugMsg = null;
     //private int iScore, lives, wrong_answers = 0;
 
     private GreenfootImage image;
@@ -24,19 +26,88 @@ public class TextPanel extends Actor implements Serializable
         this.status = status;
         text = new WrittenText();
         //this.iScore = iScore;
-       //wrong_answers = TOTAL_ANSWERS - iScore;
-        
+        //wrong_answers = TOTAL_ANSWERS - iScore;
+
     }
-    
+
+    public TextPanel(String status, String debugMsg)
+    {
+        this.status = status;
+        this.debugMsg = debugMsg;
+        text = new WrittenText();
+    }
+
     public void act()
     {
+
     }
-    
+
     protected void addedToWorld(World w){
-        makeText();
-}
-    
-    private void makeText(){
+        if (w instanceof Level_0){
+            makeTextL0();
+        }
+        if (w instanceof Level_1 || w instanceof mainHouseRoom){
+            makeTextL1();
+        }
+    }
+
+    private void makeTextL0(){
+
+        if (status == "welcomeMsgL0") {
+            String mytext = text.welcomeMsgL0();
+            count_slide = 1;
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText1L0") {
+            String mytext = text.taskText1L0();
+            count_slide = 2;
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText2L0") {
+            String mytext = text.taskText2L0();
+            count_slide = 3;
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText3L0") {
+            String mytext = text.taskText3L0();
+            count_slide = 4;
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText4L0") {
+            String mytext = text.taskText4L0();
+            count_slide = 5;
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText5L0") {
+            String mytext = text.taskText5L0();
+            count_slide = 6;
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText6L0") {
+            String mytext = text.taskText6L0();
+            count_slide = 7;
+            makeImage(mytext, "alien");
+        }
+        //debugger message
+        if (status == "wrongKey"){
+            makeImage(debugMsg, "alien");
+        }
+        if (status == "houseMsgL0"){
+            String mytext = text.toFixHouse();
+            makeImage(mytext);
+        }
+        if (status == "allMaterial"){
+            String mytext = text.allMaterial();
+            makeImage(mytext);
+        }
+        if (status == "wellDone"){
+            String mytext = text.wellDone();
+            makeImage(mytext, "alien");
+        }
+
+    }
+
+    private void makeTextL1(){
         if (status == "BrokenHutMessage") {
             String mytext = text.brokenHut();
             makeImage(mytext);
@@ -85,12 +156,12 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.lockedDoor();
             makeImage(mytext);
         }
+        //method for debug messages
         if (status == "wrongKey"){
-            String mytext = text.warningDoor();
-            makeImage(mytext, "elder");
+            makeImage(debugMsg, "elder");
         }
     }
-    
+
     private void makeImage(String title)
     //δημιουργείται η εικόνα του ScoreBoard
     {
@@ -108,32 +179,54 @@ public class TextPanel extends Actor implements Serializable
         //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα
         if ((status == "BrokenHutMessage") || (status == "RoomEntranceText")
         || (status == "welcomeMsg")) image.drawString("Πάτα ENTER", 30, 290);
-        if (status == "lockedDoor") image.drawString("Πάτα ENTER", 30, 290);
-        // if (status == "start1_1" | status == "start2_1") image.drawString("Πάτα το ΚΑΤΩ ΒΕΛΟΣ", 60, 300);
+        if (status == "lockedDoor" || status=="houseMsgL0") image.drawString("Πάτα ENTER", 30, 290);
+        if (status == "allMaterial")  image.drawString("Πάτα ENTER", 30, 290);
         // if (status == "start1_2") image.drawString("Πάτα SPACE για να ξεκινήσεις", 60, 300);
         // if (status == "start2") image.drawString("Πάτα ENTER", 200, 280);
         // if (status == "start_quiz") image.drawString("Πάτα ENTER", 200, 280);
         // if (status == "start_quiz2") image.drawString("Πάτα ENTER για να ξεκινήσεις", 60, 280);
         setImage(image);
- 
+
     }
-    
-        private void makeImage(String title, String icon)
+
+    private void makeImage(String title, String icon)
     //δημιουργείται η εικόνα του ScoreBoard
-    {
-        image = new GreenfootImage(WIDTH, HEIGHT);
-        image.setColor(new Color(130,24,24, 255));
-        image.fillRect(0, 0, image.getWidth(),image.getHeight());
-        image.setColor(new Color(200, 163, 92, 100));
-        image.fillRect(5, 5, image.getWidth()- 10, image.getHeight()-10);
-        image.setFont(new Font("Monospaced", 22));
-        image.setColor(Color.WHITE);
+    {     
+        //level 0
+        if (icon == "alien"){
+            image = new GreenfootImage(WIDTH, HEIGHT);
+            image.setColor(new Color(200,0,1, 100));
+            image.fillRect(0, 0, image.getWidth(),image.getHeight());
+            image.setColor(new Color(50, 200, 100, 180));
+            image.fillRect(5, 5, image.getWidth()- 10, image.getHeight()-10);
+            image.setFont(new Font("Lucida Sans Unicode", 22));
+            image.setColor(Color.WHITE);
+            if (status == "welcomeMsgL0" || status == "taskText1L0" || status == "taskText2L0"
+            || status == "taskText3L0" || status == "taskText4L0" || status == "taskText5L0"
+            || status == "taskText6L0" )
+            {
+                image.drawString("Πάτα ENTER", 30, 290);
+                image.drawString(count_slide+"/7", 450, 290);
+            }
+            if (status == "wrongKey" || status=="wellDone") image.drawString("Πάτα ENTER", 30, 290);
+
+        }
+        //level 1
+        if (icon == "elder"){
+            image = new GreenfootImage(WIDTH, HEIGHT);
+            image.setColor(new Color(130,24,24, 255));
+            image.fillRect(0, 0, image.getWidth(),image.getHeight());
+            image.setColor(new Color(200, 163, 92, 100));
+            image.fillRect(5, 5, image.getWidth()- 10, image.getHeight()-10);
+            image.setFont(new Font("Monospaced", 22));
+            image.setColor(Color.WHITE);          
+
+            if (status == "welcomeMsg" || status == "taskText1" || status == "taskText2") image.drawString("Πάτα ENTER", 30, 290);
+            if (status == "taskText3" || status == "taskText4" || status == "taskText5") image.drawString("Πάτα ENTER", 30, 290);
+            if (status == "taskText6" || status == "wrongKey") image.drawString("Πάτα ENTER", 30, 290);
+        }
         image.drawString(title, 30, 50);
-        //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα
-       if (status == "welcomeMsg" || status == "taskText1" || status == "taskText2") image.drawString("Πάτα ENTER", 30, 290);
-       if (status == "taskText3" || status == "taskText4" || status == "taskText5") image.drawString("Πάτα ENTER", 30, 290);
-       if (status == "taskText6" || status == "wrongKey") image.drawString("Πάτα ENTER", 30, 290);
         setImage(image);
     }
-  
+
 }

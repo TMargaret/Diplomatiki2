@@ -1,6 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-
 /**
  * Write a description of class TextField here.
  * 
@@ -13,29 +12,30 @@ public class TextField extends Actor
     private boolean cursorActive = false;
     private boolean displayKeyNames;
     private boolean enabled = true;
-    
+    private boolean isEDown = false;
+
     private static int activeTextField = 1;
-    
+
     private int textFieldNumber;
     private int textFontSize;
     private int cursorPosition = 0;
-    
+
     private long cursorTime = System.currentTimeMillis();
-    
+
     private String input = "";
     private String text = "";
     private String temp = "";
-    
+
     private Color bgColor = Color.WHITE;
     private Color textColor = Color.BLACK;
-    
+
     /**
      * Creates a new TextField of a default size of 250 x 50 with BLACK letters on WHITE background.
      */
     public TextField() {
         this(250, 50, false, true, Color.WHITE, Color.BLACK, "");
     }
-    
+
     /**
      * Creates a new TextField with a default size of 250 x 50 with BLACK letters on WHITE background and a starting text.
      * 
@@ -45,7 +45,7 @@ public class TextField extends Actor
     public TextField(String text) {
         this(250, 50, false, true, Color.WHITE, Color.BLACK, text);
     }
-    
+
     /**
      * Creates a new TextField with a default size of 250 x 50 with BLACK letters on WHITE background and a starting text.
      * 
@@ -58,7 +58,7 @@ public class TextField extends Actor
     public TextField(String text, boolean enabled) {
         this(250, 50, false, enabled, Color.WHITE, Color.BLACK, text);
     }
-    
+
     /**
      * Creates a new TextField of the given size with BLACK letters on WHITE background.
      * 
@@ -71,7 +71,7 @@ public class TextField extends Actor
     public TextField(int width, int height) throws IllegalArgumentException {
         this(width, height, false, true, Color.WHITE, Color.BLACK, "");
     }
-    
+
     /**
      * Creates a new TextField of the given size with BLACK letters on WHITE background.
      * 
@@ -87,7 +87,7 @@ public class TextField extends Actor
     public TextField(int width, int height, boolean enabled) throws IllegalArgumentException {
         this(width, height, false, enabled, Color.WHITE, Color.BLACK, "");
     }
-    
+
     /**
      * Creates a new TextField of the given size with BLACK letters on WHITE background and a starting text.
      * 
@@ -103,7 +103,7 @@ public class TextField extends Actor
     public TextField(int width, int height, String text) throws IllegalArgumentException {
         this(width, height, false, true, Color.WHITE, Color.BLACK, text);
     }
-    
+
     /**
      * Creates a new TextField of the given size with BLACK letters on WHITE background and a starting text.
      * 
@@ -122,7 +122,7 @@ public class TextField extends Actor
     public TextField(int width, int height, boolean displayKeyNames, String text) throws IllegalArgumentException {
         this(width, height, displayKeyNames, true, Color.WHITE, Color.BLACK, text);
     }
-    
+
     /**
      * Creates a new TextField of the given size and the given colors.
      * 
@@ -141,7 +141,7 @@ public class TextField extends Actor
     public TextField(int width, int height, Color bgColor, Color textColor) throws IllegalArgumentException {
         this(width, height, false, true, bgColor, textColor, "");
     }
-    
+
     /**
      * Creates a new TextField of the given size and the given colors.
      * 
@@ -163,7 +163,7 @@ public class TextField extends Actor
     public TextField(int width, int height, boolean displayKeyNames, Color bgColor, Color textColor) throws IllegalArgumentException {
         this(width, height, false, true, bgColor, textColor, "");
     }
-    
+
     /**
      * Creates a new TextField of the given size, the given colors and a starting text.
      * 
@@ -182,7 +182,7 @@ public class TextField extends Actor
     public TextField(int width, int height, Color bgColor, Color textColor, String text) throws IllegalArgumentException {
         this(width, height, false, true, bgColor, textColor, text);
     }
-    
+
     /**
      * Creates a new TextField of the given size, the given colors and a starting text.
      * 
@@ -204,7 +204,7 @@ public class TextField extends Actor
     public TextField(int width, int height, boolean displayKeyNames, Color bgColor, Color textColor, String text) throws IllegalArgumentException {
         this(width, height, displayKeyNames, true, bgColor, textColor, text);
     }
-    
+
     /**
      * Creates a new TextField of the given size, the given colors and a starting text.
      * 
@@ -245,7 +245,7 @@ public class TextField extends Actor
         resetImage();
         displayText();
     }
-    
+
     /**
      * Assigns this field a number.
      * This method is called when the object is added to the world.
@@ -253,15 +253,17 @@ public class TextField extends Actor
     public void addedToWorld(World world) {
         textFieldNumber = getWorld().getObjects(TextField.class).size();
     }
-    
+
     /**
      * Control the TextFields action.
      */
     public void act() {
+
         if (Greenfoot.mouseClicked(this)) {
             activeTextField = textFieldNumber;
             active = true;
         }
+
         if (active) {
             if (activeTextField != textFieldNumber) {
                 active = false;
@@ -273,87 +275,95 @@ public class TextField extends Actor
                 cursorTime = System.currentTimeMillis();
                 cursorActive = !cursorActive;
             }
-            input = Greenfoot.getKey();
-            if (enabled) {
-                if (displayKeyNames) {
-                    if (input != null && input != "") {
-                        text = input;
-                    }
-                }
-                else {
-                    if (input == "backspace" && text.length() != 0 && cursorPosition != 0) {
-                        if (cursorPosition == text.length()) {
-                            text = text.substring(0, text.length()-1);
+            
+                input = Greenfoot.getKey();
+
+                if (enabled) {
+                    if (displayKeyNames) {
+                        if (input != null && input != "") {
+                            text = input;
                         }
-                        else {
-                            temp = text.substring(0, cursorPosition - 1);
-                            temp += text.substring(cursorPosition, text.length()-1);
-                            text = temp;
-                            temp = "";
-                        }
-                        cursorPosition--;
                     }
-                    else if (input == "enter") {
-                        setActiveTextField();
-                    }
-                    else if (input == "space") {
-                        if (cursorPosition == text.length()) {
-                            text += " ";
-                        }
-                        else {
-                            temp = text.substring(0, cursorPosition);
-                            temp += " ";
-                            temp += text.substring(cursorPosition, text.length() - 1);
-                            text = temp;
-                            temp = "";
-                        }
-                        cursorPosition++;
-                    }
-                    else if (input == "left") {
-                        if (cursorPosition > 0) {
+                    else {
+                        if (input == "backspace" && text.length() != 0 && cursorPosition != 0) {
+                            if (cursorPosition == text.length()) {
+                                text = text.substring(0, text.length()-1);
+
+                            }
+                            else {
+                                temp = text.substring(0, cursorPosition - 1);
+                                temp += text.substring(cursorPosition, text.length()-1);
+                                text = temp;
+                                temp = "";
+
+                            }
                             cursorPosition--;
-                            cursorTime = System.currentTimeMillis();
-                            cursorActive = true;
                         }
-                    }
-                    else if (input == "right") {
-                        if (cursorPosition < text.length()) {
+                        else if (input == "enter") {
+                            setActiveTextField();
+                        }
+                        else if (input == "space") {
+                            if (cursorPosition == text.length()) {
+                                text += " ";
+                            }
+                            else {
+                                temp = text.substring(0, cursorPosition);
+                                temp += " ";
+                                temp += text.substring(cursorPosition, text.length() - 1);
+                                text = temp;
+                                temp = "";
+
+                            }
                             cursorPosition++;
-                            cursorTime = System.currentTimeMillis();
-                            cursorActive = true;
                         }
-                    }
-                    else if (input != null && input.length() == 1) {
-                        if (cursorPosition == text.length()) {
-                            text += input;
+                        else if (input == "left") {
+                            if (cursorPosition > 0) {
+                                cursorPosition--;
+                                cursorTime = System.currentTimeMillis();
+                                cursorActive = true;
+                            }
                         }
-                        else {
-                            temp = text.substring(0, cursorPosition);
-                            temp += input;
-                            temp += text.substring(cursorPosition, text.length() - 1);
-                            text = temp;
-                            temp = "";
+                        else if (input == "right") {
+                            if (cursorPosition < text.length()) {
+                                cursorPosition++;
+                                cursorTime = System.currentTimeMillis();
+                                cursorActive = true;
+                            }
                         }
-                        cursorPosition++;
+                        else if (input != null && input.length() == 1) {
+                            if (cursorPosition == text.length()) {
+                                text += input;
+
+                            }
+                            else {
+                                temp = text.substring(0, cursorPosition);
+                                temp += input;
+                                temp += text.substring(cursorPosition, text.length() - 1);
+                                text = temp;
+                                temp = "";
+                            }
+                            cursorPosition++;
+                        }
                     }
                 }
+                else if (input == "enter") {
+                    setActiveTextField();
+                }
+                displayText();
             }
-            else if (input == "enter") {
-                setActiveTextField();
+            else {
+                if (activeTextField == textFieldNumber) {
+                    active = true;
+                }
             }
-            displayText();
-        }
-        else {
-            if (activeTextField == textFieldNumber) {
-                active = true;
-            }
-        }
+        
     }
-    
+
     /**
      * Display the text onto the TextField.
      */
     private void displayText() {
+        
         GreenfootImage textImage = new GreenfootImage(text, textFontSize, textColor, new Color(0, 0, 0, 0));
         GreenfootImage textBeforeCursor = new GreenfootImage(text.substring(0, cursorPosition), textFontSize, textColor, new Color(0, 0, 0, 0));
         resetImage();
@@ -364,8 +374,10 @@ public class TextField extends Actor
         }
         getImage().setColor(bgColor);
         getImage().fillRect(0, 0, 3, getImage().getHeight()-2);
+        // GreenfootImage close = new GreenfootImage("closebtn.png");
+        // getImage().drawImage(close, getX(), getY());
     }
-    
+
     /**
      * Clears the image of the TextField so that it is empty again.
      */
@@ -376,7 +388,7 @@ public class TextField extends Actor
         getImage().fillRect(0, getImage().getHeight()-2, getImage().getWidth(), 3);
         getImage().fillRect(getImage().getWidth()-2, 0, 3, getImage().getHeight());
     }
-    
+
     /**
      * Set the active TextField to the given number.
      * 
@@ -386,6 +398,7 @@ public class TextField extends Actor
     public void setActiveTextField(int activeTextField) {
         this.activeTextField = activeTextField;
     }
+
     /**
      * Set the active TextField to the next textfield.
      */
@@ -395,7 +408,7 @@ public class TextField extends Actor
             activeTextField = 1;
         }
     }
-    
+
     /**
      * Check whether this textfield is enabled (if you can change the text in it).
      * 
@@ -405,6 +418,7 @@ public class TextField extends Actor
     public boolean isEnabled() {
         return enabled;
     }
+
     /**
      * Enable or disenable the textfield.
      * 
@@ -414,7 +428,7 @@ public class TextField extends Actor
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
-    
+
     /**
      * Returns the text of this textfield.
      * 
@@ -424,6 +438,7 @@ public class TextField extends Actor
     public String getText() {
         return text;
     }
+
     /**
      * Set the text of this textfield.
      * 
@@ -434,7 +449,7 @@ public class TextField extends Actor
         this.text = text;
         cursorPosition = text.length();
     }
-    
+
     /**
      * Returns the backgroundcolor of this TextField.
      * 
@@ -444,6 +459,7 @@ public class TextField extends Actor
     public Color getBackgroundColor() {
         return bgColor;
     }
+
     /**
      * Set the backgroundcolor to the given color.
      * 
@@ -453,7 +469,7 @@ public class TextField extends Actor
     public void setBackgroundColor(Color bgColor) {
         this.bgColor = bgColor;
     }
-    
+
     /**
      * Returns the textcolor of this TextField.
      * 
@@ -463,6 +479,7 @@ public class TextField extends Actor
     public Color getTextColor() {
         return textColor;
     }
+
     /**
      * Set the textcolor to the given color.
      * 

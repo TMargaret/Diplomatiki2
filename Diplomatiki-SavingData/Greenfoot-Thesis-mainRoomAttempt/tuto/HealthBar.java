@@ -10,12 +10,14 @@ import java.io.*;
  */
 public class HealthBar extends Actor
 {
+    GreenfootImage myImage;
     static int health;
     int healthBarWidth = 80;
     int healthBarHeight = 15;
-    int pixelsPerHealthPoint = (int)healthBarWidth / 4;
+    int pixelsPerHealthPoint = (int)healthBarWidth / 6;
 
     public HealthBar(int health){
+        pixelsPerHealthPoint = (int)healthBarWidth / health;
         this.health = health;
         update();
     }
@@ -31,7 +33,7 @@ public class HealthBar extends Actor
 
     public void update(){
         setImage(new GreenfootImage(healthBarWidth + 2, healthBarHeight + 2));
-        GreenfootImage myImage = getImage();
+        myImage = getImage();
         myImage.setColor(Color.BLACK);
         myImage.drawRect(0, 0, healthBarWidth + 1, healthBarHeight + 1);
         myImage.setColor(Color.RED);

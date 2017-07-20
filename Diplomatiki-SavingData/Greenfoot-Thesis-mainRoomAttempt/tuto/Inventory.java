@@ -15,7 +15,7 @@ public class Inventory extends DragAndDrop
     private boolean created;
     private static boolean open;
     GreenfootImage moneyImg;
-    GreenfootImage imgInventory = new GreenfootImage("hud.png");
+    GreenfootImage imgInventory = new GreenfootImage("hud.gif");
     String[] items;
 
     //private int version;
@@ -50,8 +50,12 @@ public class Inventory extends DragAndDrop
             {
                 GreenfootImage itemImg;
                 String item = items[i];
-                itemImg = new GreenfootImage(item + "icon" + ".png");
-                imgInventory.drawImage(itemImg, itemPosX[i-1], itemPosY[i-1]);
+                //if item has been used is equal to null, so we don't want to draw anything
+                if (item != null){
+
+                    itemImg = new GreenfootImage(item + "icon" + ".png");
+                    imgInventory.drawImage(itemImg, itemPosX[i-1], itemPosY[i-1]);
+                }
             }
         }
     }
@@ -162,7 +166,7 @@ public class Inventory extends DragAndDrop
         //moneyImg.drawString(Player.getMoney() + "", 0, moneyImg.getHeight()/2);
         //bg.clear();
 
-        imgInventory.drawImage(new GreenfootImage("hud.png"),0,0);
+        imgInventory.drawImage(new GreenfootImage("hud.gif"),0,0);
         // switch(version)
         // {
         // case 1: bg.drawImage(new GreenfootImage("hud_2.png"),0,0); break;
@@ -201,8 +205,11 @@ public class Inventory extends DragAndDrop
             {
                 GreenfootImage itemImg;
                 String item = items[i];
-                itemImg = new GreenfootImage(item + "icon" + ".png");
-                imgInventory.drawImage(itemImg, itemPosX[i-1], itemPosY[i-1]);
+                if (item != null){
+
+                    itemImg = new GreenfootImage(item + "icon" + ".png");
+                    imgInventory.drawImage(itemImg, itemPosX[i-1], itemPosY[i-1]);
+                }
                 // int mouseX = Greenfoot.getMouseInfo().getX();
 
                 // int mouseY = Greenfoot.getMouseInfo().getY();

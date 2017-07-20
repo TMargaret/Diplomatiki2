@@ -20,6 +20,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     GreenfootImage alex = new GreenfootImage("alex.png");
     final int IMG_WIDTH = alex.getWidth()/6;
     final int IMG_HEIGHT = alex.getHeight()/4;
+    static boolean flagForRemovedItem = false;
 
     HealthLogo healthLogo;
     HealthBar healthBar;
@@ -29,16 +30,16 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     ExitBar exitBar;
     HintRules hintRules;
     boolean invIsOpen = false, hintIsOpen = false;
-    Button inventoryBtn, hintBtn;
+    Button inventoryBtn, hintBtn, exitBtn;
     private static String[] items;
     public double time;
-    static int alexHealth = 4;
+    static int alexHealth = 6;
     Level_1 level1;
     boolean isAdded = false;
 
     ArrayList<Material> materialList;
     Material myMaterial;
-    ArrayList<Material> inventoryList = new ArrayList<Material>();
+    static ArrayList<Material>  inventoryList = new ArrayList<Material>();
 
     /**
      * Constructor
@@ -68,7 +69,9 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             inventoryBtn.setResponder(this);
 
             exitBar = new ExitBar();
-            
+            exitBtn = new Button(exitBar.getImage().getWidth(), exitBar.getImage().getHeight());
+            exitBtn.setResponder(this);
+
             hintBar = new HintBar();
             hintBtn = new Button(hintBar.getImage().getWidth(), hintBar.getImage().getHeight());
             hintBtn.setResponder(this);
@@ -79,12 +82,13 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         getWorld().addObject(invBar,947,18);
 
         getWorld().addObject(inventoryBtn, 947, 18);
-        
+
         getWorld().addObject(exitBar,984,18);
+        getWorld().addObject(exitBtn, 984, 18);
         getWorld().addObject(hintBar, 910, 18);
         getWorld().addObject(hintBtn, 910, 18);
         
-       
+
     }
 
     /**
@@ -106,6 +110,10 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         if (getWorld() instanceof mainHouseRoom){
             mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
             materialList = mainHouseRoom.getMaterialList();
+        }
+        if (getWorld() instanceof Level_0){
+            Level_0 level0 = (Level_0)getWorld();
+            materialList = level0.getMaterialList();
         }
     }
 
@@ -177,7 +185,10 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             (getOneIntersectingObject(Door.class) != null) ||
             (getOneIntersectingObject(Lumber.class) !=null) ||
             (getOneIntersectingObject(Clay.class) !=null) ||
-            (getOneIntersectingObject(Straw.class) !=null)){ 
+            (getOneIntersectingObject(Straw.class) !=null) ||
+            (getOneIntersectingObject(StoneOven.class) !=null) ||
+            (getOneIntersectingObject(Brick.class) !=null) ||
+            (getOneIntersectingObject(Alien.class) !=null)){ 
                 setLocation(getX() - dx, getY());
             }
             setLocation(getX(), getY() + dy);
@@ -187,7 +198,10 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             || (getOneIntersectingObject(Door.class) != null)
             || (getOneIntersectingObject(Lumber.class) !=null)
             || (getOneIntersectingObject(Clay.class) !=null)
-            || (getOneIntersectingObject(Straw.class) !=null)){
+            || (getOneIntersectingObject(Straw.class) !=null) ||
+            (getOneIntersectingObject(StoneOven.class) !=null) ||
+            (getOneIntersectingObject(Brick.class) !=null) ||
+            (getOneIntersectingObject(Alien.class) !=null)){
                 setLocation(getX(), getY() - dy);
             }
         }
@@ -317,20 +331,11 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     }
 
     /**
-     * Method getHealthBar
-     *
-     * @return The return value
-     */
-    public HealthBar getHealthBar(){
-        return healthBar;
-    }
-
-    /**
      * Method gameOver, Checks the healthbar and terminates the game if no health is left
      *
      */
     public void gameOver(){
-        if (alexHealth <= 0)
+        if (healthBar.getHealth() <= 0)
             Greenfoot.stop();
     }
 
@@ -369,8 +374,11 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             getWorld().removeObject(inv);
             invIsOpen = false;
         }
-        
-        
+        //exitButton
+        if (Greenfoot.mouseClicked(exitBtn))
+        {
+            Greenfoot.setWorld(new LevelsScreen());
+        }
 
     }
 
@@ -380,6 +388,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                 for (Material myMat : materialList){
                     if(myMat.getAddToInv())
                     {
+                        invBar.specialEffect();
                         addItem(myMat.getMaterial());
                         myMat.setAddToInv();
                         myMaterial = myMat; 
@@ -391,6 +400,28 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             }
             materialList.remove(myMaterial);
         }       
+    }
+
+    /**
+     * Method getMaterialList
+     *
+     * @return The return value
+     */
+    public ArrayList getMaterialList(){
+        return inventoryList;
+    }
+
+    public static void removeFromInv(boolean flag){
+        Material m = null;
+        for (Material material : inventoryList)
+        {
+            if(flag && !flagForRemovedItem){
+                removeItem(material.getMaterial());
+                m = material;
+                flagForRemovedItem = true;
+            }
+        }
+        inventoryList.remove(m);
     }
 
     public static String[] getItems()
@@ -410,9 +441,29 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         for (int i = 0; i < x; i++) 
             temp[i] = items[i];  
         items = new String[x + 1];  
-        for (int i = 0; i < x; i++) 
-            items[i] = temp[i];  
+        for (int i = 0; i < x; i++) {
+            items[i] = temp[i]; 
+        }  
         items[x] = newItem;  
+    }
+
+    /**
+     * Method removeItem from inventory. We just replace the item with null
+     *
+     * @param newItem A parameter
+     */
+    public static void removeItem(String newItem)  
+    {  
+        int x = items.length;  
+        for (int i = 0; i < x; i++) {
+            if (items[i] != null){
+                if (items[i].equals(newItem))
+                {
+                    items[i] = null;
+                    break;
+                }
+            }
+        }
     }
 
     public void setIsAdded(boolean isAdded){

@@ -11,7 +11,7 @@ import java.util.List;
 public class Material extends Actor 
 {
     private HiddenSprite hs;
-    private int hsWidth, hsHeight = 40;
+    private int hsWidth, hsHeight = 90;
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
 
@@ -19,10 +19,13 @@ public class Material extends Actor
     boolean wrongCommand = false;
     TextField textField;
     int counter = 30;
+    int version = 0;
     String my_text = "";
     TextPanel textPanel;
     static boolean addToInv = false;
     ArrayList<Material> materialList = new ArrayList<Material>();
+    InvBar invBar = new InvBar();
+    Debugger db;
 
     public Material(){
     }
@@ -33,31 +36,48 @@ public class Material extends Actor
      */
     public void act() 
     {
+        checkWorld();
         materialCreation();
     }    
 
     protected void addedToWorld(World w)
     {
-        addHiddenSprite();
+        addHiddenSprite(w);
     }
 
-    protected void addHiddenSprite() {   
-        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , hsHeight, HS_OFFSET_X, HS_OFFSET_Y, true);  
-        getWorld().addObject(hs, getX(), getY()); 
+    public void addHiddenSprite(World w) {   
+        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , hsHeight/2, HS_OFFSET_X, HS_OFFSET_Y, true);  
+        w.addObject(hs, getX(), getY()); 
+    }
+
+    public void checkWorld(){
+        if (getWorld() instanceof Level_0){
+            version = 0;
+        }
+        if (getWorld() instanceof Level_1){
+            version = 1;
+        }
+        if (getWorld() instanceof mainHouseRoom){
+            version = 2;
+        }
     }
 
     public void materialCreation(){
         if( hs.getWorld() != null ) {   
             List<Actor> things = hs.getHitBoxIntersections();    
             if( things.size() > 1 ) {      
-                int infront = 0;      
-                for(int i=0; i < things.size(); i++ ) {       
-                    Actor a = things.get(i);        
-                    if(a instanceof HiddenSprite)        
-                        continue;        
+
+
+                Actor a = null;
+                // int infront = 0;      // TODO Show list of intersecting objects. Pick the one to interact with 1,2,3,4...1
+                for(int i=0; i < things.size(); i++ ) { 
+                    a = things.get(i);
+                    if(a instanceof HiddenSprite)  {     
+                       continue;
+                    }
                     if( a instanceof Alex) {
                         counter--;
-                        if (Greenfoot.isKeyDown("e") & !isEDown){
+                        if (Greenfoot.isKeyDown("e") && !isEDown){
                             isEDown = true;
                             counter = 20;
                         }
@@ -68,11 +88,20 @@ public class Material extends Actor
                         if (Greenfoot.mouseClicked(textField) && isEDown){
                             textField.setText("");
                         }
+                        if (Greenfoot.isKeyDown("escape") && isEDown){
+                            getWorld().removeObject(textField); 
+                            isActive = false;
+                            isEDown = false;
+                        }   
+                        
                         if (Greenfoot.isKeyDown("enter") && isEDown){
                             counter = 30;
-                            my_text = textField.getText();
+                            //my_text = textField.getText();
+                            db = new Debugger(textField.getText(), checkMaterial());
 
-                            if (my_text.contains(checkMaterial()))
+                           // if (my_text.contains(checkMaterial()))
+                            //if ((db.checkSpelling()).contains(checkMaterial()))
+                            if (db.checkSpelling())
                             {
                                 getWorld().removeObject(textField);
                                 getWorld().removeObject(this);
@@ -83,8 +112,8 @@ public class Material extends Actor
                             }
                             else {
                                 checkHealthBar();
-                                getWorld().removeObject(textField);
-                                textPanel= new TextPanel("wrongKey");
+                                getWorld().removeObject(textField);                             
+                                textPanel= new TextPanel("wrongKey", db.feedback());
                                 getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                                 tryAgainOrLeave = true;
                                 isEDown = false;
@@ -106,26 +135,45 @@ public class Material extends Actor
     }
 
     public void textFieldCreation(){
-        textField = new TextField(700, 45, "Δημιούργησε ένα αντικείμενο " + getMaterial() + " και πάτα enter");
-        getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
+        switch(version){
+            case 0:
+            textField = new TextField(700, 45,"Κάλεσε την αντίστοιχη μέθοδο και πάτα enter");
+            getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
+            break;
+            case 1:
+            case 2:
+            textField = new TextField(700, 45,"Δημιούργησε ένα αντικείμενο " + getMaterial() + " και πάτα enter");
+            getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
+            break;
+        }
     }
 
     public void checkHealthBar(){
-        if (getWorld() instanceof Level_1){
+        switch(version){
+            case 0:
+            Level_0 lvl0 = (Level_0)getWorld();
+            getWorld().removeObject(textField);
+            if (!wrongCommand){
+                wrongCommand = true;
+                HealthBar.looseHealth();
+            }
+            break;
+            case 1:
             Level_1 level1 = (Level_1) getWorld();
             getWorld().removeObject(textField);
             if (!wrongCommand){
                 wrongCommand = true;
                 HealthBar.looseHealth();
             }
-        }
-        if (getWorld() instanceof mainHouseRoom){
+            break;
+            case 2: 
             mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
             getWorld().removeObject(textField);
             if (!wrongCommand){
                 wrongCommand = true;
                 HealthBar.looseHealth();
             }
+           break;
         }
     }
 
