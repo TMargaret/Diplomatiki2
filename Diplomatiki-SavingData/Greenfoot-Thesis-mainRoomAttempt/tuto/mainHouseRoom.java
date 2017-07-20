@@ -98,7 +98,7 @@ public class mainHouseRoom extends World
         addObject(door,713,225);
 
         door2 = new Door();
-        addObject(door2,321,406);
+        addObject(door2,420,406);
 
         doorList.add(door);
         doorList.add(door2);
@@ -110,11 +110,11 @@ public class mainHouseRoom extends World
 
         elder = new Elder();
         addObject(elder,900,500);
-        
+
         brick = new Brick();
-        addObject(brick,910,85);
+        addObject(brick,100,258);
         brick2 = new Brick();
-        addObject(brick2,910,230);
+        addObject(brick2,360,258);
 
         lumber = new Lumber();
         addObject(lumber,100,400);
@@ -126,6 +126,8 @@ public class mainHouseRoom extends World
         materialList.add(brick);
         materialList.add(brick2);
         
+        StoneOven stoneoven = new StoneOven();
+        addObject(stoneoven,910,129);
     }
 
     public void addWall(){
@@ -153,26 +155,37 @@ public class mainHouseRoom extends World
         addObject(wall84,712,137);
         wall84.setRotation(90);
 
-        //Room with Wood
+        //Room with Wood      
+        Wall wall70 = new Wall();
+        addObject(wall70,400,200);
+        
         Wall wall71 = new Wall();
-        addObject(wall71,82,340);
+        addObject(wall71,82,200);
 
         Wall wall72 = new Wall();
-        addObject(wall72,164,340);
+        addObject(wall72,164,200);
 
         Wall wall73 = new Wall();
-        addObject(wall73,246,340);
+        addObject(wall73,246,200);
 
         Wall wall74 = new Wall();
-        addObject(wall74,301,340);
+        addObject(wall74,328,200);
 
         Wall wall75 = new Wall();
-        addObject(wall75,321,547);
+        addObject(wall75,420,547);
         wall75.setRotation(90);
 
         Wall wall76 = new Wall();
-        addObject(wall76,321,490);
+        addObject(wall76,420,490);
         wall76.setRotation(90);
+        
+        Wall wall77 = new Wall();
+        addObject(wall77,420,240);
+        wall77.setRotation(90);
+        
+        Wall wall78 = new Wall();
+        addObject(wall78,420,320);
+        wall78.setRotation(90);
 
         //builds the right vertical paths
         for(int i=0; i<=getHeight(); i+= 80)

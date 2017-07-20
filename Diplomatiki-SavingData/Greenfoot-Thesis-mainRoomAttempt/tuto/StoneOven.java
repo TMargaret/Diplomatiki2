@@ -6,11 +6,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class StoneOven extends Workshop
+public class StoneOven extends Material
 {
     HiddenSprite hs;
+    private int hsWidth, hsHeight = 200;
+    private final int HS_OFFSET_X = 0;
+    private final int HS_OFFSET_Y = 0;
 
     public StoneOven(){
+    }
+    
+    public void addHiddenSprite(World w) {   
+        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , hsHeight/2, HS_OFFSET_X, HS_OFFSET_Y, true);  
+        w.addObject(hs, getX(), getY()); 
     }
 
     /**
@@ -21,6 +29,8 @@ public class StoneOven extends Workshop
     {
         materialCreation();
     } 
+    
+    
 
     /**
      * Method getMaterial
