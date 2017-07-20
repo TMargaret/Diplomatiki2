@@ -67,13 +67,12 @@ public class Material extends Actor
             List<Actor> things = hs.getHitBoxIntersections();    
             if( things.size() > 1 ) {      
 
-
                 Actor a = null;
                 // int infront = 0;      // TODO Show list of intersecting objects. Pick the one to interact with 1,2,3,4...1
                 for(int i=0; i < things.size(); i++ ) { 
                     a = things.get(i);
                     if(a instanceof HiddenSprite)  {     
-                       continue;
+                        continue;
                     }
                     if( a instanceof Alex) {
                         counter--;
@@ -93,21 +92,23 @@ public class Material extends Actor
                             isActive = false;
                             isEDown = false;
                         }   
-                        
+
                         if (Greenfoot.isKeyDown("enter") && isEDown){
                             counter = 30;
                             //my_text = textField.getText();
                             db = new Debugger(textField.getText(), checkMaterial());
 
-                           // if (my_text.contains(checkMaterial()))
+                            // if (my_text.contains(checkMaterial()))
                             //if ((db.checkSpelling()).contains(checkMaterial()))
                             if (db.checkSpelling())
                             {
                                 getWorld().removeObject(textField);
-                                getWorld().removeObject(this);
-                                materialList.add(this);
+                                actionMat();
+                                // getWorld().removeObject(this);
+                                // materialList.add(this);
                                 isActive = false;
                                 addToInv = true;
+                                isEDown = false;
                                 break;
                             }
                             else {
@@ -132,6 +133,11 @@ public class Material extends Actor
             }
         }
 
+    }
+
+    public void actionMat(){
+        getWorld().removeObject(this);
+        materialList.add(this);
     }
 
     public void textFieldCreation(){
@@ -173,7 +179,7 @@ public class Material extends Actor
                 wrongCommand = true;
                 HealthBar.looseHealth();
             }
-           break;
+            break;
         }
     }
 
@@ -199,6 +205,5 @@ public class Material extends Actor
     public static void setAddToInv(){
         addToInv = false;
     }
-    
 
 }

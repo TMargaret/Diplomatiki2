@@ -112,17 +112,20 @@ public class mainHouseRoom extends World
         addObject(elder,900,500);
 
         brick = new Brick();
-        addObject(brick,100,258);
+        addObject(brick,100,260);
+        brick.getImage().setTransparency(0);        
+
         brick2 = new Brick();
-        addObject(brick2,360,258);
+        addObject(brick2,100,460);
+        brick2.getImage().setTransparency(0);
 
-        lumber = new Lumber();
-        addObject(lumber,100,400);
-        lumber2 = new Lumber();
-        addObject(lumber2,100,528);  
+        // lumber = new Lumber();
+        // addObject(lumber,100,400);
+        // lumber2 = new Lumber();
+        // addObject(lumber2,100,528);  
 
-        materialList.add(lumber);
-        materialList.add(lumber2);
+        // materialList.add(lumber);
+        // materialList.add(lumber2);
         materialList.add(brick);
         materialList.add(brick2);
         

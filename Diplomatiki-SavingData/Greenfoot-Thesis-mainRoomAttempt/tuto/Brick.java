@@ -44,9 +44,9 @@ public class Brick extends Material
     public String checkMaterial(){
         String materialAnswer = "";
         switch(version){
-            case 0: materialAnswer = "Alex.pickUp();"; break;
+            case 0: 
             case 1:
-            case 2: materialAnswer = "new Brick();"; break;
+            case 2:materialAnswer = "Alex.pickUp();"; break;
         }
         return materialAnswer;
 

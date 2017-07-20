@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
  * Write a description of class StoneOven here.
@@ -12,11 +13,12 @@ public class StoneOven extends Material
     private int hsWidth, hsHeight;
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
+    Brick brick, brick2;
+    List<Brick> a;
 
     public StoneOven(){
         super.hsHeight = 300;
     }
-    
 
     /**
      * Act - do whatever the StoveOven wants to do. This method is called whenever
@@ -24,11 +26,20 @@ public class StoneOven extends Material
      */
     public void act() 
     {
+        checkWorld();
         materialCreation();
-        
+
     } 
-    
-    
+
+    public void actionMat(){
+        a = getWorld().getObjects(Brick.class);
+        for (Brick brick: a){
+            if(brick.getImage().getTransparency() == 0){
+                brick.getImage().setTransparency(255);
+                break;
+            }
+        }
+    }
 
     /**
      * Method getMaterial
@@ -36,7 +47,7 @@ public class StoneOven extends Material
      * @return The material value, for the info message that appears in inputField
      */
     public String getMaterial(){
-        String material = "";
+        String material = "Brick";
         return material;
     }
 
