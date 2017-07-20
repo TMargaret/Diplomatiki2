@@ -11,7 +11,7 @@ import java.util.List;
 public class Material extends Actor 
 {
     private HiddenSprite hs;
-    private int hsWidth, hsHeight = 90;
+    public int hsWidth, hsHeight = 90;
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
 
@@ -199,5 +199,6 @@ public class Material extends Actor
     public static void setAddToInv(){
         addToInv = false;
     }
+    
 
 }
