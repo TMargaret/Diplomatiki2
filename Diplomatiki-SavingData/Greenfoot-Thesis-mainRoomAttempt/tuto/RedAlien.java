@@ -1,19 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Windmill here.
+ * Write a description of class RedAlien here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class House2 extends Actor
+public class RedAlien extends Locals
 {
-    
-    public House2(){
-        getImage().scale(getImage().getWidth()/3, getImage().getHeight()/3);
-    }
     /**
-     * Act - do whatever the Windmill wants to do. This method is called whenever
+     * Act - do whatever the RedAlien wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 

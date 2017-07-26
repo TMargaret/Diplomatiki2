@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Wed Jul 26 21:46:56 EEST 2017
+#Wed Jul 26 22:40:44 EEST 2017
 target49.type=ClassTarget
 target24.type=ClassTarget
 target16.name=Explosion
@@ -167,6 +167,7 @@ target5.typeParameters=
 target19.typeParameters=
 dependency131.to=Alex
 target50.width=80
+class.Sign.image=sign.png
 dependency52.to=SpriteSheet
 target45.width=120
 target51.showInterface=false
@@ -454,6 +455,7 @@ dependency84.to=StartScreen
 class.Fireball.superclass=DropItem
 class.StartScreen.image=start5.png
 dependency157.to=Button
+class.Sign.superclass=greenfoot.Actor
 dependency146.from=Level_0
 readme.width=47
 dependency88.from=LevelsScreen
@@ -704,6 +706,7 @@ target20.type=ClassTarget
 target12.name=Windmill
 target26.typeParameters=
 dependency27.from=Alex
+class.RedAlien.superclass=Locals
 dependency137.from=Level_0
 class.HintBar.superclass=SpriteSheet
 dependency148.to=Vector
@@ -865,6 +868,7 @@ dependency8.type=UsesDependency
 target27.name=Debugger
 class.Wall.image=wall.jpg
 target12.showInterface=false
+class.RedAlien.image=alienRed.png
 dependency121.to=HiddenSprite
 dependency42.to=Alien
 class.StartScreen.superclass=greenfoot.World
