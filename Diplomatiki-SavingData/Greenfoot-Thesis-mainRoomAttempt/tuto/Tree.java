@@ -1,20 +1,22 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 /**
  * Write a description of class Tree here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (your name) @version (a version number or a date)
  */
 public class Tree extends DropItem
 {
+
+    /* (World, Actor, GreenfootImage, Greenfoot and MouseInfo)*/
+
     /**
-     * Act - do whatever the Tree wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Act - do whatever the Tree wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
+    public void act()
     {
+        if (getY() >= getWorld().getHeight() - 40) {
+            getWorld().removeObject(this);
+        }
         move();
-        if (getY() >= getWorld().getHeight() - 40) getWorld().removeObject(this);
-    }    
+    }
 }
