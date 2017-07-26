@@ -180,28 +180,16 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         {
             setLocation(getX() + dx, getY());
             if ((getOneIntersectingObject(Wall.class) != null) || 
-            (getOneIntersectingObject(Grass.class) != null) || 
-            (getOneIntersectingObject(Elder.class) != null) || 
-            (getOneIntersectingObject(Door.class) != null) ||
-            (getOneIntersectingObject(Lumber.class) !=null) ||
-            (getOneIntersectingObject(Clay.class) !=null) ||
-            (getOneIntersectingObject(Straw.class) !=null) ||
-            (getOneIntersectingObject(StoneOven.class) !=null) ||
-            (getOneIntersectingObject(Brick.class) !=null) ||
-            (getOneIntersectingObject(Alien.class) !=null)){ 
+            (getOneIntersectingObject(Grass.class) != null) ||  
+            (getOneIntersectingObject(Material.class) != null) ||
+            (getOneIntersectingObject(Locals.class) !=null)){ 
                 setLocation(getX() - dx, getY());
             }
             setLocation(getX(), getY() + dy);
             if ((getOneIntersectingObject(Wall.class) != null)
-            || (getOneIntersectingObject(Grass.class) != null) 
-            || (getOneIntersectingObject(Elder.class) != null) 
-            || (getOneIntersectingObject(Door.class) != null)
-            || (getOneIntersectingObject(Lumber.class) !=null)
-            || (getOneIntersectingObject(Clay.class) !=null)
-            || (getOneIntersectingObject(Straw.class) !=null) ||
-            (getOneIntersectingObject(StoneOven.class) !=null) ||
-            (getOneIntersectingObject(Brick.class) !=null) ||
-            (getOneIntersectingObject(Alien.class) !=null)){
+            || (getOneIntersectingObject(Grass.class) != null)  
+            || (getOneIntersectingObject(Material.class) != null)
+            || (getOneIntersectingObject(Locals.class) !=null)){
                 setLocation(getX(), getY() - dy);
             }
         }

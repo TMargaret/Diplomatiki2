@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Sign extends Actor
+public class Sign extends Material
 {
     /**
      * Act - do whatever the Sign wants to do. This method is called whenever
@@ -14,6 +14,7 @@ public class Sign extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        checkWorld();
+        materialCreation();
     }    
 }

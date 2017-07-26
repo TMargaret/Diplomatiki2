@@ -14,8 +14,6 @@ public class Level_02 extends World
     public int X_ROAD_HOUSE = 550;
     public int X_ROAD_HUT2 = 885;
     private Alex alex;
-    private mainHouse my_mainHouse;
-    private Straw straw, straw2;
     private Clay clay;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
     private ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
@@ -52,11 +50,6 @@ public class Level_02 extends World
 
     public void act(){
         boolean found = false;
-        for(Hut hut : hutList){
-            if ((hut.getActive()) || (isActive) ){
-                found  = true;
-            }
-        }
         for(Material material : matList){
             if(material.getWorldOfType(Level_02.class) == null){
                 pickUpList.add(material);
@@ -97,7 +90,7 @@ public class Level_02 extends World
         addObject(grass34,400,560);
         Grass grass35 = new Grass();
         addObject(grass35,400,600);
-        
+
         Grass grass30 = new Grass();
         addObject(grass30,630,400);
         Grass grass31 = new Grass();
@@ -111,6 +104,14 @@ public class Level_02 extends World
         Grass grass37 = new Grass();
         addObject(grass37,630,600);
 
+        RedAlien redalien = new RedAlien();
+        addObject(redalien,70,395);
+        
+        Sign sign = new Sign();
+        addObject(sign,347,370);
+        
+        Sign sign2 = new Sign();
+        addObject(sign2,347,560);
     }
 
     /**
