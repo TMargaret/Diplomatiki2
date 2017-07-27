@@ -6,6 +6,10 @@ import greenfoot.*;
  */
 public class Tree extends DropItem
 {
+    
+   public Tree(){
+       getImage().scale(getImage().getWidth()/2, getImage().getHeight()/2);
+    }
 
     /* (World, Actor, GreenfootImage, Greenfoot and MouseInfo)*/
 

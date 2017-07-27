@@ -10,8 +10,9 @@ import java.util.List;
  */
 public class Material extends Actor 
 {
-    private HiddenSprite hs;
-    public int hsWidth, hsHeight = 90;
+    public HiddenSprite hs;
+    public int hsWidth = 0; 
+    public int hsHeight = 90;
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
 
@@ -28,6 +29,7 @@ public class Material extends Actor
     Debugger db;
 
     public Material(){
+        hsWidth = getImage().getWidth() + getImage().getWidth()/2;
     }
 
     /**
@@ -46,7 +48,7 @@ public class Material extends Actor
     }
 
     public void addHiddenSprite(World w) {   
-        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/2 , hsHeight/2, HS_OFFSET_X, HS_OFFSET_Y, true);  
+        hs = new HiddenSprite(this, hsWidth , hsHeight/2, HS_OFFSET_X, HS_OFFSET_Y, true);  
         w.addObject(hs, getX(), getY()); 
     }
 
@@ -59,6 +61,9 @@ public class Material extends Actor
         }
         if (getWorld() instanceof mainHouseRoom){
             version = 2;
+        }
+        if (getWorld() instanceof Level_02){
+            version = 3;
         }
     }
 
@@ -148,6 +153,7 @@ public class Material extends Actor
             break;
             case 1:
             case 2:
+            case 3:
             textField = new TextField(700, 45,"Δημιούργησε ένα αντικείμενο " + getMaterial() + " και πάτα enter");
             getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
             break;
@@ -174,6 +180,14 @@ public class Material extends Actor
             break;
             case 2: 
             mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
+            getWorld().removeObject(textField);
+            if (!wrongCommand){
+                wrongCommand = true;
+                HealthBar.looseHealth();
+            }
+            break;
+            case 3: 
+            Level_02 level02 = (Level_02)getWorld();
             getWorld().removeObject(textField);
             if (!wrongCommand){
                 wrongCommand = true;

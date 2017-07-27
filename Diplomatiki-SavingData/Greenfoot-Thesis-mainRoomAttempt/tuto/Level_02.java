@@ -10,6 +10,9 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
  */
 public class Level_02 extends World
 {
+    
+    GreenfootImage imgW = new GreenfootImage("signW.png");
+    GreenfootImage imgC = new GreenfootImage("signC.png");
     public int X_ROAD_HUT = 130;
     public int X_ROAD_HOUSE = 550;
     public int X_ROAD_HUT2 = 885;
@@ -74,10 +77,48 @@ public class Level_02 extends World
         addGrass();
         addWall();
 
+        Bridge bridge = new Bridge();
+        addObject(bridge,400,455);
+        Bridge bridge2 = new Bridge();
+        addObject(bridge2,650,455);
+
         addObject(alex,79,525);
         House2 house2 = new House2();
         addObject(house2,921,370);
 
+        RedAlien redalien = new RedAlien();
+        addObject(redalien,70,395);
+
+        Sign sign = new Sign(imgW);
+        addObject(sign,347,370);
+
+        Sign sign2 = new Sign(imgC);
+        addObject(sign2,347,560);
+        
+        matList.add(sign);
+        matList.add(sign2);
+        
+    }
+
+
+    /**
+     * Method addWall. Builds the wall that holds healthbar, inventory and exit
+     *
+     */
+    public void addWall(){
+        Wall[] wall = new Wall[25];
+
+        for(int j=0; j<wall.length; j++){
+            wall[j]=new Wall();
+            addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
+        }
+    }
+
+    /**
+     * Method that adds the grass to the scenery
+     *
+     */
+    public void addGrass(){
         Grass grass26 = new Grass();
         addObject(grass26,400,400);
         Grass grass27 = new Grass();
@@ -103,35 +144,14 @@ public class Level_02 extends World
         addObject(grass36,630,560);
         Grass grass37 = new Grass();
         addObject(grass37,630,600);
-
-        RedAlien redalien = new RedAlien();
-        addObject(redalien,70,395);
-        
-        Sign sign = new Sign();
-        addObject(sign,347,370);
-        
-        Sign sign2 = new Sign();
-        addObject(sign2,347,560);
-    }
-
-    /**
-     * Method addWall. Builds the wall that holds healthbar, inventory and exit
-     *
-     */
-    public void addWall(){
-        Wall[] wall = new Wall[25];
-
-        for(int j=0; j<wall.length; j++){
-            wall[j]=new Wall();
-            addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
-        }
-    }
-
-    /**
-     * Method that adds the grass to the scenery
-     *
-     */
-    public void addGrass(){
+        Grass grass75 = new Grass();
+        addObject(grass75,464,428);
+        Grass grass76 = new Grass();
+        addObject(grass76,547,430);
+        Grass grass77 = new Grass();
+        addObject(grass77,470,529);
+        Grass grass78 = new Grass();
+        addObject(grass78,557,533);
         //creates a new array that holds the grass actor
         Grass[] grass =new Grass[25];
         Grass[] grass2 =new Grass[25];

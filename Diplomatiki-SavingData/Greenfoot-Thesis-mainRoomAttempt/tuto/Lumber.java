@@ -20,6 +20,8 @@ public class Lumber extends Material
         GreenfootImage image = getImage();
         image.scale(image.getWidth() - 10, image.getHeight() - 10);
         setImage(image);
+
+        
     }
 
     /**
@@ -52,7 +54,7 @@ public class Lumber extends Material
         switch(version){
             case 0: materialAnswer = "Alex.pickUp();"; break;
             case 1:
-            case 2: materialAnswer = "new Brick();"; break;
+            case 2: materialAnswer = "new Wood();"; break;
         }
         return materialAnswer;
 

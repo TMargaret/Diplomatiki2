@@ -20,6 +20,28 @@ public class RedAlien extends Locals
         localsDialogue();
         blink();
     }   
+    
+        public String getTextMessage(){
+        String text = "";
+        int textCase = getCount_Enter();
+        switch (textCase){
+            case 0: text = "welcomeMsgL02";
+            break;
+            case 1: text = "taskText1L02";
+            break;
+            case 2: text = "taskText2L02";
+            break;
+            case 3: text = "taskText3L02";
+            break;
+            case 4: text = "taskText4L02";
+            break;
+            case 5: text = "taskText5L02";
+            break;
+            case 6: text = "taskText6L02";
+            break;
+        }
+        return text;
+    }
 
     public void setImage1(){
         setImage(img);

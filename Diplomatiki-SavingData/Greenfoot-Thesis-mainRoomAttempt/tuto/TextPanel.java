@@ -43,11 +43,14 @@ public class TextPanel extends Actor implements Serializable
     }
 
     protected void addedToWorld(World w){
-        if (w instanceof Level_0){
+        if (w instanceof Level_0 || w instanceof Level_02){
             makeTextL0();
         }
-        if (w instanceof Level_1 || w instanceof mainHouseRoom){
+        if (w instanceof Level_02){
             makeTextL1();
+        }
+        if (w instanceof Level_1 || w instanceof mainHouseRoom){
+            makeTextL2();
         }
     }
 
@@ -107,7 +110,62 @@ public class TextPanel extends Actor implements Serializable
 
     }
 
-    private void makeTextL1(){
+    public void makeTextL1(){
+        if (status == "welcomeMsgL02") {
+            String mytext = text.welcomeMsgL02();
+            count_slide = 1;
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText1L02") {
+            String mytext = text.taskText1L02();
+            count_slide = 2;
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText2L02") {
+            String mytext = text.taskText2L02();
+            count_slide = 3;
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText3L02") {
+            String mytext = text.taskText3L02();
+            count_slide = 4;
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText4L02") {
+            String mytext = text.taskText4L02();
+            count_slide = 5;
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText5L02") {
+            String mytext = text.taskText5L02();
+            count_slide = 6;
+            makeImage(mytext, "alien");
+        }
+        if (status == "taskText6L02") {
+            String mytext = text.taskText6L02();
+            count_slide = 7;
+            makeImage(mytext, "alien");
+        }
+        //debugger message
+        if (status == "wrongKey"){
+            makeImage(debugMsg, "alien");
+        }
+        // if (status == "houseMsgL0"){
+            // String mytext = text.toFixHouse();
+            // makeImage(mytext);
+        // }
+        // if (status == "allMaterial"){
+            // String mytext = text.allMaterial();
+            // makeImage(mytext);
+        // }
+        // if (status == "wellDone"){
+            // String mytext = text.wellDone();
+            // makeImage(mytext, "alien");
+        // }
+
+    }
+
+    private void makeTextL2(){
         if (status == "BrokenHutMessage") {
             String mytext = text.brokenHut();
             makeImage(mytext);
@@ -204,6 +262,14 @@ public class TextPanel extends Actor implements Serializable
             if (status == "welcomeMsgL0" || status == "taskText1L0" || status == "taskText2L0"
             || status == "taskText3L0" || status == "taskText4L0" || status == "taskText5L0"
             || status == "taskText6L0" )
+            {
+                image.drawString("Πάτα ENTER", 30, 290);
+                image.drawString(count_slide+"/7", 450, 290);
+            }
+            if (status == "wrongKey" || status=="wellDone") image.drawString("Πάτα ENTER", 30, 290);
+            if (status == "welcomeMsgL02" || status == "taskText1L02" || status == "taskText2L02"
+            || status == "taskText3L02" || status == "taskText4L02" || status == "taskText5L02"
+            || status == "taskText6L02" )
             {
                 image.drawString("Πάτα ENTER", 30, 290);
                 image.drawString(count_slide+"/7", 450, 290);
