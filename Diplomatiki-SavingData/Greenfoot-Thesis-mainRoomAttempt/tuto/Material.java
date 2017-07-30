@@ -99,9 +99,10 @@ public class Material extends Actor
                         }   
 
                         if (Greenfoot.isKeyDown("enter") && isEDown){
+                            isEDown = false;
                             counter = 30;
                             //my_text = textField.getText();
-                            db = new Debugger(textField.getText(), checkMaterial());
+                            db = new Debugger(textField.getText(), this.checkMaterial());
 
                             // if (my_text.contains(checkMaterial()))
                             //if ((db.checkSpelling()).contains(checkMaterial()))
@@ -203,7 +204,7 @@ public class Material extends Actor
     }
 
     public String checkMaterial(){
-        String materialAnswer = "";
+        String materialAnswer = " ";
         return materialAnswer;
 
     }

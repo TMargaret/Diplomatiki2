@@ -31,7 +31,7 @@ public class Debugger
     
     public boolean checkSpelling(){
         playersCode.replaceAll("\\s", "");
-        return playersCode.contains(correctAnswer); 
+        return correctAnswer.contains(playersCode); 
     }
     
     public String feedback(){
