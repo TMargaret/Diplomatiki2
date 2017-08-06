@@ -26,6 +26,7 @@ public class LevelsScreen extends World implements ButtonResponder
         // Create a new world with 1000x600 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1);
         prepare();
+        StartScreen.startSound.play();
     }
 
     public void act(){
@@ -89,6 +90,7 @@ public class LevelsScreen extends World implements ButtonResponder
     public void setLevel(){
         if (Greenfoot.mouseClicked(hoverFrame1)){
             Greenfoot.setWorld(new Level_0());
+            StartScreen.startSound.stop();
         }
     }
 

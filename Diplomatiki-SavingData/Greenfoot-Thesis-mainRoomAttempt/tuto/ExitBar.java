@@ -34,7 +34,7 @@ public class ExitBar extends SpriteSheet
 
     public void act() 
     {
-
+        
     }    
 
 }
