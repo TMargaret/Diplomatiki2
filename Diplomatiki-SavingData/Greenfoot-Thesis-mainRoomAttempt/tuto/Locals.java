@@ -16,6 +16,7 @@ public class Locals extends Actor
     private boolean doneDialogue = false;
     private TextPanel taskText;
     Bubble bubble;
+    GreenfootSound hiSound = new GreenfootSound("hello.wav");
 
     public Locals(){
     }
@@ -65,6 +66,7 @@ public class Locals extends Actor
                     if( a instanceof Alex) {  
                         counter--;
                         if (Greenfoot.isKeyDown("e")){
+                            hiSound.play();
                             isEDown = true;
                             getWorld().removeObject(bubble);
                         }

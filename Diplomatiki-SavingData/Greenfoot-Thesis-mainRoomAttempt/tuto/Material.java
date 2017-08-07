@@ -27,6 +27,7 @@ public class Material extends Actor
     ArrayList<Material> materialList = new ArrayList<Material>();
     InvBar invBar = new InvBar();
     Debugger db;
+    GreenfootSound pickupSound = new GreenfootSound("pickUp.wav");
 
     public Material(){
         hsWidth = getImage().getWidth() + getImage().getWidth()/2;
@@ -144,6 +145,7 @@ public class Material extends Actor
     public void actionMat(){
         getWorld().removeObject(this);
         materialList.add(this);
+        pickupSound.play();
     }
 
     public void textFieldCreation(){

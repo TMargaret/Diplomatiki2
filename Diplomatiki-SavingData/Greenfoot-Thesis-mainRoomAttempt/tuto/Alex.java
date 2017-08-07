@@ -182,14 +182,18 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             if ((getOneIntersectingObject(Wall.class) != null) || 
             (getOneIntersectingObject(Grass.class) != null) ||  
             (getOneIntersectingObject(Material.class) != null) ||
-            (getOneIntersectingObject(Locals.class) !=null)){ 
+            (getOneIntersectingObject(Locals.class) !=null) ||
+            (getX() < getImage().getWidth()/2) ||
+            (getX() > getWorld().getWidth() - getImage().getWidth()/2)){ 
                 setLocation(getX() - dx, getY());
             }
             setLocation(getX(), getY() + dy);
             if ((getOneIntersectingObject(Wall.class) != null)
             || (getOneIntersectingObject(Grass.class) != null)  
             || (getOneIntersectingObject(Material.class) != null)
-            || (getOneIntersectingObject(Locals.class) !=null)){
+            || (getOneIntersectingObject(Locals.class) !=null) ||
+            (getY() < getImage().getHeight()/2) ||
+            (getY() > getWorld().getHeight() - getImage().getHeight()/2)){
                 setLocation(getX(), getY() - dy);
             }
         }
@@ -366,6 +370,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         if (Greenfoot.mouseClicked(exitBtn))
         {
             Greenfoot.setWorld(new LevelsScreen());
+            Level_0.level0Sound.stop();
         }
 
     }

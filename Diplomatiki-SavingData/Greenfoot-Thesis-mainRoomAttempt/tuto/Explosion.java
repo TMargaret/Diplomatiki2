@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Explosion extends DropItem
 {
     GreenfootImage explosion = new GreenfootImage("explosion.png");
+    GreenfootSound expSound = new GreenfootSound("expl.wav");
     int img_cell = 128;
     final int IMG_WIDTH = explosion.getWidth()/8;
     final int IMG_HEIGHT = explosion.getHeight()/5;
@@ -37,6 +38,8 @@ public class Explosion extends DropItem
         if (imageID < 41){
             setImage(SpriteSheet.getSprite(explosion, imageID,  img_cell, img_cell, IMG_WIDTH, IMG_HEIGHT));
             imageID++;
+            expSound.play();
+
         }else {
             imageID = 0;
             getWorld().removeObject(this);

@@ -10,6 +10,7 @@ import java.io.*;
  */
 public class HealthBar extends Actor
 {
+    static GreenfootSound looseHealthSound = new GreenfootSound("loose.wav");
     GreenfootImage myImage;
     static int health;
     int healthBarWidth = 80;
@@ -41,6 +42,7 @@ public class HealthBar extends Actor
     }
 
     public static void looseHealth(){
+        looseHealthSound.play();
         health--;
     }
     

@@ -26,6 +26,7 @@ public class Level_0 extends World
 
     private ArrayList<Material> materialList = new ArrayList<Material>();
     private ArrayList <Material> pickUpList = new ArrayList<Material>();
+    public static GreenfootSound level0Sound = new GreenfootSound("level0.mp3");
 
     GreenfootImage img = new GreenfootImage("level0.png");
 
@@ -39,6 +40,7 @@ public class Level_0 extends World
         super(1000, 600, 1);
         setBackground(img);
         prepare(); 
+        level0Sound.playLoop();
     }
 
     public void act(){
@@ -213,6 +215,7 @@ public class Level_0 extends World
             if (Greenfoot.isKeyDown("enter") && displayMessage){
                 removeObject(textPanel);
                 Greenfoot.setWorld(new LevelsScreen());
+                level0Sound.stop();
             }
         }
     }	

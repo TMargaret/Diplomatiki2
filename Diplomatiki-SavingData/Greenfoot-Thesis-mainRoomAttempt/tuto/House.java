@@ -24,6 +24,7 @@ public class House extends Actor
     String my_text = "";
     GreenfootImage bH = new GreenfootImage("fixedHouse.png");
     Debugger db;
+    GreenfootSound dropSound = new GreenfootSound("drop.wav");
 
     public House(){
     }
@@ -96,23 +97,27 @@ public class House extends Actor
                     {
                         switch(countUse){
                             case 0: 
+                            dropSound.play();
                             countUse++;
                             textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
                             Alex.removeFromInv(true);
                             break;
-                            case 1: 
+                            case 1:
+                            dropSound.play();
                             countUse++;
                             textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
                             Alex.flagForRemovedItem = false;
                             Alex.removeFromInv(true);
                             break;
                             case 2:
+                            dropSound.play();
                             countUse++;
                             textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
                             Alex.flagForRemovedItem = false;
                             Alex.removeFromInv(true);
                             break;
                             case 3: 
+                            dropSound.play();
                             getWorld().removeObject(textField);
                             Alex.flagForRemovedItem = false;
                             Alex.removeFromInv(true);

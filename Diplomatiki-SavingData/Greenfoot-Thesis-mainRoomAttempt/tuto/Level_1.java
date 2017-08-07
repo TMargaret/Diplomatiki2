@@ -89,10 +89,10 @@ public class Level_1 extends World
         addObject(alex,79,525);
         
         straw = new Straw();
-        addObject(straw,957,513);
+        addObject(straw,957,470);
 
         straw2 = new Straw();
-        addObject(straw2,614,511);
+        addObject(straw2,614,470);
 
         matList.add(straw);
         matList.add(straw2);
