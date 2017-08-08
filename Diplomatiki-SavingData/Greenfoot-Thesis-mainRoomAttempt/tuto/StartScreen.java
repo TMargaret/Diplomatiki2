@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class StartScreen extends World
 {
-    public static GreenfootSound startSound = new GreenfootSound("Gameover.mp3");
+    public static GreenfootSound startSound = new GreenfootSound("intro.mp3");
 
     /**
      * Constructor for objects of class StartScreen.

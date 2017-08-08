@@ -17,7 +17,7 @@ public class LevelsScreen extends World implements ButtonResponder
     boolean mouseOver = false, mouseOver2 = false;
 
     ArrayList<HoverFrame> hoverFrame = new ArrayList<HoverFrame>();
-    //static GreenfootSound level0Sound = new GreenfootSound("level0.mp3");
+    GreenfootSound enterSound = new GreenfootSound("enter.wav");
     /**
      * Constructor for objects of class LevelsScreen.
      * 
@@ -27,7 +27,7 @@ public class LevelsScreen extends World implements ButtonResponder
         // Create a new world with 1000x600 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1);
         prepare();
-
+        enterSound.setVolume(100);
         StartScreen.startSound.play();
     }
 
@@ -36,8 +36,6 @@ public class LevelsScreen extends World implements ButtonResponder
         planetHover();
         setLevel();      
     }
-    
-    
 
     public void prepare(){
         lbl = new Label("Μενού", 50);
@@ -62,11 +60,11 @@ public class LevelsScreen extends World implements ButtonResponder
 
         locklevel5 = new LockLevel();
         addObject(locklevel5,473,170);
-        
+
         hoverFrame1 = new HoverFrame();
         addObject(hoverFrame1,165,200);
         hoverFrame.add(hoverFrame1);
-        
+
         hoverFrame2 = new HoverFrame();
         addObject(hoverFrame2,490,200);
         hoverFrame.add(hoverFrame2);
@@ -88,12 +86,12 @@ public class LevelsScreen extends World implements ButtonResponder
         hoverFrame.add(hoverFrame6);
 
     }
-    
+
     public void setLevel(){
-        if (Greenfoot.mouseClicked(hoverFrame1)){
+        if (Greenfoot.mouseClicked(hoverFrame1)){ 
+            StartScreen.startSound.stop();
+            enterSound.play();
             Greenfoot.setWorld(new Level_0());
-            StartScreen.startSound.stop();          
-            //level0Sound.playLoop();
         }
     }
 
@@ -133,8 +131,6 @@ public class LevelsScreen extends World implements ButtonResponder
         if (Greenfoot.mouseClicked(menuBtn)){
             Greenfoot.setWorld(new StartScreen());
         }
-        
 
     }
-
 }

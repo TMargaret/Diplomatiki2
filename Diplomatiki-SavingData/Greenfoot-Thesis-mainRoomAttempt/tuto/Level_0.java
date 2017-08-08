@@ -27,6 +27,7 @@ public class Level_0 extends World
     private ArrayList<Material> materialList = new ArrayList<Material>();
     private ArrayList <Material> pickUpList = new ArrayList<Material>();
     public static GreenfootSound level0Sound = new GreenfootSound("level0.mp3");
+    private GreenfootSound thankSound = new GreenfootSound("thank.wav");
 
     GreenfootImage img = new GreenfootImage("level0.png");
 
@@ -208,6 +209,7 @@ public class Level_0 extends World
         if (house.getEndOfUse()){
             counterEnd--;
             if (counterEnd<0 && !displayMessage){
+                thankSound.play();
                 displayMessage = true;
                 textPanel = new TextPanel("wellDone");
                 addObject(textPanel, getWidth()/2, getHeight()/2);

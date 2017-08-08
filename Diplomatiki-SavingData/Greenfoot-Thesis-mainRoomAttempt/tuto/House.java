@@ -25,6 +25,7 @@ public class House extends Actor
     GreenfootImage bH = new GreenfootImage("fixedHouse.png");
     Debugger db;
     GreenfootSound dropSound = new GreenfootSound("drop.wav");
+    GreenfootSound buildSound = new GreenfootSound("build.mp3");
 
     public House(){
     }
@@ -117,7 +118,7 @@ public class House extends Actor
                             Alex.removeFromInv(true);
                             break;
                             case 3: 
-                            dropSound.play();
+                            buildSound.play();
                             getWorld().removeObject(textField);
                             Alex.flagForRemovedItem = false;
                             Alex.removeFromInv(true);
