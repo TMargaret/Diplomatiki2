@@ -107,6 +107,11 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.wellDone();
             makeImage(mytext, "alien");
         }
+        if (status == "youLost"){
+            String mytext = text.youLost();
+            makeImage(mytext, "alien");
+        }
+        
 
     }
 
@@ -149,6 +154,10 @@ public class TextPanel extends Actor implements Serializable
         //debugger message
         if (status == "wrongKey"){
             makeImage(debugMsg, "alien");
+        }
+        if (status == "youLost"){
+            String mytext = text.youLost();
+            makeImage(mytext, "alien");
         }
         // if (status == "houseMsgL0"){
             // String mytext = text.toFixHouse();
@@ -218,6 +227,10 @@ public class TextPanel extends Actor implements Serializable
         if (status == "wrongKey"){
             makeImage(debugMsg, "elder");
         }
+        if (status == "youLost"){
+            String mytext = text.youLost();
+            makeImage(mytext, "elder");
+        }
     }
 
     private void makeImage(String title)
@@ -275,6 +288,7 @@ public class TextPanel extends Actor implements Serializable
                 image.drawString(count_slide+"/7", 450, 290);
             }
             if (status == "wrongKey" || status=="wellDone") image.drawString("Πάτα ENTER", 30, 290);
+            if (status=="youLost") image.drawString("Πάτα SPACE", 30, 290);
 
         }
         //level 1
@@ -290,6 +304,7 @@ public class TextPanel extends Actor implements Serializable
             if (status == "welcomeMsg" || status == "taskText1" || status == "taskText2") image.drawString("Πάτα ENTER", 30, 290);
             if (status == "taskText3" || status == "taskText4" || status == "taskText5") image.drawString("Πάτα ENTER", 30, 290);
             if (status == "taskText6" || status == "wrongKey") image.drawString("Πάτα ENTER", 30, 290);
+            if (status=="youLost") image.drawString("Πάτα SPACE", 30, 290);
         }
         image.drawString(title, 30, 50);
         setImage(image);

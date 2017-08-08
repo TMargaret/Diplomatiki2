@@ -132,8 +132,10 @@ public class House extends Actor
                     else {
                         checkHealthBar();
                         getWorld().removeObject(textField);
-                        textPanel= new TextPanel("wrongKey", db.feedback());
-                        getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                        if (HealthBar.getHealth()>0){                                 
+                            textPanel= new TextPanel("wrongKey", db.feedback());
+                            getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                        }
                         tryAgainOrLeave = true;
                         isEDown = false;
                     }

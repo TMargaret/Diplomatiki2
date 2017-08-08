@@ -120,11 +120,13 @@ public class Material extends Actor
                             }
                             else {
                                 checkHealthBar();
-                                getWorld().removeObject(textField);                             
-                                textPanel= new TextPanel("wrongKey", db.feedback());
-                                getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
-                                tryAgainOrLeave = true;
-                                isEDown = false;
+                                getWorld().removeObject(textField);
+                                if (HealthBar.getHealth()>0){
+                                    textPanel= new TextPanel("wrongKey", db.feedback());
+                                    getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                                    tryAgainOrLeave = true;
+                                    isEDown = false;
+                                }
                             }
                         }
                         if (Greenfoot.isKeyDown("enter") && counter < 0 && tryAgainOrLeave){

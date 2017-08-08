@@ -75,6 +75,10 @@ public class WrittenText implements Serializable
         +" από τον\nMethodis.\n\nLive long and prosper!";
     }
     
+    public String youLost(){
+        return "Έχασες όλη σου την ενέργεια!\nΞαναπροσπάθησε!";
+    }
+    
     
    //level_02
        public String welcomeMsgL02(){

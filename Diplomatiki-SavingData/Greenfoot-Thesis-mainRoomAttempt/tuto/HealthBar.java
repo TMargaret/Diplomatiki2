@@ -50,7 +50,7 @@ public class HealthBar extends Actor
         health = alexHealth;
     }
 
-    public int getHealth(){
+    public static int getHealth(){
         return health;
     }
 }

@@ -40,6 +40,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     ArrayList<Material> materialList;
     Material myMaterial;
     static ArrayList<Material>  inventoryList = new ArrayList<Material>();
+    TextPanel theEnd;
 
     /**
      * Constructor
@@ -87,7 +88,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         getWorld().addObject(exitBtn, 984, 18);
         getWorld().addObject(hintBar, 910, 18);
         getWorld().addObject(hintBtn, 910, 18);
-        
 
     }
 
@@ -327,8 +327,13 @@ public class Alex extends SpriteSheet implements ButtonResponder{
      *
      */
     public void gameOver(){
-        if (healthBar.getHealth() <= 0)
-            Greenfoot.stop();
+        if (healthBar.getHealth() <= 0){
+            theEnd = new TextPanel("youLost");
+            getWorld().addObject(theEnd, getWorld().getWidth()/2, getWorld().getHeight()/2);
+            if (Greenfoot.isKeyDown("space")){
+                Greenfoot.setWorld(new LevelsScreen());
+            }
+        }
     }
 
     /**
