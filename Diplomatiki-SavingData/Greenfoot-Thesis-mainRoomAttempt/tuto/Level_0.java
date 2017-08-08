@@ -218,8 +218,20 @@ public class Level_0 extends World
                 removeObject(textPanel);
                 Greenfoot.setWorld(new LevelsScreen());
                 level0Sound.stop();
+                checkUnlockLevel();
             }
         }
     }	
+
+    /**
+     * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
+     * player will play the same level
+     */
+    public void checkUnlockLevel(){
+        if (LevelsScreen.unlock.size() < 2)
+        {
+            LevelsScreen.unlock.add(1);
+        }
+    }
 
 }

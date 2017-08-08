@@ -10,6 +10,11 @@ import java.util.ArrayList;
 public class LevelsScreen extends World implements ButtonResponder
 {
     Label lbl;
+    public static ArrayList<Integer> unlock = new ArrayList<Integer>(){
+            {
+                add(1);
+            }
+        }; //1 for unlocked level0
     Button menuBtn;
     HoverFrame hoverFrame1, hoverFrame2, hoverFrame3, hoverFrame4, hoverFrame5, hoverFrame6;
 
@@ -28,13 +33,13 @@ public class LevelsScreen extends World implements ButtonResponder
         super(1000, 600, 1);
         prepare();
         enterSound.setVolume(100);
-        StartScreen.startSound.play();
+        StartScreen.startSound.playLoop();
     }
 
     public void act(){
         menuHover();
         planetHover();
-        setLevel();      
+        setLevel();  
     }
 
     public void prepare(){
