@@ -6,18 +6,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Sign extends Material
+public class Sign extends Actor
 {
-    GreenfootImage imgW = new GreenfootImage("signW.png");
-    GreenfootImage imgC = new GreenfootImage("signC.png");
+    //GreenfootImage imgW = new GreenfootImage("signW.png");
+    //GreenfootImage imgC = new GreenfootImage("signC.png");
 
     public Sign(){
-        super.hsWidth = 200;
-        super.hsHeight = 200;
+       //super.hsWidth = 200;
+       // super.hsHeight = 200;
     }
 
     public Sign(GreenfootImage img){
-        setImage(img);
+       // setImage(img);
     }
 
     /**
@@ -26,16 +26,16 @@ public class Sign extends Material
      */
     public void act() 
     {
-        checkWorld();
-        materialCreation();
-        check();
+       // checkWorld();
+       // materialCreation();
+       // check();
 
     } 
 
-    public void check(){
-        if (getImage().equals(imgW)){
-            System.out.println("ok");
-        }
-    }
+    // public void check(){
+        // if (getImage().equals(imgW)){
+            // System.out.println("ok");
+        // }
+    // }
 
 }

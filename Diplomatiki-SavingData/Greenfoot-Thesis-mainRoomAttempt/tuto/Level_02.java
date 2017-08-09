@@ -11,8 +11,6 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
 public class Level_02 extends World
 {
     
-    GreenfootImage imgW = new GreenfootImage("signW.png");
-    GreenfootImage imgC = new GreenfootImage("signC.png");
     public int X_ROAD_HUT = 130;
     public int X_ROAD_HOUSE = 550;
     public int X_ROAD_HUT2 = 885;
@@ -89,15 +87,21 @@ public class Level_02 extends World
         RedAlien redalien = new RedAlien();
         addObject(redalien,70,395);
 
-        Sign sign = new Sign(imgW);
+        Sign sign = new Sign();
         addObject(sign,347,370);
 
-        Sign sign2 = new Sign(imgC);
+        Sign sign2 = new Sign();
         addObject(sign2,347,560);
+
+        Lumber lumber = new Lumber();
+        lumber.getImage().scale(lumber.getImage().getWidth()/2, lumber.getImage().getHeight()/2);
+        addObject(lumber,342,550);
+        Clay clay = new Clay();
+        clay.getImage().scale(clay.getImage().getWidth()/2, clay.getImage().getHeight()/2);
+        addObject(clay,342,365);
         
-        matList.add(sign);
-        matList.add(sign2);
-        
+        matList.add(lumber);
+        matList.add(clay);
     }
 
 

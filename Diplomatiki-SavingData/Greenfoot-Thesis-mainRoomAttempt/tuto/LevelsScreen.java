@@ -22,6 +22,7 @@ public class LevelsScreen extends World implements ButtonResponder
     public static ArrayList<Integer> unlock = new ArrayList<Integer>(){
             {
                 add(1);
+                add(1);
             }
         }; //1 for unlocked level0
         
@@ -100,6 +101,11 @@ public class LevelsScreen extends World implements ButtonResponder
             StartScreen.startSound.stop();
             enterSound.play();
             Greenfoot.setWorld(new Level_0());
+        }
+        if (Greenfoot.mouseClicked(hoverFrame2)){ 
+            StartScreen.startSound.stop();
+            enterSound.play();
+            Greenfoot.setWorld(new Level_02());
         }
     }
     

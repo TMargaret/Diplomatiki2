@@ -102,17 +102,11 @@ public class Material extends Actor
                         if (Greenfoot.isKeyDown("enter") && isEDown){
                             isEDown = false;
                             counter = 30;
-                            //my_text = textField.getText();
                             db = new Debugger(textField.getText(), this.checkMaterial());
-
-                            // if (my_text.contains(checkMaterial()))
-                            //if ((db.checkSpelling()).contains(checkMaterial()))
                             if (db.checkSpelling())
                             {
                                 getWorld().removeObject(textField);
                                 actionMat();
-                                // getWorld().removeObject(this);
-                                // materialList.add(this);
                                 isActive = false;
                                 addToInv = true;
                                 isEDown = false;
