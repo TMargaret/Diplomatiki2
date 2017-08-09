@@ -10,19 +10,21 @@ import java.util.ArrayList;
 public class LevelsScreen extends World implements ButtonResponder
 {
     Label lbl;
+    Button menuBtn; 
+    HoverFrame hoverFrame1, hoverFrame2, hoverFrame3, hoverFrame4, hoverFrame5, hoverFrame6;
+    LockLevel locklevel6, locklevel2, locklevel3, locklevel4, locklevel5;
+    
+    boolean mouseOver = false, mouseOver2 = false;
+ 
+    GreenfootSound enterSound = new GreenfootSound("enter.wav");
+    
+    ArrayList<HoverFrame> hoverFrame = new ArrayList<HoverFrame>();
     public static ArrayList<Integer> unlock = new ArrayList<Integer>(){
             {
                 add(1);
             }
         }; //1 for unlocked level0
-    Button menuBtn;
-    HoverFrame hoverFrame1, hoverFrame2, hoverFrame3, hoverFrame4, hoverFrame5, hoverFrame6;
-
-    LockLevel locklevel, locklevel2, locklevel3, locklevel4, locklevel5;
-    boolean mouseOver = false, mouseOver2 = false;
-
-    ArrayList<HoverFrame> hoverFrame = new ArrayList<HoverFrame>();
-    GreenfootSound enterSound = new GreenfootSound("enter.wav");
+        
     /**
      * Constructor for objects of class LevelsScreen.
      * 
@@ -40,6 +42,7 @@ public class LevelsScreen extends World implements ButtonResponder
         menuHover();
         planetHover();
         setLevel();  
+        unlockLevel();
     }
 
     public void prepare(){
@@ -50,12 +53,9 @@ public class LevelsScreen extends World implements ButtonResponder
         menuBtn = new Button(lbl.getImage().getWidth(), lbl.getImage().getHeight());
         addObject(menuBtn, 70, 30);
         menuBtn.setResponder(this);
-
-        locklevel = new LockLevel();
-        addObject(locklevel,806,440);
-
+        
         locklevel2 = new LockLevel();
-        addObject(locklevel2,471,440);
+        addObject(locklevel2,473,170);      
 
         locklevel3 = new LockLevel();
         addObject(locklevel3,804,170);
@@ -64,7 +64,10 @@ public class LevelsScreen extends World implements ButtonResponder
         addObject(locklevel4,153,440);
 
         locklevel5 = new LockLevel();
-        addObject(locklevel5,473,170);
+        addObject(locklevel5,471,440);
+        
+        locklevel6 = new LockLevel();
+        addObject(locklevel6,806,440);
 
         hoverFrame1 = new HoverFrame();
         addObject(hoverFrame1,165,200);
@@ -98,6 +101,28 @@ public class LevelsScreen extends World implements ButtonResponder
             enterSound.play();
             Greenfoot.setWorld(new Level_0());
         }
+    }
+    
+    public void unlockLevel(){
+        int size = unlock.size();
+        switch (size){
+            case 2:
+            removeObject(locklevel2);
+            break;
+            case 3:
+            removeObject(locklevel3);
+            break;
+            case 4:
+            removeObject(locklevel4);
+            break;
+            case 5:
+            removeObject(locklevel5);
+            break;
+            case 6:
+            removeObject(locklevel6);
+            break;
+        }
+        
     }
 
     public void menuHover(){
