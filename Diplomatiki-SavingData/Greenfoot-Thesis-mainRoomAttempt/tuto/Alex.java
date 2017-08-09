@@ -115,6 +115,10 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             Level_0 level0 = (Level_0)getWorld();
             materialList = level0.getMaterialList();
         }
+        if (getWorld() instanceof Level_02){
+            Level_02 level02 = (Level_02)getWorld();
+            materialList = level02.getMaterialList();
+        }
     }
 
     /**
