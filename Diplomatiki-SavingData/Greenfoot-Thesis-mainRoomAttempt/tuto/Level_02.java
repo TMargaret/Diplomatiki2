@@ -10,14 +10,15 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
  */
 public class Level_02 extends World
 {
-    
+
     public int X_ROAD_HUT = 130;
     public int X_ROAD_HOUSE = 550;
     public int X_ROAD_HUT2 = 885;
     private Alex alex;
-    private Clay clay;
+    private static Clay clay;
+    private static Lumber2 lumber2;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
-    private ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
+    public static ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
 
     private ArrayList <Material> pickUpList = new ArrayList<Material>(); //this is the list that Alex is retrieving
     boolean isEDown = false;
@@ -85,7 +86,7 @@ public class Level_02 extends World
         addObject(house2,921,370);
 
         RedAlien redalien = new RedAlien();
-        addObject(redalien,70,395);
+        addObject(redalien,70,360);
 
         Sign sign = new Sign();
         addObject(sign,347,370);
@@ -93,17 +94,14 @@ public class Level_02 extends World
         Sign sign2 = new Sign();
         addObject(sign2,347,560);
 
-        Lumber lumber = new Lumber();
-        lumber.getImage().scale(lumber.getImage().getWidth()/2, lumber.getImage().getHeight()/2);
-        addObject(lumber,342,550);
-        Clay clay = new Clay();
+        lumber2 = new Lumber2();
+        lumber2.getImage().scale(lumber2.getImage().getWidth()/2, lumber2.getImage().getHeight()/2);
+        addObject(lumber2,342,550);
+        clay = new Clay();
         clay.getImage().scale(clay.getImage().getWidth()/2, clay.getImage().getHeight()/2);
         addObject(clay,342,365);
-        
-        matList.add(lumber);
-        matList.add(clay);
-    }
 
+    }
 
     /**
      * Method addWall. Builds the wall that holds healthbar, inventory and exit

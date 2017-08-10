@@ -6,14 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Sign extends Actor
+public class Sign extends Material
 {
     //GreenfootImage imgW = new GreenfootImage("signW.png");
     //GreenfootImage imgC = new GreenfootImage("signC.png");
 
     public Sign(){
-       //super.hsWidth = 200;
-       // super.hsHeight = 200;
+       super.hsWidth = 10;
+       super.hsHeight = 10;
     }
 
     public Sign(GreenfootImage img){

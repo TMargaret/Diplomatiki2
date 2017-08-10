@@ -50,12 +50,14 @@ public class Lumber extends Material
      * @return The correct answer value to be check
      */
     public String checkMaterial(){
-        String materialAnswer = "";
-        switch(version){
-            case 0: materialAnswer = "Alex.pickUp();"; break;
-            case 1:
-            case 3: materialAnswer = "new Wood();"; break;
-        }
+        // String materialAnswer = "";
+        // switch(version){
+            // case 0: materialAnswer = "Alex.pickUp();"; break;
+            // case 1:
+            // // case 3: materialAnswer = "new Wood();"; break;
+        // }
+        // return materialAnswer;
+        String materialAnswer = "Alex.pickUp();"; 
         return materialAnswer;
 
     }

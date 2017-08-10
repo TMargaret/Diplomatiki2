@@ -1,29 +1,30 @@
-import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.List; 
+import greenfoot.*;
+import java.util.List;   // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Clay here.
+ * Lumber2 class is a material that must be collected in order to use it during the mission
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Margaret) 
+ * @version (30/4/2017)
  */
-public class Clay extends Material
-{  
-    Clay2 clay2 = new Clay2();
-    
+public class Lumber2 extends Material
+{
+
+    Lumber lumber = new Lumber();
     /**
-     * Clay Constructor
+     * Lumber2 Constructor
      *
      */
-    public Clay() 
+    public Lumber2() 
     {
         GreenfootImage image = getImage();
         image.scale(image.getWidth() - 10, image.getHeight() - 10);
         setImage(image);
+
     }
 
     /**
-     * Act - do whatever the Clay wants to do. This method is called whenever
+     * Act - do whatever the Lumber2 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
@@ -38,13 +39,13 @@ public class Clay extends Material
      * @return The material value, for the info message that appears in inputField
      */
     public String getMaterial(){
-        String material = "Clay";
+        String material = "Wood";
         return material;
     }
-    
+
     public void actionMat(){
-        getWorld().addObject(clay2, 40, 480);
-        Level_02.matList.add(clay2);
+        getWorld().addObject(lumber, 40, 570);
+        Level_02.matList.add(lumber);
         getWorld().removeObject(this);        
         pickupSound.play();
     }
@@ -55,7 +56,7 @@ public class Clay extends Material
      * @return The correct answer value to be check
      */
     public String checkMaterial(){
-        String materialAnswer = "new Clay();";
+        String materialAnswer = "new Wood();"; 
         return materialAnswer;
 
     }

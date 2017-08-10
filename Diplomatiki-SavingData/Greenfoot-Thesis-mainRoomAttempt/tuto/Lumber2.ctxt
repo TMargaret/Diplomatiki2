@@ -1,12 +1,12 @@
 #BlueJ class context
-comment0.target=Clay
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Clay\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.target=Lumber2
+comment0.text=\r\n\ Lumber2\ class\ is\ a\ material\ that\ must\ be\ collected\ in\ order\ to\ use\ it\ during\ the\ mission\r\n\ \r\n\ @author\ (Margaret)\ \r\n\ @version\ (30/4/2017)\r\n
 comment1.params=
-comment1.target=Clay()
-comment1.text=\r\n\ Clay\ Constructor\r\n\r\n
+comment1.target=Lumber2()
+comment1.text=\r\n\ Lumber2\ Constructor\r\n\r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Clay\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Lumber2\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment3.params=
 comment3.target=java.lang.String\ getMaterial()
 comment3.text=\r\n\ Method\ getMaterial\r\n\r\n\ @return\ The\ material\ value,\ for\ the\ info\ message\ that\ appears\ in\ inputField\r\n
