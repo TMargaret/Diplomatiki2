@@ -15,7 +15,7 @@ public class Level_02 extends World
     public int X_ROAD_HOUSE = 550;
     public int X_ROAD_HUT2 = 885;
     private Alex alex;
-    private static Clay clay;
+    Clay clay;
     private static Lumber2 lumber2;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
     public static ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
@@ -97,7 +97,7 @@ public class Level_02 extends World
         lumber2 = new Lumber2();
         lumber2.getImage().scale(lumber2.getImage().getWidth()/2, lumber2.getImage().getHeight()/2);
         addObject(lumber2,342,550);
-        clay = new Clay();
+        clay = new Clay(1);
         clay.getImage().scale(clay.getImage().getWidth()/2, clay.getImage().getHeight()/2);
         addObject(clay,342,365);
 

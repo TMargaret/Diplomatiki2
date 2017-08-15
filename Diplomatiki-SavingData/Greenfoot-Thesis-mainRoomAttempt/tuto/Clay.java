@@ -9,10 +9,12 @@ import java.util.List;
  */
 public class Clay extends Material
 {  
-    Clay2 clay2 = new Clay2();
-    
+    private String myAnswer;
+    Clay newClay;
+    private int version;
+
     /**
-     * Clay Constructor
+     * Clay Constructor. By default, this construstor uses the Alex.pickUp answer.
      *
      */
     public Clay() 
@@ -20,6 +22,22 @@ public class Clay extends Material
         GreenfootImage image = getImage();
         image.scale(image.getWidth() - 10, image.getHeight() - 10);
         setImage(image);
+        myAnswer = "Alex.pickUp();";
+        version = 0;
+    }
+
+    /**
+     * Clay Constructor. The parameter helps to define if the actionMat method should be overriden or not
+     *
+     * @param answer int parameter
+     */
+    public Clay(int newObject) 
+    {     
+        version = newObject;
+        GreenfootImage image = getImage();
+        image.scale(image.getWidth() - 10, image.getHeight() - 10);
+        setImage(image);
+        myAnswer = "new Clay();";
     }
 
     /**
@@ -41,12 +59,21 @@ public class Clay extends Material
         String material = "Clay";
         return material;
     }
-    
+
     public void actionMat(){
-        getWorld().addObject(clay2, 40, 480);
-        Level_02.matList.add(clay2);
-        getWorld().removeObject(this);        
-        pickupSound.play();
+        
+        switch(version){
+            case 0:
+            super.actionMat();
+            break;
+            case 1:
+            newClay = new Clay();
+            getWorld().addObject(newClay, 40, 480);
+            Level_02.matList.add(newClay);
+            getWorld().removeObject(this);
+            pickupSound.play();
+            break;
+        }
     }
 
     /**
@@ -55,8 +82,6 @@ public class Clay extends Material
      * @return The correct answer value to be check
      */
     public String checkMaterial(){
-        String materialAnswer = "new Clay();";
-        return materialAnswer;
-
+        return myAnswer;
     }
 }

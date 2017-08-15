@@ -19,10 +19,10 @@ public class Lumber extends Material
     {
         GreenfootImage image = getImage();
         image.scale(image.getWidth() - 10, image.getHeight() - 10);
-        setImage(image);
-
-        
+        setImage(image);      
     }
+    
+
 
     /**
      * Act - do whatever the Lumber wants to do. This method is called whenever
