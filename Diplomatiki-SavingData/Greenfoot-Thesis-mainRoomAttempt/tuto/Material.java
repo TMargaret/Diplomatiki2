@@ -19,6 +19,7 @@ public class Material extends Actor
     public boolean isEDown = false, isActive = false, tryAgainOrLeave = false;
     boolean wrongCommand = false;
     boolean thisLvl = false;
+    //boolean msgActive = false;
     TextField textField;
     int counter = 30;
     int version = 0;
@@ -84,6 +85,7 @@ public class Material extends Actor
                     if( a instanceof Alex) {
                         counter--;
                         if (Greenfoot.isKeyDown("e") && !isEDown){
+                           // msgActive = false;
                             isEDown = true;
                             counter = 20;
                         }
@@ -98,13 +100,13 @@ public class Material extends Actor
                         if (Greenfoot.mouseClicked(textField) && isEDown){
                             textField.setText("");
                         }
-                        if (Greenfoot.isKeyDown("escape") && isEDown){
+                        if (thisLvl && Greenfoot.isKeyDown("escape") && isEDown ){
                             getWorld().removeObject(textField); 
                             isActive = false;
                             isEDown = false;
                         }   
 
-                        if (Greenfoot.isKeyDown("enter") && isEDown){
+                        if (thisLvl && Greenfoot.isKeyDown("enter") && isEDown){
                             isEDown = false;
                             counter = 30;
                             db = new Debugger(textField.getText(), this.checkMaterial());

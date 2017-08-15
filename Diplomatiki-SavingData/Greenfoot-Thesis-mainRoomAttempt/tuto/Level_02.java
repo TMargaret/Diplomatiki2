@@ -98,6 +98,10 @@ public class Level_02 extends World
         clay = new Clay(1);
         clay.getImage().scale(clay.getImage().getWidth()/2, clay.getImage().getHeight()/2);
         addObject(clay,342,375);
+        
+        matList.add(bridge);
+        matList.add(lumber);
+        matList.add(clay);
 
     }
 

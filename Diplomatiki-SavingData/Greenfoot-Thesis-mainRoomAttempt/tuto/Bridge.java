@@ -8,7 +8,6 @@ public class Bridge extends Material
 {
     String myAnswer;
     int count = 0;
-    boolean thisLvl = false;
 
     public Bridge(){
         super.hsWidth = super.hsWidth/2;
@@ -24,12 +23,31 @@ public class Bridge extends Material
     public void act()
     {
         materialCreation();
-        
+
     }
 
+    @Override
+    public void extraAction(){
+        // if (checkMatList()< 2 && !msgActive){
+        // msgActive = true;
+        // counter = 150;
+        // textPanel = new TextPanel("houseMsgL0");
+        // getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+        // }
+        // if (counter<0){ 
+        // counter = 20;
+        // getWorld().removeObject(textPanel);
+        // isEDown = false;
+        // }
+        System.out.println(checkMatList());
+        if (checkMatList()== 2){
+            System.out.println("hm");
+        }
+
+    }
     public int checkMatList(){
         if (super.materialList != null){
-            for (Material mat: materialList){
+            for (Material mat: super.materialList){
                 if (mat.getMaterial() == "Clay"){
                     count++;
                 }
