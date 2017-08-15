@@ -30,7 +30,7 @@ public class Debugger
     }
     
     public boolean checkSpelling(){
-        playersCode.replaceAll("\\s", "");
+       // System.out.println(playersCode.replaceAll("\\s", " "));
         return correctAnswer.contentEquals(playersCode); 
     }
     
@@ -40,6 +40,9 @@ public class Debugger
         }
         if (!playersCode.contains("()")){
             message += err + "missing ()\n";
+        }
+        if (playersCode.contains("")){
+            message += err + "too many spaces\n";
         }
         if (!playersCode.equals(playersCode.toLowerCase()) || !playersCode.equals(playersCode.toUpperCase())){
             message += err + "words are Case Sensitive\n";

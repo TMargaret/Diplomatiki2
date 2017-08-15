@@ -78,8 +78,6 @@ public class Level_02 extends World
 
         Bridge bridge = new Bridge();
         addObject(bridge,400,455);
-        Bridge bridge2 = new Bridge();
-        addObject(bridge2,650,455);
 
         addObject(alex,79,525);
         House2 house2 = new House2();

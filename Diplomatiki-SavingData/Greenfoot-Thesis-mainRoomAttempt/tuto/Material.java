@@ -16,8 +16,9 @@ public class Material extends Actor
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
 
-    boolean isEDown = false, isActive = false, tryAgainOrLeave = false;
+    public boolean isEDown = false, isActive = false, tryAgainOrLeave = false;
     boolean wrongCommand = false;
+    boolean thisLvl = false;
     TextField textField;
     int counter = 30;
     int version = 0;
@@ -86,7 +87,11 @@ public class Material extends Actor
                             isEDown = true;
                             counter = 20;
                         }
-                        if (counter<0 && !isActive && isEDown){
+                        if (counter<0 && isEDown && !thisLvl)
+                        {
+                           extraAction();
+                        }
+                        if (counter<0 && !isActive && isEDown && thisLvl){
                             isActive = true;
                             textFieldCreation();
                         }
@@ -105,12 +110,8 @@ public class Material extends Actor
                             db = new Debugger(textField.getText(), this.checkMaterial());
                             if (db.checkSpelling())
                             {
-                                getWorld().removeObject(textField);
+                                actionSpelling();
                                 actionMat();
-                                isActive = false;
-                                addToInv = true;
-                                isEDown = false;
-                                break;
                             }
                             else {
                                 checkHealthBar();
@@ -134,7 +135,17 @@ public class Material extends Actor
                 }
             }
         }
+    }
+    
+    public void extraAction(){
+        thisLvl = true;
+    }
 
+    public void actionSpelling(){
+        getWorld().removeObject(textField);      
+        isActive = false;
+        addToInv = true;
+        isEDown = false;
     }
 
     public void actionMat(){

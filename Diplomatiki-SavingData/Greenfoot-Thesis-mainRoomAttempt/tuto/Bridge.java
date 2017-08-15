@@ -7,11 +7,13 @@ import greenfoot.*;
 public class Bridge extends Material
 {
     String myAnswer;
-    
-   public Bridge(){
-       super.hsWidth = super.hsWidth/2;
-       getImage().scale(getImage().getWidth()/2, getImage().getHeight()/2);
-       myAnswer = "Alex.use();";
+    int count = 0;
+    boolean thisLvl = false;
+
+    public Bridge(){
+        super.hsWidth = super.hsWidth/2;
+        getImage().scale(getImage().getWidth()/2, getImage().getHeight()/2);
+        myAnswer = "Alex.use();";
     }
 
     /* (World, Actor, GreenfootImage, Greenfoot and MouseInfo)*/
@@ -22,9 +24,58 @@ public class Bridge extends Material
     public void act()
     {
         materialCreation();
+        
     }
-    
-     
+
+    public int checkMatList(){
+        if (super.materialList != null){
+            for (Material mat: materialList){
+                if (mat.getMaterial() == "Clay"){
+                    count++;
+                }
+                if (mat.getMaterial() == "Lumber"){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public void actionSpelling(){
+        // switch(countUse){
+        // case 0: 
+        // dropSound.play();
+        // countUse++;
+        // textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
+        // Alex.removeFromInv(true);
+        // break;
+        // case 1:
+        // dropSound.play();
+        // countUse++;
+        // textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
+        // Alex.flagForRemovedItem = false;
+        // Alex.removeFromInv(true);
+        // break;
+        // case 2:
+        // dropSound.play();
+        // countUse++;
+        // textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
+        // Alex.flagForRemovedItem = false;
+        // Alex.removeFromInv(true);
+        // break;
+        // case 3: 
+        // buildSound.play();
+        // getWorld().removeObject(textField);
+        // Alex.flagForRemovedItem = false;
+        // Alex.removeFromInv(true);
+        // isActive = false;
+        // endOfUse = true;
+        // setImage(bH);
+        // setBuildHouse(true);                          
+        // break;
+        // }
+    }
+
     /**
      * Method checkMaterial
      *
