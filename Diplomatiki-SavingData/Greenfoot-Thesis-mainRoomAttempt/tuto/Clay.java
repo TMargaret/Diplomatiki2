@@ -31,9 +31,9 @@ public class Clay extends Material
      *
      * @param answer int parameter
      */
-    public Clay(int newObject) 
+    public Clay(int newObjectVersion) 
     {     
-        version = newObject;
+        version = newObjectVersion;
         GreenfootImage image = getImage();
         image.scale(image.getWidth() - 10, image.getHeight() - 10);
         setImage(image);
@@ -68,7 +68,7 @@ public class Clay extends Material
             break;
             case 1:
             newClay = new Clay();
-            getWorld().addObject(newClay, 40, 480);
+            getWorld().addObject(newClay, 80, 480);
             Level_02.matList.add(newClay);
             getWorld().removeObject(this);
             pickupSound.play();

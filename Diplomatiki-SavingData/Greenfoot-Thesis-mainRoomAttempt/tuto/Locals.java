@@ -49,7 +49,7 @@ public class Locals extends Actor
     }
 
     protected void addHiddenSprite() {   
-        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/8 , getImage().getHeight() + getImage().getHeight()/4, 0, 5, true);  
+        hs = new HiddenSprite(this, getImage().getWidth() + getImage().getWidth()/8 , getImage().getHeight() + getImage().getHeight()/5, 0, 5, true);  
         getWorld().addObject(hs, getX(), getY()); 
     }
 

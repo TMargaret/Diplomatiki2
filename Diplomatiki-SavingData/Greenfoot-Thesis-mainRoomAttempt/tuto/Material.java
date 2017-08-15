@@ -12,7 +12,7 @@ public class Material extends Actor
 {
     public HiddenSprite hs;
     public int hsWidth = 0; 
-    public int hsHeight = 90;
+    public int hsHeight = 80;
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
 
@@ -114,7 +114,6 @@ public class Material extends Actor
                             }
                             else {
                                 checkHealthBar();
-                                getWorld().removeObject(textField);
                                 if (HealthBar.getHealth()>0){
                                     textPanel= new TextPanel("wrongKey", db.feedback());
                                     getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
@@ -160,39 +159,44 @@ public class Material extends Actor
     }
 
     public void checkHealthBar(){
-        switch(version){
-            case 0:
-            Level_0 lvl0 = (Level_0)getWorld();
-            getWorld().removeObject(textField);
-            if (!wrongCommand){
-                wrongCommand = true;
-                HealthBar.looseHealth();
-            }
-            break;
-            case 1:
-            Level_1 level1 = (Level_1) getWorld();
-            getWorld().removeObject(textField);
-            if (!wrongCommand){
-                wrongCommand = true;
-                HealthBar.looseHealth();
-            }
-            break;
-            case 2: 
-            mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
-            getWorld().removeObject(textField);
-            if (!wrongCommand){
-                wrongCommand = true;
-                HealthBar.looseHealth();
-            }
-            break;
-            case 3: 
-            Level_02 level02 = (Level_02)getWorld();
-            getWorld().removeObject(textField);
-            if (!wrongCommand){
-                wrongCommand = true;
-                HealthBar.looseHealth();
-            }
-            break;
+        // switch(version){
+        // case 0:
+        // Level_0 lvl0 = (Level_0)getWorld();
+        // getWorld().removeObject(textField);
+        // if (!wrongCommand){
+        // wrongCommand = true;
+        // HealthBar.looseHealth();
+        // }
+        // break;
+        // case 1:
+        // Level_1 level1 = (Level_1) getWorld();
+        // getWorld().removeObject(textField);
+        // if (!wrongCommand){
+        // wrongCommand = true;
+        // HealthBar.looseHealth();
+        // }
+        // break;
+        // case 2: 
+        // mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
+        // getWorld().removeObject(textField);
+        // if (!wrongCommand){
+        // wrongCommand = true;
+        // HealthBar.looseHealth();
+        // }
+        // break;
+        // case 3: 
+        // Level_02 level02 = (Level_02)getWorld();
+        // getWorld().removeObject(textField);
+        // if (!wrongCommand){
+        // wrongCommand = true;
+        // HealthBar.looseHealth();
+        // }
+        // break;
+        // }
+        getWorld().removeObject(textField);
+        if (!wrongCommand){
+            wrongCommand = true;
+            HealthBar.looseHealth();
         }
     }
 

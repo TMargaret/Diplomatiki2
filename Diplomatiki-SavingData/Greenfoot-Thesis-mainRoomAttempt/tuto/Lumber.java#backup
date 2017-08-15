@@ -78,7 +78,7 @@ public class Lumber extends Material
             break;
             case 1:
             newLumber = new Lumber();
-            getWorld().addObject(newLumber, 40, 575);
+            getWorld().addObject(newLumber, 40, 480);
             Level_02.matList.add(newLumber);
             getWorld().removeObject(this);
             pickupSound.play();

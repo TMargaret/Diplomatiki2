@@ -4,7 +4,7 @@ import greenfoot.*;
  * Write a description of class Tree here.
  * @author (your name) @version (a version number or a date)
  */
-public class Tree extends DropItem
+public class Tree extends Material
 {
     
    public Tree(){
@@ -18,9 +18,6 @@ public class Tree extends DropItem
      */
     public void act()
     {
-        if (getY() >= getWorld().getHeight() - 40) {
-            getWorld().removeObject(this);
-        }
-        move();
+
     }
 }
