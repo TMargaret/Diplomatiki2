@@ -46,7 +46,6 @@ public class Clay extends Material
      */
     public void act() 
     {
-        checkWorld();
         materialCreation();
     } 
 
@@ -55,13 +54,28 @@ public class Clay extends Material
      *
      * @return The material value, for the info message that appears in inputField
      */
+    @Override
     public String getMaterial(){
         String material = "Clay";
         return material;
     }
+     
+    /**
+     * Method checkMaterial
+     *
+     * @return The correct answer value to be check 
+     */
+    @Override
+    public String checkMaterial(){
+        return myAnswer;
+    }
 
+    /**
+     * Method actionMat
+     *
+     */
+    @Override
     public void actionMat(){
-        
         switch(version){
             case 0:
             super.actionMat();
@@ -77,11 +91,22 @@ public class Clay extends Material
     }
 
     /**
-     * Method checkMaterial
+     * Method getTextFieldMessage
      *
-     * @return The correct answer value to be check
+     * @return The return value
      */
-    public String checkMaterial(){
-        return myAnswer;
+    @Override
+    public String getTextFieldMessage(){    
+        String msg = null;
+        switch(version){
+            case 0:
+            msg =  super.getTextFieldMessage();
+            break;
+            case 1:
+            msg = "Δημιούργησε ένα αντικείμενο " + getMaterial() + " και πάτα enter";
+            break;
+        }
+        return msg;
     }
+
 }

@@ -144,18 +144,13 @@ public class Material extends Actor
     }
 
     public void textFieldCreation(){
-        switch(version){
-            case 0:
-            textField = new TextField(700, 45,"Κάλεσε την αντίστοιχη μέθοδο και πάτα enter");
-            getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
-            break;
-            case 1:
-            case 2:
-            case 3:
-            textField = new TextField(700, 45,"Δημιούργησε ένα αντικείμενο " + getMaterial() + " και πάτα enter");
-            getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
-            break;
-        }
+        textField = new TextField(700, 45,getTextFieldMessage());
+        getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
+    }
+
+    public String getTextFieldMessage(){
+        String textMsg = "Κάλεσε την αντίστοιχη μέθοδο και πάτα enter";
+        return textMsg;
     }
 
     public void checkHealthBar(){

@@ -47,7 +47,6 @@ public class Lumber extends Material
      */
     public void act() 
     {
-        checkWorld();
         materialCreation();
     } 
 
@@ -71,6 +70,7 @@ public class Lumber extends Material
 
     }
 
+    @Override
     public void actionMat(){        
         switch(version){
             case 0:
@@ -84,5 +84,19 @@ public class Lumber extends Material
             pickupSound.play();
             break;
         }
+    }
+    
+    @Override
+    public String getTextFieldMessage(){    
+        String msg = null;
+        switch(version){
+            case 0:
+            msg =  super.getTextFieldMessage();
+            break;
+            case 1:
+            msg = "Δημιούργησε ένα αντικείμενο " + getMaterial() + " και πάτα enter";
+            break;
+        }
+        return msg;
     }
 }
