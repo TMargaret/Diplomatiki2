@@ -6,13 +6,17 @@ import greenfoot.*;
  */
 public class Bridge extends Material
 {
-    String myAnswer;
+    String myAnswer = "1";
     int count = 0;
+    boolean isFixed = false;
+
+    GreenfootImage bB = new GreenfootImage("bB2.png");
+    GreenfootSound buildSound = new GreenfootSound("build.mp3");
 
     public Bridge(){
         super.hsWidth = super.hsWidth/2;
         getImage().scale(getImage().getWidth()/2, getImage().getHeight()/2);
-        myAnswer = "Alex.use();";
+        //myAnswer = "Alex.useAll();";
     }
 
     /* (World, Actor, GreenfootImage, Greenfoot and MouseInfo)*/
@@ -26,72 +30,23 @@ public class Bridge extends Material
 
     }
 
-    @Override
-    public void extraAction(){
-        // if (checkMatList()< 2 && !msgActive){
-        // msgActive = true;
-        // counter = 150;
-        // textPanel = new TextPanel("houseMsgL0");
-        // getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
-        // }
-        // if (counter<0){ 
-        // counter = 20;
-        // getWorld().removeObject(textPanel);
-        // isEDown = false;
-        // }
-        System.out.println(checkMatList());
-        if (checkMatList()== 2){
-            System.out.println("hm");
-        }
-
-    }
-    public int checkMatList(){
-        if (super.materialList != null){
-            for (Material mat: super.materialList){
-                if (mat.getMaterial() == "Clay"){
-                    count++;
-                }
-                if (mat.getMaterial() == "Lumber"){
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-
     public void actionSpelling(){
-        // switch(countUse){
-        // case 0: 
-        // dropSound.play();
-        // countUse++;
-        // textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
-        // Alex.removeFromInv(true);
-        // break;
-        // case 1:
-        // dropSound.play();
-        // countUse++;
-        // textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
-        // Alex.flagForRemovedItem = false;
-        // Alex.removeFromInv(true);
-        // break;
-        // case 2:
-        // dropSound.play();
-        // countUse++;
-        // textField.setText("Μένουν ακόμα: " + (getCheckList()-countUse));
-        // Alex.flagForRemovedItem = false;
-        // Alex.removeFromInv(true);
-        // break;
-        // case 3: 
-        // buildSound.play();
-        // getWorld().removeObject(textField);
-        // Alex.flagForRemovedItem = false;
-        // Alex.removeFromInv(true);
-        // isActive = false;
-        // endOfUse = true;
-        // setImage(bH);
-        // setBuildHouse(true);                          
-        // break;
-        // }
+        getWorld().removeObject(textField);      
+        isActive = false;
+        isEDown = false;                         
+    }
+
+    @Override
+    public void actionMat(){      
+        getImage().clear();
+        getWorld().getBackground().drawImage(bB, 380, 450);
+        getWorld().removeObject(this);
+        buildSound.play();
+        isFixed = true;
+    }
+
+    public boolean getIsFixed(){
+        return isFixed;
     }
 
     /**

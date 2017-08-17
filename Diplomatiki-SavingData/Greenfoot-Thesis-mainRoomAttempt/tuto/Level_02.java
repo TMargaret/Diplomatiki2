@@ -17,6 +17,8 @@ public class Level_02 extends World
     private Alex alex;
     Clay clay;
     Lumber lumber;
+    Bridge bridge;
+    Grass grass27, grass28, grass31, grass32;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
     public static ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
 
@@ -65,6 +67,7 @@ public class Level_02 extends World
         matList.remove(mat);
         alex.setCanMove(!found);
         enterInRoom();
+        isBridgeFixed();
     }
 
     /**
@@ -76,7 +79,7 @@ public class Level_02 extends World
         addGrass();
         addWall();
 
-        Bridge bridge = new Bridge();
+        bridge = new Bridge();
         addObject(bridge,400,455);
 
         addObject(alex,79,525);
@@ -98,7 +101,7 @@ public class Level_02 extends World
         clay = new Clay(1);
         clay.getImage().scale(clay.getImage().getWidth()/2, clay.getImage().getHeight()/2);
         addObject(clay,342,375);
-        
+
         matList.add(bridge);
         matList.add(lumber);
         matList.add(clay);
@@ -125,12 +128,12 @@ public class Level_02 extends World
     public void addGrass(){
         Grass grass26 = new Grass();
         addObject(grass26,400,400);
-        Grass grass27 = new Grass();
+        grass27 = new Grass();
         addObject(grass27,400,440);
-        Grass grass28 = new Grass();
+        grass28 = new Grass();
         addObject(grass28,400,480);
         Grass grass29 = new Grass();
-        addObject(grass29,400,520);
+        addObject(grass29,400,530);
         Grass grass34 = new Grass();
         addObject(grass34,400,560);
         Grass grass35 = new Grass();
@@ -138,9 +141,9 @@ public class Level_02 extends World
 
         Grass grass30 = new Grass();
         addObject(grass30,630,400);
-        Grass grass31 = new Grass();
+        grass31 = new Grass();
         addObject(grass31,630,440);
-        Grass grass32 = new Grass();
+        grass32 = new Grass();
         addObject(grass32,630,480);
         Grass grass33 = new Grass();
         addObject(grass33,630,520);
@@ -149,9 +152,9 @@ public class Level_02 extends World
         Grass grass37 = new Grass();
         addObject(grass37,630,600);
         Grass grass75 = new Grass();
-        addObject(grass75,464,428);
+        addObject(grass75,464,405);
         Grass grass76 = new Grass();
-        addObject(grass76,547,430);
+        addObject(grass76,547,405);
         Grass grass77 = new Grass();
         addObject(grass77,470,529);
         Grass grass78 = new Grass();
@@ -204,6 +207,15 @@ public class Level_02 extends World
      */
     public ArrayList getMaterialList(){
         return pickUpList;
+    }
+
+    public void isBridgeFixed(){
+        if (bridge.getIsFixed()){
+            removeObject(grass27);
+            removeObject(grass28);
+            removeObject(grass31);
+            removeObject(grass32);
+        }
     }
 
     public boolean dataToSave(){

@@ -11,7 +11,7 @@ public class Lumber extends Material
 {
     private String myAnswer;
     Lumber newLumber;
-    private int version;
+    private int version = 0;
 
     /**
      * Lumber Constructor

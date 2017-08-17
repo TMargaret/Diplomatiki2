@@ -11,7 +11,7 @@ public class Clay extends Material
 {  
     private String myAnswer;
     Clay newClay;
-    private int version;
+    private int version = 0;
 
     /**
      * Clay Constructor. By default, this construstor uses the Alex.pickUp answer.

@@ -19,14 +19,13 @@ public class Material extends Actor
     public boolean isEDown = false, isActive = false, tryAgainOrLeave = false;
     boolean wrongCommand = false;
     boolean thisLvl = false;
-    //boolean msgActive = false;
     TextField textField;
     int counter = 30;
     int version = 0;
     String my_text = "";
     TextPanel textPanel;
     static boolean addToInv = false;
-    ArrayList<Material> materialList = new ArrayList<Material>();
+    protected static ArrayList<Material> materialList = new ArrayList<Material>();
     InvBar invBar = new InvBar();
     Debugger db;
     GreenfootSound pickupSound = new GreenfootSound("pickUp.wav");
@@ -85,7 +84,6 @@ public class Material extends Actor
                     if( a instanceof Alex) {
                         counter--;
                         if (Greenfoot.isKeyDown("e") && !isEDown){
-                           // msgActive = false;
                             isEDown = true;
                             counter = 20;
                         }
@@ -97,7 +95,7 @@ public class Material extends Actor
                             isActive = true;
                             textFieldCreation();
                         }
-                        if (Greenfoot.mouseClicked(textField) && isEDown){
+                        if (Greenfoot.mouseClicked(textField) && isEDown && thisLvl){
                             textField.setText("");
                         }
                         if (thisLvl && Greenfoot.isKeyDown("escape") && isEDown ){
@@ -151,7 +149,7 @@ public class Material extends Actor
     }
 
     public void actionMat(){
-        getWorld().removeObject(this);
+        getWorld().removeObject(this);      
         materialList.add(this);
         pickupSound.play();
     }
