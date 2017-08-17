@@ -215,6 +215,10 @@ public class Level_02 extends World
             removeObject(grass28);
             removeObject(grass31);
             removeObject(grass32);
+            for (Material mat: matList){
+                Alex.flagForRemovedItem = false;
+                Alex.removeFromInv(true);
+            }
         }
     }
 

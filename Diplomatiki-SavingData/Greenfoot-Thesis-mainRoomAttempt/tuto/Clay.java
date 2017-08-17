@@ -84,6 +84,7 @@ public class Clay extends Material
             newClay = new Clay();
             getWorld().addObject(newClay, 80, 480);
             Level_02.matList.add(newClay);
+            Level_02.matList.remove(this);
             getWorld().removeObject(this);
             pickupSound.play();
             break;

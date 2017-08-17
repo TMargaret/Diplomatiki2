@@ -80,6 +80,7 @@ public class Lumber extends Material
             newLumber = new Lumber();
             getWorld().addObject(newLumber, 40, 575);
             Level_02.matList.add(newLumber);
+            Level_02.matList.remove(this);
             getWorld().removeObject(this);
             pickupSound.play();
             break;
