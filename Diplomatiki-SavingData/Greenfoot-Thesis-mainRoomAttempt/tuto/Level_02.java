@@ -31,9 +31,12 @@ public class Level_02 extends World
     boolean isActive = false;
     private TextPanel textPanel;
     int count_item = 0;
+    int counterEnd = 250;
+    boolean displayMessage = false;
+    private GreenfootSound thankSound = new GreenfootSound("thank.wav");
 
     Material mat;
-    Butterfly butterfly = new Butterfly();
+    Butterfly butterfly;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -73,10 +76,10 @@ public class Level_02 extends World
         alex.setCanMove(!found);
         enterInRoom();
         isBridgeFixed();
-        if (!found && redalien.getDoneWithDialogue()){
+        if (!found && redalien.getDoneWithDialogue() && !displayMessage){
            butterfly();
         }
-        //endGame();
+        endGame();
     }
 
     /**
@@ -116,6 +119,8 @@ public class Level_02 extends World
         clay = new Clay(1);
         clay.getImage().scale(clay.getImage().getWidth()/2, clay.getImage().getHeight()/2);
         addObject(clay,342,375);
+        
+        butterfly = new Butterfly();
 
         matList.add(bridge);
         matList.add(lumber);
@@ -265,6 +270,24 @@ public class Level_02 extends World
             }
         }
     }
+    
+        public void endGame(){
+        if (bridge.getIsFixed()){
+            counterEnd--;
+            if (counterEnd<0 && !displayMessage){
+                thankSound.play();
+                displayMessage = true;
+                textPanel = new TextPanel("wellDonelvl2");
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+            }
+            if (Greenfoot.isKeyDown("enter") && displayMessage){
+                removeObject(textPanel);
+                // Greenfoot.setWorld(new LevelsScreen());
+                // level0Sound.stop();
+                // checkUnlockLevel();
+            }
+        }
+    }	
 
     public boolean dataToSave(){
         if (matList == null){

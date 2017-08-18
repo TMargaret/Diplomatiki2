@@ -167,10 +167,10 @@ public class TextPanel extends Actor implements Serializable
             // String mytext = text.allMaterial();
             // makeImage(mytext);
         // }
-        // if (status == "wellDone"){
-            // String mytext = text.wellDone();
-            // makeImage(mytext, "alien");
-        // }
+        if (status == "wellDonelvl2"){
+            String mytext = text.wellDonelvl2();
+            makeImage(mytext, "alien");
+        }
 
     }
 
@@ -287,7 +287,7 @@ public class TextPanel extends Actor implements Serializable
                 image.drawString("Πάτα ENTER", 30, 290);
                 image.drawString(count_slide+"/7", 450, 290);
             }
-            if (status == "wrongKey" || status=="wellDone") image.drawString("Πάτα ENTER", 30, 290);
+            if (status == "wrongKey" || status=="wellDone" || status=="wellDonelvl2") image.drawString("Πάτα ENTER", 30, 290);
             if (status=="youLost") image.drawString("Πάτα SPACE", 30, 290);
 
         }

@@ -119,6 +119,10 @@ public class WrittenText implements Serializable
         +" χρειάζεται\nτο όνομά σου.\nΧρησιμοποίησέ την σοφά!"
         +"\n\n";
     }
+    
+    public String wellDonelvl2(){
+        return "Τα κατάφερες! \nΜπορείς να επισκεφθείς το σπίτι μου\nπριν φύγεις.";
+    }
 
     //level_1
     public String brokenHut(){

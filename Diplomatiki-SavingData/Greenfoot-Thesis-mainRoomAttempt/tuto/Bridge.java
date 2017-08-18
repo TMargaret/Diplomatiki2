@@ -31,9 +31,9 @@ public class Bridge extends Material
     }
     
     public void extraAction(){
-        if (super.materialList.size()>=2){
+      //  if (super.materialList.size()>=2){
             thisLvl = true;
-        }
+        //}
     }
 
     public void actionSpelling(){
