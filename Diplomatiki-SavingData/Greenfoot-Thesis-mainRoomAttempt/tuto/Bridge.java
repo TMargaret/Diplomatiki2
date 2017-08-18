@@ -29,6 +29,12 @@ public class Bridge extends Material
         materialCreation();
 
     }
+    
+    public void extraAction(){
+        if (super.materialList.size()>=2){
+            thisLvl = true;
+        }
+    }
 
     public void actionSpelling(){
         getWorld().removeObject(textField);      

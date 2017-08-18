@@ -18,7 +18,7 @@ public class Butterfly extends SmoothMover
     int count = 0;
 
     public Butterfly(){
-        super(new Vector(-3.0, 0));
+        super(new Vector(-5.0, 0));
         setImage(SpriteSheet.getSprite(butterfly, 0,  0, img_cell, img_cell, IMG_WIDTH, IMG_HEIGHT));
     }
 
