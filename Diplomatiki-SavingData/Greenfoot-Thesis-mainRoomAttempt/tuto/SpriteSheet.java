@@ -94,7 +94,7 @@ public class SpriteSheet extends Actor implements Serializable
      * This uses an ID where 0 will be the first image on the sheet. The spriteCellWidth and Height are
      * the dimesions of each individual cells on your sprite sheet.
      */
-    public GreenfootImage getSprite(GreenfootImage spriteSheet, int ID, int spriteCellWidth, int spriteCellHeight) {
+    public static GreenfootImage getSprite(GreenfootImage spriteSheet, int ID, int spriteCellWidth, int spriteCellHeight) {
         return getSprite(spriteSheet, ID, spriteCellWidth, spriteCellHeight, spriteCellWidth, spriteCellHeight);
     }
     

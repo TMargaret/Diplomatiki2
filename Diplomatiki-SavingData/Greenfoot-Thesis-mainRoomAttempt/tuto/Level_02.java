@@ -31,7 +31,7 @@ public class Level_02 extends World
     boolean isActive = false;
     private TextPanel textPanel;
     int count_item = 0;
-    int counterEnd = 250;
+    int counterEnd = 200;
     boolean displayMessage = false;
     private GreenfootSound thankSound = new GreenfootSound("thank.wav");
 
@@ -200,7 +200,7 @@ public class Level_02 extends World
      * shows a message before entering the house
      */
     public void enterInRoom(){
-        if (alex.getAnIntersectingObject(mainHouse.class) != null){
+        if (alex.getAnIntersectingObject(House2.class) != null){
             counter--;
             if (Greenfoot.isKeyDown("e")){
                 isEDown = true;
@@ -288,12 +288,4 @@ public class Level_02 extends World
             }
         }
     }	
-
-    public boolean dataToSave(){
-        if (matList == null){
-            return noMaterial = true;
-        }else{
-            return noMaterial = false;
-        }    
-    }
 }

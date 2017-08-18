@@ -163,10 +163,10 @@ public class TextPanel extends Actor implements Serializable
             // String mytext = text.toFixHouse();
             // makeImage(mytext);
         // }
-        // if (status == "allMaterial"){
-            // String mytext = text.allMaterial();
-            // makeImage(mytext);
-        // }
+        if (status == "enteringRoom") {
+            String mytext = text.enteringRoom();
+            makeImage(mytext);
+        }
         if (status == "wellDonelvl2"){
             String mytext = text.wellDonelvl2();
             makeImage(mytext, "alien");
