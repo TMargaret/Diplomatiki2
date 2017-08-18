@@ -18,6 +18,8 @@ public class Level_02 extends World
     Clay clay;
     Lumber lumber;
     Bridge bridge;
+    House2 house2;
+    RedAlien redalien;
     Grass grass27, grass28, grass31, grass32;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
     public static ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
@@ -28,8 +30,10 @@ public class Level_02 extends World
     int counter = 100, btn_counter = 50;
     boolean isActive = false;
     private TextPanel textPanel;
+    int count_item = 0;
 
     Material mat;
+    Butterfly butterfly = new Butterfly();
 
     /**
      * Constructor for objects of class MyWorld.
@@ -62,12 +66,17 @@ public class Level_02 extends World
             }
             if (material.getActive()){
                 found  = true;
+                butterfly.stop();
             }
         }
         matList.remove(mat);
         alex.setCanMove(!found);
         enterInRoom();
         isBridgeFixed();
+        if (!found && redalien.getDoneWithDialogue()){
+           butterfly();
+        }
+        //endGame();
     }
 
     /**
@@ -82,11 +91,17 @@ public class Level_02 extends World
         bridge = new Bridge();
         addObject(bridge,400,455);
 
-        addObject(alex,79,525);
-        House2 house2 = new House2();
+        house2 = new House2();
         addObject(house2,921,370);
 
-        RedAlien redalien = new RedAlien();
+        Grass grass42 = new Grass();
+        addObject(grass42,938,471);
+        Grass grass43 = new Grass();
+        addObject(grass43,979,470);
+
+        addObject(alex,79,525);
+
+        redalien = new RedAlien();
         addObject(redalien,70,350);
 
         Sign sign = new Sign();
@@ -104,8 +119,7 @@ public class Level_02 extends World
 
         matList.add(bridge);
         matList.add(lumber);
-        matList.add(clay);
-
+        matList.add(clay);     
     }
 
     /**
@@ -159,6 +173,11 @@ public class Level_02 extends World
         addObject(grass77,470,529);
         Grass grass78 = new Grass();
         addObject(grass78,557,533);
+
+        Grass grass44 = new Grass();
+        addObject(grass44,836,404);
+        Grass grass45 = new Grass();
+        addObject(grass45,894,433);    
         //creates a new array that holds the grass actor
         Grass[] grass =new Grass[25];
         Grass[] grass2 =new Grass[25];
@@ -218,6 +237,31 @@ public class Level_02 extends World
             for (Material mat: matList){
                 Alex.flagForRemovedItem = false;
                 Alex.removeFromInv(true);
+            }
+        }
+    }
+    
+    public int getRandomNumber(int start,int end)
+{
+       int normal = Greenfoot.getRandomNumber(end-start+1);
+       return normal+start;
+}
+
+    public void butterfly(){
+        //makes the butterfly appear within the borders
+        if (butterfly.getSpeed() == 0){
+            butterfly.addForce(new Vector(-3.0, 0));
+        }
+        int random_y = getRandomNumber(getHeight()/2, getHeight()-butterfly.getImage().getHeight()/2);
+        random_y += 20;
+        int random = Greenfoot.getRandomNumber(1);
+        count_item++;
+        for (int i = 0; i < 4; i++)
+        {
+            if (random == 0 & count_item == 80)
+            {             
+                addObject(butterfly, getWidth(), random_y);
+                count_item = 0;
             }
         }
     }

@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Explosion extends DropItem
+public class Explosion extends SmoothMover
 {
     GreenfootImage explosion = new GreenfootImage("explosion.png");
     GreenfootSound expSound = new GreenfootSound("expl.wav");

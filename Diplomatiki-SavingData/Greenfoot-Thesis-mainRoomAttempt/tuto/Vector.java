@@ -22,6 +22,7 @@ public final class Vector
     {
     }
 
+
     /**
      * Create a vector with given direction and length. The direction should be in
      * the range [0..359], where 0 is EAST, and degrees increase clockwise.
@@ -150,7 +151,7 @@ public final class Vector
     private void updateCartesian() 
     {
         dx = length * Math.cos(Math.toRadians(direction));
-        //dy = length * Math.sin(Math.toRadians(direction));   
+        dy = length * Math.sin(Math.toRadians(direction));   
     }
 
     /**

@@ -12,7 +12,7 @@ public class Material extends Actor
 {
     public HiddenSprite hs;
     public int hsWidth = 0; 
-    public int hsHeight = 80;
+    public int hsHeight = 70;
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
 

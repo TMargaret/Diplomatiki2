@@ -8,20 +8,29 @@ import greenfoot.*;
  */
 public class DropItem extends SmoothMover
 {
+    
     /**
-     * gives a random number so as to create a food
+     * gives a random number so as to 
      */
     public DropItem()
     {
-        this(2);
+       //this(0,3);
     }
 
     /**
-     * creates random new Vector for each food
+     * creates random new Vector for e
      */
-    public DropItem(int y)
+    public DropItem(int direction)
     {
-        super(new Vector(0.0, y));
+        super(new Vector(0, direction));
+    }
+    
+    /**
+     * creates random new Vector for ea
+     */
+    public DropItem(double x, double y)
+    {
+        super(new Vector(x, y));
     }
 
     //sets the speed of every vector
@@ -31,7 +40,7 @@ public class DropItem extends SmoothMover
     }
 
     /**
-     * every food will inherit the move method
+     * every will inherit the move method
      */
     public void act()
     {         

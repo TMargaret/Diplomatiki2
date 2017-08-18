@@ -8,7 +8,7 @@ import java.util.List;
  * @version (a version number or a date)
  */
 //public class Fireball extends SpriteSheet
-public class Fireball extends DropItem
+public class Fireball extends SmoothMover
 {
     GreenfootImage fireball = new GreenfootImage("fireball.png");
     Explosion exp = new Explosion();
@@ -18,8 +18,8 @@ public class Fireball extends DropItem
     int count = 0;
 
     public Fireball(){
+        super(new Vector(0.0, 3));
         setImage(SpriteSheet.getSprite(fireball, 0,  img_cell*6, img_cell, img_cell*7, IMG_WIDTH, IMG_HEIGHT));
-
     }
 
     /**
@@ -32,7 +32,7 @@ public class Fireball extends DropItem
         fireballAnimation();
         move();
     }
-    
+
     public void fireballAnimation(){
         for (int i=1;i<=8;i++){
             count++;

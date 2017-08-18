@@ -82,7 +82,7 @@ public class Clay extends Material
             break;
             case 1:
             newClay = new Clay();
-            getWorld().addObject(newClay, 80, 480);
+            getWorld().addObject(newClay, 80, 485);
             Level_02.matList.add(newClay);
             Level_02.matList.remove(this);
             getWorld().removeObject(this);
