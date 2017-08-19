@@ -70,5 +70,12 @@ public class Dragon extends SpriteSheet
             getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
             count_enter = 3;
         }
+        if (Greenfoot.isKeyDown("enter") && count_enter == 3 && counter <0){
+            counter = 30;
+            getWorld().removeObject(textPanel);
+            // textPanel = new TextPanel("dragon2");
+            // getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+            count_enter = 4;
+        }
     }
 }

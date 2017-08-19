@@ -13,11 +13,11 @@ public class LevelsScreen extends World implements ButtonResponder
     Button menuBtn; 
     HoverFrame hoverFrame1, hoverFrame2, hoverFrame3, hoverFrame4, hoverFrame5, hoverFrame6;
     LockLevel locklevel6, locklevel2, locklevel3, locklevel4, locklevel5;
-    
+
     boolean mouseOver = false, mouseOver2 = false;
- 
+
     GreenfootSound enterSound = new GreenfootSound("enter.wav");
-    
+
     ArrayList<HoverFrame> hoverFrame = new ArrayList<HoverFrame>();
     public static ArrayList<Integer> unlock = new ArrayList<Integer>(){
             {
@@ -25,7 +25,7 @@ public class LevelsScreen extends World implements ButtonResponder
                 //add(1);
             }
         }; //1 for unlocked level0
-        
+
     /**
      * Constructor for objects of class LevelsScreen.
      * 
@@ -36,7 +36,9 @@ public class LevelsScreen extends World implements ButtonResponder
         super(1000, 600, 1);
         prepare();
         enterSound.setVolume(100);
-        StartScreen.startSound.playLoop();
+        if (!StartScreen.startSound.isPlaying()){
+            StartScreen.startSound.playLoop();
+        }
     }
 
     public void act(){
@@ -54,7 +56,7 @@ public class LevelsScreen extends World implements ButtonResponder
         menuBtn = new Button(lbl.getImage().getWidth(), lbl.getImage().getHeight());
         addObject(menuBtn, 70, 30);
         menuBtn.setResponder(this);
-        
+
         locklevel2 = new LockLevel();
         addObject(locklevel2,473,170);      
 
@@ -66,7 +68,7 @@ public class LevelsScreen extends World implements ButtonResponder
 
         locklevel5 = new LockLevel();
         addObject(locklevel5,471,440);
-        
+
         locklevel6 = new LockLevel();
         addObject(locklevel6,806,440);
 
@@ -108,7 +110,7 @@ public class LevelsScreen extends World implements ButtonResponder
             Greenfoot.setWorld(new Level_02());
         }
     }
-    
+
     public void unlockLevel(){
         int size = unlock.size();
         switch (size){
@@ -128,7 +130,7 @@ public class LevelsScreen extends World implements ButtonResponder
             removeObject(locklevel6);
             break;
         }
-        
+
     }
 
     public void menuHover(){
