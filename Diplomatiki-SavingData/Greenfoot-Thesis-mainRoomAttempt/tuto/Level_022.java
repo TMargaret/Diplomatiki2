@@ -12,26 +12,14 @@ public class Level_022 extends World
 
     SpriteSheet spriteSheet = new SpriteSheet();
     Alex alex;
-    Elder elder;
-    Door door, door2;
-    Lumber lumber, lumber2;
-    Clay clay, clay2;
-    StoneOven stoneOven;
-    Brick brick, brick2;
-    int counter = 100, counter2 = 25, flag = 0;
-    boolean isActive = false;
-    private TextPanel textPanel, entranceText;
-    private ArrayList <Door> doorList = new ArrayList<Door>();
     int img_cell = 32;
     GreenfootImage alexImg = new GreenfootImage("alex.png");
     final int IMG_WIDTH = alexImg.getWidth()/6;
     final int IMG_HEIGHT = alexImg.getHeight()/4;
-    private ArrayList<Material> materialList = new ArrayList<Material>();
-    private ArrayList <Material> pickUpList = new ArrayList<Material>();
-    private static String[] items;
-    public double time;
-    Level_02 level02;
     Material mat;
+    SpecialEffect specialEffect;
+    int count_item = 0;
+    Dragon dragon;
 
     /**
      * Constructor for objects of class Level_022.
@@ -45,39 +33,16 @@ public class Level_022 extends World
 
     }
 
-    public Level_022(Alex oldAlex, Level_02 oldLevel02)
+    public Level_022(Alex oldAlex)
     {
         super(1000, 600, 1);
         alex = oldAlex;
-        level02 = oldLevel02;
         prepare();
     }
 
     public void act(){
         //gameOver();
-        //enterRoomText();
-        exitRoom();
-        boolean doNotMove = false;
-        // if (elder.getTalking() || (flag == 1) || (isActive)){
-            // doNotMove  = true;
-        // }
-        for(Door door : doorList){
-            if (door.getActive()){
-                doNotMove  = true;
-            }
-        }
-        for (Material material : materialList){
-            if(material.getWorldOfType(Level_022.class) == null){
-                pickUpList.add(material);
-                mat = material; //save to material to mat so as to remove without concurrent exception
-
-            }
-            if (material.getActive()){
-                doNotMove  = true;
-            }
-        }
-        materialList.remove(mat);
-        alex.setCanMove(!doNotMove);
+        specialEffect();
     }
 
     /**
@@ -99,67 +64,16 @@ public class Level_022 extends World
         alex.setImage(SpriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, IMG_WIDTH, IMG_HEIGHT));
         addObject(alex,80, 500);
 
-        Dragon dragon = new Dragon();
-        addObject(dragon,818,153);
+        dragon = new Dragon();
+        addObject(dragon,830,153);
+
+        specialEffect = new SpecialEffect();
 
     }
 
     public void addWall(){
         Wall[] wall = new Wall[25];
         Wall[] wall2 = new Wall[25];
-
-        // //Room with Clay
-        // Wall wall79 = new Wall();
-        // addObject(wall79,712,81);
-        // wall79.setRotation(90);
-
-        // Wall wall80 = new Wall();
-        // addObject(wall80,958,294);
-
-        // Wall wall81 = new Wall();
-        // addObject(wall81,876,294);
-
-        // Wall wall82 = new Wall();
-        // addObject(wall82,795,294);
-
-        // Wall wall83 = new Wall();
-        // addObject(wall83,735,294);
-
-        // Wall wall84 = new Wall();
-        // addObject(wall84,712,137);
-        // wall84.setRotation(90);
-
-        // //Room with Wood      
-        // Wall wall70 = new Wall();
-        // addObject(wall70,400,200);
-        
-        // Wall wall71 = new Wall();
-        // addObject(wall71,82,200);
-
-        // Wall wall72 = new Wall();
-        // addObject(wall72,164,200);
-
-        // Wall wall73 = new Wall();
-        // addObject(wall73,246,200);
-
-        // Wall wall74 = new Wall();
-        // addObject(wall74,328,200);
-
-        // Wall wall75 = new Wall();
-        // addObject(wall75,420,547);
-        // wall75.setRotation(90);
-
-        // Wall wall76 = new Wall();
-        // addObject(wall76,420,490);
-        // wall76.setRotation(90);
-        
-        // Wall wall77 = new Wall();
-        // addObject(wall77,420,240);
-        // wall77.setRotation(90);
-        
-        // Wall wall78 = new Wall();
-        // addObject(wall78,420,320);
-        // wall78.setRotation(90);
 
         //builds the right vertical paths
         for(int i=0; i<=getHeight(); i+= 80)
@@ -187,46 +101,38 @@ public class Level_022 extends World
     }
 
     // public void enterRoomText(){
-        // counter2--;
-        // if (counter2 < 0 && flag == 0){
-            // entranceText = new TextPanel("RoomEntranceText");
-            // addObject(entranceText, getWidth()/2, getHeight()/2);
-            // flag = 1;
-        // }
-        // if (Greenfoot.isKeyDown("enter")){
-            // counter2 = 50;
-            // removeObject(entranceText);
-            // flag = 2;
-        // }
+    // counter2--;
+    // if (counter2 < 0 && flag == 0){
+    // entranceText = new TextPanel("RoomEntranceText");
+    // addObject(entranceText, getWidth()/2, getHeight()/2);
+    // flag = 1;
+    // }
+    // if (Greenfoot.isKeyDown("enter")){
+    // counter2 = 50;
+    // removeObject(entranceText);
+    // flag = 2;
+    // }
     // }
 
-    public void exitRoom(){
-        if (alex.isAtEdge()){
-            counter--;
-            if (!isActive){
-                textPanel = new TextPanel("exitRoom");
-                addObject(textPanel, getWidth()/2, getHeight()/2);
-                isActive = true;
-            }
-        }
-        if (counter < 0){
-            int img_cell = 32;
-            counter = 50;
-            removeObject(textPanel);
-            initVariables();
-            alex.setImage(spriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, 64, 64));
-            alex.setLocation(alex.getX() + 100, alex.getY());
-            level02.setAlex(alex);
-            Greenfoot.setWorld(level02);
-        }      
+    public int getRandomNumber(int start,int end)
+    {
+        int normal = Greenfoot.getRandomNumber(end-start+1);
+        return normal+start;
     }
 
-    public void initVariables(){
-        flag = 0;
-        isActive = false;
-    }
-    
-    public ArrayList getMaterialList(){
-        return pickUpList;
+    public void specialEffect(){
+        //makes the specialEffect appear within the borders
+        int random_x = getRandomNumber(alex.getImage().getWidth()*2,getWidth() - alex.getImage().getWidth()*4);
+        random_x += 20;
+        int random = Greenfoot.getRandomNumber(1);
+        count_item++;
+        for (int i = 0; i < 4; i++)
+        {
+            if (random == 0 & count_item == 80)
+            {             
+                addObject(specialEffect, random_x, specialEffect.getImage().getHeight()/2+45);
+                count_item = 0;
+            }
+        }
     }
 }

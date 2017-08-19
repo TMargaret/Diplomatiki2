@@ -218,7 +218,7 @@ public class Level_02 extends World
                 isActive = false;
                 isEDown = false;
                 alex.setLocation(alex.getX(), alex.getY() + 100);
-                Greenfoot.setWorld(new Level_022(alex,this));
+                Greenfoot.setWorld(new Level_022(alex));
             }  
 
         } 
