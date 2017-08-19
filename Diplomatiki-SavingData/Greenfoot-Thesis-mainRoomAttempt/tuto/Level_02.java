@@ -33,6 +33,7 @@ public class Level_02 extends World
     int count_item = 0;
     int counterEnd = 200;
     boolean displayMessage = false;
+    private GreenfootSound lvlSound = new GreenfootSound("level02.mp3");
     private GreenfootSound thankSound = new GreenfootSound("thank.wav");
 
     Material mat;
@@ -48,6 +49,7 @@ public class Level_02 extends World
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
+        lvlSound.playLoop();
     }
 
     /**
@@ -218,6 +220,7 @@ public class Level_02 extends World
                 isActive = false;
                 isEDown = false;
                 alex.setLocation(alex.getX(), alex.getY() + 100);
+                lvlSound.stop();
                 Greenfoot.setWorld(new Level_022(alex));
             }  
 

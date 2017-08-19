@@ -14,6 +14,7 @@ public class Level_022 extends World
     Alex alex;
     int img_cell = 32;
     GreenfootImage alexImg = new GreenfootImage("alex.png");
+    GreenfootSound suspenseSound = new GreenfootSound("suspense.mp3");
     final int IMG_WIDTH = alexImg.getWidth()/6;
     final int IMG_HEIGHT = alexImg.getHeight()/4;
     Material mat;
@@ -30,6 +31,7 @@ public class Level_022 extends World
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
+        suspenseSound.playLoop();
 
     }
 
@@ -38,6 +40,7 @@ public class Level_022 extends World
         super(1000, 600, 1);
         alex = oldAlex;
         prepare();
+        suspenseSound.playLoop();
     }
 
     public void act(){
@@ -65,7 +68,7 @@ public class Level_022 extends World
         addObject(alex,80, 500);
 
         dragon = new Dragon();
-        addObject(dragon,830,153);
+        addObject(dragon,865,153);
 
         specialEffect = new SpecialEffect();
 
@@ -99,20 +102,6 @@ public class Level_022 extends World
         }
 
     }
-
-    // public void enterRoomText(){
-    // counter2--;
-    // if (counter2 < 0 && flag == 0){
-    // entranceText = new TextPanel("RoomEntranceText");
-    // addObject(entranceText, getWidth()/2, getHeight()/2);
-    // flag = 1;
-    // }
-    // if (Greenfoot.isKeyDown("enter")){
-    // counter2 = 50;
-    // removeObject(entranceText);
-    // flag = 2;
-    // }
-    // }
 
     public int getRandomNumber(int start,int end)
     {

@@ -15,10 +15,13 @@ public class Dragon extends SpriteSheet
     final int IMG_HEIGHT = dragon.getHeight()/2;
     int imageID = 5;
     int delay = 14;
+    int counter = 30;
+    int count_enter = 0;
+    private TextPanel textPanel;
 
     public Dragon(){
         expSound.setVolume(90);
-       setImage(getSprite(dragon, 0,  img_cell, img_cell, img_cell*2, IMG_WIDTH, IMG_HEIGHT));
+        setImage(getSprite(dragon, 0,  img_cell, img_cell, img_cell*2, IMG_WIDTH, IMG_HEIGHT));
     }
 
     /**
@@ -27,17 +30,45 @@ public class Dragon extends SpriteSheet
      */
     public void act() 
     {
+        animation();
+        dragonDialogue();
+    } 
+    
+    public void animation(){
         delay--;
         if (imageID < 8 && delay <0 ){   
             delay = 12;
             setImage(SpriteSheet.getSprite(dragon, imageID,  img_cell, img_cell,IMG_WIDTH, IMG_HEIGHT));
             imageID++;
-            
+
         }
         if (imageID==8){
             imageID=5;
         }
         expSound.play();
-        // Add your action code here.
-    }    
+    }
+
+    public void dragonDialogue(){
+        counter--;
+        if (count_enter == 0 && counter <0){
+            counter = 30;
+            textPanel = new TextPanel("dragon0");
+            getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+            count_enter = 1;
+        }
+        if (Greenfoot.isKeyDown("enter") && count_enter == 1 && counter <0){
+            counter = 30;
+            getWorld().removeObject(textPanel);
+            textPanel = new TextPanel("dragon1");
+            getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+            count_enter = 2;
+        }
+        if (Greenfoot.isKeyDown("enter") && count_enter == 2 && counter <0){
+            counter = 30;
+            getWorld().removeObject(textPanel);
+            textPanel = new TextPanel("dragon2");
+            getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+            count_enter = 3;
+        }
+    }
 }

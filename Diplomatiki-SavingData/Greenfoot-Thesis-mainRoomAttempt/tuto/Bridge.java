@@ -16,7 +16,7 @@ public class Bridge extends Material
     public Bridge(){
         super.hsWidth = super.hsWidth/2;
         getImage().scale(getImage().getWidth()/2, getImage().getHeight()/2);
-        //myAnswer = "Alex.useAll();";
+        myAnswer = "Alex.useAll();";
     }
 
     /* (World, Actor, GreenfootImage, Greenfoot and MouseInfo)*/

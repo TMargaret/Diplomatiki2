@@ -9,7 +9,7 @@ import java.io.*;
  */
 public class WrittenText implements Serializable
 {
-    
+
     String debuggerMsg = "Έχασες ενέργεια!\n\nΠροσπάθησε ξανά ή μίλα πάλι μαζί μου\nγια βοήθεια.";
     /**
      * Act - do whatever the WrittenText wants to do. This method is called whenever
@@ -69,19 +69,18 @@ public class WrittenText implements Serializable
     public String allMaterial(){
         return "Έχω όλα τα υλικά.\nΤώρα θα πρέπει να τα χρησιμοποιήσω.";
     }
-    
+
     public String wellDone(){
         return "Τα κατάφερες!\n\nΟι Μεθοδιανοί σου είναι ευγνώμονες.\nΤώρα μπορείς να αποχωρήσεις"
         +" από τον\nMethodis.\n\nLive long and prosper!";
     }
-    
+
     public String youLost(){
         return "Έχασες όλη σου την ενέργεια!\nΞαναπροσπάθησε!";
     }
-    
-    
-   //level_02
-       public String welcomeMsgL02(){
+
+    //level_02
+    public String welcomeMsgL02(){
         return "Καλώς ήρθες στον πλανήτη μου NewOB!\n\nΕίμαι ο πλανητάρχης NewObis και μπορώ \nνα σε "+
         "βοηθήσω να φύγεις αρκεί να κάνεις \nκάτι για μένα.";
     }
@@ -117,9 +116,9 @@ public class WrittenText implements Serializable
     public String taskText6L02(){
         return "Μια ακόμα νέα δύναμη είναι η useAll();\nΓια να λειτουργήσει σωστά"
         +" χρειάζεται\nτο όνομά σου.\nΧρησιμοποίησέ την σοφά!"
-        +"\n\n";
+        +"\n\nΤέλος, πρόσεξε τις πεταλούδες που πετούν.\nΔεν είναι τόσο άκακες όσο φαίνονται..";
     }
-    
+
     public String wellDonelvl2(){
         return "Τα κατάφερες! \nΜπορείς να επισκεφθείς το σπίτι μου\nπριν φύγεις.";
     }
@@ -179,5 +178,20 @@ public class WrittenText implements Serializable
 
     public String lockedDoor(){
         return "Είναι κλειδωμένη...\n\nΆραγε μπορώ να την ανοίξω...;";
-    }  
+    } 
+
+    //dragon
+    public String dragon0(){
+        return "Είμαι ο φοβερός DragonDrop και ήρθε η\nώρα να με αντιμετωπίσεις.";
+    }
+    
+    public String dragon1(){
+        return "Βλέπω το φόβο και την αδυναμία\nστα μάτια σου."
+        +"\n\nΣε προκαλώ να μου δείξεις τις δυνάμεις\nσου σε μια αναμέτρηση γνώσεων.";
+    }
+    
+    public String dragon2(){
+        return "Είσαι έτοιμος;";
+    }
+
 }

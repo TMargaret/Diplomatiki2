@@ -18,7 +18,7 @@ public class SpecialEffect extends SpriteSheet
 
     public SpecialEffect(){
         setImage(SpriteSheet.getSprite(explosion, 0,  0, img_cell, img_cell, IMG_WIDTH, IMG_HEIGHT));
-        expSound.setVolume(90);
+        expSound.setVolume(80);
 
     }
 
