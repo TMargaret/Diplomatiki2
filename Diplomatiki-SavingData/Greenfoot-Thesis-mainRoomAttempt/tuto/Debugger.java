@@ -41,7 +41,7 @@ public class Debugger
         if (!playersCode.contains("()")){
             message += err + "missing ()\n";
         }
-        if (playersCode.contains("")){
+        if (playersCode.contains("  ")){
             message += err + "too many spaces\n";
         }
         if (!playersCode.equals(playersCode.toLowerCase()) || !playersCode.equals(playersCode.toUpperCase())){
@@ -49,5 +49,4 @@ public class Debugger
         }
         return message;
     }
-
 }
