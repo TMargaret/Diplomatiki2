@@ -72,10 +72,9 @@ public class Dragon extends SpriteSheet
         }
         if (Greenfoot.isKeyDown("enter") && count_enter == 3 && counter <0){
             counter = 30;
-            getWorld().removeObject(textPanel);
-            getWorld().getBackground().drawImage(new GreenfootImage("hint.png"), getWorld().getWidth()/2, getWorld().getHeight()/2);          
+            getWorld().removeObject(textPanel);       
             // textPanel = new TextPanel("dragon2");
-            // getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+            getWorld().addObject(new QuizPic(), getWorld().getWidth()/2, getWorld().getHeight()/2);
             count_enter = 4;
         }
     }
