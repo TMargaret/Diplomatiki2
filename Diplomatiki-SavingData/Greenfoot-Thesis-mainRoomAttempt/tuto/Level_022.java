@@ -45,7 +45,7 @@ public class Level_022 extends World
 
     public void act(){
         //gameOver();
-        specialEffect();
+        //specialEffect();
     }
 
     /**
