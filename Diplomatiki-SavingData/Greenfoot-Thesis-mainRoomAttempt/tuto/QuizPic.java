@@ -47,30 +47,23 @@ public class QuizPic extends Actor
             getAnswer2();
             break;
             case 3:
-            //text = quiz3();
+            text = quiz3();
             answerBtn3();
-            //getAnswer3();
+            getAnswer3();
             break;
             case 4:
-            //text = quiz4();
+            text = quiz4();
             answerBtn4();
-            // getAnswer4();
-            break;
-            case 5:
-           // text = quiz5();
-            answerBtn5();
-            // getAnswer5();
+            getAnswer4();
             break;
         }
         if (!isOn){
-            System.out.println(text);
             isOn = true;           
             getImage().setFont(new Font("Lucida Sans Unicode", 28));
             getImage().drawString(question + questNum, getImage().getWidth()/3, 40);
             getImage().drawString(text, 30, 80);
             addButton4();
             text = null;
-            System.out.println(text);
         }
     }
 
@@ -86,17 +79,45 @@ public class QuizPic extends Actor
             +"παρά\nμόνο αν το θελήσεις εσύ, με ειδική εντολή.";
         getAnswer(order,text1, text2, text3, text4);
     }
-    
-        public void getAnswer2(){
+
+    public void getAnswer2(){
         String order = "0010";
         String text1 = "Είναι καλή τακτική να χρησιμοποιείς\ncamelCase,"
-        +" όμως συντακτικά δεν είναι λάθος\nαν δεν το κάνεις.";            
+            +" όμως συντακτικά δεν είναι λάθος\nαν δεν το κάνεις.";            
         String text2 = "Είναι καλή τακτική να χρησιμοποιείς\ncamelCase."
-        +"Το όνομα αυτής της μεθόδου είναι\nτο πιο σωστό..";
+            +" Το όνομα αυτής της μεθόδου θα\nήταν η καλύτερη επιλογή.";
         String text3 = "Καλή παρατηρητικότητα!\nΗ παράλειψη του ερωτηματικού στο τέλος\nδημιουργεί"
-        +"compile error το οποίο σημαίνει\nότι δε θα τρέξει το πρόγραμμα.";
-        String text4 = "Είναι καλή τακτική να χρησιμοποιείς camelCase,\n"
-        +"όμως συντακτικά δεν είναι λάθος\nαν γράψεις και την πρώτη λέξη με\nκεφαλαίο γράμμα.";
+            +" compile error το οποίο σημαίνει\nότι δε θα τρέξει το πρόγραμμα.";
+        String text4 = "Είναι καλή τακτική να χρησιμοποιείς\ncamelCase,"
+            +" όμως συντακτικά δεν είναι λάθος\nαν γράψεις και την πρώτη λέξη με\nκεφαλαίο γράμμα.";
+        getAnswer(order,text1, text2, text3, text4);
+    }
+
+    public void getAnswer3(){
+        String order = "0001";
+        String text1 = "Δημιουργείται όντως ένα καινούριο\n"
+            +"στιγμιότυπο δράκου, αλλά όχι μόνο.";            
+        String text2 = "Δεν υπάρχει συντακτικό λάθος.";
+        String text3 = "Χρησιμοποιούμε μια μέθοδο, "
+            +"όμως συμβαίνει\nκαι κάτι άλλο.";
+        String text4 = "Μπράβο!\nΕδώ έχουμε συνδυασμό πραγμάτων.\nΑρχικά"
+            +" δημιουργούμε ένα νέο στιγμιότυπο\nδράκου και στη συνέχεια μαζέυουμε αυτό\nτο αντικείμενο."
+            +"\nΣτον προγραμματισμό τα πράγματα"
+            +"\nσυμβαίνουν από δεξιά προς τα αριστέρα!";
+        getAnswer(order,text1, text2, text3, text4);
+    }
+
+    public void getAnswer4(){
+        String order = "0100";
+        String text1 = "Δεν υπάρχει συντακτικό λάθος.";            
+        String text2 = "\nH clay είναι μια μεταβλητή στην οποία"
+            +"\nέχουμε εκχωρήσει από πριν το στιγμιότυπο\nτου πηλού."
+             +"\nΘυμήσου! Στον προγραμματισμό τα πράγματα"
+            +"\nσυμβαίνουν από δεξιά προς τα αριστέρα!";
+        String text3 = "Η διαφορά είναι λεπτή αλλά σημαντική."
+            +"\nΣτον προγραμματισμό τα πράγματα"
+            +"\nσυμβαίνουν από δεξιά προς τα αριστέρα!";
+        String text4 = "Όχι, είναι τελείως λάθος αυτό.";
         getAnswer(order,text1, text2, text3, text4);
     }
 
@@ -155,26 +176,19 @@ public class QuizPic extends Actor
         +"Γραμμή 4:  Alex.PickUp();";
     }
 
-    // public String quiz3(){
-        // return "Με τη γραμμή κώδικα:\n"
-        // +"new Dragon();\n"
-        // +"Τι από τα παρακάτω θα συμβεί;"
-        // +"";
-    // }
+    public String quiz3(){
+        return "Με τη γραμμή κώδικα:\n"
+        +"Alex.pickUp(new Dragon());\n"
+        +"Τι από τα παρακάτω θα συμβεί;"
+        +"";
+    }
 
-    // public String quiz4(){
-        // return "Με τη γραμμή κώδικα:\n"
-        // +"new Dragon();\n"
-        // +"Τι από τα παρακάτω θα συμβεί;"
-        // +"";
-    // }
-
-    // public String quiz5(){
-        // return "Με τη γραμμή κώδικα:\n"
-        // +"new Dragon();\n"
-        // +"Τι από τα παρακάτω θα συμβεί;"
-        // +"";
-    // }
+    public String quiz4(){
+        return "Με τη γραμμή κώδικα:\n"
+        +"clay = new Clay();"
+        +"\nΤι από τα παρακάτω θα συμβεί;"
+        +"";
+    }
 
     public void answerBtn1(){
         btn1.setTitle("Δημιουργείται ένα νέο στιγμιότυπο δράκου.");
@@ -191,24 +205,17 @@ public class QuizPic extends Actor
     }
 
     public void answerBtn3(){
-        btn1.setTitle("Τίποτα");
-        btn2.setTitle("Τίποτα");
-        btn3.setTitle("Τίποτα");
-        btn4.setTitle("Τίποτα");
+        btn1.setTitle("Δημιουργείται ένα νέο στιγμιότυπο δράκου.");
+        btn2.setTitle("Τίποτα, υπάρχει συντακτικό λάθος.");
+        btn3.setTitle("Δημιουργείται μια καινούρια μέθοδος του δράκου.");
+        btn4.setTitle("Μαζεύουμε ένα καινούριο στιγμιότυπο δράκου.");
     }
 
     public void answerBtn4(){
-        btn1.setTitle("Τίποτα");
-        btn2.setTitle("Τίποτα");
-        btn3.setTitle("Τίποτα");
-        btn4.setTitle("Τίποτα");
-    }
-
-    public void answerBtn5(){
-        btn1.setTitle("Τίποτα");
-        btn2.setTitle("Τίποτα");
-        btn3.setTitle("Τίποτα");
-        btn4.setTitle("Τίποτα");
+        btn1.setTitle("Τίποτα, υπάρχει συντακτικό λάθος.");
+        btn2.setTitle("Ένα νέο στιγμιότυπο του πηλού\nεκχωρείται στη μεταβλητή clay.");
+        btn3.setTitle("Η μεταβλητή clay ισούται με\nτη δημιουργία νέου πηλού.");
+        btn4.setTitle("O Alex δημιουργεί και μαζεύει έναν πηλό.");
     }
 
     public void betweenAnswers(){
@@ -221,7 +228,7 @@ public class QuizPic extends Actor
             removeButton();           
             setImage(new GreenfootImage(myImage));
             isOn = false;
-            
+
         }
     }
 
