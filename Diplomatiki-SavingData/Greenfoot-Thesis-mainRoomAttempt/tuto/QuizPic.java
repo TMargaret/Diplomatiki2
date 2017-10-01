@@ -18,8 +18,11 @@ public class QuizPic extends Actor
     Button btn3 = new Button();
     Button btn4 = new Button();
     Button btn5 = new Button();
+    Button btn6 = new Button();
+    Button btn7 = new Button();
     boolean isOn = false;
     String text = null;
+    static boolean endFlag = false;
 
     public QuizPic(){
 
@@ -59,6 +62,13 @@ public class QuizPic extends Actor
             case 5:
             moveNextQuest();
             break;
+            case 6:
+            repeatOrLeave();
+            addButton2();
+            setBtn2();
+            text = quiz1();
+            finishing();
+            break;
         }
         if (!isOn){
             isOn = true;           
@@ -66,7 +76,28 @@ public class QuizPic extends Actor
             getImage().drawString(question + questNum, getImage().getWidth()/3, 40);
             getImage().drawString(text, 30, 80);
             addButton4();
-            text = null;
+            text = "";
+        }
+    }
+
+    public void repeatOrLeave(){
+        getImage().setFont(new Font("Lucida Sans Unicode", 28));
+        getImage().drawString("Τέλος ερωτήσεων", 30, 60);
+        getImage().drawString(repeatLeave(), 30, 100);
+    }
+
+    public void finishing(){
+        if (Greenfoot.mouseClicked(btn6)){
+            questNum = 1;
+            isOn = false;
+            getImage().clear();
+            removeButton(); 
+            setImage(new GreenfootImage(myImage)); 
+        }
+        if (Greenfoot.mouseClicked(btn7)){         
+            endFlag = true;
+            getWorld().removeObject(this);
+            
         }
     }
 
@@ -123,9 +154,12 @@ public class QuizPic extends Actor
         if (Greenfoot.mouseClicked(btn5)){
             getImage().clear();
             removeButton();
-            if (questNum<5){
-                setImage(new GreenfootImage(myImage));
+            setImage(new GreenfootImage(myImage));           
+            if (questNum<5){               
                 isOn = false;
+            }
+            if (questNum == 5){
+                questNum++;             
             }
         }
     }
@@ -147,15 +181,17 @@ public class QuizPic extends Actor
     public String quiz3(){
         return "Με τη γραμμή κώδικα:\n"
         +"Alex.pickUp(new Dragon());\n"
-        +"Τι από τα παρακάτω θα συμβεί;"
-        +"";
+        +"Τι από τα παρακάτω θα συμβεί;";
     }
 
     public String quiz4(){
         return "Με τη γραμμή κώδικα:\n"
         +"clay = new Clay();"
-        +"\nΤι από τα παρακάτω θα συμβεί;"
-        +"";
+        +"\nΤι από τα παρακάτω θα συμβεί;";
+    }
+
+    public String repeatLeave(){
+        return "Θέλεις να επαναλάβεις το quiz;";
     }
 
     public void getAnswer1(){
@@ -240,6 +276,11 @@ public class QuizPic extends Actor
         btn4.setTitle("O Alex δημιουργεί και μαζεύει έναν πηλό.");
     }
 
+    public void setBtn2(){
+        btn6.setTitle("NAI");
+        btn7.setTitle("OXI");
+    }
+
     public void betweenAnswers(){
         btn5.setTitle("OK");
     }
@@ -249,6 +290,11 @@ public class QuizPic extends Actor
         getWorld().addObject(btn2, getImage().getWidth(), getImage().getHeight()- btn1.getImage().getHeight()*2);
         getWorld().addObject(btn3, getImage().getWidth(), getImage().getHeight()- btn1.getImage().getHeight());
         getWorld().addObject(btn4, getImage().getWidth(), getImage().getHeight());
+    }
+
+    public void addButton2(){
+        getWorld().addObject(btn6, getImage().getWidth(), getImage().getHeight()- (btn6.getImage().getHeight()*4));
+        getWorld().addObject(btn7, getImage().getWidth(), getImage().getHeight()- (btn7.getImage().getHeight()*2));
     }
 
     public void addButton1(){ 
@@ -275,6 +321,10 @@ public class QuizPic extends Actor
         getImage().drawString("Λάθος!", 30, 80);
         getImage().setColor(Color.BLACK);
         getImage().drawString(myText, 30, 120);
+    }
+
+    public static boolean endLevel(){
+        return endFlag;
     }
 
 }

@@ -32,8 +32,9 @@ public class Dragon extends SpriteSheet
     {
         animation();
         dragonDialogue();
+        endGame();
     } 
-    
+
     public void animation(){
         delay--;
         if (imageID < 8 && delay <0 ){   
@@ -76,6 +77,17 @@ public class Dragon extends SpriteSheet
             // textPanel = new TextPanel("dragon2");
             getWorld().addObject(new QuizPic(), getWorld().getWidth()/2, getWorld().getHeight()/2);
             count_enter = 4;
+        }
+    }
+
+    public void endGame(){
+        if (QuizPic.endLevel()){
+            if (count_enter == 4 && counter <0){
+                counter = 30;
+                textPanel = new TextPanel("dragon2");
+                getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                count_enter = 5;
+            }
         }
     }
 }
