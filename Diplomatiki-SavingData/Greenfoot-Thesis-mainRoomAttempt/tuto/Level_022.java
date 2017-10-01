@@ -71,6 +71,8 @@ public class Level_022 extends World
         addObject(dragon,865,153);
 
         specialEffect = new SpecialEffect();
+        
+        alex.setCanMove(false);
 
     }
 

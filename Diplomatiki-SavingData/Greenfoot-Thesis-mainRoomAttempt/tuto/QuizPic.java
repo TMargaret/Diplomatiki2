@@ -56,6 +56,9 @@ public class QuizPic extends Actor
             answerBtn4();
             getAnswer4();
             break;
+            case 5:
+            moveNextQuest();
+            break;
         }
         if (!isOn){
             isOn = true;           
@@ -65,6 +68,86 @@ public class QuizPic extends Actor
             addButton4();
             text = null;
         }
+    }
+
+    public void getAnswer(String order, String textBtn1, String textBtn2, String textBtn3, String textBtn4){
+        if (Greenfoot.mouseClicked(btn1)){
+            refreshImage();
+            if (order.charAt(0) == '1'){
+                correctAnswer(textBtn1); 
+            }else
+                wrongAnswer(textBtn1);
+        }
+        if (Greenfoot.mouseClicked(btn2)){
+            refreshImage();
+            if (order.codePointAt(1)== '1'){
+                correctAnswer(textBtn2); 
+            }else
+                wrongAnswer(textBtn2);
+        }
+        if(Greenfoot.mouseClicked(btn3)){
+            refreshImage();
+            if (order.codePointAt(2)=='1'){
+                correctAnswer(textBtn3); 
+            }else
+                wrongAnswer(textBtn3);
+        }
+        if (Greenfoot.mouseClicked(btn4)){
+            refreshImage();
+            if (order.codePointAt(3)=='1'){
+                correctAnswer(textBtn4); 
+            }else
+                wrongAnswer(textBtn4);
+        }
+        moveNextQuest();
+    }
+
+    public void refreshImage(){
+        getImage().clear();
+        removeButton();
+        addButton1();
+        betweenAnswers();  
+        setImage(new GreenfootImage(myImage));
+        questNum++;
+    }
+
+    public void moveNextQuest(){
+        if (Greenfoot.mouseClicked(btn5)){
+            getImage().clear();
+            removeButton();
+            if (questNum<5){
+                setImage(new GreenfootImage(myImage));
+                isOn = false;
+            }
+        }
+    }
+
+    public String quiz1(){
+        return "Με τη γραμμή κώδικα:\n"
+        +"new Dragon();\n"
+        +"Τι από τα παρακάτω θα συμβεί;";
+    }
+
+    public String quiz2(){
+        return "Ποια γραμμή έχει λάθος;\n"
+        +"Γραμμή 1:  Alex.pickup();\n"
+        +"Γραμμή 2:  Alex.pickUp();\n"
+        +"Γραμμή 3:  Alex.pickup()\n"
+        +"Γραμμή 4:  Alex.PickUp();";
+    }
+
+    public String quiz3(){
+        return "Με τη γραμμή κώδικα:\n"
+        +"Alex.pickUp(new Dragon());\n"
+        +"Τι από τα παρακάτω θα συμβεί;"
+        +"";
+    }
+
+    public String quiz4(){
+        return "Με τη γραμμή κώδικα:\n"
+        +"clay = new Clay();"
+        +"\nΤι από τα παρακάτω θα συμβεί;"
+        +"";
     }
 
     public void getAnswer1(){
@@ -112,82 +195,13 @@ public class QuizPic extends Actor
         String text1 = "Δεν υπάρχει συντακτικό λάθος.";            
         String text2 = "\nH clay είναι μια μεταβλητή στην οποία"
             +"\nέχουμε εκχωρήσει από πριν το στιγμιότυπο\nτου πηλού."
-             +"\nΘυμήσου! Στον προγραμματισμό τα πράγματα"
+            +"\nΘυμήσου! Στον προγραμματισμό τα πράγματα"
             +"\nσυμβαίνουν από δεξιά προς τα αριστέρα!";
         String text3 = "Η διαφορά είναι λεπτή αλλά σημαντική."
             +"\nΣτον προγραμματισμό τα πράγματα"
             +"\nσυμβαίνουν από δεξιά προς τα αριστέρα!";
         String text4 = "Όχι, είναι τελείως λάθος αυτό.";
         getAnswer(order,text1, text2, text3, text4);
-    }
-
-    public void getAnswer(String order, String textBtn1, String textBtn2, String textBtn3, String textBtn4){
-        if (Greenfoot.mouseClicked(btn1)){
-            refreshImage();
-            if (order.charAt(0) == '1'){
-                correctAnswer(textBtn1); 
-            }else
-                wrongAnswer(textBtn1);
-        }
-        if (Greenfoot.mouseClicked(btn2)){
-            refreshImage();
-            if (order.codePointAt(1)== '1'){
-                correctAnswer(textBtn2); 
-            }else
-                wrongAnswer(textBtn2);
-        }
-        if(Greenfoot.mouseClicked(btn3)){
-            refreshImage();
-            if (order.codePointAt(2)=='1'){
-                correctAnswer(textBtn3); 
-            }else
-                wrongAnswer(textBtn3);
-        }
-        if (Greenfoot.mouseClicked(btn4)){
-            refreshImage();
-            if (order.codePointAt(3)=='1'){
-                correctAnswer(textBtn4); 
-            }else
-                wrongAnswer(textBtn4);
-        }
-        moveNextQuest();
-    }
-
-    public void refreshImage(){
-        getImage().clear();
-        removeButton();
-        addButton1();
-        betweenAnswers();  
-        setImage(new GreenfootImage(myImage));
-        questNum++;
-    }
-
-    public String quiz1(){
-        return "Με τη γραμμή κώδικα:\n"
-        +"new Dragon();\n"
-        +"Τι από τα παρακάτω θα συμβεί;";
-    }
-
-    public String quiz2(){
-        return "Ποια γραμμή έχει λάθος;\n"
-        +"Γραμμή 1:  Alex.pickup();\n"
-        +"Γραμμή 2:  Alex.pickUp();\n"
-        +"Γραμμή 3:  Alex.pickup()\n"
-        +"Γραμμή 4:  Alex.PickUp();";
-    }
-
-    public String quiz3(){
-        return "Με τη γραμμή κώδικα:\n"
-        +"Alex.pickUp(new Dragon());\n"
-        +"Τι από τα παρακάτω θα συμβεί;"
-        +"";
-    }
-
-    public String quiz4(){
-        return "Με τη γραμμή κώδικα:\n"
-        +"clay = new Clay();"
-        +"\nΤι από τα παρακάτω θα συμβεί;"
-        +"";
     }
 
     public void answerBtn1(){
@@ -220,16 +234,6 @@ public class QuizPic extends Actor
 
     public void betweenAnswers(){
         btn5.setTitle("OK");
-    }
-
-    public void moveNextQuest(){
-        if (Greenfoot.mouseClicked(btn5)){
-            getImage().clear();
-            removeButton();           
-            setImage(new GreenfootImage(myImage));
-            isOn = false;
-
-        }
     }
 
     public void addButton4(){

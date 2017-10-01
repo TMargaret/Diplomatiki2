@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sat Sep 30 18:35:45 EEST 2017
+#Sun Oct 01 19:28:10 EEST 2017
 target5.height=50
 target15.width=100
 dependency147.from=mainHouseRoom
@@ -1072,8 +1072,8 @@ dependency151.to=TextPanel
 target2.typeParameters=
 dependency228.type=UsesDependency
 target9.width=80
-editor.fx.0.y=7
-editor.fx.0.x=965
+editor.fx.0.y=1
+editor.fx.0.x=944
 dependency240.to=ExitBar
 target3.showInterface=false
 target37.name=QuizPic
