@@ -75,29 +75,37 @@ public class QuizPic extends Actor
             refreshImage();
             if (order.charAt(0) == '1'){
                 correctAnswer(textBtn1); 
-            }else
+            }else{
                 wrongAnswer(textBtn1);
+                HealthBar.looseHealth();
+            }
         }
         if (Greenfoot.mouseClicked(btn2)){
             refreshImage();
             if (order.codePointAt(1)== '1'){
                 correctAnswer(textBtn2); 
-            }else
+            }else{
                 wrongAnswer(textBtn2);
+                HealthBar.looseHealth();
+            }
         }
         if(Greenfoot.mouseClicked(btn3)){
             refreshImage();
             if (order.codePointAt(2)=='1'){
                 correctAnswer(textBtn3); 
-            }else
+            }else{
                 wrongAnswer(textBtn3);
+                HealthBar.looseHealth();
+            }
         }
         if (Greenfoot.mouseClicked(btn4)){
             refreshImage();
             if (order.codePointAt(3)=='1'){
                 correctAnswer(textBtn4); 
-            }else
+            }else{
                 wrongAnswer(textBtn4);
+                HealthBar.looseHealth();
+            }
         }
         moveNextQuest();
     }
