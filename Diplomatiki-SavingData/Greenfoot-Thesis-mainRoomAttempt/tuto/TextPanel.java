@@ -247,6 +247,10 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.dragon2();
             makeImage(mytext, "dragon");
         }
+        if (status == "dragon3"){
+            String mytext = text.dragon3();
+            makeImage(mytext, "dragon");
+        }
     }
 
     private void makeImage(String title)
@@ -332,7 +336,7 @@ public class TextPanel extends Actor implements Serializable
             image.setFont(new Font("Serif", 29));
             image.setColor(Color.LIGHT_GRAY);          
 
-            if (status == "dragon0" || status == "dragon1" || status == "dragon2") image.drawString("Πάτα ENTER", 30, 290);
+            if (status == "dragon0" || status == "dragon1" || status == "dragon2" || status=="dragon3") image.drawString("Πάτα ENTER", 30, 290);
             if (status=="youLost") image.drawString("Πάτα SPACE", 30, 290);
         }
         image.drawString(title, 30, 50);

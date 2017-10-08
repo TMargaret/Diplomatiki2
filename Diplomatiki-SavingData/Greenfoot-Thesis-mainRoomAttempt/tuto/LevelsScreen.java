@@ -22,7 +22,8 @@ public class LevelsScreen extends World implements ButtonResponder
     public static ArrayList<Integer> unlock = new ArrayList<Integer>(){
             {
                 add(1);
-                //add(1);
+                add(1);
+                add(1);
             }
         }; //1 for unlocked level0
 
@@ -109,6 +110,11 @@ public class LevelsScreen extends World implements ButtonResponder
             enterSound.play();
             Greenfoot.setWorld(new Level_02());
         }
+        if (Greenfoot.mouseClicked(hoverFrame3) && !(getObjects(LockLevel.class).contains(locklevel3))){ 
+            StartScreen.startSound.stop();
+            enterSound.play();
+            Greenfoot.setWorld(new Level_1());
+        }
     }
 
     public void unlockLevel(){
@@ -118,9 +124,12 @@ public class LevelsScreen extends World implements ButtonResponder
             removeObject(locklevel2);
             break;
             case 3:
+            removeObject(locklevel2);
             removeObject(locklevel3);
             break;
             case 4:
+            removeObject(locklevel2);
+            removeObject(locklevel3);
             removeObject(locklevel4);
             break;
             case 5:

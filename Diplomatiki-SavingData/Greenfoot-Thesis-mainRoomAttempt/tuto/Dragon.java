@@ -18,6 +18,7 @@ public class Dragon extends SpriteSheet
     int counter = 30;
     int count_enter = 0;
     private TextPanel textPanel;
+    boolean endLevel = false;
 
     public Dragon(){
         expSound.setVolume(90);
@@ -81,13 +82,22 @@ public class Dragon extends SpriteSheet
     }
 
     public void endGame(){
+        counter--;
         if (QuizPic.endLevel()){
             if (count_enter == 4 && counter <0){
                 counter = 30;
-                textPanel = new TextPanel("dragon2");
+                textPanel = new TextPanel("dragon3");
                 getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                 count_enter = 5;
-            }
+            }          
         }
+        if (Greenfoot.isKeyDown("enter") && count_enter == 5 && counter < 0){
+            endLevel = true;
+            getWorld().removeObject(textPanel);
+        }
+    }
+
+    public boolean endLevel(){
+        return endLevel;
     }
 }

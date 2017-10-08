@@ -193,5 +193,9 @@ public class WrittenText implements Serializable
     public String dragon2(){
         return "Είσαι έτοιμος;";
     }
+    
+    public String dragon3(){
+        return "Εμείς οι δύο δεν έχουμε τελειώσει...\n";
+    }
 
 }

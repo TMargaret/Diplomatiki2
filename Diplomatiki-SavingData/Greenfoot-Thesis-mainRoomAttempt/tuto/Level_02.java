@@ -38,6 +38,7 @@ public class Level_02 extends World
 
     Material mat;
     Butterfly butterfly;
+    LevelsScreen lvlScreen;
 
     /**
      * Constructor for objects of class MyWorld.

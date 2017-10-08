@@ -96,6 +96,7 @@ public class QuizPic extends Actor
         }
         if (Greenfoot.mouseClicked(btn7)){         
             endFlag = true;
+            removeButton();
             getWorld().removeObject(this);
             
         }

@@ -31,7 +31,7 @@ public class Level_022 extends World
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
-       // suspenseSound.playLoop();
+        suspenseSound.playLoop();
 
     }
 
@@ -40,11 +40,11 @@ public class Level_022 extends World
         super(1000, 600, 1);
         alex = oldAlex;
         prepare();
-       // suspenseSound.playLoop();
+        suspenseSound.playLoop();
     }
 
     public void act(){
-        //gameOver();
+        endGame();
         //specialEffect();
     }
 
@@ -71,7 +71,7 @@ public class Level_022 extends World
         addObject(dragon,865,153);
 
         specialEffect = new SpecialEffect();
-        
+
         alex.setCanMove(false);
 
     }
@@ -124,6 +124,26 @@ public class Level_022 extends World
                 addObject(specialEffect, random_x, specialEffect.getImage().getHeight()/2+45);
                 count_item = 0;
             }
+        }
+    }
+
+    public void endGame(){
+        if (dragon.endLevel()){
+            Greenfoot.setWorld(new LevelsScreen());
+            suspenseSound.stop();
+            checkUnlockLevel();
+
+        }
+    }	
+
+    /**
+     * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
+     * player will play the same level
+     */
+    public void checkUnlockLevel(){
+        if (LevelsScreen.unlock.size() < 3)
+        {
+            LevelsScreen.unlock.add(1);
         }
     }
 }
