@@ -188,10 +188,6 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.exitRoom();
             makeImage(mytext);
         }
-        if (status == "RoomEntranceText") {
-            String mytext = text.roomEntranceText();
-            makeImage(mytext);
-        }
         if (status == "welcomeMsg") {
             String mytext = text.welcomeMsg();
             makeImage(mytext, "elder");
@@ -318,7 +314,7 @@ public class TextPanel extends Actor implements Serializable
             image.fillRect(0, 0, image.getWidth(),image.getHeight());
             image.setColor(new Color(200, 163, 92, 100));
             image.fillRect(5, 5, image.getWidth()- 10, image.getHeight()-10);
-            image.setFont(new Font("Monospaced", 22));
+            image.setFont(new Font("Monospaced", 20));
             image.setColor(Color.WHITE);          
 
             if (status == "welcomeMsg" || status == "taskText1" || status == "taskText2") image.drawString("Πάτα ENTER", 30, 290);

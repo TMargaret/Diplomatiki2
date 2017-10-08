@@ -19,7 +19,7 @@ public class Level_1 extends World
     private Clay clay;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
     private ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
-
+    GreenfootSound lvl = new GreenfootSound("level3.mp3");
     private ArrayList <Material> pickUpList = new ArrayList<Material>(); //this is the list that Alex is retrieving
     boolean isEDown = false;
     boolean noMaterial = false;
@@ -39,6 +39,7 @@ public class Level_1 extends World
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
+        lvl.playLoop();
     }
 
     /**
