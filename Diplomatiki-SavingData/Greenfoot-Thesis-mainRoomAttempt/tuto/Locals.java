@@ -12,7 +12,7 @@ public class Locals extends Actor
     private HiddenSprite hs;
     private int counter = 10, eyes_counter, me = 0;
     private boolean isActive = false, doNotMoveWhileTalking = false, isEDown = false;
-    private int count_enter = 0;
+    int count_enter = 0;
     private boolean doneDialogue = false;
     private TextPanel taskText;
     Bubble bubble;
@@ -79,44 +79,33 @@ public class Locals extends Actor
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 1 && counter<0 && isEDown){
                             counter = 20;
-                            getWorld().removeObject(taskText);
-                            taskText = new TextPanel(getTextMessage());
-                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            actionInDialogue();
                             count_enter = 2;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 2 && counter <0 && isEDown){
                             counter = 30;
-                            getWorld().removeObject(taskText);
-                            taskText = new TextPanel(getTextMessage());
-                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            actionInDialogue();
                             count_enter = 3;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 3 && counter <0 && isEDown){
                             counter = 30;
-                            getWorld().removeObject(taskText);
-                            taskText = new TextPanel(getTextMessage());
-                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            actionInDialogue();
                             count_enter = 4;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 4 && counter <0 && isEDown){
                             counter = 30;
-                            getWorld().removeObject(taskText);
-                            taskText = new TextPanel(getTextMessage());
-                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            actionInDialogue();
+                            extraAction();
                             count_enter = 5;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 5 && counter <0 && isEDown){
                             counter = 30;
-                            getWorld().removeObject(taskText);
-                            taskText = new TextPanel(getTextMessage());
-                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            actionInDialogue();
                             count_enter = 6;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 6 && counter <0 && isEDown){
                             counter = 30;
-                            getWorld().removeObject(taskText);
-                            taskText = new TextPanel(getTextMessage());
-                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                            actionInDialogue();
                             count_enter = 7;
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 7 && counter <0 && isEDown){
@@ -134,6 +123,16 @@ public class Locals extends Actor
                 }
             }
         }
+    }
+
+    public void actionInDialogue(){
+        getWorld().removeObject(taskText);
+        taskText = new TextPanel(getTextMessage());
+        getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+    }
+    
+    public void extraAction(){
+        
     }
 
     public int getCount_Enter(){

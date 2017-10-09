@@ -124,11 +124,11 @@ public class Level_1 extends World
         Hut oldHut = new Hut();
         addObject(oldHut,129,287);
 
-        Hut oldHut2 = new Hut();
-        addObject(oldHut2,883,287); 
+        // Hut oldHut2 = new Hut();
+        // addObject(oldHut2,883,287); 
 
         hutList.add(oldHut);
-        hutList.add(oldHut2);
+        //hutList.add(oldHut2);
     }
 
     /**

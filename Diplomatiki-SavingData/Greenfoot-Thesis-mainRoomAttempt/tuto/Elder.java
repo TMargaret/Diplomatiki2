@@ -40,12 +40,17 @@ public class Elder extends Locals
             break;
             case 4: text = "taskText4";
             break;
-            case 5: text = "taskText5";
-            break;
-            case 6: text = "taskText6";
-            break;
+            // case 5: text = "taskText5";
+            // break;
+            // case 6: text = "taskText6";
+            // break;
         }
         return text;
+    }
+    
+    @Override
+    public void extraAction(){
+        count_enter = 7;
     }
 
     public void setImage1(){
