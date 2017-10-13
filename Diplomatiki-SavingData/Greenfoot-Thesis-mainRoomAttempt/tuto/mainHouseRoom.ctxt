@@ -19,4 +19,6 @@ comment7.params=
 comment7.target=void\ initVariables()
 comment8.params=
 comment8.target=java.util.ArrayList\ getMaterialList()
-numComments=9
+comment9.params=
+comment9.target=void\ checkAxe()
+numComments=10

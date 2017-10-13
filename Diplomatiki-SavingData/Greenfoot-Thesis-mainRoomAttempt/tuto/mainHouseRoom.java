@@ -18,6 +18,7 @@ public class mainHouseRoom extends World
     Clay clay, clay2;
     StoneOven stoneOven;
     Brick brick, brick2;
+    Axe axe;
     int counter = 100, counter2 = 25, flag = 0;
     boolean isActive = false;
     boolean isEDown = false;
@@ -33,6 +34,7 @@ public class mainHouseRoom extends World
     public double time;
     Level_1 level1;
     Material mat;
+    boolean flag2 = false;
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -58,6 +60,7 @@ public class mainHouseRoom extends World
         //gameOver();
         //enterRoomText();
         exitRoom();
+        checkAxe();
         boolean doNotMove = false;
         if (elder.getTalking() || (flag == 1) || (isActive)){
             doNotMove  = true;
@@ -119,6 +122,7 @@ public class mainHouseRoom extends World
         brick2 = new Brick();
         addObject(brick2,100,460);
         brick2.getImage().setTransparency(0);
+
 
         // lumber = new Lumber();
         // addObject(lumber,100,400);
@@ -217,40 +221,37 @@ public class mainHouseRoom extends World
     }
 
     // public void enterRoomText(){
-        // counter2--;
-        // if (counter2 < 0 && flag == 0){
-            // entranceText = new TextPanel("RoomEntranceText");
-            // addObject(entranceText, getWidth()/2, getHeight()/2);
-            // flag = 1;
-        // }
-        // if (Greenfoot.isKeyDown("enter")){
-            // counter2 = 50;
-            // removeObject(entranceText);
-            // flag = 2;
-        // }
+    // counter2--;
+    // if (counter2 < 0 && flag == 0){
+    // entranceText = new TextPanel("RoomEntranceText");
+    // addObject(entranceText, getWidth()/2, getHeight()/2);
+    // flag = 1;
+    // }
+    // if (Greenfoot.isKeyDown("enter")){
+    // counter2 = 50;
+    // removeObject(entranceText);
+    // flag = 2;
+    // }
     // }
 
     public void exitRoom(){
-        if (Greenfoot.isKeyDown("e")){
-                isEDown = true;
+        if (alex.getX()<alex.getImage().getWidth()- alex.getImage().getWidth()/3){
+            counter--;
+            if (!isActive){
+                textPanel = new TextPanel("exitRoom");
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+                isActive = true;
             }
-        if (alex.isAtEdge() && isEDown){
-            // counter--;
-            // if (!isActive){
-            textPanel = new TextPanel("exitRoom");
-            addObject(textPanel, getWidth()/2, getHeight()/2);
-            // isActive = true;
-            // }
-            // }
-            // if (counter < 0){
-            // int img_cell = 32;
-            // counter = 50;
-            // removeObject(textPanel);
-            // initVariables();
-            // alex.setImage(spriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, 64, 64));
-            // alex.setLocation(alex.getX() + 100, alex.getY());
-            // level1.setAlex(alex);
-            // Greenfoot.setWorld(level1);
+        }
+        if (counter < 0){
+            int img_cell = 32;
+            counter = 50;
+            removeObject(textPanel);
+            initVariables();
+            alex.setImage(spriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, 64, 64));
+            alex.setLocation(alex.getX() + 100, alex.getY());
+            level1.setAlex(alex);
+            Greenfoot.setWorld(level1);
         }      
     }
 
@@ -261,5 +262,14 @@ public class mainHouseRoom extends World
 
     public ArrayList getMaterialList(){
         return pickUpList;
+    }
+
+    public void checkAxe(){
+        if (elder.addAxe() && !flag2){
+            flag2 = true;
+            axe = new Axe(); 
+            addObject(axe, 650, 100);
+            materialList.add(axe);
+        }
     }
 }

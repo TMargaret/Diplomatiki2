@@ -128,6 +128,10 @@ public class WrittenText implements Serializable
 
         return "Η καλύβα αυτή φαίνεται ετοιμόρροπη.\nΚαλύτερα να τη φτιάξω πριν μπω.";
     }
+    public String brokenWell(){
+
+        return "Το πηγάδι είναι κατεστραμμένο..";
+    }
 
     public String enteringRoom(){
         return "Είσοδος στο σπίτι...";

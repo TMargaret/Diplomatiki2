@@ -26,6 +26,7 @@ public class Level_1 extends World
     int counter = 100, btn_counter = 50;
     boolean isActive = false;
     private TextPanel textPanel;
+    WaterWell waterwell;
 
     Material mat;
 
@@ -39,7 +40,7 @@ public class Level_1 extends World
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
-        lvl.playLoop();
+        //lvl.playLoop();
     }
 
     /**
@@ -86,9 +87,12 @@ public class Level_1 extends World
 
         my_mainHouse = new mainHouse();
         addObject(my_mainHouse,506,303);
+        
+        waterwell = new WaterWell();
+        addObject(waterwell,863,301);
 
         addObject(alex,79,525);
-        
+
         straw = new Straw();
         addObject(straw,957,470);
 
@@ -96,7 +100,7 @@ public class Level_1 extends World
         addObject(straw2,614,470);
 
         matList.add(straw);
-        matList.add(straw2);
+        matList.add(straw2);        
     }
 
     /**

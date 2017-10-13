@@ -165,40 +165,6 @@ public class Material extends Actor
     }
 
     public void checkHealthBar(){
-        // switch(version){
-        // case 0:
-        // Level_0 lvl0 = (Level_0)getWorld();
-        // getWorld().removeObject(textField);
-        // if (!wrongCommand){
-        // wrongCommand = true;
-        // HealthBar.looseHealth();
-        // }
-        // break;
-        // case 1:
-        // Level_1 level1 = (Level_1) getWorld();
-        // getWorld().removeObject(textField);
-        // if (!wrongCommand){
-        // wrongCommand = true;
-        // HealthBar.looseHealth();
-        // }
-        // break;
-        // case 2: 
-        // mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
-        // getWorld().removeObject(textField);
-        // if (!wrongCommand){
-        // wrongCommand = true;
-        // HealthBar.looseHealth();
-        // }
-        // break;
-        // case 3: 
-        // Level_02 level02 = (Level_02)getWorld();
-        // getWorld().removeObject(textField);
-        // if (!wrongCommand){
-        // wrongCommand = true;
-        // HealthBar.looseHealth();
-        // }
-        // break;
-        // }
         getWorld().removeObject(textField);
         if (!wrongCommand){
             wrongCommand = true;

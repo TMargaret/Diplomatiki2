@@ -180,6 +180,10 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.brokenHut();
             makeImage(mytext);
         }
+        if (status == "BrokenWellMessage") {
+            String mytext = text.brokenWell();
+            makeImage(mytext);
+        }
         if (status == "enteringRoom") {
             String mytext = text.enteringRoom();
             makeImage(mytext);
@@ -264,7 +268,7 @@ public class TextPanel extends Actor implements Serializable
         image.drawString(title, 5, 30);
         //image.drawString(prefix, 60, 150);
         //ανάλογα με την περίπτωση εμφανίζεται το κατάλληλο μήνυμα
-        if ((status == "BrokenHutMessage") || (status == "RoomEntranceText")
+        if ((status == "BrokenHutMessage") || (status == "RoomEntranceText" || (status == "BrokenWellMessage"))
         || (status == "welcomeMsg")) image.drawString("Πάτα ENTER", 30, 290);
         if (status == "lockedDoor" || status=="houseMsgL0") image.drawString("Πάτα ENTER", 30, 290);
         if (status == "allMaterial")  image.drawString("Πάτα ENTER", 30, 290);
