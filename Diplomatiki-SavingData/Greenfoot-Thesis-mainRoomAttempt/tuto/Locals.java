@@ -101,7 +101,6 @@ public class Locals extends Actor
                             counter = 30;
                             actionInDialogue();                          
                             count_enter = 6;
-                            extraAction();
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 6 && counter <0 && isEDown){
                             counter = 30;

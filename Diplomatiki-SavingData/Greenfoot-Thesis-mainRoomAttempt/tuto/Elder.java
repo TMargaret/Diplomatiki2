@@ -43,16 +43,11 @@ public class Elder extends Locals
             break;
             case 5: text = "taskText5";
             break;
-            // case 6: text = "taskText6";
-            // break;
+            case 6: text = "taskText6";
+            addAxe = true;
+            break;
         }
         return text;
-    }
-    
-    @Override
-    public void extraAction(){
-        count_enter = 7;
-        addAxe = true;
     }
     
     public boolean addAxe(){

@@ -10,10 +10,13 @@ public class Tree extends Material
 {
     GreenfootImage img = getImage();
     private String myAnswer;
-    
+
     public Tree(){
         img.scale(img.getWidth()/2, img.getHeight()/2);
+        super.hsWidth = 100;
+        super.hsHeight = 450;
     }
+
     /**
      * Act - do whatever the Tree wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -21,16 +24,27 @@ public class Tree extends Material
     public void act() 
     {
         checkWorld();
-        checkMaterial();
-      
+        materialCreation();
+
     } 
-    
+
+    // @Override
+    // public void actionMat(){
+        // getWorld().removeObject(this);      
+        // materialList.add(new Lumber());
+        // pickupSound.play();
+        // //addWood = true;    
+    // }
+
+    // public boolean addWood(){
+    // return addWood;
+    // }
+
     /**
      * Method getMaterial
      *
      * @return The material value, for the info message that appears in inputField
      */
-    @Override
     public String getMaterial(){
         String material = "Wood";
         return material;
@@ -42,7 +56,7 @@ public class Tree extends Material
      * @return The correct answer value to be check
      */
     public String checkMaterial(){
-        String materialAnswer = "new Brick();";
+        String materialAnswer = "Alex.use(axe);";
         return materialAnswer;
     } 
 }

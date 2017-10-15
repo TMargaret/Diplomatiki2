@@ -88,26 +88,18 @@ public class Level_1 extends World
 
         my_mainHouse = new mainHouse();
         addObject(my_mainHouse,506,303);
-        
-        tree = new Tree();
-        addObject(tree,725,280); 
-
+       
         waterwell = new WaterWell();
-        addObject(waterwell,863,301);
+        addObject(waterwell,880,301);
 
         addObject(alex,79,525);
 
         straw = new Straw();
-        addObject(straw,957,470);
-
-        straw2 = new Straw();
-        addObject(straw2,614,470);
-
-        matList.add(straw);
-        matList.add(straw2); 
+        addObject(straw,610,480);
+        matList.add(straw);  
         
-               
-        
+        tree = new Tree();
+        addObject(tree,725,280); 
     }
 
     /**
@@ -134,12 +126,8 @@ public class Level_1 extends World
         // put your code here
         Hut oldHut = new Hut();
         addObject(oldHut,129,287);
-
-        // Hut oldHut2 = new Hut();
-        // addObject(oldHut2,883,287); 
-
         hutList.add(oldHut);
-        //hutList.add(oldHut2);
+
     }
 
     /**
@@ -232,4 +220,13 @@ public class Level_1 extends World
             return noMaterial = false;
         }    
     }
+    
+    // public void checkTree(){
+        // if (tree.addWood() && !flag2){
+            // flag2 = true;
+            // wood = new Wood(); 
+            // addObject(wood, 650, 100);
+            // materialList.add(wood);
+        // }
+    // }
 }

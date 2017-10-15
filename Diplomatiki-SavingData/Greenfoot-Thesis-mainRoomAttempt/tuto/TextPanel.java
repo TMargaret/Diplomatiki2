@@ -331,7 +331,7 @@ public class TextPanel extends Actor implements Serializable
             if (status == "welcomeMsg" || status == "taskText1" || status == "taskText2" || 
             status == "taskText3" || status == "taskText4" || status == "taskText5"){
                 image.drawString("Πάτα ENTER", 30, 290);
-                image.drawString(count_slide+"/6", 450, 290);
+                image.drawString(count_slide+"/7", 450, 290);
             }
             if (status == "taskText6" || status == "wrongKey") image.drawString("Πάτα ENTER", 30, 290);
             if (status=="youLost") image.drawString("Πάτα SPACE", 30, 290);

@@ -174,18 +174,21 @@ public class WrittenText implements Serializable
     }
 
     public String taskText4(){
-        return "Ας δούμε πως αλλάζει η υπογραφή της\nμεθόδου use:\n\npublic void use(Data_type wood){ }"
+        return "Ας δούμε πως αλλάζει η υπογραφή της\nμεθόδου use:\n\npublic void use(Data_type axe){ }"
         +"\n\nTo Data_type μπορεί να είναι integer,\nString ακόμα και κάποιο object."
-        +"\nΤο wood είναι το όνομα της παραμέτρου.";
+        +"\nΤο axe είναι το όνομα της παραμέτρου.";
     }
-
+    
     public String taskText5(){
-        return "Θα χρειαστείς όμως και κάτι άλλο.\n\nΠάρε αυτό το τσεκούρι, θα σου\nφανεί χρήσιμο.";
+        return "Τέλος, η λειτουργία της μεθόδου εξαρτάται\nαπό το τι περιέχει το σώμα της. Π.χ:"
+        +"\npublic void use(Object axe){\n   axe = new Wood();   \n}"
+        +"\nΚαλώντας την παραπάνω μέθοδο ως εξής:"
+        +"\nuse(axe);\n"
+        +"στην ουσία δημιουργούμε ένα νέο\nαντικείμενο wood.";
     }
 
     public String taskText6(){
-        return "new όνομα_κλάσης();\n\n-Το \"new\" υποδηλώνει τη δημιουργία του\nνέου αντικειμένου, οποιασδήποτε κλάσης."
-        +"\n-Οι παρενθέσεις συνοδεύουν πάντα το\nόνομα της κλάσης.\n-Το ερωτηματικό μπαίνει απαραίτητα στο\nτέλος κάθε γραμμής κώδικα!";
+        return "Θα χρειαστείς όμως και κάτι άλλο.\n\nΠάρε αυτό το τσεκούρι, θα σου\nφανεί χρήσιμο.";
     }
 
     public String taskText7(){
