@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sun Oct 15 17:11:15 EEST 2017
+#Sun Oct 15 23:07:36 EEST 2017
 target5.height=50
 target15.width=80
 dependency147.from=mainHouseRoom
@@ -1389,7 +1389,7 @@ dependency261.type=UsesDependency
 class.WaterWell.image=broken_well.png
 target22.height=50
 dependency167.from=Material
-world.lastInstantiated=Level_0
+world.lastInstantiated=mainHouseRoom
 target7.height=50
 target35.width=100
 dependency124.type=UsesDependency

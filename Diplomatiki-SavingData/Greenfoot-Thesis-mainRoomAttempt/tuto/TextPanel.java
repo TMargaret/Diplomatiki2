@@ -116,6 +116,7 @@ public class TextPanel extends Actor implements Serializable
         }
 
     }
+
     public void makeTextL1(){
         if (status == "welcomeMsgL02") {
             String mytext = text.welcomeMsgL02();
@@ -194,26 +195,32 @@ public class TextPanel extends Actor implements Serializable
         }
         if (status == "welcomeMsg") {
             String mytext = text.welcomeMsg();
+            count_slide = 1;
             makeImage(mytext, "elder");
         }
         if (status == "taskText1") {
             String mytext = text.taskText1();
+            count_slide = 2;
             makeImage(mytext, "elder");
         }
         if (status == "taskText2") {
             String mytext = text.taskText2();
+            count_slide = 3;
             makeImage(mytext, "elder");
         }
         if (status == "taskText3") {
             String mytext = text.taskText3();
+            count_slide = 4;
             makeImage(mytext, "elder");
         }
         if (status == "taskText4") {
             String mytext = text.taskText4();
+            count_slide = 5;
             makeImage(mytext, "elder");
         }
         if (status == "taskText5") {
             String mytext = text.taskText5();
+            count_slide = 6;
             makeImage(mytext, "elder");
         }
         if (status == "taskText6") {
@@ -321,8 +328,11 @@ public class TextPanel extends Actor implements Serializable
             image.setFont(new Font("Monospaced", 20));
             image.setColor(Color.WHITE);          
 
-            if (status == "welcomeMsg" || status == "taskText1" || status == "taskText2") image.drawString("Πάτα ENTER", 30, 290);
-            if (status == "taskText3" || status == "taskText4" || status == "taskText5") image.drawString("Πάτα ENTER", 30, 290);
+            if (status == "welcomeMsg" || status == "taskText1" || status == "taskText2" || 
+            status == "taskText3" || status == "taskText4" || status == "taskText5"){
+                image.drawString("Πάτα ENTER", 30, 290);
+                image.drawString(count_slide+"/6", 450, 290);
+            }
             if (status == "taskText6" || status == "wrongKey") image.drawString("Πάτα ENTER", 30, 290);
             if (status=="youLost") image.drawString("Πάτα SPACE", 30, 290);
         }
