@@ -290,7 +290,7 @@ public class TextPanel extends Actor implements Serializable
             image.fillRect(0, 0, image.getWidth(),image.getHeight());
             image.setColor(new Color(50, 200, 100, 180));
             image.fillRect(5, 5, image.getWidth()- 10, image.getHeight()-10);
-            image.setFont(new Font("Lucida Sans Unicode", 22));
+            image.setFont(new Font("Lucida Sans Unicode", 20));
             image.setColor(Color.WHITE);
             if (status == "welcomeMsgL0" || status == "taskText1L0" || status == "taskText2L0"
             || status == "taskText3L0" || status == "taskText4L0" || status == "taskText5L0"

@@ -27,6 +27,7 @@ public class Level_1 extends World
     boolean isActive = false;
     private TextPanel textPanel;
     WaterWell waterwell;
+    Tree tree;
 
     Material mat;
 
@@ -55,7 +56,7 @@ public class Level_1 extends World
     public void act(){
         boolean found = false;
         for(Hut hut : hutList){
-            if ((hut.getActive()) || (isActive) ){
+            if ((hut.getActive()) || (isActive) || waterwell.getActive()){
                 found  = true;
             }
         }
@@ -88,6 +89,9 @@ public class Level_1 extends World
         my_mainHouse = new mainHouse();
         addObject(my_mainHouse,506,303);
         
+        tree = new Tree();
+        addObject(tree,725,280); 
+
         waterwell = new WaterWell();
         addObject(waterwell,863,301);
 
@@ -100,7 +104,10 @@ public class Level_1 extends World
         addObject(straw2,614,470);
 
         matList.add(straw);
-        matList.add(straw2);        
+        matList.add(straw2); 
+        
+               
+        
     }
 
     /**
