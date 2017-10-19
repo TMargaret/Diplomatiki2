@@ -27,7 +27,10 @@ public class Level_1 extends World
     boolean isActive = false;
     private TextPanel textPanel;
     WaterWell waterwell;
-    Tree tree;
+    //Tree tree;
+    Lumber lumber;
+    Hut oldHut;
+    int count = 0;
 
     Material mat;
 
@@ -72,6 +75,7 @@ public class Level_1 extends World
         }
         matList.remove(mat);
         alex.setCanMove(!found);
+        setHouseMatList(checkMatList());
         enterInRoom();
     }
 
@@ -88,7 +92,7 @@ public class Level_1 extends World
 
         my_mainHouse = new mainHouse();
         addObject(my_mainHouse,506,303);
-       
+
         waterwell = new WaterWell();
         addObject(waterwell,880,301);
 
@@ -97,9 +101,12 @@ public class Level_1 extends World
         straw = new Straw();
         addObject(straw,610,480);
         matList.add(straw);  
-        
-        tree = new Tree();
-        addObject(tree,725,280); 
+
+        // tree = new Tree();
+        // addObject(tree,725,280); 
+        lumber = new Lumber(2, 1);
+        addObject(lumber,283,521);
+        matList.add(lumber);
     }
 
     /**
@@ -124,7 +131,7 @@ public class Level_1 extends World
     public void addHut()
     {
         // put your code here
-        Hut oldHut = new Hut();
+        oldHut = new Hut();
         addObject(oldHut,129,287);
         hutList.add(oldHut);
 
@@ -219,6 +226,24 @@ public class Level_1 extends World
         }else{
             return noMaterial = false;
         }    
+    }
+    
+        public int checkMatList(){
+        if (pickUpList != null){
+            for (Material mat: pickUpList){
+                if (mat.getMaterial() == "Wood"){
+                    count++;
+                }
+                if (mat.getMaterial() == "Brick"){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public void setHouseMatList(int count){
+        oldHut.setCheckList(2);
     }
     
     // public void checkTree(){

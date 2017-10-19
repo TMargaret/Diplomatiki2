@@ -10,6 +10,7 @@ public class Tree extends Material
 {
     GreenfootImage img = getImage();
     private String myAnswer;
+    Lumber wood = new Lumber();
 
     public Tree(){
         img.scale(img.getWidth()/2, img.getHeight()/2);
@@ -28,13 +29,13 @@ public class Tree extends Material
 
     } 
 
-    // @Override
-    // public void actionMat(){
-        // getWorld().removeObject(this);      
-        // materialList.add(new Lumber());
-        // pickupSound.play();
-        // //addWood = true;    
-    // }
+    @Override
+    public void actionMat(){
+        getWorld().removeObject(this);      
+        materialList.add(wood);
+        pickupSound.play();
+        //addWood = true;    
+    }
 
     // public boolean addWood(){
     // return addWood;

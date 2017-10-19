@@ -39,6 +39,20 @@ public class Lumber extends Material
         version = newObjectVersion;
         myAnswer = "new Wood();";
     }
+    
+        /**
+     * Lumber Constructor
+     *
+     * @param newObjectVersion A parameter
+     */
+    public Lumber(int newObjectVersion, int parameterObjectVersion) 
+    {       
+        GreenfootImage image = getImage();
+        image.scale(image.getWidth() - 10, image.getHeight() - 10);
+        setImage(image);  
+        version = newObjectVersion;
+        myAnswer = "Alex.pickUp(wood);";
+    }
 
 
     /**
@@ -84,6 +98,9 @@ public class Lumber extends Material
             getWorld().removeObject(this);
             pickupSound.play();
             break;
+            case 2:
+            super.actionMat();
+            break;
         }
     }
     
@@ -96,6 +113,9 @@ public class Lumber extends Material
             break;
             case 1:
             msg = "Δημιούργησε ένα αντικείμενο " + getMaterial() + " και πάτα enter";
+            break;
+            case 2:
+            msg = super.getTextFieldMessage();
             break;
         }
         return msg;

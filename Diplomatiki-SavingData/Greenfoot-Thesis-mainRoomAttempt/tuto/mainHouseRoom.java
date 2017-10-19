@@ -60,7 +60,7 @@ public class mainHouseRoom extends World
         //gameOver();
         //enterRoomText();
         exitRoom();
-        checkAxe();
+        //checkAxe();
         boolean doNotMove = false;
         if (elder.getTalking() || (flag == 1) || (isActive)){
             doNotMove  = true;
@@ -264,12 +264,12 @@ public class mainHouseRoom extends World
         return pickUpList;
     }
 
-    public void checkAxe(){
-        if (elder.addAxe() && !flag2){
-            flag2 = true;
-            axe = new Axe(); 
-            addObject(axe, 650, 100);
-            materialList.add(axe);
-        }
-    }
+    // public void checkAxe(){
+        // if (elder.addAxe() && !flag2){
+            // flag2 = true;
+            // axe = new Axe(); 
+            // addObject(axe, 650, 100);
+            // materialList.add(axe);
+        // }
+    // }
 }
