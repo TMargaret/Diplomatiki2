@@ -65,9 +65,6 @@ public class Hut extends Actor implements Serializable
 
                 }
             }
-            // if (isEDown && displayMessage){
-            // }
-            System.out.println(getCheckList());
             if (getCheckList() == 2 && !endOfUse){
                 if (isEDown && !isActive && !endOfUse){
                     isActive = true;
@@ -88,20 +85,16 @@ public class Hut extends Actor implements Serializable
                     db = new Debugger(textField.getText(),"Alex.use(wood, straw);");
                     if (db.checkSpelling())
                     {
-
                         Alex.removeFromInv(true);
-
                         Alex.removeFromInv(true);
-
-                         buildSound.play();
-                         getWorld().removeObject(textField);
+                        buildSound.play();
+                        getWorld().removeObject(textField);
                         // Alex.flagForRemovedItem = false;
-                        // Alex.removeFromInv(true);
-                         isActive = false;
-                         endOfUse = true;
-                         setImage(bH);
-                         setBuildHouse(true);                          
-                        // break;
+                        isActive = false;
+                        endOfUse = true;
+                        setImage(bH);
+                        setBuildHouse(true);                          
+
                     } 
 
                     else {
@@ -128,7 +121,7 @@ public class Hut extends Actor implements Serializable
     }
 
     public void textFieldCreation(){
-        textField = new TextField(700, 45,"Χρησιμοποίησε τα υλικά, ένα-ένα...");
+        textField = new TextField(700, 45,"Χρησιμοποίησε τα υλικά μαζί..");
         getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
     }
 

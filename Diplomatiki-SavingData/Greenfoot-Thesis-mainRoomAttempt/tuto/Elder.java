@@ -43,15 +43,14 @@ public class Elder extends Locals
             break;
             case 5: text = "taskText5";
             break;
-            // case 6: text = "taskText6";
-            // addAxe = true;
-            // break;
+            case 6: text = "taskText6";
+            break;
         }
         return text;
     }
-    
+
     // public boolean addAxe(){
-        // return addAxe;
+    // return addAxe;
     // }
 
     public void setImage1(){

@@ -180,7 +180,7 @@ public class WrittenText implements Serializable
     }
     
     public String taskText5(){
-        return "Τέλος, η λειτουργία της μεθόδου εξαρτάται\nαπό το τι περιέχει το σώμα της. Π.χ:"
+        return "Η λειτουργία της μεθόδου εξαρτάται\nαπό το τι περιέχει το σώμα της. Π.χ:"
         +"\npublic void use(Object axe){\n   axe = new Wood();   \n}"
         +"\nΚαλώντας την παραπάνω μέθοδο ως εξής:"
         +"\nuse(axe);\n"
@@ -188,7 +188,9 @@ public class WrittenText implements Serializable
     }
 
     public String taskText6(){
-        return "Θα χρειαστείς όμως και κάτι άλλο.\n\nΠάρε αυτό το τσεκούρι, θα σου\nφανεί χρήσιμο.";
+        return "Τέλος, μια μέθοδος μπορεί να πάρει όσες\nπαραμέτρους χρειαζόμαστε:"
+        +"\nH υπογραφή της μεθόδου use θα ήταν:\npublic void use(Object wood, Object straw)\n{}\n"
+        +"\nκαι αντίστοιχα η κλήση της θα ήταν:\nAlex.use(wood, straw);";
     }
 
     public String taskText7(){

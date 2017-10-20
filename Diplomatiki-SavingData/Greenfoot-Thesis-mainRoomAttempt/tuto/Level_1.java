@@ -234,7 +234,7 @@ public class Level_1 extends World
                 if (mat.getMaterial() == "Wood"){
                     count++;
                 }
-                if (mat.getMaterial() == "Brick"){
+                if (mat.getMaterial() == "Straw"){
                     count++;
                 }
             }
@@ -243,7 +243,7 @@ public class Level_1 extends World
     }
 
     public void setHouseMatList(int count){
-        oldHut.setCheckList(2);
+        oldHut.setCheckList(count);
     }
     
     // public void checkTree(){
