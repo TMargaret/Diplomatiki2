@@ -102,8 +102,6 @@ public class Level_1 extends World
         addObject(straw,610,480);
         matList.add(straw);  
 
-        // tree = new Tree();
-        // addObject(tree,725,280); 
         lumber = new Lumber(2, 1);
         addObject(lumber,283,521);
         matList.add(lumber);
@@ -134,7 +132,6 @@ public class Level_1 extends World
         oldHut = new Hut();
         addObject(oldHut,129,287);
         hutList.add(oldHut);
-
     }
 
     /**
@@ -243,15 +240,7 @@ public class Level_1 extends World
     }
 
     public void setHouseMatList(int count){
-        oldHut.setCheckList(count);
+        oldHut.setCheckList(2);
     }
     
-    // public void checkTree(){
-        // if (tree.addWood() && !flag2){
-            // flag2 = true;
-            // wood = new Wood(); 
-            // addObject(wood, 650, 100);
-            // materialList.add(wood);
-        // }
-    // }
 }

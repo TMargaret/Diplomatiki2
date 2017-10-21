@@ -154,12 +154,12 @@ public class WrittenText implements Serializable
 
     public String taskText1(){
         return "Το χωριό μου δέχτηκε επίθεση από το\nφοβερό εχθρό DragonDrop.\n\n"
-        +"Ο στρατός του κατέστρεψε τις αποθήκες με\nόλα μας τα αποθέματα."
-        +"\n\nΓια να τις φτιάξεις, θα χρειαστείς Ξύλο\nκαι Άχυρο.";
+        +"Ο στρατός του κατέστρεψε την αποθήκη με\nόλα μας τα αποθέματα, καθώς και το πηγάδι."
+        +"\n\nΓια να τα φτιάξεις, θα χρειαστείς Ξύλο\nκαι Άχυρο για την αποθήκη και Τούβλα\nγια το πηγάδι.";
     }
 
     public String taskText2(){
-        return "Προκειμένου να μαζέψεις τις πρώτες ύλες,\nθα πρέπει να αποκτήσεις νέα δύναμη."
+        return "Προκειμένου να μαζέψεις τα υλικά, θα\nπρέπει να αποκτήσεις νέα δύναμη."
         +" Η νέα\nδύναμη σου επιτρέπει να μαζέψεις ή να\nχρησιμοποιήσεις μια συγκεκριμένη πρώτη\nύλη. "
         +"Για παράδειγμα:\nAlex.pickUp(wood);"
         +"\nH λέξη μέσα στην παρένθεση ονομάζεται\nπαράμετρος στον κόσμο των προγραμματιστών.";
@@ -174,17 +174,17 @@ public class WrittenText implements Serializable
     }
 
     public String taskText4(){
-        return "Ας δούμε πως αλλάζει η υπογραφή της\nμεθόδου use:\n\npublic void use(Data_type axe){ }"
+        return "Ας δούμε πως αλλάζει η υπογραφή της\nμεθόδου use:\n\npublic void use(Data_type material){ }"
         +"\n\nTo Data_type μπορεί να είναι integer,\nString ακόμα και κάποιο object."
-        +"\nΤο axe είναι το όνομα της παραμέτρου.";
+        +"\nΤο material είναι το όνομα της παραμέτρου.";
     }
     
     public String taskText5(){
         return "Η λειτουργία της μεθόδου εξαρτάται\nαπό το τι περιέχει το σώμα της. Π.χ:"
-        +"\npublic void use(Object axe){\n   axe = new Wood();   \n}"
+        +"\npublic void use(Object material){\n   delete(material);   \n}"
         +"\nΚαλώντας την παραπάνω μέθοδο ως εξής:"
-        +"\nuse(axe);\n"
-        +"στην ουσία δημιουργούμε ένα νέο\nαντικείμενο wood.";
+        +"\nuse(straw);\n"
+        +"Στην ουσία προκαλούμε τη διαγραφή του\nαντικειμένου straw.";
     }
 
     public String taskText6(){

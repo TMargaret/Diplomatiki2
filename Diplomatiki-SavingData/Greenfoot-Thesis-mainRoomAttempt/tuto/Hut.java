@@ -82,7 +82,7 @@ public class Hut extends Actor implements Serializable
                 } 
                 if (counter < 0 && Greenfoot.isKeyDown("enter") && isEDown){
                     counter = 30;
-                    db = new Debugger(textField.getText(),"Alex.use(wood, straw);");
+                    db = new Debugger(textField.getText(),"Alex.use(wood,straw);");
                     if (db.checkSpelling())
                     {
                         Alex.removeFromInv(true);
@@ -114,8 +114,13 @@ public class Hut extends Actor implements Serializable
                     isEDown = false;
                     isActive = false;
                     tryAgainOrLeave = false;
+                    wrongCommand = false;
                     getWorld().removeObject(textPanel);
                 }
+            }
+            if (endOfUse){
+                textPanel= new TextPanel("enterHut", db.feedback());
+                getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
             }
         }
     }
@@ -141,8 +146,12 @@ public class Hut extends Actor implements Serializable
         return buildHouse;
     }
 
+    public boolean getEndOfUse(){
+        return endOfUse;
+    }
+
     public void checkHealthBar(){
-        Level_0 lvl0 = (Level_0)getWorld();
+        Level_1 lvl1 = (Level_1)getWorld();
         getWorld().removeObject(textField);
         if (!wrongCommand){
             wrongCommand = true;

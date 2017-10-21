@@ -145,6 +145,7 @@ public class House extends Actor
                     isEDown = false;
                     isActive = false;
                     tryAgainOrLeave = false;
+                    wrongCommand = false;
                     getWorld().removeObject(textPanel);
                 }
             }
