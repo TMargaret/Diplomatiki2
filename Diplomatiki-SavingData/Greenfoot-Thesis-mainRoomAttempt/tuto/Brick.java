@@ -46,7 +46,7 @@ public class Brick extends Material
         switch(version){
             case 0: 
             case 1:
-            case 2:materialAnswer = "Alex.pickUp();"; break;
+            case 2:materialAnswer = "Alex.pickUp(brick);"; break;
         }
         return materialAnswer;
 

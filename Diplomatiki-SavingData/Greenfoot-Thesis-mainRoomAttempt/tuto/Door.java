@@ -57,8 +57,7 @@ public class Door extends Material
      * @return The correct answer value to be check
      */
     public String checkMaterial(){
-        //String materialAnswer = "Alex.use(key);";
-        String materialAnswer = "";
+        String materialAnswer = "Alex.use(key);";
         return materialAnswer;
     }
 

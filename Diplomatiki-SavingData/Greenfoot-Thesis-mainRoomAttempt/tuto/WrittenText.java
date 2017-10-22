@@ -136,7 +136,7 @@ public class WrittenText implements Serializable
 
     public String brokenWell(){
 
-        return "Το πηγάδι είναι κατεστραμμένο..";
+        return "Το πηγάδι είναι κατεστραμμένο..\nΧρειάζομαι δύο τούβλα..";
     }
 
     public String enteringRoom(){

@@ -252,13 +252,16 @@ public class Level_1 extends World
                 if (mat.getMaterial() == "Straw"){
                     count++;
                 }
+                if (mat.getMaterial() == "Brick"){
+                    count++;
+                }
             }
         }
         return count;
     }
 
     public void setHouseMatList(int count){
-        oldHut.setCheckList(2);
+        oldHut.setCheckList(count);
     }
     
 }

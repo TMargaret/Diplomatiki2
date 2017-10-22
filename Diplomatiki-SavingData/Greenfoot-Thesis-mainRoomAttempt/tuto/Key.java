@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Key extends Material
 {
-    //String myAnswer= "Alex.pickUp(key);";
-    String myAnswer= "";
+    String myAnswer= "Alex.pickUp(key);";
+    //String myAnswer= "";
     /**
      * Act - do whatever the Key wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
