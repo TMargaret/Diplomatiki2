@@ -189,6 +189,10 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.enteringRoom();
             makeImage(mytext);
         }
+        if (status == "enteringRoom?") {
+            String mytext = text.enteringOrNot();
+            makeImage(mytext);
+        }
         if (status == "exitRoom") {
             String mytext = text.exitRoom();
             makeImage(mytext);
@@ -279,7 +283,10 @@ public class TextPanel extends Actor implements Serializable
         || (status == "welcomeMsg")) image.drawString("Πάτα ENTER", 30, 290);
         if (status == "lockedDoor" || status=="houseMsgL0") image.drawString("Πάτα ENTER", 30, 290);
         if (status == "allMaterial")  image.drawString("Πάτα ENTER", 30, 290);
-        // if (status == "start1_2") image.drawString("Πάτα SPACE για να ξεκινήσεις", 60, 300);
+        if (status == "enteringRoom?") {
+            image.drawString("Πάτα 1 για ΝΑΙ", 60, 200);
+            image.drawString("Πάτα 2 για ΟΧΙ", 60, 220);
+        }
         // if (status == "start2") image.drawString("Πάτα ENTER", 200, 280);
         // if (status == "start_quiz") image.drawString("Πάτα ENTER", 200, 280);
         // if (status == "start_quiz2") image.drawString("Πάτα ENTER για να ξεκινήσεις", 60, 280);

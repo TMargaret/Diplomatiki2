@@ -142,6 +142,10 @@ public class WrittenText implements Serializable
     public String enteringRoom(){
         return "Είσοδος στο σπίτι...";
     }
+    
+    public String enteringOrNot(){
+        return "Είσοδος στην καλύβα;";
+    }
 
     public String exitRoom(){
         return "Έξοδος...";

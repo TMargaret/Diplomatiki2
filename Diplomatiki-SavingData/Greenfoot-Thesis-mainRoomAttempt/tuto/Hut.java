@@ -20,6 +20,7 @@ public class Hut extends Actor implements Serializable
     boolean tryAgainOrLeave = false;
     boolean wrongCommand = false;
     boolean buildHouse = false;
+    boolean enterHut = false;
     Level_1 lvl_1;
     TextField textField;
     String my_text = "";
@@ -82,7 +83,8 @@ public class Hut extends Actor implements Serializable
                 } 
                 if (counter < 0 && Greenfoot.isKeyDown("enter") && isEDown){
                     counter = 30;
-                    db = new Debugger(textField.getText(),"Alex.use(wood,straw);");
+                    db = new Debugger(textField.getText(),"1");
+                    //db = new Debugger(textField.getText(),"Alex.use(wood,straw);");
                     if (db.checkSpelling())
                     {
                         Alex.removeFromInv(true);
@@ -118,10 +120,39 @@ public class Hut extends Actor implements Serializable
                     getWorld().removeObject(textPanel);
                 }
             }
-            if (endOfUse){
-                textPanel= new TextPanel("enterHut", db.feedback());
+            if (counter<0 && endOfUse && !enterHut){
+                counter = 100;
+                enterHut = true;
+                textPanel= new TextPanel("enteringRoom?", db.feedback());
                 getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
             }
+            if (counter < 0 && enterHut){
+                getWorld().removeObject(textPanel);
+                counter = 100;
+                isActive = false;
+                isEDown = false;
+                // alex.setLocation(alex.getX(), alex.getY() + 100);
+                Greenfoot.setWorld(new mainHouseRoom());
+            }  
+            // if (Greenfoot.isKeyDown("1") && counter < 0 && enterHut){
+                // counter = 40;
+                // isEDown = false;
+                // isActive = false;
+                // tryAgainOrLeave = false;
+                // wrongCommand = false;
+                // enterHut = false;
+                // getWorld().removeObject(textPanel);
+            // }
+            // if (Greenfoot.isKeyDown("2") && counter < 0 && enterHut && isEDown){
+                // counter = 40;
+                // isEDown = false;
+                // isActive = false;
+                // tryAgainOrLeave = false;
+                // wrongCommand = false;
+                // enterHut = false;
+                // getWorld().removeObject(textPanel);
+
+            // }
         }
     }
 
