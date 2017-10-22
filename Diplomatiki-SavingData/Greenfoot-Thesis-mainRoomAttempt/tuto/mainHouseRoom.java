@@ -23,7 +23,7 @@ public class mainHouseRoom extends World
     boolean isActive = false;
     boolean isEDown = false;
     TextPanel textPanel;
-    private ArrayList <Door> doorList = new ArrayList<Door>();
+    public static ArrayList <Door> doorList = new ArrayList<Door>();
     int img_cell = 32;
     GreenfootImage alexImg = new GreenfootImage("alex.png");
     final int IMG_WIDTH = alexImg.getWidth()/6;
@@ -69,7 +69,13 @@ public class mainHouseRoom extends World
             if (door.getActive()){
                 doNotMove  = true;
             }
+            
+            
         }
+        //use the key twice, then remove it from inv
+        if (doorList.size() < 1){
+                alex.removeItem("Key");
+            }
         for (Material material : materialList){
             if(material.getWorldOfType(mainHouseRoom.class) == null){
                 pickUpList.add(material);

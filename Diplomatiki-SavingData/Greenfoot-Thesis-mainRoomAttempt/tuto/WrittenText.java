@@ -140,11 +140,7 @@ public class WrittenText implements Serializable
     }
 
     public String enteringRoom(){
-        return "Είσοδος στο σπίτι...";
-    }
-    
-    public String enteringOrNot(){
-        return "Είσοδος στην καλύβα;";
+        return "Είσοδος...";
     }
 
     public String exitRoom(){
@@ -158,9 +154,9 @@ public class WrittenText implements Serializable
 
     public String taskText1(){
         return "Το χωριό μου δέχτηκε επίθεση από το\nφοβερό εχθρό DragonDrop.\n\n"
-        +"Ο στρατός του κατέστρεψε την αποθήκη με\nόλα μας τα αποθέματα, καθώς και το πηγάδι."
+        +"Η αποθήκη με τα τρόφιμα και το πηγάδι\nκαταστράφηκαν, ευτυχώς όμως ο φούρνος που\nφτιάχνει τούβλα λειτουργεί ακόμα."
         +"\n\nΓια να τα φτιάξεις, θα χρειαστείς Ξύλο\nκαι Άχυρο για την αποθήκη και Τούβλα\nγια το πηγάδι.";
-    }
+    } 
 
     public String taskText2(){
         return "Προκειμένου να μαζέψεις τα υλικά, θα\nπρέπει να αποκτήσεις νέα δύναμη."
@@ -198,7 +194,9 @@ public class WrittenText implements Serializable
     }
 
     public String taskText7(){
-        return "Είσαι έτοιμος για την αποστολή σου.\n\nΘυμήσου!\nnew όνομα_κλάσης();\n\nΗ δημιουργία αντικειμένων θα σου\nανοίξει πολλές πόρτες... ";
+        return "Είσαι έτοιμος για την αποστολή σου.\n\n"
+        +"Ο φούρνος που φτιάχνει τούβλα ευτυχώς\nλειτουργεί."
+        +"\nΚαλή τύχη.";
     }
 
     public String lockedDoor(){

@@ -25,7 +25,7 @@ public class Material extends Actor
     String my_text = "";
     TextPanel textPanel;
     static boolean addToInv = false;
-    protected static ArrayList<Material> materialList = new ArrayList<Material>();
+    public static ArrayList<Material> materialList = new ArrayList<Material>();
     InvBar invBar = new InvBar();
     Debugger db;
     GreenfootSound pickupSound = new GreenfootSound("pickUp.wav");

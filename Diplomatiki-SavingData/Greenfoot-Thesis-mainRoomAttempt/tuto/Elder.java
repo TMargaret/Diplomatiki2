@@ -45,6 +45,8 @@ public class Elder extends Locals
             break;
             case 6: text = "taskText6";
             break;
+            case 7: text = "taskText7";
+            break;
         }
         return text;
     }

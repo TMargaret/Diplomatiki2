@@ -18,7 +18,7 @@ public class Level_1 extends World
     private Straw straw, straw2;
     private Clay clay;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
-    private ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
+    public static ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
     GreenfootSound lvl = new GreenfootSound("level3.mp3");
     private ArrayList <Material> pickUpList = new ArrayList<Material>(); //this is the list that Alex is retrieving
     boolean isEDown = false;
@@ -184,13 +184,11 @@ public class Level_1 extends World
      * shows a message before entering the house
      */
     public void enterInRoom(){
-        if (alex.getAnIntersectingObject(mainHouse.class) != null || 
-        (alex.getAnIntersectingObject(Hut.class) != null) && oldHut.getEndOfUse()){
+        if (alex.getAnIntersectingObject(mainHouse.class) != null){
             counter--;
             if (Greenfoot.isKeyDown("e")){
                 isEDown = true;
             }
-
             if (isEDown && !isActive){
                 counter = 100;
                 textPanel = new TextPanel("enteringRoom");
@@ -204,8 +202,27 @@ public class Level_1 extends World
                 isEDown = false;
                 alex.setLocation(alex.getX(), alex.getY() + 100);
                 Greenfoot.setWorld(new mainHouseRoom(alex,this));
+            }
+        }
+            if ((alex.getAnIntersectingObject(Hut.class) != null) && oldHut.getEndOfUse()){
+            counter--;
+            if (Greenfoot.isKeyDown("e")){
+                isEDown = true;
+            }
+            if (isEDown && !isActive){
+                counter = 100;
+                textPanel = new TextPanel("enteringRoom");
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+                isActive = true;
+            }
+            if (counter < 0 && isEDown && isActive){
+                removeObject(textPanel);
+                counter = 100;
+                isActive = false;
+                isEDown = false;
+                //alex.setLocation(alex.getX(), alex.getY() + 100);
+                Greenfoot.setWorld(new mainHutRoom(alex,this));
             }  
-
         } 
     }
 

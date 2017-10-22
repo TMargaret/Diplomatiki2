@@ -91,7 +91,6 @@ public class Hut extends Actor implements Serializable
                         Alex.removeFromInv(true);
                         buildSound.play();
                         getWorld().removeObject(textField);
-                        // Alex.flagForRemovedItem = false;
                         isActive = false;
                         endOfUse = true;
                         setImage(bH);
@@ -120,39 +119,6 @@ public class Hut extends Actor implements Serializable
                     getWorld().removeObject(textPanel);
                 }
             }
-            // if (counter<0 && endOfUse && !enterHut){
-                // counter = 100;
-                // enterHut = true;
-                // textPanel= new TextPanel("enteringRoom?", db.feedback());
-                // getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
-            // }
-            // if (counter < 0 && enterHut){
-                // getWorld().removeObject(textPanel);
-                // counter = 100;
-                // isActive = false;
-                // isEDown = false;
-                // // alex.setLocation(alex.getX(), alex.getY() + 100);
-                // Greenfoot.setWorld(new mainHouseRoom());
-            // }  
-            // if (Greenfoot.isKeyDown("1") && counter < 0 && enterHut){
-                // counter = 40;
-                // isEDown = false;
-                // isActive = false;
-                // tryAgainOrLeave = false;
-                // wrongCommand = false;
-                // enterHut = false;
-                // getWorld().removeObject(textPanel);
-            // }
-            // if (Greenfoot.isKeyDown("2") && counter < 0 && enterHut && isEDown){
-                // counter = 40;
-                // isEDown = false;
-                // isActive = false;
-                // tryAgainOrLeave = false;
-                // wrongCommand = false;
-                // enterHut = false;
-                // getWorld().removeObject(textPanel);
-
-            // }
         }
     }
 

@@ -49,7 +49,7 @@ public class TextPanel extends Actor implements Serializable
         if (w instanceof Level_02){
             makeTextL1();
         }
-        if (w instanceof Level_1 || w instanceof mainHouseRoom){
+        if (w instanceof Level_1 || w instanceof mainHouseRoom || w instanceof mainHutRoom){
             makeTextL2();
         }
         if (w instanceof Level_022){
@@ -189,10 +189,6 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.enteringRoom();
             makeImage(mytext);
         }
-        if (status == "enteringRoom?") {
-            String mytext = text.enteringOrNot();
-            makeImage(mytext);
-        }
         if (status == "exitRoom") {
             String mytext = text.exitRoom();
             makeImage(mytext);
@@ -229,6 +225,7 @@ public class TextPanel extends Actor implements Serializable
         }
         if (status == "taskText6") {
             String mytext = text.taskText6();
+            count_slide = 7;
             makeImage(mytext, "elder");
         }
         if (status == "lockedDoor") {
@@ -283,10 +280,6 @@ public class TextPanel extends Actor implements Serializable
         || (status == "welcomeMsg")) image.drawString("Πάτα ENTER", 30, 290);
         if (status == "lockedDoor" || status=="houseMsgL0") image.drawString("Πάτα ENTER", 30, 290);
         if (status == "allMaterial")  image.drawString("Πάτα ENTER", 30, 290);
-        if (status == "enteringRoom?") {
-            image.drawString("Πάτα 1 για ΝΑΙ", 60, 200);
-            image.drawString("Πάτα 2 για ΟΧΙ", 60, 220);
-        }
         // if (status == "start2") image.drawString("Πάτα ENTER", 200, 280);
         // if (status == "start_quiz") image.drawString("Πάτα ENTER", 200, 280);
         // if (status == "start_quiz2") image.drawString("Πάτα ENTER για να ξεκινήσεις", 60, 280);
@@ -336,11 +329,11 @@ public class TextPanel extends Actor implements Serializable
             image.setColor(Color.WHITE);          
 
             if (status == "welcomeMsg" || status == "taskText1" || status == "taskText2" || 
-            status == "taskText3" || status == "taskText4" || status == "taskText5"){
+            status == "taskText3" || status == "taskText4" || status == "taskText5" || status == "taskText6"){
                 image.drawString("Πάτα ENTER", 30, 290);
                 image.drawString(count_slide+"/7", 450, 290);
             }
-            if (status == "taskText6" || status == "wrongKey") image.drawString("Πάτα ENTER", 30, 290);
+            if (status == "wrongKey") image.drawString("Πάτα ENTER", 30, 290);
             if (status=="youLost") image.drawString("Πάτα SPACE", 30, 290);
         }
 
