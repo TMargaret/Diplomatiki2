@@ -18,7 +18,7 @@ public class mainHutRoom extends World
     Clay clay, clay2;
     StoneOven stoneOven;
     Brick brick, brick2;
-    Axe axe;
+    Key key;
     int counter = 100, counter2 = 25, flag = 0;
     boolean isActive = false;
     boolean isEDown = false;
@@ -93,10 +93,10 @@ public class mainHutRoom extends World
         image.fill();
         setBackground(image);
 
-        //addWall();
+        addWall();
 
         alex.setImage(SpriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, IMG_WIDTH, IMG_HEIGHT));
-        addObject(alex,80, 90);
+        addObject(alex,50, 380);
 
         //horizontal entrance up
         Wall wall2 = new Wall();
@@ -106,8 +106,8 @@ public class mainHutRoom extends World
         Wall wall4 = new Wall();
         addObject(wall4,197,300);
         Wall wall5 = new Wall();
-        addObject(wall5,264,300);
-        
+        addObject(wall5,263,300);
+
         //horizontal entrance down
         Wall wall = new Wall();
         addObject(wall,42,450);
@@ -117,7 +117,7 @@ public class mainHutRoom extends World
         addObject(wall7,191,450);
         Wall wall8 = new Wall();
         addObject(wall8,264,450);
-        
+
         //vertical first up
         Wall wall10 = new Wall();
         addObject(wall10,283,240);
@@ -139,7 +139,7 @@ public class mainHutRoom extends World
         addObject(wall16,620,120);
         Wall wall9 = new Wall();
         addObject(wall9,700,120);
-        
+
         //vertical path
         Wall wall17 = new Wall();
         addObject(wall17,750,140);
@@ -162,7 +162,7 @@ public class mainHutRoom extends World
         Wall wall23 = new Wall();
         addObject(wall23,750,573);
         wall23.setRotation(90);
-        
+
         //vertical entrance down
         Wall wall24 = new Wall();
         addObject(wall24,285,470);
@@ -173,131 +173,105 @@ public class mainHutRoom extends World
         Wall wall26 = new Wall();
         addObject(wall26,285,630);
         wall26.setRotation(90);
-        
+
         //horizontal down
         Wall wall27 = new Wall();
-        addObject(wall27,315,600);
+        addObject(wall27,315,590);
         Wall wall28 = new Wall();
-        addObject(wall28,390,600);
+        addObject(wall28,390,590);
         Wall wall29 = new Wall();
-        addObject(wall29,470,600);
+        addObject(wall29,470,590);
         Wall wall30 = new Wall();
-        addObject(wall30,550,600);
+        addObject(wall30,550,590);
         Wall wall31 = new Wall();
-        addObject(wall31,630,600);
+        addObject(wall31,630,590);
         Wall wall32 = new Wall();
-        addObject(wall32,690,600);
-  
+        addObject(wall32,690,590);
+
+        //shadow wall up
         Wall2 wall210 = new Wall2();
-        addObject(wall210,48,327);
+        addObject(wall210,40,319);
         Wall2 wall211 = new Wall2();
-        addObject(wall211,126,333);
+        addObject(wall211,120,319);
         Wall2 wall212 = new Wall2();
-        addObject(wall212,215,331);
+        addObject(wall212,200,319);
         Wall2 wall213 = new Wall2();
-        addObject(wall213,289,332);
+        addObject(wall213,264,319);
+        //shadow wall
         Wall2 wall214 = new Wall2();
-        addObject(wall214,355,149);
+        addObject(wall214,345,140);
         Wall2 wall215 = new Wall2();
-        addObject(wall215,426,154);
+        addObject(wall215,420,140);
         Wall2 wall216 = new Wall2();
-        addObject(wall216,502,155);
+        addObject(wall216,500,140);
         Wall2 wall217 = new Wall2();
-        addObject(wall217,570,157);
-        Wall2 wall218 = new Wall2();
-        addObject(wall218,38,493);
-        Wall2 wall219 = new Wall2();
-        addObject(wall219,126,485);
-        Wall2 wall220 = new Wall2();
-        addObject(wall220,204,485);
-        Wall2 wall221 = new Wall2();
-        addObject(wall221,238,488);
-   
-
-
-
+        addObject(wall217,570,140);
         Wall2 wall222 = new Wall2();
-        addObject(wall222,657,163);
+        addObject(wall222,650,140);
+        Wall2 wall223 = new Wall2();
+        addObject(wall223,690,140);
+
+        //shadow wall down
+        Wall2 wall218 = new Wall2();
+        addObject(wall218,40,470);
+        Wall2 wall219 = new Wall2();
+        addObject(wall219,120,470);
+        Wall2 wall220 = new Wall2();
+        addObject(wall220,200,470);
+        Wall2 wall221 = new Wall2();
+        addObject(wall221,225,470); 
+
+        Barrel barrel = new Barrel();
+        addObject(barrel,700,150);
+        Barrel barrel2 = new Barrel();
+        addObject(barrel2,712,180);
+        Barrel barrel3 = new Barrel();
+        addObject(barrel3,680,174);
+        Barrel barrel4 = new Barrel();
+        addObject(barrel4,712,203);
+        Barrel barrel5 = new Barrel();
+        addObject(barrel5,685,228);
+
+        Barrel barrel6 = new Barrel();
+        addObject(barrel6,329,158);
+        Barrel barrel7 = new Barrel();
+        addObject(barrel7,363,160);
+        Barrel barrel8 = new Barrel();
+        addObject(barrel8,343,187);
+        Barrel barrel9 = new Barrel();
+        addObject(barrel9,375,204);
+        Barrel barrel10 = new Barrel();
+        addObject(barrel10,335,221);
+
+        Barrel barrel11 = new Barrel();
+        addObject(barrel11,330,474);
+        Barrel barrel12 = new Barrel();
+        addObject(barrel12,342,503);
+        Barrel barrel13 = new Barrel();
+        addObject(barrel13,339,520);
+
+        Crate crate = new Crate();
+        addObject(crate,490,170);
+        Crate crate2 = new Crate();
+        addObject(crate2,540,171);
+        Crate crate3 = new Crate();
+        addObject(crate3,400,505);
+        Crate crate4 = new Crate();
+        addObject(crate4,500,200);
+        
+        key = new Key();
+        addObject(key,702,556);
+        materialList.add(key);
     }
 
     public void addWall(){
         Wall[] wall = new Wall[25];
         Wall[] wall2 = new Wall[25];
 
-        //Room with Clay
-        Wall wall79 = new Wall();
-        addObject(wall79,712,81);
-        wall79.setRotation(90);
-
-        Wall wall80 = new Wall();
-        addObject(wall80,958,294);
-
-        Wall wall81 = new Wall();
-        addObject(wall81,876,294);
-
-        Wall wall82 = new Wall();
-        addObject(wall82,795,294);
-
-        Wall wall83 = new Wall();
-        addObject(wall83,735,294);
-
-        Wall wall84 = new Wall();
-        addObject(wall84,712,137);
-        wall84.setRotation(90);
-
-        //Room with Wood      
-        Wall wall70 = new Wall();
-        addObject(wall70,400,100);
-
-        Wall wall71 = new Wall();
-        addObject(wall71,82,200);
-
-        Wall wall72 = new Wall();
-        addObject(wall72,164,200);
-
-        Wall wall73 = new Wall();
-        addObject(wall73,246,200);
-
-        Wall wall74 = new Wall();
-        addObject(wall74,328,200);
-
-        Wall wall75 = new Wall();
-        addObject(wall75,420,547);
-        wall75.setRotation(90);
-
-        Wall wall76 = new Wall();
-        addObject(wall76,420,490);
-        wall76.setRotation(90);
-
-        Wall wall77 = new Wall();
-        addObject(wall77,420,240);
-        wall77.setRotation(90);
-
-        Wall wall78 = new Wall();
-        addObject(wall78,420,320);
-        wall78.setRotation(90);
-
-        //builds the right vertical paths
-        for(int i=0; i<=getHeight(); i+= 80)
-        {
-            Wall wall_vert = new Wall();
-            addObject(wall_vert, getWidth() - wall_vert.getImage().getWidth()/4,i);
-            wall_vert.setRotation(90);
-        }
-
-        //builds the left vertical paths
-        for(int i=0; i<=getHeight() - 160; i+= 80)
-        {
-            Wall wall_vert2 = new Wall();
-            addObject(wall_vert2, wall_vert2.getImage().getWidth()/4 ,i );
-            wall_vert2.setRotation(90);
-        }
-
         for(int j=0; j<wall.length; j++){
             wall[j]=new Wall();
             wall2[j] = new Wall();
             addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
-            addObject(wall2[j],j*wall2[j].getImage().getWidth(), getHeight() - wall[j].getImage().getHeight()/2);
         }
 
     }
