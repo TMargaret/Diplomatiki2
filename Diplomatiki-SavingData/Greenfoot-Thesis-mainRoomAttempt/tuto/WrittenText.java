@@ -153,9 +153,10 @@ public class WrittenText implements Serializable
     }
 
     public String taskText1(){
-        return "Το χωριό μου δέχτηκε επίθεση από το\nφοβερό εχθρό DragonDrop.\n\n"
-        +"Η αποθήκη με τα τρόφιμα και το πηγάδι\nκαταστράφηκαν, ευτυχώς όμως ο φούρνος που\nφτιάχνει τούβλα λειτουργεί ακόμα."
-        +"\n\nΓια να τα φτιάξεις, θα χρειαστείς Ξύλο,\nΆχυρο και Τούβλα.";
+        return "Το χωριό μου δέχτηκε επίθεση από το\nφοβερό εχθρό DragonDrop.\n"
+        +"Το πηγάδι και η αποθήκη με τα τρόφιμα\nκαταστράφηκαν, για να τα φτιάξεις, θα\nχρειαστείς Τούβλα, Ξύλο και Άχυρο."
+        +"\nEυτυχώς ο φούρνος που φτιάχνει"
+        +" τα τούβλα\nλειτουργεί ακόμα, όμως δε θυμάμαι που\nέβαλα το κλειδί για την πόρτα.";
     } 
 
     public String taskText2(){
@@ -178,7 +179,7 @@ public class WrittenText implements Serializable
         +"\n\nTo Data_type μπορεί να είναι integer,\nString ακόμα και κάποιο object."
         +"\nΤο material είναι το όνομα της παραμέτρου.";
     }
-    
+
     public String taskText5(){
         return "Η λειτουργία της μεθόδου εξαρτάται\nαπό το τι περιέχει το σώμα της. Π.χ:"
         +"\npublic void use(Object material){\n   delete(material);   \n}"

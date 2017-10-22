@@ -28,6 +28,7 @@ public class WaterWell extends Actor
 
     public WaterWell(){
         img.scale(img.getWidth()/4, img.getHeight()/4);
+        bH.scale(bH.getWidth()/4, bH.getHeight()/4);
     }
 
     /**
@@ -62,7 +63,6 @@ public class WaterWell extends Actor
                     getWorld().removeObject(textPanel);
                     isActive = false;
                     isEDown = false;
-
                 }
             }
             if (getCheckList() == 2 && !endOfUse){
@@ -71,7 +71,6 @@ public class WaterWell extends Actor
                     counter = 20;
                     textFieldCreation();
                 }
-
                 if (Greenfoot.mouseClicked(textField) && isEDown){
                     textField.setText("");
                 }
@@ -96,7 +95,6 @@ public class WaterWell extends Actor
                         setBuildHouse(true);                          
 
                     } 
-
                     else {
                         checkHealthBar();
                         getWorld().removeObject(textField);

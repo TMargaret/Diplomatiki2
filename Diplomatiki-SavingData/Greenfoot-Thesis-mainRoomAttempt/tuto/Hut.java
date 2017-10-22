@@ -72,7 +72,6 @@ public class Hut extends Actor implements Serializable
                     counter = 20;
                     textFieldCreation();
                 }
-
                 if (Greenfoot.mouseClicked(textField) && isEDown){
                     textField.setText("");
                 }

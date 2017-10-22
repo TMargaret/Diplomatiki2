@@ -389,6 +389,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         {
             Greenfoot.setWorld(new LevelsScreen());
             Level_0.level0Sound.stop();
+            Level_1.lvl.stop();
+            Level_02.lvlSound.stop();
         }
 
     }

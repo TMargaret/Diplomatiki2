@@ -19,7 +19,7 @@ public class Level_1 extends World
     private Clay clay;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
     public static ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
-    GreenfootSound lvl = new GreenfootSound("level3.mp3");
+    public static GreenfootSound lvl = new GreenfootSound("level3.mp3");
     private ArrayList <Material> pickUpList = new ArrayList<Material>(); //this is the list that Alex is retrieving
     boolean isEDown = false;
     boolean noMaterial = false;
@@ -27,13 +27,15 @@ public class Level_1 extends World
     boolean isActive = false;
     boolean hasEnter = false;
     private TextPanel textPanel;
+    boolean displayMessage = false;
     WaterWell waterwell;
     Lumber lumber;
     Hut oldHut;
     int count = 0;
     mainHouseRoom mainHouseRoom;
-
+int counterEnd = 300;
     Material mat;
+    private GreenfootSound thankSound = new GreenfootSound("thank.wav");
 
     /**
      * Constructor for objects of class MyWorld.
@@ -45,9 +47,9 @@ public class Level_1 extends World
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
-        //lvl.playLoop();
+        lvl.playLoop();
     }
-    
+
     public Level_1(Level_1 level1, mainHouseRoom oldMainHouseRoom)
     {
         super(1000, 600, 1);
@@ -64,7 +66,7 @@ public class Level_1 extends World
         alex = oldAlex;
         addObject(alex,79,525);
     }
-    
+
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -78,6 +80,7 @@ public class Level_1 extends World
         for(Hut hut : hutList){
             if ((hut.getActive()) || (isActive) || waterwell.getActive()){
                 found  = true;
+
             }
         }
         for(Material material : matList){
@@ -93,7 +96,12 @@ public class Level_1 extends World
         matList.remove(mat);
         alex.setCanMove(!found);
         setHouseMatList(checkMatList());
+        setWaterWellList(checkMatList());
+        System.out.println("mat"+matList.size());
+        System.out.println(pickUpList.size());
+        System.out.println(checkMatList());
         enterInRoom();
+        endGame();
     }
 
     /**
@@ -230,7 +238,7 @@ public class Level_1 extends World
                 Greenfoot.setWorld(mainHouseRoom);
             }
         }
-            if ((alex.getAnIntersectingObject(Hut.class) != null) && oldHut.getEndOfUse()){
+        if ((alex.getAnIntersectingObject(Hut.class) != null) && oldHut.getEndOfUse()){
             counter--;
             if (Greenfoot.isKeyDown("e")){
                 isEDown = true;
@@ -268,19 +276,19 @@ public class Level_1 extends World
             return noMaterial = false;
         }    
     }
-    
-        public int checkMatList(){
+
+    public int checkMatList(){
         if (pickUpList != null){
             for (Material mat: pickUpList){
-                if (mat.getMaterial() == "Wood"){
-                    count++;
-                }
+                // if (mat.getMaterial() == "Wood"){
+                    // count++;
+                // }
                 if (mat.getMaterial() == "Straw"){
                     count++;
                 }
-                if (mat.getMaterial() == "Brick"){
-                    count++;
-                }
+                // if (mat.getMaterial() == "Brick"){
+                    // count++;
+                // }
             }
         }
         return count;
@@ -289,5 +297,38 @@ public class Level_1 extends World
     public void setHouseMatList(int count){
         oldHut.setCheckList(count);
     }
+
+    public void setWaterWellList(int count){
+        waterwell.setCheckList(count);
+    }
     
+        public void endGame(){
+        if (waterwell.getEndOfUse()){
+            counterEnd--;
+            if (counterEnd<0 && !displayMessage){
+                thankSound.play();
+                displayMessage = true;
+                textPanel = new TextPanel("wellDone");
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+            }
+            if (Greenfoot.isKeyDown("enter") && displayMessage){
+                removeObject(textPanel);
+                Greenfoot.setWorld(new LevelsScreen());
+                lvl.stop();
+                checkUnlockLevel();
+            }
+        }
+    }
+    
+        /**
+     * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
+     * player will play the same level
+     */
+    public void checkUnlockLevel(){
+        if (LevelsScreen.unlock.size() < 4)
+        {
+            LevelsScreen.unlock.add(1);
+        }
+    }
+
 }
