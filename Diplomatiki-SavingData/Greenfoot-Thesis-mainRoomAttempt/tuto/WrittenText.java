@@ -131,7 +131,7 @@ public class WrittenText implements Serializable
     //level_1
     public String brokenHut(){
 
-        return "Η καλύβα αυτή φαίνεται ετοιμόρροπη.\nΚαλύτερα να τη φτιάξω πριν μπω.";
+        return "Η καλύβα αυτή φαίνεται ετοιμόρροπη.\nΚαλύτερα να τη φτιάξω πριν μπω.\n\nΧρειάζομαι ξύλο και άχυρο.";
     }
 
     public String brokenWell(){
@@ -155,7 +155,7 @@ public class WrittenText implements Serializable
     public String taskText1(){
         return "Το χωριό μου δέχτηκε επίθεση από το\nφοβερό εχθρό DragonDrop.\n\n"
         +"Η αποθήκη με τα τρόφιμα και το πηγάδι\nκαταστράφηκαν, ευτυχώς όμως ο φούρνος που\nφτιάχνει τούβλα λειτουργεί ακόμα."
-        +"\n\nΓια να τα φτιάξεις, θα χρειαστείς Ξύλο\nκαι Άχυρο για την αποθήκη και Τούβλα\nγια το πηγάδι.";
+        +"\n\nΓια να τα φτιάξεις, θα χρειαστείς Ξύλο,\nΆχυρο και Τούβλα.";
     } 
 
     public String taskText2(){

@@ -25,12 +25,13 @@ public class Level_1 extends World
     boolean noMaterial = false;
     int counter = 100, btn_counter = 50;
     boolean isActive = false;
+    boolean hasEnter = false;
     private TextPanel textPanel;
     WaterWell waterwell;
-    //Tree tree;
     Lumber lumber;
     Hut oldHut;
     int count = 0;
+    mainHouseRoom mainHouseRoom;
 
     Material mat;
 
@@ -46,6 +47,14 @@ public class Level_1 extends World
         prepare();
         //lvl.playLoop();
     }
+    
+    public Level_1(Level_1 level1, mainHouseRoom oldMainHouseRoom)
+    {
+        super(1000, 600, 1);
+        //alex = oldAlex;
+        mainHouseRoom = oldMainHouseRoom;
+        level1.prepare();
+    }
 
     /**
      * Constructor for objects of class MyWorld.
@@ -54,6 +63,14 @@ public class Level_1 extends World
     public void setAlex(Alex oldAlex){
         alex = oldAlex;
         addObject(alex,79,525);
+    }
+    
+    /**
+     * Constructor for objects of class MyWorld.
+     * 
+     */
+    public void setmainHouseRoom(mainHouseRoom oldMainHouseRoom){
+        mainHouseRoom = oldMainHouseRoom;
     }
 
     public void act(){
@@ -195,13 +212,22 @@ public class Level_1 extends World
                 addObject(textPanel, getWidth()/2, getHeight()/2);
                 isActive = true;
             }
-            if (counter < 0 && isEDown && isActive){
+            if (counter < 0 && isEDown && isActive && !hasEnter){
                 removeObject(textPanel);
                 counter = 100;
                 isActive = false;
                 isEDown = false;
                 alex.setLocation(alex.getX(), alex.getY() + 100);
                 Greenfoot.setWorld(new mainHouseRoom(alex,this));
+                hasEnter = true;
+            }
+            if (counter < 0 && isEDown && isActive && hasEnter){
+                removeObject(textPanel);
+                counter = 100;
+                isActive = false;
+                isEDown = false;
+                mainHouseRoom.setAlex(alex);               
+                Greenfoot.setWorld(mainHouseRoom);
             }
         }
             if ((alex.getAnIntersectingObject(Hut.class) != null) && oldHut.getEndOfUse()){

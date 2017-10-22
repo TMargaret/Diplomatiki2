@@ -18,7 +18,6 @@ public class mainHouseRoom extends World
     Clay clay, clay2;
     StoneOven stoneOven;
     Brick brick, brick2;
-    Axe axe;
     int counter = 100, counter2 = 25, flag = 0;
     boolean isActive = false;
     boolean isEDown = false;
@@ -55,6 +54,16 @@ public class mainHouseRoom extends World
         level1 = oldLevel1;
         prepare();
     }
+    
+        /**
+     * Constructor for objects of class MyWorld.
+     * 
+     */
+    public void setAlex(Alex oldAlex){
+        alex = oldAlex;
+        alex.setImage(spriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, 64, 64));
+        addObject(alex,80,90);
+    }
 
     public void act(){
         //gameOver();
@@ -68,9 +77,7 @@ public class mainHouseRoom extends World
         for(Door door : doorList){
             if (door.getActive()){
                 doNotMove  = true;
-            }
-            
-            
+            }           
         }
         //use the key twice, then remove it from inv
         if (doorList.size() < 1){
@@ -226,20 +233,6 @@ public class mainHouseRoom extends World
 
     }
 
-    // public void enterRoomText(){
-    // counter2--;
-    // if (counter2 < 0 && flag == 0){
-    // entranceText = new TextPanel("RoomEntranceText");
-    // addObject(entranceText, getWidth()/2, getHeight()/2);
-    // flag = 1;
-    // }
-    // if (Greenfoot.isKeyDown("enter")){
-    // counter2 = 50;
-    // removeObject(entranceText);
-    // flag = 2;
-    // }
-    // }
-
     public void exitRoom(){
         if (alex.getX()<alex.getImage().getWidth()- alex.getImage().getWidth()/3){
             counter--;
@@ -257,6 +250,7 @@ public class mainHouseRoom extends World
             alex.setImage(spriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, 64, 64));
             alex.setLocation(alex.getX() + 100, alex.getY());
             level1.setAlex(alex);
+            level1.setmainHouseRoom(this);
             Greenfoot.setWorld(level1);
         }      
     }
@@ -269,13 +263,4 @@ public class mainHouseRoom extends World
     public ArrayList getMaterialList(){
         return pickUpList;
     }
-
-    // public void checkAxe(){
-        // if (elder.addAxe() && !flag2){
-            // flag2 = true;
-            // axe = new Axe(); 
-            // addObject(axe, 650, 100);
-            // materialList.add(axe);
-        // }
-    // }
 }

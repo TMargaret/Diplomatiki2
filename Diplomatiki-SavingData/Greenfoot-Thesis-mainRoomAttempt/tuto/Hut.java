@@ -87,8 +87,8 @@ public class Hut extends Actor implements Serializable
                     db = new Debugger(textField.getText(),"Alex.use(wood,straw);");
                     if (db.checkSpelling())
                     {
-                        Alex.removeFromInv(true);
-                        Alex.removeFromInv(true);
+                        Alex.removeItem("Wood");
+                        Alex.removeItem("Straw");
                         buildSound.play();
                         getWorld().removeObject(textField);
                         isActive = false;
