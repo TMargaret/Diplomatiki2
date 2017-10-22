@@ -18,6 +18,8 @@ public class Door extends Material
     public Door(){
 
     }
+    
+    
 
     /**
      * Act - do whatever the Doorwants to do. This method is called whenever

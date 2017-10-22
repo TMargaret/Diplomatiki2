@@ -119,6 +119,10 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             Level_02 level02 = (Level_02)getWorld();
             materialList = level02.getMaterialList();
         }
+        if (getWorld() instanceof mainHutRoom){
+            mainHutRoom mainHutRoom = (mainHutRoom)getWorld();
+            materialList = mainHutRoom.getMaterialList();
+        }
     }
 
     /**
@@ -390,6 +394,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     }
 
     public void addToInventory(){
+               
         if (materialList != null){
             if(System.currentTimeMillis() > time + 500){
                 for (Material myMat : materialList){

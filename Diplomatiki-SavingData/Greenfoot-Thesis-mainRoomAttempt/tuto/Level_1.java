@@ -184,7 +184,8 @@ public class Level_1 extends World
      * shows a message before entering the house
      */
     public void enterInRoom(){
-        if (alex.getAnIntersectingObject(mainHouse.class) != null){
+        if (alex.getAnIntersectingObject(mainHouse.class) != null || 
+        (alex.getAnIntersectingObject(Hut.class) != null) && oldHut.getEndOfUse()){
             counter--;
             if (Greenfoot.isKeyDown("e")){
                 isEDown = true;

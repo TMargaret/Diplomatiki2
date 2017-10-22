@@ -96,11 +96,55 @@ public class mainHutRoom extends World
         addWall();
 
         alex.setImage(SpriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, IMG_WIDTH, IMG_HEIGHT));
-        addObject(alex,50, 380);
+        addObject(alex,90, 380);
 
+        Barrel barrel = new Barrel();
+        addObject(barrel,700,150);
+        Barrel barrel2 = new Barrel();
+        addObject(barrel2,712,180);
+        Barrel barrel3 = new Barrel();
+        addObject(barrel3,680,174);
+        Barrel barrel4 = new Barrel();
+        addObject(barrel4,712,203);
+        Barrel barrel5 = new Barrel();
+        addObject(barrel5,685,228);
+
+        Barrel barrel6 = new Barrel();
+        addObject(barrel6,329,158);
+        Barrel barrel7 = new Barrel();
+        addObject(barrel7,363,160);
+        Barrel barrel8 = new Barrel();
+        addObject(barrel8,343,187);
+        Barrel barrel9 = new Barrel();
+        addObject(barrel9,375,204);
+        Barrel barrel10 = new Barrel();
+        addObject(barrel10,335,221);
+
+        Barrel barrel11 = new Barrel();
+        addObject(barrel11,330,474);
+        Barrel barrel12 = new Barrel();
+        addObject(barrel12,342,503);
+        Barrel barrel13 = new Barrel();
+        addObject(barrel13,339,520);
+
+        Crate crate = new Crate();
+        addObject(crate,490,170);
+        Crate crate2 = new Crate();
+        addObject(crate2,540,171);
+        Crate crate3 = new Crate();
+        addObject(crate3,400,505);
+        Crate crate4 = new Crate();
+        addObject(crate4,500,200);
+        
+        key = new Key();
+        addObject(key,702,556);
+        materialList.add(key);
+    }
+
+    public void addWall(){
         //horizontal entrance up
-        Wall wall2 = new Wall();
-        addObject(wall2,42,300);
+        Wall wall72 = new Wall();
+        addObject(wall72,42,300);
         Wall wall3 = new Wall();
         addObject(wall3,123,300);
         Wall wall4 = new Wall();
@@ -109,8 +153,8 @@ public class mainHutRoom extends World
         addObject(wall5,263,300);
 
         //horizontal entrance down
-        Wall wall = new Wall();
-        addObject(wall,42,450);
+        Wall wall73 = new Wall();
+        addObject(wall73,42,450);
         Wall wall6 = new Wall();      
         addObject(wall6,121,450);
         Wall wall7 = new Wall();
@@ -220,51 +264,7 @@ public class mainHutRoom extends World
         addObject(wall220,200,470);
         Wall2 wall221 = new Wall2();
         addObject(wall221,225,470); 
-
-        Barrel barrel = new Barrel();
-        addObject(barrel,700,150);
-        Barrel barrel2 = new Barrel();
-        addObject(barrel2,712,180);
-        Barrel barrel3 = new Barrel();
-        addObject(barrel3,680,174);
-        Barrel barrel4 = new Barrel();
-        addObject(barrel4,712,203);
-        Barrel barrel5 = new Barrel();
-        addObject(barrel5,685,228);
-
-        Barrel barrel6 = new Barrel();
-        addObject(barrel6,329,158);
-        Barrel barrel7 = new Barrel();
-        addObject(barrel7,363,160);
-        Barrel barrel8 = new Barrel();
-        addObject(barrel8,343,187);
-        Barrel barrel9 = new Barrel();
-        addObject(barrel9,375,204);
-        Barrel barrel10 = new Barrel();
-        addObject(barrel10,335,221);
-
-        Barrel barrel11 = new Barrel();
-        addObject(barrel11,330,474);
-        Barrel barrel12 = new Barrel();
-        addObject(barrel12,342,503);
-        Barrel barrel13 = new Barrel();
-        addObject(barrel13,339,520);
-
-        Crate crate = new Crate();
-        addObject(crate,490,170);
-        Crate crate2 = new Crate();
-        addObject(crate2,540,171);
-        Crate crate3 = new Crate();
-        addObject(crate3,400,505);
-        Crate crate4 = new Crate();
-        addObject(crate4,500,200);
         
-        key = new Key();
-        addObject(key,702,556);
-        materialList.add(key);
-    }
-
-    public void addWall(){
         Wall[] wall = new Wall[25];
         Wall[] wall2 = new Wall[25];
 
@@ -273,6 +273,8 @@ public class mainHutRoom extends World
             wall2[j] = new Wall();
             addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
         }
+        
+        
 
     }
 
