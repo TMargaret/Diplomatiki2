@@ -33,7 +33,7 @@ public class Level_1 extends World
     Hut oldHut;
     int count = 0;
     mainHouseRoom mainHouseRoom;
-int counterEnd = 300;
+    int counterEnd = 300;
     Material mat;
     private GreenfootSound thankSound = new GreenfootSound("thank.wav");
 
@@ -47,7 +47,7 @@ int counterEnd = 300;
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
-        lvl.playLoop();
+        //lvl.playLoop();
     }
 
     public Level_1(Level_1 level1, mainHouseRoom oldMainHouseRoom)
@@ -269,26 +269,24 @@ int counterEnd = 300;
         return pickUpList;
     }
 
-    public boolean dataToSave(){
-        if (matList == null){
-            return noMaterial = true;
-        }else{
-            return noMaterial = false;
-        }    
-    }
+    // public boolean dataToSave(){
+    // if (matList == null){
+    // return noMaterial = true;
+    // }else{
+    // return noMaterial = false;
+    // }    
+    // }
 
     public int checkMatList(){
         if (pickUpList != null){
-            for (Material mat: pickUpList){
-                // if (mat.getMaterial() == "Wood"){
-                    // count++;
-                // }
-                if (mat.getMaterial() == "Straw"){
-                    count++;
-                }
-                // if (mat.getMaterial() == "Brick"){
-                    // count++;
-                // }
+            if (pickUpList.contains(straw)){
+                count++;
+            }
+            if (pickUpList.contains(lumber)){
+                count++;
+            }
+            if (pickUpList.contains(brick)){
+                count++;
             }
         }
         return count;
@@ -301,8 +299,8 @@ int counterEnd = 300;
     public void setWaterWellList(int count){
         waterwell.setCheckList(count);
     }
-    
-        public void endGame(){
+
+    public void endGame(){
         if (waterwell.getEndOfUse()){
             counterEnd--;
             if (counterEnd<0 && !displayMessage){
@@ -319,8 +317,8 @@ int counterEnd = 300;
             }
         }
     }
-    
-        /**
+
+    /**
      * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
      * player will play the same level
      */
