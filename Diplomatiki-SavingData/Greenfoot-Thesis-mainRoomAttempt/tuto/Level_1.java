@@ -16,11 +16,11 @@ public class Level_1 extends World
     private Alex alex;
     private mainHouse my_mainHouse;
     private Straw straw, straw2;
-    private Clay clay;
+    private Brick brick;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
     public static ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
     public static GreenfootSound lvl = new GreenfootSound("level3.mp3");
-    private ArrayList <Material> pickUpList = new ArrayList<Material>(); //this is the list that Alex is retrieving
+    private static ArrayList <Material> pickUpList = new ArrayList<Material>(); //this is the list that Alex is retrieving
     boolean isEDown = false;
     boolean noMaterial = false;
     int counter = 100, btn_counter = 50;
@@ -28,10 +28,12 @@ public class Level_1 extends World
     boolean hasEnter = false;
     private TextPanel textPanel;
     boolean displayMessage = false;
+    boolean matIsTrue = false;
     WaterWell waterwell;
     Lumber lumber;
     Hut oldHut;
     int count = 0;
+    int count2 =0;
     mainHouseRoom mainHouseRoom;
     int counterEnd = 300;
     Material mat;
@@ -95,11 +97,8 @@ public class Level_1 extends World
         }
         matList.remove(mat);
         alex.setCanMove(!found);
-        setHouseMatList(checkMatList());
-        setWaterWellList(checkMatList());
-        System.out.println("mat"+matList.size());
-        System.out.println(pickUpList.size());
-        System.out.println(checkMatList());
+        setHutMatList(checkMatHutList());
+        System.out.println(count);
         enterInRoom();
         endGame();
     }
@@ -269,30 +268,26 @@ public class Level_1 extends World
         return pickUpList;
     }
 
-    // public boolean dataToSave(){
-    // if (matList == null){
-    // return noMaterial = true;
-    // }else{
-    // return noMaterial = false;
-    // }    
-    // }
-
-    public int checkMatList(){
-        if (pickUpList != null){
-            if (pickUpList.contains(straw)){
-                count++;
-            }
-            if (pickUpList.contains(lumber)){
-                count++;
-            }
-            if (pickUpList.contains(brick)){
-                count++;
+    public int checkMatHutList(){
+        if (pickUpList.size() > 0){
+            if ((pickUpList.contains(straw)) && (pickUpList.contains(lumber)) && !matIsTrue){
+                count = 2;
+                System.out.println("ok");
+                matIsTrue = true;
             }
         }
         return count;
     }
 
-    public void setHouseMatList(int count){
+    public void checkMatWellList(){
+        if (pickUpList.size() > 0){
+            if (pickUpList.contains(brick)){
+                count2 = 2;
+            }
+        }
+    }
+
+    public void setHutMatList(int count){
         oldHut.setCheckList(count);
     }
 
