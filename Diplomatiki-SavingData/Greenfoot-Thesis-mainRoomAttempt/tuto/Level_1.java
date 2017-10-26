@@ -25,7 +25,7 @@ public class Level_1 extends World
     boolean noMaterial = false;
     int counter = 100, btn_counter = 50;
     boolean isActive = false;
-    boolean hasEnter = false;
+    boolean hasEnter = false, hasEnter2 = false;
     private TextPanel textPanel;
     boolean displayMessage = false;
     boolean matIsTrue = false;
@@ -35,6 +35,7 @@ public class Level_1 extends World
     int count = 0;
     int count2 =0;
     mainHouseRoom mainHouseRoom;
+    mainHutRoom mainHutRoom;
     int counterEnd = 300;
     Material mat;
     private GreenfootSound thankSound = new GreenfootSound("thank.wav");
@@ -76,6 +77,14 @@ public class Level_1 extends World
     public void setmainHouseRoom(mainHouseRoom oldMainHouseRoom){
         mainHouseRoom = oldMainHouseRoom;
     }
+    
+        /**
+     * Constructor for objects of class MyWorld.
+     * 
+     */
+    public void setmainHutRoom(mainHutRoom oldMainHutRoom){
+        mainHutRoom = oldMainHutRoom;
+    }
 
     public void act(){
         boolean found = false;
@@ -98,7 +107,10 @@ public class Level_1 extends World
         matList.remove(mat);
         alex.setCanMove(!found);
         setHutMatList(checkMatHutList());
-        System.out.println(count);
+        if (mainHouseRoom != null){
+            setWaterWellList(mainHouseRoom.checkWellList());
+        }
+
         enterInRoom();
         endGame();
     }
@@ -248,14 +260,23 @@ public class Level_1 extends World
                 addObject(textPanel, getWidth()/2, getHeight()/2);
                 isActive = true;
             }
-            if (counter < 0 && isEDown && isActive){
+            if (counter < 0 && isEDown && isActive && !hasEnter2){
                 removeObject(textPanel);
                 counter = 100;
                 isActive = false;
                 isEDown = false;
                 //alex.setLocation(alex.getX(), alex.getY() + 100);
                 Greenfoot.setWorld(new mainHutRoom(alex,this));
+                hasEnter2 = true;
             }  
+            if (counter < 0 && isEDown && isActive && hasEnter2){
+                removeObject(textPanel);
+                counter = 100;
+                isActive = false;
+                isEDown = false;
+                mainHutRoom.setAlex(alex);               
+                Greenfoot.setWorld(mainHutRoom);
+            }
         } 
     }
 
@@ -266,26 +287,33 @@ public class Level_1 extends World
      */
     public ArrayList getMaterialList(){
         return pickUpList;
-    }
+    } 
 
     public int checkMatHutList(){
-        if (pickUpList.size() > 0){
-            if ((pickUpList.contains(straw)) && (pickUpList.contains(lumber)) && !matIsTrue){
-                count = 2;
-                System.out.println("ok");
-                matIsTrue = true;
+        if (pickUpList != null){
+            for (Material mat: pickUpList){
+                if (mat.getMaterial() == "Wood"){
+                    count++;
+                }
+                if (mat.getMaterial() == "Straw"){
+                    count++;
+                }
             }
         }
         return count;
     }
 
-    public void checkMatWellList(){
-        if (pickUpList.size() > 0){
-            if (pickUpList.contains(brick)){
-                count2 = 2;
-            }
-        }
-    }
+    // public int checkMatWellList(){
+    // if (mainHouseRoom != null && mainHouseRoom.getMaterialList() != null){
+    // ArrayList<Material> mhrList = mainHouseRoom.getMaterialList();
+    // for (Material mat: mhrList){
+    // if (mat.getMaterial() == "Brick"){
+    // count2++;
+    // }
+    // }
+    // }
+    // return count2;
+    // }
 
     public void setHutMatList(int count){
         oldHut.setCheckList(count);

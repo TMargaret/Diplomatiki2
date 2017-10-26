@@ -82,8 +82,8 @@ public class Hut extends Actor implements Serializable
                 } 
                 if (counter < 0 && Greenfoot.isKeyDown("enter") && isEDown){
                     counter = 30;
-                    //db = new Debugger(textField.getText(),"1");
-                    db = new Debugger(textField.getText(),"Alex.use(wood,straw);");
+                    db = new Debugger(textField.getText(),"");
+                    //db = new Debugger(textField.getText(),"Alex.use(wood,straw);");
                     if (db.checkSpelling())
                     {
                         Alex.removeItem("Wood");

@@ -8,12 +8,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Brick extends Material
 {
+    String myAnswer = "";
+    int num = 0;
     /**
-     * Clay Constructor
+     * Brick Constructor
      *
      */
     public Brick() 
     {
+        myAnswer = "Alex.pickUp();";
+    }
+    
+    public Brick(int num) 
+    {
+        this.num = num;
+        myAnswer = "Alex.pickUp(brick);";
     }
 
     /**
@@ -22,7 +31,6 @@ public class Brick extends Material
      */
     public void act() 
     {
-        checkWorld();
         materialCreation();
     } 
 
@@ -42,13 +50,8 @@ public class Brick extends Material
      * @return The correct answer value to be check
      */
     public String checkMaterial(){
-        String materialAnswer = "";
-        switch(version){
-            case 0: 
-            case 1:
-            case 2:materialAnswer = "Alex.pickUp(brick);"; break;
-        }
-        return materialAnswer;
+        
+        return myAnswer;
 
     } 
     

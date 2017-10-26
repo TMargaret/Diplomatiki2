@@ -19,6 +19,7 @@ public class mainHouseRoom extends World
     StoneOven stoneOven;
     Brick brick, brick2;
     int counter = 100, counter2 = 25, flag = 0;
+    int count = 0;
     boolean isActive = false;
     boolean isEDown = false;
     TextPanel textPanel;
@@ -54,8 +55,8 @@ public class mainHouseRoom extends World
         level1 = oldLevel1;
         prepare();
     }
-    
-        /**
+
+    /**
      * Constructor for objects of class MyWorld.
      * 
      */
@@ -81,8 +82,8 @@ public class mainHouseRoom extends World
         }
         //use the key twice, then remove it from inv
         if (doorList.size() < 1){
-                alex.removeItem("Key");
-            }
+            alex.removeItem("Key");
+        }
         for (Material material : materialList){
             if(material.getWorldOfType(mainHouseRoom.class) == null){
                 pickUpList.add(material);
@@ -93,6 +94,9 @@ public class mainHouseRoom extends World
                 doNotMove  = true;
             }
         }
+        checkMatWellList();
+                System.out.println(count);
+                
         materialList.remove(mat);
         alex.setCanMove(!doNotMove);
     }
@@ -128,22 +132,14 @@ public class mainHouseRoom extends World
         elder = new Elder();
         addObject(elder,900,500);
 
-        brick = new Brick();
+        brick = new Brick(1);
         addObject(brick,100,260);
         brick.getImage().setTransparency(0);        
 
-        brick2 = new Brick();
+        brick2 = new Brick(1);
         addObject(brick2,100,460);
         brick2.getImage().setTransparency(0);
 
-
-        // lumber = new Lumber();
-        // addObject(lumber,100,400);
-        // lumber2 = new Lumber();
-        // addObject(lumber2,100,528);  
-
-        // materialList.add(lumber);
-        // materialList.add(lumber2);
         materialList.add(brick);
         materialList.add(brick2);
 
@@ -262,5 +258,19 @@ public class mainHouseRoom extends World
 
     public ArrayList getMaterialList(){
         return pickUpList;
+    }
+
+    public void checkMatWellList(){
+        if (pickUpList != null){
+            for (Material mat: pickUpList){
+                if (mat.getMaterial() == "Brick"){
+                    count++;
+                }
+            }
+        }
+    }
+    
+    public int checkWellList(){
+        return count;
     }
 }

@@ -55,6 +55,16 @@ public class mainHutRoom extends World
         level1 = oldLevel1;
         prepare();
     }
+    
+        /**
+     * Constructor for objects of class MyWorld.
+     * 
+     */
+    public void setAlex(Alex oldAlex){
+        alex = oldAlex;
+        alex.setImage(spriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, 64, 64));
+        addObject(alex,90,380);
+    }
 
     public void act(){
         //gameOver();
@@ -295,6 +305,7 @@ public class mainHutRoom extends World
             alex.setImage(spriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, 64, 64));
             alex.setLocation(alex.getX() + 100, alex.getY());
             level1.setAlex(alex);
+            level1.setmainHutRoom(this);
             Greenfoot.setWorld(level1);
         }      
     }
