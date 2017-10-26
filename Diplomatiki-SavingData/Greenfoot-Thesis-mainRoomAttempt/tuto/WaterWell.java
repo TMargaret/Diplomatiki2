@@ -63,6 +63,7 @@ public class WaterWell extends Actor
                     getWorld().removeObject(textPanel);
                     isActive = false;
                     isEDown = false;
+                    displayMessage = false;
                 }
             }
             if (getCheckList() == 2 && !endOfUse){

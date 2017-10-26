@@ -202,7 +202,11 @@ public class WrittenText implements Serializable
 
     public String lockedDoor(){
         return "Είναι κλειδωμένη...\n\nΆραγε μπορώ να την ανοίξω...;";
-    } 
+    }
+    public String wellDone2(){
+        return "Τα κατάφερες!\n\nΤώρα μπορείς να αποχωρήσεις"
+        +" από τον\nParametrus.\n\nLive long and prosper!";
+    }
 
     //dragon
     public String dragon0(){

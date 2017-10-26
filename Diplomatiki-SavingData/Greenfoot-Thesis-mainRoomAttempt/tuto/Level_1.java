@@ -110,7 +110,6 @@ public class Level_1 extends World
         if (mainHouseRoom != null){
             setWaterWellList(mainHouseRoom.checkWellList());
         }
-
         enterInRoom();
         endGame();
     }
@@ -265,7 +264,6 @@ public class Level_1 extends World
                 counter = 100;
                 isActive = false;
                 isEDown = false;
-                //alex.setLocation(alex.getX(), alex.getY() + 100);
                 Greenfoot.setWorld(new mainHutRoom(alex,this));
                 hasEnter2 = true;
             }  
@@ -303,18 +301,6 @@ public class Level_1 extends World
         return count;
     }
 
-    // public int checkMatWellList(){
-    // if (mainHouseRoom != null && mainHouseRoom.getMaterialList() != null){
-    // ArrayList<Material> mhrList = mainHouseRoom.getMaterialList();
-    // for (Material mat: mhrList){
-    // if (mat.getMaterial() == "Brick"){
-    // count2++;
-    // }
-    // }
-    // }
-    // return count2;
-    // }
-
     public void setHutMatList(int count){
         oldHut.setCheckList(count);
     }
@@ -329,7 +315,7 @@ public class Level_1 extends World
             if (counterEnd<0 && !displayMessage){
                 thankSound.play();
                 displayMessage = true;
-                textPanel = new TextPanel("wellDone");
+                textPanel = new TextPanel("wellDone2");
                 addObject(textPanel, getWidth()/2, getHeight()/2);
             }
             if (Greenfoot.isKeyDown("enter") && displayMessage){

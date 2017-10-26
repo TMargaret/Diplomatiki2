@@ -43,8 +43,8 @@ public class Straw extends Material
      * @return The correct answer value to be check
      */
     public String checkMaterial(){
-        //String materialAnswer = "Alex.pickUp(straw);";
-        String materialAnswer = "";
+        String materialAnswer = "Alex.pickUp(straw);";
+        //String materialAnswer = "";
         return materialAnswer;
     }
 

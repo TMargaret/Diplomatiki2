@@ -232,6 +232,10 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.lockedDoor();
             makeImage(mytext);
         }
+        if (status == "wellDone2"){
+            String mytext = text.wellDone2();
+            makeImage(mytext, "elder");
+        }
         //method for debug messages
         if (status == "wrongKey"){
             makeImage(debugMsg, "elder");

@@ -94,9 +94,7 @@ public class mainHouseRoom extends World
                 doNotMove  = true;
             }
         }
-        checkMatWellList();
-                System.out.println(count);
-                
+        checkMatWellList();       
         materialList.remove(mat);
         alex.setCanMove(!doNotMove);
     }
