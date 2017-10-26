@@ -2,42 +2,42 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
 /**
- * Write a description of class butterfly here.
+ * Write a description of class snail here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
 
-public class CopyOfButterfly extends SmoothMover
+public class Snail extends SmoothMover
 {
-    GreenfootImage butterfly = new GreenfootImage("butterfly.png");
+    GreenfootImage snail = new GreenfootImage("snail.png");
     Explosion exp = new Explosion();
-    int img_cell = 100;
-    final int IMG_WIDTH = butterfly.getWidth()/10;
-    final int IMG_HEIGHT = butterfly.getHeight()/10;
+    int img_cell = 50;
+    final int IMG_WIDTH = snail.getWidth()/6;
+    final int IMG_HEIGHT = snail.getHeight()/3;
     int count = 0;
 
-    public CopyOfButterfly(){
-
-        //GreenfootImage img = getImage();
-   
-        //img.scale(img.getWidth()/10, img.getHeight()/10);
+    public Snail(){
+        super(new Vector(-3.0, 0));
+        setImage(SpriteSheet.getSprite(snail, img_cell,  img_cell*3, img_cell*2, img_cell*4, IMG_WIDTH, IMG_HEIGHT));
     }
 
     /**
-     * Act - do whatever the butterfly wants to do. This method is called whenever
+     * Act - do whatever the snail wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
- 
+        explosion();
+        snailAnimation();
+        move();
     }
 
-    public void butterflyAnimation(){
-        for (int i=1;i<=10;i++){
+    public void snailAnimation(){
+        for (int i=1;i<10;i++){
             count++;
-            if (count>50){
-                setImage(SpriteSheet.getSprite(butterfly, img_cell*(i-1),  0, img_cell*i, img_cell, IMG_WIDTH, IMG_HEIGHT));
+            if (count>150){
+                setImage(SpriteSheet.getSprite(snail, img_cell*(i-1),  img_cell*3, img_cell*i, img_cell*4, IMG_WIDTH, IMG_HEIGHT));
                 count = 0;
             }
         }

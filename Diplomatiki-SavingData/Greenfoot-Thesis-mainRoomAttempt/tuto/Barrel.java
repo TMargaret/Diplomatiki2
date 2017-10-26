@@ -11,7 +11,7 @@ public class Barrel extends Actor
     
     public Barrel(){
         GreenfootImage img = getImage();  
-        img.scale(img.getWidth()/10, img.getHeight()/10);
+        //img.scale(img.getWidth()/5, img.getHeight()/5);
     }
     /**
      * Act - do whatever the Barrel wants to do. This method is called whenever

@@ -34,11 +34,13 @@ public class Level_1 extends World
     Hut oldHut;
     int count = 0;
     int count2 =0;
+    int count_item = 0;
     mainHouseRoom mainHouseRoom;
     mainHutRoom mainHutRoom;
     int counterEnd = 300;
     Material mat;
     private GreenfootSound thankSound = new GreenfootSound("thank.wav");
+    Snail snail;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -50,7 +52,7 @@ public class Level_1 extends World
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
-        //lvl.playLoop();
+        lvl.playLoop();
     }
 
     public Level_1(Level_1 level1, mainHouseRoom oldMainHouseRoom)
@@ -77,8 +79,8 @@ public class Level_1 extends World
     public void setmainHouseRoom(mainHouseRoom oldMainHouseRoom){
         mainHouseRoom = oldMainHouseRoom;
     }
-    
-        /**
+
+    /**
      * Constructor for objects of class MyWorld.
      * 
      */
@@ -111,6 +113,7 @@ public class Level_1 extends World
             setWaterWellList(mainHouseRoom.checkWellList());
         }
         enterInRoom();
+        snail();
         endGame();
     }
 
@@ -133,13 +136,15 @@ public class Level_1 extends World
 
         addObject(alex,79,525);
 
+        snail = new Snail();
+        
         straw = new Straw();
         addObject(straw,610,480);
         matList.add(straw);  
 
         lumber = new Lumber(2, 1);
-        addObject(lumber,283,521);
-        matList.add(lumber);
+        addObject(lumber,283,485);
+        matList.add(lumber); 
     }
 
     /**
@@ -307,6 +312,34 @@ public class Level_1 extends World
 
     public void setWaterWellList(int count){
         waterwell.setCheckList(count);
+    }
+
+    public int getRandomNumber(int start,int end)
+    {
+        int normal = Greenfoot.getRandomNumber(end-start+1);
+        return normal+start;
+    }
+
+    public void snail(){
+        //makes the snail appear within the borders
+        // if (snail.getSpeed() == 0){
+            // snail.addForce(new Vector(-3.0, 0));
+        // }
+        int random_y = getRandomNumber(getHeight()/2, getHeight()-snail.getImage().getHeight());
+        random_y += 20;
+        int random = Greenfoot.getRandomNumber(1);
+        count_item++;
+        for (int i = 0; i < 4; i++)
+        {
+            if (random == 0 & count_item == 80)
+            {             
+                addObject(snail, getWidth(), random_y);
+                count_item = 0;
+            }
+        }
+        if (HealthBar.getHealth()<=0){
+            snail.stop();
+        }
     }
 
     public void endGame(){
