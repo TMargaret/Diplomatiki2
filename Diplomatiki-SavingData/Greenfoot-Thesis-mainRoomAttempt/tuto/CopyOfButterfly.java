@@ -19,6 +19,9 @@ public class CopyOfButterfly extends SmoothMover
 
     public CopyOfButterfly(){
 
+        //GreenfootImage img = getImage();
+   
+        //img.scale(img.getWidth()/10, img.getHeight()/10);
     }
 
     /**

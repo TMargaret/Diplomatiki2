@@ -30,6 +30,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     ExitBar exitBar;
     HintRules hintRules;
     boolean invIsOpen = false, hintIsOpen = false;
+    boolean lostMessage;
     Button inventoryBtn, hintBtn, exitBtn;
     private static String[] items;
     public double time;
@@ -119,6 +120,10 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             Level_02 level02 = (Level_02)getWorld();
             materialList = level02.getMaterialList();
         }
+        if (getWorld() instanceof mainHutRoom){
+            mainHutRoom mainHutRoom = (mainHutRoom)getWorld();
+            materialList = mainHutRoom.getMaterialList();
+        }
     }
 
     /**
@@ -184,6 +189,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         {
             setLocation(getX() + dx, getY());
             if ((getOneIntersectingObject(Wall.class) != null) || 
+            (getOneIntersectingObject(Crate.class) != null) ||  
+            (getOneIntersectingObject(Barrel.class) != null) ||  
             (getOneIntersectingObject(Grass.class) != null) ||  
             (getOneIntersectingObject(Material.class) != null) ||
             (getOneIntersectingObject(Locals.class) !=null) ||
@@ -192,7 +199,10 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                 setLocation(getX() - dx, getY());
             }
             setLocation(getX(), getY() + dy);
-            if ((getOneIntersectingObject(Wall.class) != null)
+            if ((getOneIntersectingObject(Wall.class) != null)||
+            (getOneIntersectingObject(Crate.class) != null) ||  
+            (getOneIntersectingObject(Barrel.class) != null) || 
+            (getOneIntersectingObject(Wall2.class) != null) 
             || (getOneIntersectingObject(Grass.class) != null)  
             || (getOneIntersectingObject(Material.class) != null)
             || (getOneIntersectingObject(Locals.class) !=null) ||
@@ -331,12 +341,13 @@ public class Alex extends SpriteSheet implements ButtonResponder{
      *
      */
     public void gameOver(){
-        if (healthBar.getHealth() <= 0){
+        if (healthBar.getHealth() <= 0 && !lostMessage){
+            lostMessage = true;
             theEnd = new TextPanel("youLost");
             getWorld().addObject(theEnd, getWorld().getWidth()/2, getWorld().getHeight()/2);
-            if (Greenfoot.isKeyDown("space")){
-                Greenfoot.setWorld(new LevelsScreen());
-            }
+        }
+        if (Greenfoot.isKeyDown("space") && lostMessage){
+            Greenfoot.setWorld(new LevelsScreen());
         }
     }
 
@@ -380,11 +391,14 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         {
             Greenfoot.setWorld(new LevelsScreen());
             Level_0.level0Sound.stop();
+            Level_1.lvl.stop();
+            Level_02.lvlSound.stop();
         }
 
     }
 
     public void addToInventory(){
+
         if (materialList != null){
             if(System.currentTimeMillis() > time + 500){
                 for (Material myMat : materialList){

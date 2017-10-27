@@ -16,18 +16,31 @@ public class Level_1 extends World
     private Alex alex;
     private mainHouse my_mainHouse;
     private Straw straw, straw2;
-    private Clay clay;
+    private Brick brick;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
-    private ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
-
-    private ArrayList <Material> pickUpList = new ArrayList<Material>(); //this is the list that Alex is retrieving
+    public static ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
+    public static GreenfootSound lvl = new GreenfootSound("level3.mp3");
+    private static ArrayList <Material> pickUpList = new ArrayList<Material>(); //this is the list that Alex is retrieving
     boolean isEDown = false;
     boolean noMaterial = false;
     int counter = 100, btn_counter = 50;
     boolean isActive = false;
+    boolean hasEnter = false, hasEnter2 = false;
     private TextPanel textPanel;
-
+    boolean displayMessage = false;
+    boolean matIsTrue = false;
+    WaterWell waterwell;
+    Lumber lumber;
+    Hut oldHut;
+    int count = 0;
+    int count2 =0;
+    int count_item = 0;
+    mainHouseRoom mainHouseRoom;
+    mainHutRoom mainHutRoom;
+    int counterEnd = 300;
     Material mat;
+    private GreenfootSound thankSound = new GreenfootSound("thank.wav");
+    Snail snail;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -39,6 +52,15 @@ public class Level_1 extends World
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
+        lvl.playLoop();
+    }
+
+    public Level_1(Level_1 level1, mainHouseRoom oldMainHouseRoom)
+    {
+        super(1000, 600, 1);
+        //alex = oldAlex;
+        mainHouseRoom = oldMainHouseRoom;
+        level1.prepare();
     }
 
     /**
@@ -50,11 +72,28 @@ public class Level_1 extends World
         addObject(alex,79,525);
     }
 
+    /**
+     * Constructor for objects of class MyWorld.
+     * 
+     */
+    public void setmainHouseRoom(mainHouseRoom oldMainHouseRoom){
+        mainHouseRoom = oldMainHouseRoom;
+    }
+
+    /**
+     * Constructor for objects of class MyWorld.
+     * 
+     */
+    public void setmainHutRoom(mainHutRoom oldMainHutRoom){
+        mainHutRoom = oldMainHutRoom;
+    }
+
     public void act(){
         boolean found = false;
         for(Hut hut : hutList){
-            if ((hut.getActive()) || (isActive) ){
+            if ((hut.getActive()) || (isActive) || waterwell.getActive()){
                 found  = true;
+
             }
         }
         for(Material material : matList){
@@ -69,7 +108,13 @@ public class Level_1 extends World
         }
         matList.remove(mat);
         alex.setCanMove(!found);
+        setHutMatList(checkMatHutList());
+        if (mainHouseRoom != null){
+            setWaterWellList(mainHouseRoom.checkWellList());
+        }
         enterInRoom();
+        snail();
+        endGame();
     }
 
     /**
@@ -86,16 +131,20 @@ public class Level_1 extends World
         my_mainHouse = new mainHouse();
         addObject(my_mainHouse,506,303);
 
+        waterwell = new WaterWell();
+        addObject(waterwell,880,301);
+
         addObject(alex,79,525);
+
+        snail = new Snail();
         
         straw = new Straw();
-        addObject(straw,957,470);
+        addObject(straw,610,480);
+        matList.add(straw);  
 
-        straw2 = new Straw();
-        addObject(straw2,614,470);
-
-        matList.add(straw);
-        matList.add(straw2);
+        lumber = new Lumber(2, 1);
+        addObject(lumber,283,485);
+        matList.add(lumber); 
     }
 
     /**
@@ -120,14 +169,9 @@ public class Level_1 extends World
     public void addHut()
     {
         // put your code here
-        Hut oldHut = new Hut();
+        oldHut = new Hut();
         addObject(oldHut,129,287);
-
-        Hut oldHut2 = new Hut();
-        addObject(oldHut2,883,287); 
-
         hutList.add(oldHut);
-        hutList.add(oldHut2);
     }
 
     /**
@@ -185,22 +229,57 @@ public class Level_1 extends World
             if (Greenfoot.isKeyDown("e")){
                 isEDown = true;
             }
-
             if (isEDown && !isActive){
                 counter = 100;
                 textPanel = new TextPanel("enteringRoom");
                 addObject(textPanel, getWidth()/2, getHeight()/2);
                 isActive = true;
             }
-            if (counter < 0 && isEDown && isActive){
+            if (counter < 0 && isEDown && isActive && !hasEnter){
                 removeObject(textPanel);
                 counter = 100;
                 isActive = false;
                 isEDown = false;
                 alex.setLocation(alex.getX(), alex.getY() + 100);
                 Greenfoot.setWorld(new mainHouseRoom(alex,this));
+                hasEnter = true;
+            }
+            if (counter < 0 && isEDown && isActive && hasEnter){
+                removeObject(textPanel);
+                counter = 100;
+                isActive = false;
+                isEDown = false;
+                mainHouseRoom.setAlex(alex);               
+                Greenfoot.setWorld(mainHouseRoom);
+            }
+        }
+        if ((alex.getAnIntersectingObject(Hut.class) != null) && oldHut.getEndOfUse()){
+            counter--;
+            if (Greenfoot.isKeyDown("e")){
+                isEDown = true;
+            }
+            if (isEDown && !isActive){
+                counter = 100;
+                textPanel = new TextPanel("enteringRoom");
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+                isActive = true;
+            }
+            if (counter < 0 && isEDown && isActive && !hasEnter2){
+                removeObject(textPanel);
+                counter = 100;
+                isActive = false;
+                isEDown = false;
+                Greenfoot.setWorld(new mainHutRoom(alex,this));
+                hasEnter2 = true;
             }  
-
+            if (counter < 0 && isEDown && isActive && hasEnter2){
+                removeObject(textPanel);
+                counter = 100;
+                isActive = false;
+                isEDown = false;
+                mainHutRoom.setAlex(alex);               
+                Greenfoot.setWorld(mainHutRoom);
+            }
         } 
     }
 
@@ -211,13 +290,85 @@ public class Level_1 extends World
      */
     public ArrayList getMaterialList(){
         return pickUpList;
+    } 
+
+    public int checkMatHutList(){
+        if (pickUpList != null){
+            for (Material mat: pickUpList){
+                if (mat.getMaterial() == "Wood"){
+                    count++;
+                }
+                if (mat.getMaterial() == "Straw"){
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
-    public boolean dataToSave(){
-        if (matList == null){
-            return noMaterial = true;
-        }else{
-            return noMaterial = false;
-        }    
+    public void setHutMatList(int count){
+        oldHut.setCheckList(count);
     }
+
+    public void setWaterWellList(int count){
+        waterwell.setCheckList(count);
+    }
+
+    public int getRandomNumber(int start,int end)
+    {
+        int normal = Greenfoot.getRandomNumber(end-start+1);
+        return normal+start;
+    }
+
+    public void snail(){
+        //makes the snail appear within the borders
+        // if (snail.getSpeed() == 0){
+            // snail.addForce(new Vector(-3.0, 0));
+        // }
+        int random_y = getRandomNumber(getHeight()/2, getHeight()-snail.getImage().getHeight());
+        random_y += 20;
+        int random = Greenfoot.getRandomNumber(1);
+        count_item++;
+        for (int i = 0; i < 4; i++)
+        {
+            if (random == 0 & count_item == 80)
+            {             
+                addObject(snail, getWidth(), random_y);
+                count_item = 0;
+            }
+        }
+        if (HealthBar.getHealth()<=0){
+            snail.stop();
+        }
+    }
+
+    public void endGame(){
+        if (waterwell.getEndOfUse()){
+            counterEnd--;
+            if (counterEnd<0 && !displayMessage){
+                thankSound.play();
+                displayMessage = true;
+                textPanel = new TextPanel("wellDone2");
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+            }
+            if (Greenfoot.isKeyDown("enter") && displayMessage){
+                removeObject(textPanel);
+                Greenfoot.setWorld(new LevelsScreen());
+                lvl.stop();
+                checkUnlockLevel();
+            }
+        }
+    }
+
+    /**
+     * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
+     * player will play the same level
+     */
+    public void checkUnlockLevel(){
+        if (LevelsScreen.unlock.size() < 4)
+        {
+            LevelsScreen.unlock.add(1);
+        }
+    }
+
 }

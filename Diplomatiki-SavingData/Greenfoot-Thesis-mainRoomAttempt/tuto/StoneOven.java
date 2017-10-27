@@ -50,6 +50,12 @@ public class StoneOven extends Material
         String material = "Brick";
         return material;
     }
+    
+    @Override
+    public String getTextFieldMessage(){
+        String textMsg = "Δημιούργησε ένα αντικείμενο "+ getMaterial();
+        return textMsg;
+    }
 
     /**
      * Method checkMaterial

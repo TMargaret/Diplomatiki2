@@ -33,7 +33,7 @@ public class Level_02 extends World
     int count_item = 0;
     int counterEnd = 200;
     boolean displayMessage = false;
-    private GreenfootSound lvlSound = new GreenfootSound("level02.mp3");
+    public static GreenfootSound lvlSound = new GreenfootSound("level02.mp3");
     private GreenfootSound thankSound = new GreenfootSound("thank.wav");
 
     Material mat;
@@ -286,9 +286,6 @@ public class Level_02 extends World
             }
             if (Greenfoot.isKeyDown("enter") && displayMessage){
                 removeObject(textPanel);
-                // Greenfoot.setWorld(new LevelsScreen());
-                // level0Sound.stop();
-                // checkUnlockLevel();
             }
         }
     }	

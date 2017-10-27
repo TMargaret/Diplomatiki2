@@ -1,7 +1,6 @@
 import greenfoot.*; 
 import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-
 /**
  * Write a description of class Door here.
  * 
@@ -10,6 +9,7 @@ import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo
  */
 public class Door extends Material
 {
+    int count = 0;
 
     /**
      * Door Constructor
@@ -29,6 +29,18 @@ public class Door extends Material
         materialCreation();
     } 
 
+    @Override
+    public void actionMat(){
+        for (Material mat: materialList){
+            if (mat.getMaterial()=="Key")
+            {
+                mainHouseRoom.doorList.remove(this);
+                getWorld().removeObject(this);
+                pickupSound.play();
+            }
+        }
+    }
+
     /**
      * Method getMaterial
      *
@@ -45,7 +57,7 @@ public class Door extends Material
      * @return The correct answer value to be check
      */
     public String checkMaterial(){
-        String materialAnswer = "new Key();";
+        String materialAnswer = "Alex.use(key);";
         return materialAnswer;
     }
 
