@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=TiledWorldPathfinding
+comment1.params=w\ vs
+comment1.target=TiledWorldPathfinding(java.lang.String[],\ java.lang.String)
+comment2.params=w
+comment2.target=void\ changeWorld(java.lang.String[])
+comment3.params=start\ end
+comment3.target=java.util.Stack\ findShortestFeasiblePath(Point,\ Point)
+comment4.params=openList\ closedList\ end
+comment4.target=void\ runAStar(java.util.Queue,\ java.util.Queue,\ Point)
+comment4.text=private\ methods
+comment5.params=parent\ node\ openList\ end
+comment5.target=boolean\ processNeighbor(Tile,\ Tile,\ java.util.Queue,\ Point)
+comment6.params=start\ end
+comment6.target=int\ calculateManhattenDistance(Point,\ Point)
+comment7.params=a\ end
+comment7.target=void\ deriveWaypoints(java.util.Stack,\ Point)
+comment8.params=
+comment8.target=void\ resetWorld()
+numComments=9

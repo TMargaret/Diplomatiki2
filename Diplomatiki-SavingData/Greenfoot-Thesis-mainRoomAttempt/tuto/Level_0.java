@@ -61,7 +61,6 @@ public class Level_0 extends World
             }
         }
         materialList.remove(mat);
-        System.out.println(count);
         alex.setCanMove(!doNotMove);
         setHouseMatList(checkMatList());
         if (!doNotMove && alien.getDoneWithDialogue()){

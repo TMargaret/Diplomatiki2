@@ -162,22 +162,22 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             animation();
         }
         if (Greenfoot.isKeyDown("right")) {
-            dx += 1;
+            dx += 4;
             getKey = "right";
             animation();
         }
         if (Greenfoot.isKeyDown("left")) {
-            dx -= 1;
+            dx -= 4;
             getKey = "left";
             animation();
         }
         if (Greenfoot.isKeyDown("down")) {
-            dy += 1;
+            dy += 4;
             getKey = "down";
             animation();
         }
         if (Greenfoot.isKeyDown("up")) {
-            dy -= 1;
+            dy -= 4;
             getKey = "up";
             animation();
         }
@@ -185,8 +185,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         initGetKey();
 
         //check for wall on each step of move in both vertical and horizontal directions
-        for (int i = 0; i < moveAmt; i++)
-        {
+       // for (int i = 0; i < moveAmt; i++)
+       // {
             setLocation(getX() + dx, getY());
             if ((getOneIntersectingObject(Wall.class) != null) || 
             (getOneIntersectingObject(Crate.class) != null) ||  
@@ -210,7 +210,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             (getY() > getWorld().getHeight() - getImage().getHeight()/2)){
                 setLocation(getX(), getY() - dy);
             }
-        }
+        //}
     }
 
     /**

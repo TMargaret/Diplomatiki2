@@ -1,4 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
+import java.util.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Level4 here.
@@ -9,31 +10,39 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Level4 extends World
 {
     private int xOffset = 0;
-    //private Hiker hiker;
-    private final static int SWIDTH = 600;
-    private final static int SHEIGHT = 400;
-    private final static int WWIDTH = 1200;
-    private final static int TWIDTH = 25;
+    //private alex alex;
+    private Alex alex;
+    private final static int SWIDTH = 1000;
+    private final static int SHEIGHT = 600;
+    private final static int WWIDTH = 1500;
+    private final static int TWIDTH = 50;
     private final static int THEIGHT = TWIDTH;
-    private final static int TILEOFFSET = TWIDTH/2;
+    private final static int TILEOFFSET = TWIDTH/3;
     private final static String validSpaces = "WG";
     private final static String[] WORLD = {
-            "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-            "BWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWUWWWWB",
-            "BWWWWWWWWWWWWWUUWWWWWWWWUUUUUUUWWWWWWWWWWWUWWWWB",
-            "BWWWWWUUUUUWWWUUUWWWWWWWWWWWWWWWWWWWWWWWWWUWWWWB",
-            "BWWWWWUUUUUWWWWWWWWWWWWWWWWWWWWWWWWWUWWWWUUUWWWB",
-            "BWWWWWWWWWWWWWWWWWUUUUUWWWWWWWWUUUUUUWWWWWWWWWWB",
-            "BWWWWWWWWWWWWWWWWWUUUUWWWWWWWWWUUUUUUUUWWWWWWWWB",
-            "BWWWWUUUUUUUWWWUWWWWWWWWWWWWWWWUWWWWWWWWWWWWWWWB",
-            "BWWWWWWWUUUWWWWUWWWWWWWWWWUWWWWUWWWWWWWWWWWWWWWB",
-            "BWWWWWWWWWWWWWWWWWWWWWWWWWUWWWWWWWWWWWWWWWWWUWWB",
-            "BWWWWWWWWWWWWWWWWWWWUUUUUUUWWWWWWWWWUUUUWWWWUWWB",
-            "BWWWWWWWWWWWWWUUWWWWUWWWWWWWWWWWWWWWUUUUWWWWUWWB",
-            "BWWWWWWWUUUUUUUUUWWWWWWWWWWWWWWWWWWWUUUUUUWWUWWB",
-            "BWWWWWWWUUUUUUUUUWWWWWWWWWUUWWWWWWWWWWWWWWWWUWWB",
-            "BWWWWWWWUWWWWWWWWWWWWWWWWWUUWWWWWWWWWWWWWWWWUWGB",
-            "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWUWWWWB",
+            "WWWWWWWWWWWWWWUUWWWWWWWWUUUUUUUWWWWWWWWWWWUWWWWB",
+            "WWWWWWUUUUUWWWUUUWWWWWWWWWWWWWWWWWWWWWWWWWUWWWWB",
+            "WWWWWWUUUUUWWWWWWWWWWWWWWWWWWWWWWWWWUWWWWUUUWWWB",
+            "WWWWWWWWWWWWWWWWWWUUUUUWWWWWWWWUUUUUUWWWWWWWWWWB",
+            "WWWWWWWWWWWWWWWWWWUUUUWWWWWWWWWUUUUUUUUWWWWWWWWB",
+            "WWWWWUUUUUUUWWWUWWWWWWWWWWWWWWWUWWWWWWWWWWWWWWWB",
+            "WWWWWWWWUUUWWWWUWWWWWWWWWWUWWWWUWWWWWWWWWWWWWWWB",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWUWWWWWWWWWWWWWWWWWUWWB",
+            "WWWWWWWWWWWWWWWWWWWWUUUUUUUWWWWWWWWWUUUUWWWWUWWB",
+            "WWWWWWWWWWWWWWUUWWWWUWWWWWWWWWWWWWWWUUUUWWWWUWWB",
+            "WWWWWWWWUUUUUUUUUWWWWWWWWWWWWWWWWWWWUUUUUUWWUWWB",
+            "WWWWWWWWUUUUUUUUUWWWWWWWWWUUWWWWWWWWWWWWWWWWUWWB",
+            "WWWWWWWWUWWWWWWWWWWWWWWWWWUUWWWWWWWWWWWWWWWWUWGB",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
         };
 
     /**
@@ -42,13 +51,14 @@ public class Level4 extends World
      */
     public Level4()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
-        //super(SWIDTH, SHEIGHT, 1, false);
+        //super(1000, 600, 1, false); 
+        super(SWIDTH, SHEIGHT, 1, false);
         createWorldFromTiles();
         shiftWorld(0);
         prepare();
     }
+    
+    
 
     public void shiftWorld(int dx) {
         if( (xOffset + dx) <= 0 && (xOffset + dx) >= SWIDTH - WWIDTH) {
@@ -78,16 +88,16 @@ public class Level4 extends World
         Actor tile = null;
         switch(c) {
             case 'W':
-            tile = new WhiteBlock();
+            tile = new Floor();
             break;
             case 'B':
-            tile = new BlackBlock();
+            //tile = new BlackBlock();
             break;
             case 'U':
-            tile = new BlueBlock();
+            tile = new Wall();
             break;
             case 'G':
-            tile = new GoldBlock();
+            //tile = new GoldBlock();
             break;
         }
         if( tile != null) addObject(tile, TILEOFFSET+x*TWIDTH,
@@ -110,12 +120,12 @@ public class Level4 extends World
         return WORLD;
     }
 
-    public int getXHiker() {
-        return hiker.getX()-xOffset;
+    public int getXalex() {
+        return alex.getX()-xOffset;
     }
 
-    public int getYHiker() {
-        return hiker.getY();
+    public int getYalex() {
+        return alex.getY();
     }
 
     public String getValidSpaces() {
@@ -124,15 +134,33 @@ public class Level4 extends World
 
     private void prepare()
     {
-        hiker = new Hiker();
-        addObject(hiker, 80, 200);
-        addObject(new Mouse(), 60,40);
-        addObject(new Spider(), 1000,40);
-        addObject(new Spider(), 120,340);
-        addObject(new Spider(), 1050,250);
+        addWall();
+        alex = new Alex();
+        addObject(alex, 70, 250);
+        //addObject(new Mouse(), 60,40);
+        //addObject(new Spider(), 1000,40);
+       // addObject(new Spider(), 120,340);
+        //addObject(new Spider(), 1050,250);
         addObject(new Snake(), 1050,250);
-        addObject(new Mouse(), 1000,200);
-        addObject(new Snake(), 400,260);
+       // addObject(new Mouse(), 1000,200);
+        addObject(new Snake(), 400,460);
     }
+    
+        /**
+     * Method addWall. Builds the wall that holds healthbar, inventory and exit
+     *
+     */
+    public void addWall(){
+        Wall[] wall = new Wall[25];
+         Wall[] wall2 = new Wall[25];
+
+        for(int j=0; j<wall.length; j++){
+            wall[j]=new Wall();
+            wall2[j] = new Wall();
+            addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
+            addObject(wall2[j],j*wall2[j].getImage().getWidth(), getHeight() - wall[j].getImage().getHeight()/2);
+        }
+    }
+
 }
 
