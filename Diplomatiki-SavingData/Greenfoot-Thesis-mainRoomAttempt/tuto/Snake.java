@@ -11,6 +11,7 @@ public class Snake extends ScrollingEnemy {
     private boolean pathing = false;
     private int rememberSpeedX = 0;
     private List<Alex> lse;
+    int count = 0;
     
     public Snake() {
         speedX = rememberSpeedX = SPEED;
@@ -35,6 +36,15 @@ public class Snake extends ScrollingEnemy {
         } else {
             speedX = lse.get(0).getX() > getX() ? 1 : -1;
             speedY = lse.get(0).getY() > getY() ? 1 : -1;
+        }
+    }
+    public void snakeAnimation(){
+        for (int i=1;i<=10;i++){
+            count++;
+            if (count>50){
+                setImage(SpriteSheet.getSprite(snake, img_cell*(i-1),  0, img_cell*i, img_cell, IMG_WIDTH, IMG_HEIGHT));
+                count = 0;
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     final int IMG_WIDTH = alex.getWidth()/6;
     final int IMG_HEIGHT = alex.getHeight()/4;
     static boolean flagForRemovedItem = false;
+    private static final int BOUNDARY = 40;
 
     HealthLogo healthLogo;
     HealthBar healthBar;
@@ -162,22 +163,23 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             animation();
         }
         if (Greenfoot.isKeyDown("right")) {
-            dx += 4;
+            dx = 4;
             getKey = "right";
             animation();
+            
         }
         if (Greenfoot.isKeyDown("left")) {
-            dx -= 4;
+            dx = -4;
             getKey = "left";
             animation();
         }
         if (Greenfoot.isKeyDown("down")) {
-            dy += 4;
+            dy = 4;
             getKey = "down";
             animation();
         }
         if (Greenfoot.isKeyDown("up")) {
-            dy -= 4;
+            dy = -4;
             getKey = "up";
             animation();
         }
@@ -185,32 +187,46 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         initGetKey();
 
         //check for wall on each step of move in both vertical and horizontal directions
-       // for (int i = 0; i < moveAmt; i++)
-       // {
-            setLocation(getX() + dx, getY());
-            if ((getOneIntersectingObject(Wall.class) != null) || 
-            (getOneIntersectingObject(Crate.class) != null) ||  
-            (getOneIntersectingObject(Barrel.class) != null) ||  
-            (getOneIntersectingObject(Grass.class) != null) ||  
-            (getOneIntersectingObject(Material.class) != null) ||
-            (getOneIntersectingObject(Locals.class) !=null) ||
-            (getX() < getImage().getWidth()/2) ||
-            (getX() > getWorld().getWidth() - getImage().getWidth()/2)){ 
-                setLocation(getX() - dx, getY());
-            }
-            setLocation(getX(), getY() + dy);
-            if ((getOneIntersectingObject(Wall.class) != null)||
-            (getOneIntersectingObject(Crate.class) != null) ||  
-            (getOneIntersectingObject(Barrel.class) != null) || 
-            (getOneIntersectingObject(Wall2.class) != null) 
-            || (getOneIntersectingObject(Grass.class) != null)  
-            || (getOneIntersectingObject(Material.class) != null)
-            || (getOneIntersectingObject(Locals.class) !=null) ||
-            (getY() < getImage().getHeight()/2) ||
-            (getY() > getWorld().getHeight() - getImage().getHeight()/2)){
-                setLocation(getX(), getY() - dy);
-            }
-        //}
+        // for (int i = 0; i < moveAmt; i++)
+        // {
+        setLocation(getX() + dx, getY()+dy);
+        System.out.println(getX());
+        if ((getOneIntersectingObject(Wall.class) != null) || 
+        (getOneIntersectingObject(Crate.class) != null) ||  
+        (getOneIntersectingObject(Barrel.class) != null) ||  
+        (getOneIntersectingObject(Grass.class) != null) ||  
+        (getOneIntersectingObject(Material.class) != null) ||
+        (getOneIntersectingObject(Locals.class) !=null) ||
+        (getX() < getImage().getWidth()/2) ||
+        (getX() > getWorld().getWidth() - getImage().getWidth()/2)){ 
+            setLocation(getX() - dx, getY());
+        }if( getX() > getWorld().getWidth()/2 ) {
+            
+            ((Level4)getWorld()).shiftWorld(-dx/2);
+            setLocation(getX() - dx, getY());
+        } else if( getX() < getWorld().getWidth()/2 -dx) {
+            ((Level4)getWorld()).shiftWorld(-dx/2);
+           // setLocation(getX()-dx, getY());
+          }
+        
+       // setLocation(getX(), getY() + dy);
+        if ((getOneIntersectingObject(Wall.class) != null)||
+        (getOneIntersectingObject(Crate.class) != null) ||  
+        (getOneIntersectingObject(Barrel.class) != null) || 
+        (getOneIntersectingObject(Wall2.class) != null) 
+        || (getOneIntersectingObject(Grass.class) != null)  
+        || (getOneIntersectingObject(Material.class) != null)
+        || (getOneIntersectingObject(Locals.class) !=null) ||
+        (getY() < getImage().getHeight()/2) ||
+        (getY() > getWorld().getHeight() - getImage().getHeight()/2)){
+            setLocation(getX(), getY() - dy);
+        // }else if( getY() > getWorld().getHeight() - BOUNDARY*2 ) {
+            // ((Level4)getWorld()).shiftWorld(-dy);
+            // setLocation(getX(), getY()-dy);
+        // } else if( getY() < BOUNDARY*2 ) {
+            // ((Level4)getWorld()).shiftWorld(-dy);
+            // setLocation(getX(), getY()-dy);
+         }
     }
 
     /**

@@ -94,7 +94,7 @@ public class Level4 extends World
             //tile = new BlackBlock();
             break;
             case 'U':
-            tile = new Wall();
+            tile = new WallBlock();
             break;
             case 'G':
             //tile = new GoldBlock();
