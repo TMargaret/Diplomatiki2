@@ -166,7 +166,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             dx = 4;
             getKey = "right";
             animation();
-            
+
         }
         if (Greenfoot.isKeyDown("left")) {
             dx = -4;
@@ -183,14 +183,13 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             getKey = "up";
             animation();
         }
-        //initializes the getKey variables
-        initGetKey();
+        // //initializes the getKey variables
+        // initGetKey();
 
         //check for wall on each step of move in both vertical and horizontal directions
         // for (int i = 0; i < moveAmt; i++)
         // {
         setLocation(getX() + dx, getY()+dy);
-        System.out.println(getX());
         if ((getOneIntersectingObject(Wall.class) != null) || 
         (getOneIntersectingObject(Crate.class) != null) ||  
         (getOneIntersectingObject(Barrel.class) != null) ||  
@@ -200,16 +199,18 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         (getX() < getImage().getWidth()/2) ||
         (getX() > getWorld().getWidth() - getImage().getWidth()/2)){ 
             setLocation(getX() - dx, getY());
-        }if( getX() > getWorld().getWidth()/2 ) {
-            
-            ((Level4)getWorld()).shiftWorld(-dx/2);
-            setLocation(getX() - dx, getY());
-        } else if( getX() < getWorld().getWidth()/2 -dx) {
-            ((Level4)getWorld()).shiftWorld(-dx/2);
-           // setLocation(getX()-dx, getY());
-          }
-        
-       // setLocation(getX(), getY() + dy);
+        }
+        if (getWorld() instanceof Level4){
+            if((getX() > getWorld().getWidth()/2) && (getKey == "right" || getKeyBoth=="upRight" || getKeyBoth=="downRight")) {
+                ((Level4)getWorld()).shiftWorld(-dx/2);
+                setLocation(getX() - dx, getY());
+            } if( (getX() < getWorld().getWidth()/2) &&(getKey == "left" || getKeyBoth=="upLeft" || getKeyBoth=="downLeft")) {
+                ((Level4)getWorld()).shiftWorld(-dx/2);
+                setLocation(getX()-dx, getY());
+             }
+        }
+
+        // setLocation(getX(), getY() + dy);
         if ((getOneIntersectingObject(Wall.class) != null)||
         (getOneIntersectingObject(Crate.class) != null) ||  
         (getOneIntersectingObject(Barrel.class) != null) || 
@@ -220,13 +221,18 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         (getY() < getImage().getHeight()/2) ||
         (getY() > getWorld().getHeight() - getImage().getHeight()/2)){
             setLocation(getX(), getY() - dy);
-        // }else if( getY() > getWorld().getHeight() - BOUNDARY*2 ) {
-            // ((Level4)getWorld()).shiftWorld(-dy);
-            // setLocation(getX(), getY()-dy);
-        // } else if( getY() < BOUNDARY*2 ) {
-            // ((Level4)getWorld()).shiftWorld(-dy);
-            // setLocation(getX(), getY()-dy);
-         }
+            // if (getWorld() instanceof Level4){
+            // if((getY() > getWorld().getHeight()/2) && (getKey == "up" )) {
+                // ((Level4)getWorld()).shiftWorld(-dy/2);
+                // setLocation(getX(), getY() - dy);
+            // } if( (getY() < getWorld().getHeight()/2) &&(getKey == "down")) {
+                // ((Level4)getWorld()).shiftWorld(-dy/2);
+                // setLocation(getX(), getY() - dy);
+             // }
+        // }
+    }
+        //initializes the getKey variables
+        initGetKey();
     }
 
     /**

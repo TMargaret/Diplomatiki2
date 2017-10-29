@@ -14,7 +14,7 @@ public class Level4 extends World
     private Alex alex;
     private final static int SWIDTH = 1000;
     private final static int SHEIGHT = 600;
-    private final static int WWIDTH = 1500;
+    private final static int WWIDTH = 2500;
     private final static int TWIDTH = 50;
     private final static int THEIGHT = TWIDTH;
     private final static int TILEOFFSET = TWIDTH/3;
@@ -61,7 +61,7 @@ public class Level4 extends World
     
 
     public void shiftWorld(int dx) {
-        if( (xOffset + dx) <= 0 && (xOffset + dx) >= SWIDTH - WWIDTH) {
+        if( (xOffset + dx) <= 0 && (xOffset + dx) >= (SWIDTH - WWIDTH)) {
             xOffset = xOffset+dx;
             shiftWorldActors(dx);
         }
@@ -136,7 +136,7 @@ public class Level4 extends World
     {
         addWall();
         alex = new Alex();
-        addObject(alex, 70, 250);
+        addObject(alex, 450, 250);
         //addObject(new Mouse(), 60,40);
         //addObject(new Spider(), 1000,40);
        // addObject(new Spider(), 120,340);
