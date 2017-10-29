@@ -20,29 +20,18 @@ public class Level4 extends World
     private final static int TILEOFFSET = TWIDTH/3;
     private final static String validSpaces = "WG";
     private final static String[] WORLD = {
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWUWWWWB",
-            "WWWWWWWWWWWWWWUUWWWWWWWWUUUUUUUWWWWWWWWWWWUWWWWB",
-            "WWWWWWUUUUUWWWUUUWWWWWWWWWWWWWWWWWWWWWWWWWUWWWWB",
-            "WWWWWWUUUUUWWWWWWWWWWWWWWWWWWWWWWWWWUWWWWUUUWWWB",
-            "WWWWWWWWWWWWWWWWWWUUUUUWWWWWWWWUUUUUUWWWWWWWWWWB",
-            "WWWWWWWWWWWWWWWWWWUUUUWWWWWWWWWUUUUUUUUWWWWWWWWB",
-            "WWWWWUUUUUUUWWWUWWWWWWWWWWWWWWWUWWWWWWWWWWWWWWWB",
-            "WWWWWWWWUUUWWWWUWWWWWWWWWWUWWWWUWWWWWWWWWWWWWWWB",
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWUWWWWWWWWWWWWWWWWWUWWB",
-            "WWWWWWWWWWWWWWWWWWWWUUUUUUUWWWWWWWWWUUUUWWWWUWWB",
-            "WWWWWWWWWWWWWWUUWWWWUWWWWWWWWWWWWWWWUUUUWWWWUWWB",
-            "WWWWWWWWUUUUUUUUUWWWWWWWWWWWWWWWWWWWUUUUUUWWUWWB",
-            "WWWWWWWWUUUUUUUUUWWWWWWWWWUUWWWWWWWWWWWWWWWWUWWB",
-            "WWWWWWWWUWWWWWWWWWWWWWWWWWUUWWWWWWWWWWWWWWWWUWGB",
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW"
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "BWBWBWBWWWWWWBWWWWWWWTWWWWWWWWWWWWTWWWWWWWWWWWUWWWWB",
+            "WBWBWBWBWWWWWWWWWWWWWTWWWWWWWWWWWWTWWWWWWWWWWWWWUWWWWB",
+            "BWBWBWBWWWWWWBWWWWWWWTWWWTUUUUUTUUTWWWWWWWWWWWWWWWWUWWWWB",
+            "WBWBWBWBWWWWUUUUUUUUUUWWWTWWWWWTWWTWWWWWWWWWWWWWUWWWWUUUWWWB",
+            "BWBWBWBWWWWWWWWWWWWWWWWWWTWWWWWTWWWWWWWWWWWWB",
+            "WBWBWBWBWWWWWWWWWWWWWWWWSTWWTWWTWWWWWWWWWWWB",
+            "BWBWBWBWWWWWUUUUUUUUUTWWWTWWTWWTWWWWWWWWWWWWWWWWWWWWWWB",
+            "WBWBWBWBWWWWWBWWWWWWWTWWWTWWTWWTWWTWWWWWWWWWWWWWWWWWB",
+            "BWBWBWBWWWWWWWWWWWWWWTWWWWWWTWWWWWTWWWWWWWWWWWUWWB",
+            "WBWBWBWBWWWWWBWWWWWWWTWWWWWWTWWWWWTWWWWWWWWB",
+            "WWWWWWWWWWWWWWWWWWWWWTWWWWWWTWWWWWTWWWWWWWWWWWWWWWW"
         };
 
     /**
@@ -52,10 +41,25 @@ public class Level4 extends World
     public Level4()
     {    
         //super(1000, 600, 1, false); 
-        super(SWIDTH, SHEIGHT, 1, false);
+        super(SWIDTH, SHEIGHT, 1, false);       
         createWorldFromTiles();
         shiftWorld(0);
         prepare();
+        
+    }
+    
+    private void prepare()
+    {
+        addWall();
+        alex = new Alex();
+        addObject(alex, 450, 250);
+        //addObject(new Mouse(), 60,40);
+        //addObject(new Spider(), 1000,40);
+       // addObject(new Spider(), 120,340);
+        //addObject(new Spider(), 1050,250);
+        addObject(new Snake(), 1500,90);
+       // addObject(new Mouse(), 1000,200);
+        addObject(new Snake(), 800,500);
     }
     
     
@@ -91,13 +95,16 @@ public class Level4 extends World
             tile = new Floor();
             break;
             case 'B':
-            //tile = new BlackBlock();
+            tile = new Rose();
             break;
             case 'U':
             tile = new WallBlock();
             break;
-            case 'G':
-            //tile = new GoldBlock();
+            case 'T':
+            tile = new Wall3();
+            break;
+            case 'S':
+            tile = new SignBlock();
             break;
         }
         if( tile != null) addObject(tile, TILEOFFSET+x*TWIDTH,
@@ -132,19 +139,7 @@ public class Level4 extends World
         return validSpaces;
     }
 
-    private void prepare()
-    {
-        addWall();
-        alex = new Alex();
-        addObject(alex, 450, 250);
-        //addObject(new Mouse(), 60,40);
-        //addObject(new Spider(), 1000,40);
-       // addObject(new Spider(), 120,340);
-        //addObject(new Spider(), 1050,250);
-        addObject(new Snake(), 1050,250);
-       // addObject(new Mouse(), 1000,200);
-        addObject(new Snake(), 400,460);
-    }
+    
     
         /**
      * Method addWall. Builds the wall that holds healthbar, inventory and exit

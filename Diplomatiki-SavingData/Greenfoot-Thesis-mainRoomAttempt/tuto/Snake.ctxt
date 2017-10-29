@@ -8,4 +8,6 @@ comment3.params=
 comment3.target=void\ reaction()
 comment4.params=
 comment4.target=void\ snakeAnimation()
-numComments=5
+comment5.params=
+comment5.target=void\ snakeAnimation2()
+numComments=6
