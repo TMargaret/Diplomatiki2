@@ -102,6 +102,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         gameOver();
         addToInventory();
         checkWorld();
+        System.out.println("canMove"+canMove);
     }
 
     public void checkWorld(){
@@ -369,6 +370,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         }
         if (Greenfoot.isKeyDown("space") && lostMessage){
             Greenfoot.setWorld(new LevelsScreen());
+            canMove = true;
         }
     }
 

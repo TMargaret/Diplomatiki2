@@ -41,6 +41,7 @@ public class Level_1 extends World
     Material mat;
     private GreenfootSound thankSound = new GreenfootSound("thank.wav");
     Snail snail;
+    boolean found = false;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -52,6 +53,7 @@ public class Level_1 extends World
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
+        found = false;
         lvl.playLoop();
     }
 
@@ -89,7 +91,7 @@ public class Level_1 extends World
     }
 
     public void act(){
-        boolean found = false;
+        found = false;
         for(Hut hut : hutList){
             if ((hut.getActive()) || (isActive) || waterwell.getActive()){
                 found  = true;
@@ -115,6 +117,8 @@ public class Level_1 extends World
         enterInRoom();
         snail();
         endGame();
+        System.out.println("found"+found);
+        System.out.println("isActive"+isActive);
     }
 
     /**
@@ -139,7 +143,7 @@ public class Level_1 extends World
         snail = new Snail();
         
         straw = new Straw();
-        addObject(straw,610,480);
+        addObject(straw,680,520);
         matList.add(straw);  
 
         lumber = new Lumber(2, 1);
@@ -339,6 +343,8 @@ public class Level_1 extends World
         }
         if (HealthBar.getHealth()<=0){
             snail.stop();
+            lvl.stop();
+            found = false;
         }
     }
 

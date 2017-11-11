@@ -40,7 +40,7 @@ public class QuizPic extends Actor
 
     public void lostGame(){
         if (HealthBar.getHealth()<=0){
-            
+            questNum=8;
             getImage().clear();
             removeButton();
             
@@ -197,7 +197,7 @@ public class QuizPic extends Actor
 
     public String quiz4(){
         return "Με τη γραμμή κώδικα:\n"
-        +"clay = new Clay();"
+        +"Clay clay = new Clay();"
         +"\nΤι από τα παρακάτω θα συμβεί;";
     }
 
@@ -246,8 +246,8 @@ public class QuizPic extends Actor
     public void getAnswer4(){
         String order = "0100";
         String text1 = "Δεν υπάρχει συντακτικό λάθος.";            
-        String text2 = "\nH clay είναι μια μεταβλητή στην οποία"
-            +"\nεκχωρούμε το στιγμιότυπο του πηλού."
+        String text2 = "\nH clay είναι μια μεταβλητή τύπου Clay στην\nοποία"
+            +" εκχωρούμε το στιγμιότυπο του πηλού."
             +"\nΣτην εκχώρηση τιμής η διαδικασία"
             +"\nγίνεται από δεξιά προς τα αριστέρα!";
         String text3 = "Η διαφορά είναι λεπτή αλλά σημαντική."
