@@ -35,6 +35,16 @@ public class QuizPic extends Actor
     public void act() 
     {
         drawText();
+        lostGame();
+    }
+
+    public void lostGame(){
+        if (HealthBar.getHealth()<=0){
+            
+            getImage().clear();
+            removeButton();
+            
+        }
     }
 
     public void drawText(){
@@ -98,7 +108,7 @@ public class QuizPic extends Actor
             endFlag = true;
             removeButton();
             getWorld().removeObject(this);
-            
+
         }
     }
 
@@ -229,9 +239,7 @@ public class QuizPic extends Actor
         String text3 = "Χρησιμοποιούμε μια μέθοδο, "
             +"όμως συμβαίνει\nκαι κάτι άλλο.";
         String text4 = "Μπράβο!\nΕδώ έχουμε συνδυασμό πραγμάτων.\nΑρχικά"
-            +" δημιουργούμε ένα νέο στιγμιότυπο\nδράκου και στη συνέχεια μαζέυουμε αυτό\nτο αντικείμενο."
-            +"\nΣτον προγραμματισμό τα πράγματα"
-            +"\nσυμβαίνουν από δεξιά προς τα αριστέρα!";
+            +" δημιουργούμε ένα νέο στιγμιότυπο\nδράκου και στη συνέχεια μαζέυουμε αυτό\nτο αντικείμενο.";
         getAnswer(order,text1, text2, text3, text4);
     }
 
@@ -239,12 +247,12 @@ public class QuizPic extends Actor
         String order = "0100";
         String text1 = "Δεν υπάρχει συντακτικό λάθος.";            
         String text2 = "\nH clay είναι μια μεταβλητή στην οποία"
-            +"\nέχουμε εκχωρήσει από πριν το στιγμιότυπο\nτου πηλού."
-            +"\nΘυμήσου! Στον προγραμματισμό τα πράγματα"
-            +"\nσυμβαίνουν από δεξιά προς τα αριστέρα!";
+            +"\nεκχωρούμε το στιγμιότυπο του πηλού."
+            +"\nΣτην εκχώρηση τιμής η διαδικασία"
+            +"\nγίνεται από δεξιά προς τα αριστέρα!";
         String text3 = "Η διαφορά είναι λεπτή αλλά σημαντική."
-            +"\nΣτον προγραμματισμό τα πράγματα"
-            +"\nσυμβαίνουν από δεξιά προς τα αριστέρα!";
+            +"\nΣτην εκχώρηση τιμής η διαδικασία"
+            +"\nγίνεται από δεξιά προς τα αριστέρα!";
         String text4 = "Όχι, είναι τελείως λάθος αυτό.";
         getAnswer(order,text1, text2, text3, text4);
     }

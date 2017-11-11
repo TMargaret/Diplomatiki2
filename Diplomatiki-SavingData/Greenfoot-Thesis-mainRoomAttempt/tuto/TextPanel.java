@@ -263,6 +263,10 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.dragon3();
             makeImage(mytext, "dragon");
         }
+        if (status == "youLost"){
+            String mytext = text.youLost();
+            makeImage(mytext, "dragon");
+        }
     }
 
     private void makeImage(String title)
