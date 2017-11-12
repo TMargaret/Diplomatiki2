@@ -54,7 +54,7 @@ public class Level_1 extends World
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
-        found = false;
+        //found = false;
         lvl.playLoop();
     }
 
@@ -118,6 +118,7 @@ public class Level_1 extends World
         enterInRoom();
         snail();
         endGame();
+        initVar();
     }
 
     /**

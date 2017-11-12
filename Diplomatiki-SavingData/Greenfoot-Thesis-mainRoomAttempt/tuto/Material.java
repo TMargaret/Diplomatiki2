@@ -82,7 +82,6 @@ public class Material extends Actor
                         continue;
                     }
                     if( a instanceof Alex) {
-                        System.out.println("isActive"+isActive);
                         counter--;
                         if (Greenfoot.isKeyDown("e") && !isEDown){
                             isEDown = true;
@@ -105,7 +104,7 @@ public class Material extends Actor
                             isEDown = false;
                         }   
 
-                        if (thisLvl && Greenfoot.isKeyDown("enter") && isEDown){
+                        if (thisLvl && Greenfoot.isKeyDown("enter") && isEDown && !tryAgainOrLeave){
                             isEDown = false;
                             counter = 30;
                             db = new Debugger(textField.getText(), this.checkMaterial());
@@ -120,7 +119,7 @@ public class Material extends Actor
                                     textPanel= new TextPanel("wrongKey", db.feedback());
                                     getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                                     tryAgainOrLeave = true;
-                                    isEDown = false;
+                                    //isEDown = false;
                                 }
                             }
                         }
