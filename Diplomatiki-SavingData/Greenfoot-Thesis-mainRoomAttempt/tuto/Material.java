@@ -82,6 +82,7 @@ public class Material extends Actor
                         continue;
                     }
                     if( a instanceof Alex) {
+                        System.out.println("isActive"+isActive);
                         counter--;
                         if (Greenfoot.isKeyDown("e") && !isEDown){
                             isEDown = true;
@@ -89,7 +90,7 @@ public class Material extends Actor
                         }
                         if (counter<0 && isEDown && !thisLvl)
                         {
-                           extraAction();
+                            extraAction();
                         }
                         if (counter<0 && !isActive && isEDown && thisLvl){
                             isActive = true;
@@ -136,7 +137,7 @@ public class Material extends Actor
             }
         }
     }
-    
+
     public void extraAction(){
         thisLvl = true;
     }
@@ -169,6 +170,17 @@ public class Material extends Actor
         if (!wrongCommand){
             wrongCommand = true;
             HealthBar.looseHealth();
+        }
+        if (HealthBar.getHealth()<=0){
+            isActive = false;
+            isEDown = false;
+            tryAgainOrLeave = false;
+            wrongCommand = false;
+            thisLvl = false;
+            int counter = 30;
+            int version = 0;
+            my_text = "";
+            addToInv = false;
         }
     }
 

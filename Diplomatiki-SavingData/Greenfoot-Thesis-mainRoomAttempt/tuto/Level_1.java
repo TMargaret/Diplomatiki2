@@ -29,6 +29,7 @@ public class Level_1 extends World
     private TextPanel textPanel;
     boolean displayMessage = false;
     boolean matIsTrue = false;
+    boolean found = false;
     WaterWell waterwell;
     Lumber lumber;
     Hut oldHut;
@@ -41,7 +42,7 @@ public class Level_1 extends World
     Material mat;
     private GreenfootSound thankSound = new GreenfootSound("thank.wav");
     Snail snail;
-    boolean found = false;
+    
 
     /**
      * Constructor for objects of class MyWorld.
@@ -117,8 +118,6 @@ public class Level_1 extends World
         enterInRoom();
         snail();
         endGame();
-        System.out.println("found"+found);
-        System.out.println("isActive"+isActive);
     }
 
     /**
@@ -141,7 +140,7 @@ public class Level_1 extends World
         addObject(alex,79,525);
 
         snail = new Snail();
-        
+
         straw = new Straw();
         addObject(straw,680,520);
         matList.add(straw);  
@@ -327,7 +326,7 @@ public class Level_1 extends World
     public void snail(){
         //makes the snail appear within the borders
         // if (snail.getSpeed() == 0){
-            // snail.addForce(new Vector(-3.0, 0));
+        // snail.addForce(new Vector(-3.0, 0));
         // }
         int random_y = getRandomNumber(getHeight()/2, getHeight()-snail.getImage().getHeight());
         random_y += 20;
@@ -341,6 +340,10 @@ public class Level_1 extends World
                 count_item = 0;
             }
         }
+        
+    }
+    
+    public void initVar(){
         if (HealthBar.getHealth()<=0){
             snail.stop();
             lvl.stop();

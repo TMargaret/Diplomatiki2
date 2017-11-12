@@ -102,7 +102,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         gameOver();
         addToInventory();
         checkWorld();
-        System.out.println("canMove"+canMove);
     }
 
     public void checkWorld(){
