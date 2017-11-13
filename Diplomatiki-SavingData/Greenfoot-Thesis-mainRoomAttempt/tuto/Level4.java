@@ -20,7 +20,7 @@ public class Level4 extends World
     private final static int TILEOFFSET = TWIDTH/3;
     private final static String validSpaces = "WG";
     private final static String[] WORLD = {
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
             "BWBWBWBWWWWWWBWWWWWWWTWWWWWWWWWWWWTWWWWWWWWWWWUWWWWB",
             "WBWBWBWBWWWWWWWWWWWWWTWWWWWWWWWWWWTWWWWWWWWWWWWWUWWWWB",
             "BWBWBWBWWWWWWBWWWWWWWTWWWTUUUUUTUUTWWWWWWWWWWWWWWWWUWWWWB",
@@ -31,7 +31,8 @@ public class Level4 extends World
             "WBWBWBWBWWWWWBWWWWWWWTWWWTWWTWWTWWTWWWWWWWWWWWWWWWWWB",
             "BWBWBWBWWWWWWWWWWWWWWTWWWWWWTWWWWWTWWWWWWWWWWWUWWB",
             "WBWBWBWBWWWWWBWWWWWWWTWWWWWWTWWWWWTWWWWWWWWB",
-            "WWWWWWWWWWWWWWWWWWWWWTWWWWWWTWWWWWTWWWWWWWWWWWWWWWW"
+            "WWWWWWWWWWWWWWWWWWWWWTWWWWWWTWWWWWTWWWWWWWWWWWWWWWW",
+            "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
         };
 
     /**
@@ -147,13 +148,13 @@ public class Level4 extends World
      */
     public void addWall(){
         Wall[] wall = new Wall[25];
-         Wall[] wall2 = new Wall[25];
+        // Wall[] wall2 = new Wall[25];
 
         for(int j=0; j<wall.length; j++){
             wall[j]=new Wall();
-            wall2[j] = new Wall();
+           // wall2[j] = new Wall();
             addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
-            addObject(wall2[j],j*wall2[j].getImage().getWidth(), getHeight() - wall[j].getImage().getHeight()/2);
+            //addObject(wall2[j],j*wall2[j].getImage().getWidth(), getHeight() - wall[j].getImage().getHeight()/2);
         }
     }
 
