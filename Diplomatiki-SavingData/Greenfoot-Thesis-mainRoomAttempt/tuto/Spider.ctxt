@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Spider
+comment1.params=
+comment1.target=Spider()
+comment2.params=
+comment2.target=void\ reaction()
+comment3.params=y
+comment3.target=void\ spiderAnimation(int)
+numComments=4
