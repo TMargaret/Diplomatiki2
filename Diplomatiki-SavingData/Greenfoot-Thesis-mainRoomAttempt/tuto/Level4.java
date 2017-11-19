@@ -15,24 +15,25 @@ public class Level4 extends World
     private final static int SWIDTH = 1000;
     private final static int SHEIGHT = 600;
     private final static int WWIDTH = 2500;
-    private final static int TWIDTH = 50;
+    private final static int TWIDTH = 45;
     private final static int THEIGHT = TWIDTH;
     private final static int TILEOFFSET = TWIDTH/3;
     private final static String validSpaces = "WG";
     private final static String[] WORLD = {
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
             "BWBWBWBWWWWWWBWWWWWWWTWWWWWWWWWWWWTWWWWWWWWWWWUWWWWB",
             "WBWBWBWBWWWWWWWWWWWWWTWWWWWWWWWWWWTWWWWWWWWWWWWWUWWWWB",
-            "BWBWBWBWWWWWWBWWWWWWWTWWWTUUUUUTUUTWWWWWWWWWWWWWWWWUWWWWB",
-            "WBWBWBWBWWWWUUUUUUUUUUWWWTWWWWWTWWTWWWWWWWWWWWWWUWWWWUUUWWWB",
-            "BWBWBWBWWWWWWWWWWWWWWWWWWTWWWWWTWWWWWWWWWWWWB",
-            "WBWBWBWBWWWWWWWWWWWWWWWWSTWWTWWTWWWWWWWWWWWB",
-            "BWBWBWBWWWWWUUUUUUUUUTWWWTWWTWWTWWWWWWWWWWWWWWWWWWWWWWB",
-            "WBWBWBWBWWWWWBWWWWWWWTWWWTWWTWWTWWTWWWWWWWWWWWWWWWWWB",
-            "BWBWBWBWWWWWWWWWWWWWWTWWWWWWTWWWWWTWWWWWWWWWWWUWWB",
-            "WBWBWBWBWWWWWBWWWWWWWTWWWWWWTWWWWWTWWWWWWWWB",
-            "WWWWWWWWWWWWWWWWWWWWWTWWWWWWTWWWWWTWWWWWWWWWWWWWWWW",
-            "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
+            "BWBWBWBWWWWWWBWWWWWWWTWWWUUUUUUUUUTWWTWWWWWWWWWWWWWUWWWWB",
+            "WBWBWBWBWWWWUUUUUUUUUTWWWTWWWWWWWWWWWTWWWWWWWWWWUWWWWUUUWWWB",
+            "BWBWBWBWWWWWWWWWWWWWWWWWWTWWWWWWWWWWWTWWWWWWWB",
+            "WBWBWBWBWWWWWWWWWWWWWWWWSTWWTWWUUUUUUUUUUUUUUUUUUUWWWWWWWWWWB",
+            "BWBWBWBWWWWWWWWWWWWWWWWWWTWWTWWWWWWWWWWTWWWTWWWTWWWWWWWWWB",
+            "WBWBWBWBWWWWUUUUUUUUUTWWWTWWTWWWWWWWWWSTWWWWWWWUUUUUUUWWWWWWWWWWWWWWWWWB",
+            "BWBWBWBWWWWWWBWWWWWWWTWWWTWWUUUUUUTWWWWTWWWWWWWWWWWWWTWWWWWWWWWWWWUWWB",
+            "WBWBWBWBWWWWWWWWWWWWWTWWWTWWWWWWWWTWWWWTWWWTWWWWWWWWWTWWWWWWWWWWWWWWWWWB",
+            "BWBWBWBWWWWWWBWWWWWWWTWWWWWWWWWWWWTWWWWWWWWTWWWTWWWWWTWWWWWWWWWWWW",
+            "WBWBWBWBWWWWWWWWWWWWWTWWWWWWTWWWWWTWWWWWWWWTWWWTWWWWWTWWWWWWWWWWWWWW",
+            "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
         };
 
     /**
@@ -46,9 +47,9 @@ public class Level4 extends World
         createWorldFromTiles();
         shiftWorld(0);
         prepare();
-        
+
     }
-    
+
     private void prepare()
     {
         addWall();
@@ -56,14 +57,13 @@ public class Level4 extends World
         addObject(alex, 450, 250);
         //addObject(new Mouse(), 60,40);
         //addObject(new Spider(), 1000,40);
-       // addObject(new Spider(), 120,340);
+        // addObject(new Spider(), 120,340);
         //addObject(new Spider(), 1050,250);
         addObject(new Snake(), 1500,90);
-       // addObject(new Mouse(), 1000,200);
-        addObject(new Snake(), 800,500);
+        // addObject(new Mouse(), 1000,200);
+        addObject(new Snake(), 1460,500);
     }
-    
-    
+
 
     public void shiftWorld(int dx) {
         if( (xOffset + dx) <= 0 && (xOffset + dx) >= (SWIDTH - WWIDTH)) {
@@ -141,8 +141,7 @@ public class Level4 extends World
     }
 
     
-    
-        /**
+    /**
      * Method addWall. Builds the wall that holds healthbar, inventory and exit
      *
      */
@@ -152,7 +151,7 @@ public class Level4 extends World
 
         for(int j=0; j<wall.length; j++){
             wall[j]=new Wall();
-           // wall2[j] = new Wall();
+            // wall2[j] = new Wall();
             addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
             //addObject(wall2[j],j*wall2[j].getImage().getWidth(), getHeight() - wall[j].getImage().getHeight()/2);
         }

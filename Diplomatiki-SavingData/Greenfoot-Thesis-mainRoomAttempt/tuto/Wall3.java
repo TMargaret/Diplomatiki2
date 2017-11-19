@@ -8,6 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Wall3 extends ScrollingObstacle
 {
+    private GreenfootImage img = getImage();
+    
+    public Wall3(){
+
+    }
     /**
      * Act - do whatever the Wall3 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
