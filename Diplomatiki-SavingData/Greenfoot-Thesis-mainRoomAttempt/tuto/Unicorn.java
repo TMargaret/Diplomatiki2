@@ -8,9 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Unicorn extends Locals
 {
-
-    private GreenfootImage img = getImage();
-    private GreenfootImage img_eyes = new GreenfootImage("unic.png");
+    private GreenfootImage img = new GreenfootImage("uni.png");
+    private GreenfootImage img2 = new GreenfootImage("uni2.png");
+    int count = 0;
 
     public Unicorn(){
         scaleImage();
@@ -18,7 +18,7 @@ public class Unicorn extends Locals
     }
 
     /**
-     * Act - do whatever the Unicorn wants to do. This method is called whenever
+     * Act - do whatever the Alien wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
@@ -28,9 +28,20 @@ public class Unicorn extends Locals
     } 
 
     public void scaleImage(){
-        img.scale(img.getWidth()/4, img.getHeight()/5);
-        img_eyes.scale(img_eyes.getWidth()/4, img_eyes.getHeight()/5);
+        img.scale(img.getWidth()+(img.getWidth()/2), img.getHeight()+(img.getHeight()/2));
+        img2.scale(img2.getWidth()+(img2.getWidth()/2), img2.getHeight()+(img2.getHeight()/2));
 
+    }
+    
+    public void blink(){
+        count++;
+        if (count == 50){           
+            setImage1();
+        }
+        if (count == 100){
+            setImage2();
+            count = 0;
+        }
     }
 
     public String getTextMessage(){
@@ -55,12 +66,12 @@ public class Unicorn extends Locals
         return text;
     }
 
-    // public void setImage1(){
-        // setImage(img);
+    public void setImage1(){
+        setImage(img);
 
-    // }
+    }
 
-    // public void setImage2(){       
-        // setImage(img_eyes);
-    // }
+    public void setImage2(){       
+        setImage(img2);
+    }
 }
