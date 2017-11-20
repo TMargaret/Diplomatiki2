@@ -14,7 +14,7 @@ public class Level_022 extends World
     Alex alex;
     int img_cell = 32;
     GreenfootImage alexImg = new GreenfootImage("alex.png");
-    GreenfootSound suspenseSound = new GreenfootSound("suspense.mp3");
+    public static GreenfootSound suspenseSound = new GreenfootSound("suspense.mp3");
     final int IMG_WIDTH = alexImg.getWidth()/6;
     final int IMG_HEIGHT = alexImg.getHeight()/4;
     Material mat;

@@ -49,34 +49,24 @@ public class Snake extends ScrollingEnemy {
             // speedX = lse.get(0).getX() > getX() ? 1 : -1;    
             if (lse.get(0).getX() > getX()){
                 speedX = 3;
-                snakeAnimation();
+                snakeAnimation(snake);
             }
             else {
                 speedX = -3;
-                snakeAnimation2();
+                snakeAnimation(snake2);
             }
             speedY = lse.get(0).getY() > getY() ? 2 : -2;
         }
     }
 
-    public void snakeAnimation(){
+    public void snakeAnimation(GreenfootImage img){
         for (int i=1;i<=10;i++){
             count++;
             if (count>80){
-                setImage(SpriteSheet.getSprite(snake, img_cell*(i-1), img_cell*3, img_cell*i, img_cell*4, IMG_WIDTH, IMG_HEIGHT));
+                setImage(SpriteSheet.getSprite(img, img_cell*(i-1), img_cell*3, img_cell*i, img_cell*4, IMG_WIDTH, IMG_HEIGHT));
                 count = 0;
             }
         }
 
-    }
-
-    public void snakeAnimation2(){
-        for (int i=1;i<=10;i++){
-            count2++;
-            if (count2>80){
-                setImage(SpriteSheet.getSprite(snake2, img_cell*(i-1), img_cell*3, img_cell*i, img_cell*4, IMG_WIDTH, IMG_HEIGHT));
-                count2 = 0;
-            }
-        }
     }
 }

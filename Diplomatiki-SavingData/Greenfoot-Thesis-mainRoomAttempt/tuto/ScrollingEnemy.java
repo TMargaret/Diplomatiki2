@@ -6,6 +6,7 @@ abstract public class ScrollingEnemy extends ScrollingActor
     private static final int BOUNDARY = 40;
     protected int speedX = SPEED;
     protected int speedY = SPEED;
+    int counter = 0;
     
     protected void addedToWorld(World w) {
         Level4 lvl4 = (Level4) w;
@@ -18,6 +19,7 @@ abstract public class ScrollingEnemy extends ScrollingActor
         sense();
         reaction();
         boundedMove();
+        damageAlex();
     }
 
     protected void sense() {
@@ -32,6 +34,14 @@ abstract public class ScrollingEnemy extends ScrollingActor
         setLocation(getX()+speedX, getY()+speedY);
         if( isTouching(ScrollingObstacle.class) ) {
             setLocation(getX()-speedX, getY()-speedY);
+        }
+    }
+    
+    public void damageAlex(){
+        counter++;
+        if (isTouching(Alex.class) && counter > 300){
+            HealthBar.looseHealth(); 
+            counter = 0;
         }
     }
 }  

@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Spider extends ScrollingEnemy
+public class Ant extends ScrollingEnemy
 {
     GreenfootImage spider = new GreenfootImage("ant.png");
     int img_cell =64;
@@ -11,7 +11,7 @@ public class Spider extends ScrollingEnemy
     int count = 0;
     int count2 = 0;
 
-    public Spider() {
+    public Ant() {
         setImage(SpriteSheet.getSprite(spider, 0,  img_cell, img_cell, img_cell*2, IMG_WIDTH, IMG_HEIGHT));
     }
 
@@ -35,7 +35,6 @@ public class Spider extends ScrollingEnemy
     }
 
     public void spiderAnimation(int y){
-        System.out.println(y);
         for (int i=1;i<=4;i++){
             count++;
             if (count>50){

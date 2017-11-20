@@ -14,21 +14,21 @@ public class Level4 extends World
     private Alex alex;
     private final static int SWIDTH = 1000;
     private final static int SHEIGHT = 600;
-    private final static int WWIDTH = 2500;
+    private final static int WWIDTH = 3000;
     private final static int TWIDTH = 45;
     private final static int THEIGHT = TWIDTH;
     private final static int TILEOFFSET = TWIDTH/3;
     private final static String validSpaces = "WG";
     private final static String[] WORLD = {
             "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-            "BWBWBWBWWWWWWBWWWWWWWTWWWWWWWWWWWWTWWWWWWWWWWWUWWWWB",
-            "WBWBWBWBWWWWWWWWWWWWWTWWWWWWWWWWWWTWWWWWWWWWWWWWUWWWWB",
-            "BWBWBWBWWWWWWBWWWWWWWTWWWUUUUUUUUUTWWTWWWWWWWWWWWWWUWWWWB",
-            "WBWBWBWBWWWWUUUUUUUUUTWWWTWWWWWWWWWWWTWWWWWWWWWWUWWWWUUUWWWB",
-            "BWBWBWBWWWWWWWWWWWWWWWWWWTWWWWWWWWWWWTWWWWWWWB",
-            "WBWBWBWBWWWWWWWWWWWWWWWWSTWWTWWUUUUUUUUUUUUUUUUUUUWWWWWWWWWWB",
-            "BWBWBWBWWWWWWWWWWWWWWWWWWTWWTWWWWWWWWWWTWWWTWWWTWWWWWWWWWB",
-            "WBWBWBWBWWWWUUUUUUUUUTWWWTWWTWWWWWWWWWSTWWWWWWWUUUUUUUWWWWWWWWWWWWWWWWWB",
+            "BWBWBWBWWWWWWBWWWWWWWTWWWWWWWWWWWWTWWWWWTWWWWWWWWWWWWWWWWTWUWWWWB",
+            "WBWBWBWBWWWWWWWWWWWWWTWWWWWWWWWWWWTWWWWWTWWWWWWWWWWWWWWWWTWWUWWWWB",
+            "BWBWBWBWWWWWWBWWWWWWWTWWWUUUUUUUUUTWWTWWTWWWUUUUUUUWWUUUUUUUWWWWWWUWWWWB",
+            "WBWBWBWBWWWWUUUUUUUUUTWWWTWWWWWWWWWWWTWWWWWWTWWWWWWWWWWWWWWUWWWWUUUWWWB",
+            "BWBWBWBWWWWWWWWWWWWWWWWWWTWWWWWWWWWWWTWWWWWWTSWWWWWWWWWWWWWWWWWWWWB",
+            "WBWBWBWBWWWWWWWWWWWWWWWWSTWWTWWUUUUUUUUUUUUUUUUTWWWWWWWWWWWWWWWWWWWB",
+            "BWBWBWBWWWWWWWWWWWWWWWWWWTWWTWWWWWWWWWWTWWWTWWWTWWWWWWWWWWWWWWWWWWWWWB",
+            "WBWBWBWBWWWWUUUUUUUUUTWWWTWWTWWWWWWWWWSTWWWWWWWUUUUUUTWWWWWWWWWWWWWWWWWB",
             "BWBWBWBWWWWWWBWWWWWWWTWWWTWWUUUUUUTWWWWTWWWWWWWWWWWWWTWWWWWWWWWWWWUWWB",
             "WBWBWBWBWWWWWWWWWWWWWTWWWTWWWWWWWWTWWWWTWWWTWWWWWWWWWTWWWWWWWWWWWWWWWWWB",
             "BWBWBWBWWWWWWBWWWWWWWTWWWWWWWWWWWWTWWWWWWWWTWWWTWWWWWTWWWWWWWWWWWW",
@@ -56,13 +56,15 @@ public class Level4 extends World
         alex = new Alex();
         addObject(alex, 450, 250);
         //addObject(new Mouse(), 60,40);
-        //addObject(new Spider(), 1000,40);
-        // addObject(new Spider(), 120,340);
+        addObject(new Ant(), 2330,500);
+        addObject(new Ant(), 2500,87);
         //addObject(new Spider(), 1050,250);
-        addObject(new Snake(), 1500,90);
+        addObject(new Snake(), 1470,90);
         // addObject(new Mouse(), 1000,200);
-        addObject(new Snake(), 1460,500);
+        addObject(new Snake(), 1470,500);
     }
+    
+    
 
 
     public void shiftWorld(int dx) {
@@ -154,6 +156,25 @@ public class Level4 extends World
             // wall2[j] = new Wall();
             addObject(wall[j],j*wall[j].getImage().getWidth(), wall[j].getImage().getHeight()/2);
             //addObject(wall2[j],j*wall2[j].getImage().getWidth(), getHeight() - wall[j].getImage().getHeight()/2);
+        }
+    }
+    
+    public void initVar(){
+        if (HealthBar.getHealth()<=0){
+            //lvl.stop();
+            //found = false;
+        }
+    }
+    
+    
+    /**
+     * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
+     * player will play the same level
+     */
+    public void checkUnlockLevel(){
+        if (LevelsScreen.unlock.size() < 4)
+        {
+            LevelsScreen.unlock.add(1);
         }
     }
 

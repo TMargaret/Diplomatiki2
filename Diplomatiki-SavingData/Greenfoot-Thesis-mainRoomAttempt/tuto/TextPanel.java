@@ -55,6 +55,9 @@ public class TextPanel extends Actor implements Serializable
         if (w instanceof Level_022){
             makeTextL22();
         }
+        if (w instanceof Level4){
+            makeTextL4();
+        }
     }
 
     private void makeTextL0(){
@@ -263,6 +266,13 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.dragon3();
             makeImage(mytext, "dragon");
         }
+        if (status == "youLost"){
+            String mytext = text.youLost();
+            makeImage(mytext, "dragon");
+        }
+    }
+    
+        private void makeTextL4(){
         if (status == "youLost"){
             String mytext = text.youLost();
             makeImage(mytext, "dragon");

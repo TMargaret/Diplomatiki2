@@ -415,7 +415,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             Level_0.level0Sound.stop();
             Level_1.lvl.stop();
             Level_02.lvlSound.stop();
-            Level_022.suspenseSound.stop();
+            Level_022.lvlSound.stop();
         }
 
     }
