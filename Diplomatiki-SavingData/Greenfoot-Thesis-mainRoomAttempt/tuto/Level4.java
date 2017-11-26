@@ -12,6 +12,7 @@ public class Level4 extends World
     private int xOffset = 0;
     //private alex alex;
     private Alex alex;
+    private boolean found;
     Unicorn unicorn = new Unicorn();
     private final static int SWIDTH = 1000;
     private final static int SHEIGHT = 600;
@@ -65,6 +66,14 @@ public class Level4 extends World
         addObject(new Snake(), 1470,500);
     }
     
+    public void act(){
+        boolean doNotMove = false;
+        if (unicorn.getTalking()){
+            doNotMove  = true;
+        }
+        System.out.println(doNotMove);
+        alex.setCanMove(!doNotMove);
+    }
     
 
 

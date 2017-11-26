@@ -226,7 +226,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         (getOneIntersectingObject(Wall2.class) != null) 
         || (getOneIntersectingObject(Grass.class) != null)  
         || (getOneIntersectingObject(Material.class) != null)
-        
+        || (getOneIntersectingObject(Unicorn.class) != null)
         || (getOneIntersectingObject(Locals.class) !=null) ||
         (getY() < getImage().getHeight()/2) ||
         (getY() > getWorld().getHeight() - getImage().getHeight()/2)){

@@ -138,11 +138,6 @@ public class Unicorn extends ScrollingObstacle
         return count_enter;
     }
 
-    public String getTextMessage(){
-        String textMsg = "";
-        return textMsg;
-    }
-
     //if isItTalking is true, then alex can't move
     public void setTalking(boolean isItTalking){
         doNotMoveWhileTalking = isItTalking;
@@ -177,27 +172,27 @@ public class Unicorn extends ScrollingObstacle
         }
     }
 
-    // public String getTextMessage(){
-    // String text = "";
-    // int textCase = getCount_Enter();
-    // switch (textCase){
-    // case 0: text = "welcomeMsgL0";
-    // break;
-    // case 1: text = "taskText1L0";
-    // break;
-    // case 2: text = "taskText2L0";
-    // break;
-    // case 3: text = "taskText3L0";
-    // break;
-    // case 4: text = "taskText4L0";
-    // break;
-    // case 5: text = "taskText5L0";
-    // break;
-    // case 6: text = "taskText6L0";
-    // break;
-    // }
-    // return text;
-    // }
+    public String getTextMessage(){
+        String text = "";
+        int textCase = getCount_Enter();
+        switch (textCase){
+            case 0: text = "welcomeMsgL4";
+            break;
+            case 1: text = "taskText1L4";
+            break;
+            case 2: text = "taskText2L4";
+            break;
+            case 3: text = "taskText3L4";
+            break;
+            case 4: text = "taskText4L4";
+            break;
+            case 5: text = "taskText5L4";
+            break;
+            case 6: text = "taskText6L4";
+            break;
+        }
+        return text;
+    }
 
     public void setImage1(){
         setImage(img);
