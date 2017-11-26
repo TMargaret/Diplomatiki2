@@ -404,9 +404,9 @@ public class TextPanel extends Actor implements Serializable
         }
         if (icon == "unicorn"){
             image = new GreenfootImage(WIDTH, HEIGHT);
-            image.setColor(new Color(50,50,50, 255));
+            image.setColor(new Color(223,37,130, 240));
             image.fillRect(0, 0, image.getWidth(),image.getHeight());
-            image.setColor(new Color(200, 163, 92, 100));
+            image.setColor(new Color(220, 163, 92, 100));
             image.fillRect(5, 5, image.getWidth()- 10, image.getHeight()-10);
             image.setFont(new Font("Serif", 29));
             image.setColor(Color.LIGHT_GRAY);          

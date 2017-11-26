@@ -71,7 +71,6 @@ public class Level4 extends World
         if (unicorn.getTalking()){
             doNotMove  = true;
         }
-        System.out.println(doNotMove);
         alex.setCanMove(!doNotMove);
     }
     

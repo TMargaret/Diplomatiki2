@@ -20,10 +20,34 @@ public class Unicorn extends ScrollingObstacle
     private TextPanel taskText;
     Bubble bubble;
     GreenfootSound hiSound = new GreenfootSound("hello.wav");
+    
+    private static Counter counterLife;
+    private Button exit_button, forward_button, backward_button, count_button;
+    private boolean flag_for_menu, flag_forward, flag_backward;
+    private GreenfootImage quiz1 = new GreenfootImage("inhe.jpg");
+    private int count_image;
+    private String quiz = "quiz";
 
     public Unicorn(){
         scaleImage();
         setImage(img);
+        count_image = 1;
+        flag_for_menu = false;
+        flag_forward= false;
+        flag_backward = false;
+        
+        //shows how many questions are left
+        count_button = new Button();
+       // addObject(count_button, getWidth() - count_button.getImage().getWidth()/2, count_button.getImage().getHeight()/2);
+        
+        forward_button = new Button();
+        forward_button.setTitle("ΕΠΟΜΕΝΟ");
+        //addObject(forward_button, getWidth() - forward_button.getImage().getWidth()/2, getHeight() - forward_button.getImage().getHeight()/2);
+        
+        backward_button = new Button();
+        backward_button.setTitle("ΠΡΟΗΓΟΥΜΕΝΟ");
+        //addObject(backward_button, backward_button.getImage().getWidth()/2, getHeight() - backward_button.getImage().getHeight()/2);
+
     }
 
     /**
@@ -71,7 +95,7 @@ public class Unicorn extends ScrollingObstacle
                             getWorld().removeObject(bubble);
                         }
                         if (counter<0 && !isActive && isEDown && count_enter == 0){
-                            taskText = new TextPanel(getTextMessage());
+                           // taskText = new TextPanel(getTextMessage());
                             getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             setActive(true);
                             setTalking(true);
@@ -123,6 +147,40 @@ public class Unicorn extends ScrollingObstacle
             }
         }
     }
+    
+    
+    // public void checkImage()
+    // {
+        // if (((Greenfoot.isKeyDown("enter")) & (flag_for_menu == false)))
+        // {
+            // this.setBackground(quiz1);
+            // count_button.setTitle("1/14");
+            // flag_forward = true;
+        // }
+        // //forwarding images
+        // if (count_image < 14){
+            // if ((Greenfoot.mouseClicked(forward_button) & (flag_forward == true)))
+            // {
+                // count_image++;
+                // this.setBackground(quiz+count_image+".jpg");
+                // count_button.setTitle(count_image+"/14");
+                // flag_backward = true;
+            // }
+        // }
+        // //backwarding images
+        // if (count_image>1){
+            // if ((Greenfoot.mouseClicked(backward_button) & (flag_backward==true)))
+            // {
+                // count_image--;
+                // forward_button.setTitle("ΕΠΟΜΕΝΟ");
+                // this.setBackground(quiz+count_image+".jpg");
+                // count_button.setTitle(count_image+"/14");
+            // }
+        // }
+        // if (count_image >= 14){
+            // forward_button.setTitle("ΤΕΛΟΣ");
+        // }
+    // }
 
     public void actionInDialogue(){
         getWorld().removeObject(taskText);
