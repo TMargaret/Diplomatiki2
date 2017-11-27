@@ -81,47 +81,15 @@ public class Unicorn extends ScrollingObstacle
                             setActive(true);
                             setTalking(true);
                             count_enter = 1;
+                            counter = 30;
                         }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 1 && counter<0 && isEDown){
+                        if ((getWorld().getObjects(ImageTheory.class).size() == 0) && count_enter == 1 && counter<0 && isEDown){
                             counter = 20;
-                            actionInDialogue();
-                            count_enter = 2;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 2 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();
-                            count_enter = 3;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 3 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();
-                            count_enter = 4;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 4 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();
-                            count_enter = 5;                            
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 5 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();                          
-                            count_enter = 6;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 6 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();
-                            count_enter = 7;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 7 && counter <0 && isEDown){
-                            counter = 30;
-                            getWorld().removeObject(taskText);
-                            count_enter = 0;
-                            isEDown = false;
                             setActive(false);
                             setTalking(false);
-                            setDialogue(true);
-
+                            isEDown = false;
                         }
+
                     }
 
                 }

@@ -11,33 +11,16 @@ import java.util.List;
 public class ImageTheory extends Actor
 {
     private static Counter counterLife;
-    private Button exit_button, forward_button, backward_button;
+    private Button next_button = new Button();
     Button count_button = new Button();
     private boolean flag_for_menu, flag_forward, flag_backward;
     private GreenfootImage img = new GreenfootImage("inhe.jpg");
-    private int count_image;
+    private int count_image = 1;
     private String quiz = "quiz";
     boolean isOn = false;
 
     public ImageTheory(){
         setImage(img);
-        img.setTransparency(200);
-        count_image = 1;
-        flag_for_menu = false;
-        flag_forward= false;
-        flag_backward = false;
-
-        //shows how many questions are left
-        // getWorld().addObject(count_button, 10, 10);
-
-        forward_button = new Button();
-        forward_button.setTitle("ΕΠΟΜΕΝΟ");
-        //addObject(forward_button, img.getWidth() - forward_button.getImage().getWidth()/2, getHeight() - forward_button.getImage().getHeight()/2);
-
-        backward_button = new Button();
-        //backward_button.setTitle("ΠΡΟΗΓΟΥΜΕΝΟ");
-        //addObject(backward_button, backward_button.getImage().getWidth()/2, getHeight() - backward_button.getImage().getHeight()/2);
-
     }
 
     /**
@@ -48,41 +31,44 @@ public class ImageTheory extends Actor
     {
         if (!isOn){
             isOn =true;
-            getWorld().addObject(count_button, img.getWidth(), count_button.getImage().getHeight()+count_button.getImage().getHeight()/4);
+            addButtons();           
+        }
+        checkImage();
+    }
+
+    public void addButtons(){
+        count_button.setTitle("1/7");
+        getWorld().addObject(count_button, 665, count_button.getImage().getHeight()+count_button.getImage().getHeight()/4);
+        next_button.setTitle("ΕΠΟΜΕΝΟ");
+        getWorld().addObject(next_button, 665, 530);
+    }
+
+    public void checkImage()
+    {
+        if (Greenfoot.mouseClicked(next_button))
+        {
+            if (count_image < 7){
+                count_image++;
+                getImage().clear();
+                setImage(new GreenfootImage("inhe"+count_image+".jpg"));
+                count_button.setTitle(count_image+"/7");
+            }
+            else if (count_image == 7){          
+                next_button.setTitle("ΤΕΛΟΣ");
+                count_image++;
+            }
+            else if (count_image > 7){
+                removeButton();
+                getWorld().removeObject(this);
+
+            }
         }
     }
 
-    // public void checkImage()
-    // {
-    // if (((Greenfoot.isKeyDown("enter")) & (flag_for_menu == false)))
-    // {
-    // this.setBackground(img);
-    // count_button.setTitle("1/14");
-    // flag_forward = true;
-    // }
-    // //forwarding images
-    // if (count_image < 14){
-    // if ((Greenfoot.mouseClicked(forward_button) & (flag_forward == true)))
-    // {
-    // count_image++;
-    // this.setBackground(quiz+count_image+".jpg");
-    // count_button.setTitle(count_image+"/14");
-    // flag_backward = true;
-    // }
-    // }
-    // //backwarding images
-    // if (count_image>1){
-    // if ((Greenfoot.mouseClicked(backward_button) & (flag_backward==true)))
-    // {
-    // count_image--;
-    // forward_button.setTitle("ΕΠΟΜΕΝΟ");
-    // this.setBackground(quiz+count_image+".jpg");
-    // count_button.setTitle(count_image+"/14");
-    // }
-    // }
-    // if (count_image >= 14){
-    // forward_button.setTitle("ΤΕΛΟΣ");
-    // }
-    // }
+    public void removeButton(){
+        if (getWorld().getObjects(Button.class) != null){
+            getWorld().removeObjects(getWorld().getObjects(Button.class));
+        }
+    }
 
 }
