@@ -47,15 +47,17 @@ public class ImageTheory extends Actor
     {
         if (Greenfoot.mouseClicked(next_button))
         {
+            
             if (count_image < 7){
                 count_image++;
                 getImage().clear();
                 setImage(new GreenfootImage("inhe"+count_image+".jpg"));
                 count_button.setTitle(count_image+"/7");
             }
-            else if (count_image == 7){          
+            if (count_image == 7){          
                 next_button.setTitle("ΤΕΛΟΣ");
                 count_image++;
+                
             }
             else if (count_image > 7){
                 removeButton();
