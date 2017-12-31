@@ -13,6 +13,8 @@ public class Level4 extends World
     //private alex alex;
     private Alex alex;
     private boolean found;
+    Actor tile;
+    private ArrayList<SignBlock> sbList = new ArrayList<SignBlock>();
     Unicorn unicorn = new Unicorn();
     private final static int SWIDTH = 1000;
     private final static int SHEIGHT = 600;
@@ -71,6 +73,11 @@ public class Level4 extends World
         if (unicorn.getTalking()){
             doNotMove  = true;
         }
+        for(SignBlock act : sbList){
+            if ((act.getTalking())){
+                doNotMove  = true;
+            }
+        }
         alex.setCanMove(!doNotMove);
     }
     
@@ -101,7 +108,7 @@ public class Level4 extends World
     }
 
     private void addActorAtTileLocation(char c, int x, int y) {
-        Actor tile = null;
+        tile = null;
         switch(c) {
             case 'W':
             tile = new Floor();
@@ -117,6 +124,7 @@ public class Level4 extends World
             break;
             case 'S':
             tile = new SignBlock();
+            sbList.add((SignBlock)tile);
             break;
         }
         if( tile != null) addObject(tile, TILEOFFSET+x*TWIDTH,

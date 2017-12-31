@@ -19,13 +19,14 @@ public class SignBlock extends ScrollingObstacle
     int count_enter = 0;
     private boolean doneDialogue = false;
     private TextPanel taskText;
+    
     /**
      * Act - do whatever the SignBlock wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        // Add your action code here.
+        signDialogue();
     } 
     
     protected void addedToWorld(World w)
@@ -38,7 +39,7 @@ public class SignBlock extends ScrollingObstacle
         w.addObject(hs, getX(), getY()); 
     }
     
-    public void localsDialogue(){
+    public void signDialogue(){
 
         if( hs.getWorld() != null ) {   
             List<Actor> things = hs.getHitBoxIntersections();    
@@ -64,41 +65,6 @@ public class SignBlock extends ScrollingObstacle
                             counter = 20;
                             actionInDialogue();
                             count_enter = 2;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 2 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();
-                            count_enter = 3;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 3 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();
-                            count_enter = 4;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 4 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();
-                            count_enter = 5;                            
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 5 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();                          
-                            count_enter = 6;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 6 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();
-                            count_enter = 7;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 7 && counter <0 && isEDown){
-                            counter = 30;
-                            getWorld().removeObject(taskText);
-                            count_enter = 0;
-                            isEDown = false;
-                            setActive(false);
-                            setTalking(false);
-                            setDialogue(true);
-
                         }
                     }
 
@@ -146,6 +112,6 @@ public class SignBlock extends ScrollingObstacle
 
     public void setActive(boolean forActive){
         isActive = forActive;
-        count_enter =0;
+        //count_enter =0;
     }
 }

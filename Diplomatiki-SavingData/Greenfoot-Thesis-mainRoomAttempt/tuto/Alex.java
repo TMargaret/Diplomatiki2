@@ -22,6 +22,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     final int IMG_HEIGHT = alex.getHeight()/4;
     static boolean flagForRemovedItem = false;
     private static final int BOUNDARY = 40;
+    List<Bubble> bbl;
 
     HealthLogo healthLogo;
     HealthBar healthBar;
@@ -209,6 +210,12 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             if((getX() > (getWorld().getWidth()/6)*5) && (getKey == "right" || getKeyBoth=="upRight" || getKeyBoth=="downRight")) {
                 ((Level4)getWorld()).shiftWorld(-dx/2);
                 setLocation(getX() - dx, getY());
+                bbl = getWorld().getObjects(Bubble.class);
+                if (bbl !=null){
+                    for(Bubble bbls: bbl){
+                    getWorld().removeObject(bbls);
+                }
+                }
             } if( (getX() < (getWorld().getWidth()/2)) &&(getKey == "left" || getKeyBoth=="upLeft" || getKeyBoth=="downLeft")) {
                 ((Level4)getWorld()).shiftWorld(-dx/2);
                 setLocation(getX()-dx, getY());

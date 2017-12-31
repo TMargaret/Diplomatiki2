@@ -1,4 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Write a description of class Sign here.
@@ -12,12 +14,12 @@ public class Sign extends Material
     //GreenfootImage imgC = new GreenfootImage("signC.png");
 
     public Sign(){
-       super.hsWidth = 10;
-       super.hsHeight = 10;
+        super.hsWidth = 10;
+        super.hsHeight = 10;
     }
 
     public Sign(GreenfootImage img){
-       // setImage(img);
+        // setImage(img);
     }
 
     /**
@@ -26,16 +28,17 @@ public class Sign extends Material
      */
     public void act() 
     {
-       // checkWorld();
-       // materialCreation();
-       // check();
+        // checkWorld();
+        //materialCreation();
+        // check();
 
     } 
 
     // public void check(){
-        // if (getImage().equals(imgW)){
-            // System.out.println("ok");
-        // }
+    // if (getImage().equals(imgW)){
+    // System.out.println("ok");
     // }
+    // }
+
 
 }
