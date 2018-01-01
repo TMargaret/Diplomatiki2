@@ -15,29 +15,30 @@ public class Level4 extends World
     private boolean found;
     Actor tile;
     private ArrayList<SignBlock> sbList = new ArrayList<SignBlock>();
+    GreenfootSound lvl4 = new GreenfootSound("level4.wav");
     Unicorn unicorn = new Unicorn();
     private final static int SWIDTH = 1000;
     private final static int SHEIGHT = 600;
-    private final static int WWIDTH = 3000;
+    private final static int WWIDTH = 3800;
     private final static int TWIDTH = 45;
     private final static int THEIGHT = TWIDTH;
     private final static int TILEOFFSET = TWIDTH/3;
     private final static String validSpaces = "WG";
     private final static String[] WORLD = {
-            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-            "BWBWBWBWWWWWWWWBWWWWWTWWWWWWWWWWWWTWWWWWTWWWWWWWWWWWWWWWWTWUWWWWB",
-            "WBWBWBWBWWWWWWWWWWWWWTWWWWWWWWWWWWTWWWWWTWWWWWWWWWWWWWWWWTWWUWWWWB",
-            "BWBWBWBWWWWWWWWBWWWWWTWWWUUUUUUUUUTWWTWWTWWWUUUUUUUWWUUUUUUUWWWWWWUWWWWB",
-            "WBWBWBWBWWWWWUUUUUUUUTWWWTWWWWWWWWWWWTWWWWWWTWWWWWWWWWWWWWWUWWWWUUUWWWB",
-            "BWBWBWBWWWWWWWWWWWWWWWWWWTWWWWWWWWWWWTWWWWWWTSWWWWWWWWWWWWWWWWWWWWB",
-            "WBWBWBWBWWWWWWWWWWWWWWWWSTWWTWWUUUUUUUUUUUUUUUUTWWWWWWWWWWWWWWWWWWWB",
-            "BWBWBWBWWWWWWWWWWWWWWWWWWTWWTWWWWWWWWWWTWWWTWWWTWWWWWWWWWWWWWWWWWWWWWB",
-            "WBWBWBWBWWWWWUUUUUUUUTWWWTWWTWWWWWWWWWSTWWWWWWWUUUUUUTWWWWWWWWWWWWWWWWWB",
-            "BWBWBWBWWWWWWWWWWWWWWTWWWTWWUUUUUUTWWWWTWWWWWWWWWWWWWTWWWWWWWWWWWWUWWB",
-            "WBWBWBWBWWWWWWWWWWWWWTWWWTWWWWWWWWTWWWWTWWWTWWWWWWWWWTWWWWWWWWWWWWWWWWWB",
-            "BWBWBWBWWWWWWWWWWWWWWTWWWWWWWWWWWWTWWWWWWWWTWWWTWWWWWTWWWWWWWWWWWW",
-            "WBWBWBWBWWWWWWWWWWWWWTWWWWWWTWWWWWTWWWWWWWWTWWWTWWWWWTWWWWWWWWWWWWWW",
-            "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWTBBBBBB",
+            "BWBWBWBWWWWWWWWBWWWWWTWWWWWWWWWWWWTWWWWWTWWWWWWWWWWWWWWWWTWWWWWWWWWWWWWWWWWWTBBBBBB",
+            "WBWBWBWBWWWWWWWWWWWWWTWWWWWWWWWWWWTWWWWWTWWWWWWWWWWWWWWWWTWWWWWWWWWWWWWWWWWDTBBBBBB",
+            "BWBWBWBWWWWWWWWBWWWWWTWWWUUUUUUUUUTWWTWWTWWWUUUUUUUWWUUUUTWWWUUUUUUUUUUUUUUUTBBBBBB",
+            "WBWBWBWBWWWWWUUUUUUUUTWWWTWWWWWWWWWWWTWWWWWWTWWWWWWWWWWWWWWWWTBWBBWWWWWBWBWBWBBBBBB",
+            "BWBWBWBWWWWWWWWWWWWWWWWWWTWWWWWWWWWWWTWWWWWWTWSWWWWWWWWWWWWWWTWBWWBBWWWBWBWBWBBBBBB",
+            "WBWBWBWBWWWWWWWWWWWWWWWWSTWWTWWUUUUUUUUUUUUUUUUTWWWWWWWWWUUUUUUUUUUUUUUUTWWWWWBBBBB",
+            "BWBWBWBWWWWWWWWWWWWWWWWWWTWWTWWWWWWWWWWTWWWTWWWTWWWWWWWWWTWWWWWSWTWWWWWWTWWWWWBBBBB",
+            "WBWBWBWBWWWWWUUUUUUUUTWWWTWWTWWWWWWWWWSTWWWWWWWUUUUUUTWWWTWWWWWWWTWWWWWWTWWWWWBBBBB",
+            "BWBWBWBWWWWWWWWWWWWWWTWWWTWWUUUUUUTWWWWTWWWWWWWWWWWWWTWWWTWWWWWWWTWWWUUUTWWWWWBBBBB",
+            "WBWBWBWBWWWWWWWWWWWWWTWWWTWWWWWWWWTWWWWTWWWTWWWWWWWWWTWWWTWWWTWWWTWWWTWWWWWWWWBBBBB",
+            "BWBWBWBWWWWWWWWWWWWWWTWWWWWWWWWWWWTWWWWWWWWTWWWTWWWWWTWWWWWWWTWWWWWWWTWWWWWWWWBBBBB",
+            "WBWBWBWBWWWWWWWWWWWWWTWWWWWWTWWWWWTWWWWWWWWTWWWTWWWWWTWWWWWWWTWWWWWWWTWWWWWWWWBBBBB",
+            "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
         };
 
     /**
@@ -51,23 +52,24 @@ public class Level4 extends World
         createWorldFromTiles();
         shiftWorld(0);
         prepare();
+        //lvl4.playLoop();
 
     }
-
     private void prepare()
     {
         addWall();
         alex = new Alex();
         addObject(alex, 450, 250);
+        //addObject(alex, 2450, 250);
         addObject(unicorn, 800,520);
         addObject(new Ant(), 2330,500);
         addObject(new Ant(), 2410,87);
         //addObject(new Spider(), 1050,250);
         addObject(new Snake(), 1470,90);
-        // addObject(new Mouse(), 1000,200);
+        addObject(new Snake(), 3200,360);
         addObject(new Snake(), 1470,500);
     }
-    
+
     public void act(){
         boolean doNotMove = false;
         if (unicorn.getTalking()){
@@ -80,7 +82,6 @@ public class Level4 extends World
         }
         alex.setCanMove(!doNotMove);
     }
-    
 
 
     public void shiftWorld(int dx) {
@@ -126,6 +127,9 @@ public class Level4 extends World
             tile = new SignBlock();
             sbList.add((SignBlock)tile);
             break;
+            case 'D':
+            tile = new DoorBlock();
+            break;
         }
         if( tile != null) addObject(tile, TILEOFFSET+x*TWIDTH,
                 TILEOFFSET+y*THEIGHT);
@@ -159,7 +163,6 @@ public class Level4 extends World
         return validSpaces;
     }
 
-    
     /**
      * Method addWall. Builds the wall that holds healthbar, inventory and exit
      *
@@ -175,15 +178,14 @@ public class Level4 extends World
             //addObject(wall2[j],j*wall2[j].getImage().getWidth(), getHeight() - wall[j].getImage().getHeight()/2);
         }
     }
-    
+
     public void initVar(){
         if (HealthBar.getHealth()<=0){
             //lvl.stop();
             //found = false;
         }
     }
-    
-    
+
     /**
      * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
      * player will play the same level

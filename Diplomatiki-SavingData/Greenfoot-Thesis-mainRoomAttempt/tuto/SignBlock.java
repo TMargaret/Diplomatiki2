@@ -55,7 +55,8 @@ public class SignBlock extends ScrollingObstacle
                             isEDown = true;
                         }
                         if (counter<0 && !isActive && isEDown && count_enter == 0){
-                            taskText = new TextPanel(getTextMessage());
+                            taskText = new TextPanel("hello");
+                            taskText.setImage("q1.png");
                             getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             setActive(true);
                             setTalking(true);
@@ -63,7 +64,9 @@ public class SignBlock extends ScrollingObstacle
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 1 && counter<0 && isEDown){
                             counter = 20;
-                            actionInDialogue();
+                            getWorld().removeObject(taskText);
+                            setActive(false);
+                            setTalking(false);
                             count_enter = 2;
                         }
                     }
