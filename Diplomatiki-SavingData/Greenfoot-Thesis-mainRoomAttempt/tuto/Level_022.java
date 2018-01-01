@@ -20,7 +20,7 @@ public class Level_022 extends World
     Material mat;
     SpecialEffect specialEffect;
     int count_item = 0;
-    Dragon dragon;
+    d2 dragon;
 
     /**
      * Constructor for objects of class Level_022.
@@ -31,7 +31,7 @@ public class Level_022 extends World
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
-        suspenseSound.playLoop();
+        //suspenseSound.playLoop();
 
     }
 
@@ -67,7 +67,7 @@ public class Level_022 extends World
         alex.setImage(SpriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, IMG_WIDTH, IMG_HEIGHT));
         addObject(alex,80, 500);
 
-        dragon = new Dragon();
+        dragon = new d2();
         addObject(dragon,865,153);
 
         specialEffect = new SpecialEffect();
