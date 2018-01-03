@@ -31,4 +31,6 @@ public class DoorBlock extends ScrollingObstacle
         hs = new HiddenSprite(this, hsWidth , hsHeight/2, HS_OFFSET_X, HS_OFFSET_Y, true);  
         w.addObject(hs, getX(), getY()); 
     }
+    
+    
 }

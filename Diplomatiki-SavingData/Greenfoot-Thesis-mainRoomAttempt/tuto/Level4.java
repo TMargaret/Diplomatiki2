@@ -14,6 +14,7 @@ public class Level4 extends World
     private Alex alex;
     private boolean found;
     Actor tile;
+    int counter = 150;
     private ArrayList<SignBlock> sbList = new ArrayList<SignBlock>();
     GreenfootSound lvl4 = new GreenfootSound("level4.wav");
     Unicorn unicorn = new Unicorn();
@@ -55,6 +56,7 @@ public class Level4 extends World
         //lvl4.playLoop();
 
     }
+
     private void prepare()
     {
         addWall();
@@ -80,9 +82,9 @@ public class Level4 extends World
                 doNotMove  = true;
             }
         }
+        endGame();
         alex.setCanMove(!doNotMove);
     }
-
 
     public void shiftWorld(int dx) {
         if( (xOffset + dx) <= 0 && (xOffset + dx) >= (SWIDTH - WWIDTH)) {
@@ -128,11 +130,21 @@ public class Level4 extends World
             sbList.add((SignBlock)tile);
             break;
             case 'D':
-            tile = new DoorBlock();
+            tile = new DoorBlock();         
             break;
         }
         if( tile != null) addObject(tile, TILEOFFSET+x*TWIDTH,
                 TILEOFFSET+y*THEIGHT);
+    }
+
+    public void endGame(){
+
+        if ((alex.getAnIntersectingObject(DoorBlock.class) != null)){
+            counter--;
+            if (counter<0){
+                Greenfoot.setWorld(new Level_022(alex,4));
+            }
+        }
     }
 
     public int getTileWidth() {

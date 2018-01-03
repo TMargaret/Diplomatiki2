@@ -222,7 +222,7 @@ public class Level_02 extends World
                 isEDown = false;
                 alex.setLocation(alex.getX(), alex.getY() + 100);
                 lvlSound.stop();
-                Greenfoot.setWorld(new Level_022(alex));
+                Greenfoot.setWorld(new Level_022(alex,2));
             }  
 
         } 

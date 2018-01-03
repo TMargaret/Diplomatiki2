@@ -20,8 +20,9 @@ public class Level_022 extends World
     Material mat;
     SpecialEffect specialEffect;
     int count_item = 0;
-    d2 dragon;
-
+    d2 dragon2;
+    d4 dragon4;
+    int chooseDragon;
     /**
      * Constructor for objects of class Level_022.
      * 
@@ -35,13 +36,24 @@ public class Level_022 extends World
 
     }
 
-    public Level_022(Alex oldAlex)
+    public Level_022(Alex oldAlex, int chooseDragon)
     {
         super(1000, 600, 1);
         alex = oldAlex;
-        prepare();
+        this.chooseDragon = chooseDragon;
+        prepare();       
         suspenseSound.playLoop();
     }
+
+    // public Level_022(int chooseDragon)
+    // {
+    // super(1000, 600, 1);
+    // alex = new Alex();
+    // prepare();
+    // this.chooseDragon = chooseDragon;
+    // //suspenseSound.playLoop();
+
+    // }
 
     public void act(){
         endGame();
@@ -67,8 +79,14 @@ public class Level_022 extends World
         alex.setImage(SpriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, IMG_WIDTH, IMG_HEIGHT));
         addObject(alex,80, 500);
 
-        dragon = new d2();
-        addObject(dragon,865,153);
+        if (chooseDragon==2){
+            dragon2 = new d2();
+            addObject(dragon2,865,153);
+        }
+        if (chooseDragon==4){
+            dragon4 = new d4();
+            addObject(dragon4,865,153);
+        }
 
         specialEffect = new SpecialEffect();
 
@@ -128,11 +146,19 @@ public class Level_022 extends World
     }
 
     public void endGame(){
-        if (dragon.endLevel()){
-            Greenfoot.setWorld(new LevelsScreen());
-            suspenseSound.stop();
-            checkUnlockLevel();
-
+        if (chooseDragon==2){
+            if (dragon2.endLevel()){
+                Greenfoot.setWorld(new LevelsScreen());
+                suspenseSound.stop();
+                checkUnlockLevel();
+            }
+        }
+        if (chooseDragon==4){
+            if (dragon4.endLevel()){
+                Greenfoot.setWorld(new LevelsScreen());
+                suspenseSound.stop();
+                checkUnlockLevel();
+            }
         }
     }	
 
