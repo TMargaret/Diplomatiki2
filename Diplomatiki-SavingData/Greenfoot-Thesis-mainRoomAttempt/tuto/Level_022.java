@@ -42,7 +42,7 @@ public class Level_022 extends World
         alex = oldAlex;
         this.chooseDragon = chooseDragon;
         prepare();       
-        suspenseSound.playLoop();
+        //suspenseSound.playLoop();
     }
 
     // public Level_022(int chooseDragon)

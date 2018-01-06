@@ -23,6 +23,7 @@ public class QuizPic extends Actor
     boolean isOn = false;
     String text = null;
     static boolean endFlag = false;
+    int fontSize = 28;
 
     public QuizPic(){
 
@@ -82,12 +83,16 @@ public class QuizPic extends Actor
         }
         if (!isOn){
             isOn = true;           
-            getImage().setFont(new Font("Lucida Sans Unicode", 28));
+            getImage().setFont(new Font("Lucida Sans Unicode", getFont()));
             getImage().drawString(question + questNum, getImage().getWidth()/3, 40);
             getImage().drawString(text, 30, 80);
             addButton4();
             text = "";
         }
+    }
+    
+    public int getFont(){
+       return fontSize;
     }
 
     public void repeatOrLeave(){

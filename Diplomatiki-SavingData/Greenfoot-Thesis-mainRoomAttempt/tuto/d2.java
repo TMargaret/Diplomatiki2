@@ -22,8 +22,8 @@ public class d2 extends Dragon
         dragonDialogue();
         endGame();
     }  
-    
-        public void dragonDialogue(){
+
+    public void dragonDialogue(){
         counter--;
         if (count_enter == 0 && counter <0){
             counter = 30;

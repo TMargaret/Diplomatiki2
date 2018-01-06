@@ -140,7 +140,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
      */
     public void move(int moveAmt){
 
-        // determine direction by keypress checking
+ 
         if (!canMove){
             return;
         }
