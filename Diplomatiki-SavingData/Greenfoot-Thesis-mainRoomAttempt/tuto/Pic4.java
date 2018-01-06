@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Pic4 extends QuizPic
 {
-    int fontSize = 20;
+    int fontSize = 18;
     /**
      * Act - do whatever the Pic4 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -18,7 +18,7 @@ public class Pic4 extends QuizPic
         drawText();
         lostGame();
     }
-    
+
     public int getFont(){
         return fontSize;
     }
@@ -27,7 +27,7 @@ public class Pic4 extends QuizPic
     public String quiz1(){
         return "1.Η κληρονομικότητα είναι μια μορφή\nεπαναχρησιμοποίησης"+
         " λογισμικού κατά την\nοποία δημιουργείται μια νέα κλάση.\n2.Η νέα κλάση απορροφά"+
-        " τα μέλη μιας υπάρχουσας\nκλάσης και τα εμπλουτίζει με νέες ή\nτροποποιημένες δυνατότητες.";
+        " τα μέλη μιας\nυπάρχουσας κλάσης και τα εμπλουτίζει με νέες ή\nτροποποιημένες δυνατότητες.";
     }
 
     @Override
@@ -35,24 +35,44 @@ public class Pic4 extends QuizPic
         return "public class Animal { "
         +"}\n"
         +"public class Mammal extends Animal { "
-        +"}\n\n"
+        +"}\n"
         +"public class Reptile extends Animal { "
-        +"}\n\n"
+        +"}\n"
         +"public class Dog extends Mammal { "
-        +"}\n";
+        +"}\n\n"
+        +"Τι ισχύει από τα παρακάτω;";
     }
 
     @Override
     public String quiz3(){
-        return "Με τη γραμμή κώδικα:\n"
-        +"Alex.pickUp(new Dragon());\n"
-        +"Τι από τα παρακάτω θα συμβεί;";
+        return "class Animal {\n"
+        +"   public void move() {\n"
+        +"       System.out.println(\"Animals can move\");\n"
+        +"       }\n"
+        +"   }\n"
+        +"class Dragon extends Animal {\n"
+        +"   public void move() {\n"
+        +"       System.out.println(\"Dragons can fly\");\n"
+        +"       }\n"
+        +"   }\n"
+        +"Τι ισχύει από τα παρακάτω;";
     }
 
     public String quiz4(){
-        return "Με τη γραμμή κώδικα:\n"
-        +"Clay clay = new Clay();"
-        +"\nΤι από τα παρακάτω θα συμβεί;";
+        return "public class Animal { "
+        +"}\n"
+        +"public class Mammal extends Animal { "
+        +"}\n"
+        +"public class Dog extends Mammal {\n"
+        +"  public static void main(String args[]) {\n"
+        +"      Animal a = new Animal();\n"
+        +"      Mammal m = new Mammal();\n"
+        +"      Dog d = new Dog();\n"
+        +"      System.out.println(m instanceof Animal);\n"
+        +"      System.out.println(d instanceof Animal);"
+        +"  }\n"
+        +"}\n"
+        +"Τι θα τυπωθεί;";
     }
 
     @Override
@@ -71,36 +91,44 @@ public class Pic4 extends QuizPic
         String text1 = "Το ανάποδο θα έλεγε κανείς!";            
         String text2 = "Το ανάποδο θα έλεγε κανείς!";
         String text3 = "Μήπως να έκανες μια επανάληψη στη\nθεωρία;";
-        String text4 = "Ακριβώς!\nΗ κλάση Dog είναι υποκλάση της Mammal,\nόπου η Mammal είναι υποκλάση της Animal."
-        +"Άρα η Dog κληρονομεί και από την Animal.\nΔεύτερος βαθμός κληρονομικότητας!";
+        String text4 = "\nΗ κλάση Dog είναι υποκλάση της Mammal,\nόπου η Mammal είναι υποκλάση της Animal."
+            +"\nΆρα η Dog κληρονομεί και από την Animal.";
         getAnswer(order,text1, text2, text3, text4);
     }
 
     @Override
     public void getAnswer3(){
-        String order = "0001";
-        String text1 = "Δημιουργείται όντως ένα καινούριο\n"
-            +"στιγμιότυπο δράκου, αλλά όχι μόνο.";            
-        String text2 = "Δεν υπάρχει συντακτικό λάθος.";
-        String text3 = "Χρησιμοποιούμε μια μέθοδο, "
-            +"όμως συμβαίνει\nκαι κάτι άλλο.";
-        String text4 = "Μπράβο!\nΕδώ έχουμε συνδυασμό πραγμάτων.\nΑρχικά"
-            +" δημιουργούμε ένα νέο στιγμιότυπο\nδράκου και στη συνέχεια μαζέυουμε αυτό\nτο αντικείμενο.";
+        String order = "0010";
+        String text1 = "";            
+        String text2 = "";
+        String text3 = "Η εφαρμογή του παραδείγματος.\n"
+            +"public class TestDog {\n"
+            +"    public static void main(String args[]) {\n"
+            +"        Animal b = new Dragon();\n"
+            +"        b.move();\n"
+            +"    }\n"
+            +"}\n"
+            +"Output:\n"
+            +"Dragons can fly";
+        String text4 = "Η εφαρμογή του παραδείγματος.\n"
+            +"public class TestDog {\n"
+            +"    public static void main(String args[]) {\n"
+            +"        Animal b = new Dragon();\n"
+            +"        b.move();\n"
+            +"    }\n"
+            +"}\n"
+            +"Output:\n"
+            +"Dragons can fly";
         getAnswer(order,text1, text2, text3, text4);
     }
 
     @Override
     public void getAnswer4(){
-        String order = "0100";
-        String text1 = "Δεν υπάρχει συντακτικό λάθος.";            
-        String text2 = "\nH clay είναι μια μεταβλητή τύπου Clay στην\nοποία"
-            +" εκχωρούμε το στιγμιότυπο του πηλού."
-            +"\nΣτην εκχώρηση τιμής η διαδικασία"
-            +"\nγίνεται από δεξιά προς τα αριστέρα!";
-        String text3 = "Η διαφορά είναι λεπτή αλλά σημαντική."
-            +"\nΣτην εκχώρηση τιμής η διαδικασία"
-            +"\nγίνεται από δεξιά προς τα αριστέρα!";
-        String text4 = "Όχι, είναι τελείως λάθος αυτό.";
+        String order = "0001";
+        String text1 = "";            
+        String text2 = "";
+        String text3 = "https://stackoverflow.com/questions/7313559\n/what-is-the-instanceof-operator-used-for-\nin-java";
+        String text4 = "";
         getAnswer(order,text1, text2, text3, text4);
     }
 
@@ -122,17 +150,17 @@ public class Pic4 extends QuizPic
 
     @Override
     public void answerBtn3(){
-        btn1.setTitle("Δημιουργείται ένα νέο στιγμιότυπο δράκου.");
-        btn2.setTitle("Τίποτα, υπάρχει συντακτικό λάθος.");
-        btn3.setTitle("Δημιουργείται μια καινούρια μέθοδος του δράκου.");
-        btn4.setTitle("Μαζεύουμε ένα καινούριο στιγμιότυπο δράκου.");
+        getWorld().removeObject(btn1);
+        getWorld().removeObject(btn2);
+        btn3.setTitle("Η μέθοδος move() της κλάσης Dragon\nπαρακάμπτει τη move() της Animal");
+        btn4.setTitle("Η μέθοδος move() της κλάσης Dragon\nδεν παρακάμπτει τη move() της Animal");
     }
 
     @Override
     public void answerBtn4(){
-        btn1.setTitle("Τίποτα, υπάρχει συντακτικό λάθος.");
-        btn2.setTitle("Ένα νέο στιγμιότυπο του πηλού\nεκχωρείται στη μεταβλητή clay.");
-        btn3.setTitle("Η μεταβλητή clay ισούται με\nτη δημιουργία νέου πηλού.");
-        btn4.setTitle("O Alex δημιουργεί και μαζεύει έναν πηλό.");
+        getWorld().removeObject(btn1);
+        getWorld().removeObject(btn2);
+        btn3.setTitle("true\nfalse");
+        btn4.setTitle("true\ntrue");
     }
 }
