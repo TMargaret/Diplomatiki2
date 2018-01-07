@@ -52,6 +52,8 @@ public class d4 extends Dragon
             count_enter = 4;
         }
     }
+    
+    
 
     public boolean endLevel(){
         return endLevel;
