@@ -222,7 +222,7 @@ public class Level2 extends World
                 isEDown = false;
                 alex.setLocation(alex.getX(), alex.getY() + 100);
                 lvlSound.stop();
-                Greenfoot.setWorld(new DragonLevel(alex,2));
+                Greenfoot.setWorld(new DLevel_2(alex));
             }  
 
         } 

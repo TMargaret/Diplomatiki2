@@ -26,7 +26,10 @@ public class QuizPic extends Actor
     int fontSize = 28;
 
     public QuizPic(){
-
+        questNum = 1;
+        isOn = false;
+        text = null;
+        endFlag = false;
     }
 
     /**
@@ -44,7 +47,7 @@ public class QuizPic extends Actor
             questNum=8;
             getImage().clear();
             removeButton();
-            
+
         }
     }
 
@@ -90,9 +93,9 @@ public class QuizPic extends Actor
             text = "";
         }
     }
-    
+
     public int getFont(){
-       return fontSize;
+        return fontSize;
     }
 
     public void repeatOrLeave(){

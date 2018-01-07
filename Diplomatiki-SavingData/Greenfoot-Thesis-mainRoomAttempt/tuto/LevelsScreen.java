@@ -47,6 +47,7 @@ public class LevelsScreen extends World implements ButtonResponder
         planetHover();
         setLevel();  
         unlockLevel();
+        System.out.println(unlock.size());
     }
 
     public void prepare(){
@@ -114,6 +115,11 @@ public class LevelsScreen extends World implements ButtonResponder
             StartScreen.startSound.stop();
             enterSound.play();
             Greenfoot.setWorld(new Level3());
+        }
+        if (Greenfoot.mouseClicked(hoverFrame4) && !(getObjects(LockLevel.class).contains(locklevel4))){ 
+            StartScreen.startSound.stop();
+            enterSound.play();
+            Greenfoot.setWorld(new Level4());
         }
     }
 

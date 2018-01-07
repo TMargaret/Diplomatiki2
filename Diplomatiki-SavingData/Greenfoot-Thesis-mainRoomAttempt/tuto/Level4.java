@@ -62,11 +62,9 @@ public class Level4 extends World
         addWall();
         alex = new Alex();
         addObject(alex, 450, 250);
-        //addObject(alex, 2450, 250);
         addObject(unicorn, 800,520);
         addObject(new Ant(), 2330,500);
         addObject(new Ant(), 2410,87);
-        //addObject(new Spider(), 1050,250);
         addObject(new Snake(), 1470,90);
         addObject(new Snake(), 3200,360);
         addObject(new Snake(), 1470,500);
@@ -74,7 +72,7 @@ public class Level4 extends World
 
     public void act(){
         boolean doNotMove = false;
-        if (unicorn.getTalking()){
+        if (unicorn.getTalking() || (alex.getAnIntersectingObject(DoorBlock.class) != null)){
             doNotMove  = true;
         }
         for(SignBlock act : sbList){
@@ -141,8 +139,9 @@ public class Level4 extends World
 
         if ((alex.getAnIntersectingObject(DoorBlock.class) != null)){
             counter--;
-            if (counter<0){
-                Greenfoot.setWorld(new DragonLevel(alex,4));
+            if (counter<0){               
+                Greenfoot.setWorld(new DLevel_4(alex));
+
             }
         }
     }
@@ -198,16 +197,4 @@ public class Level4 extends World
         }
     }
 
-    /**
-     * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
-     * player will play the same level
-     */
-    public void checkUnlockLevel(){
-        if (LevelsScreen.unlock.size() < 4)
-        {
-            LevelsScreen.unlock.add(1);
-        }
-    }
-
 }
-

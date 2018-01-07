@@ -36,28 +36,16 @@ public class DragonLevel extends World
 
     }
 
-    public DragonLevel(Alex oldAlex, int chooseDragon)
+    public DragonLevel(Alex oldAlex)
     {
         super(1000, 600, 1);
         alex = oldAlex;
-        this.chooseDragon = chooseDragon;
         prepare();       
         //suspenseSound.playLoop();
     }
 
-    // public Level_022(int chooseDragon)
-    // {
-    // super(1000, 600, 1);
-    // alex = new Alex();
-    // prepare();
-    // this.chooseDragon = chooseDragon;
-    // //suspenseSound.playLoop();
-
-    // }
-
     public void act(){
-        endGame();
-        //specialEffect();
+
     }
 
     /**
@@ -78,20 +66,8 @@ public class DragonLevel extends World
 
         alex.setImage(SpriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, IMG_WIDTH, IMG_HEIGHT));
         addObject(alex,80, 500);
-
-        if (chooseDragon==2){
-            dragon2 = new d2();
-            addObject(dragon2,865,153);
-        }
-        if (chooseDragon==4){
-            dragon4 = new d4();
-            addObject(dragon4,865,153);
-        }
-
-        specialEffect = new SpecialEffect();
-
         alex.setCanMove(false);
-
+        specialEffect = new SpecialEffect();
     }
 
     public void addWall(){
@@ -142,34 +118,6 @@ public class DragonLevel extends World
                 addObject(specialEffect, random_x, specialEffect.getImage().getHeight()/2+45);
                 count_item = 0;
             }
-        }
-    }
-
-    public void endGame(){
-        if (chooseDragon==2){
-            if (dragon2.endLevel()){
-                Greenfoot.setWorld(new LevelsScreen());
-                suspenseSound.stop();
-                checkUnlockLevel();
-            }
-        }
-        if (chooseDragon==4){
-            if (dragon4.endLevel()){
-                Greenfoot.setWorld(new LevelsScreen());
-                suspenseSound.stop();
-                checkUnlockLevel();
-            }
-        }
-    }	
-
-    /**
-     * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
-     * player will play the same level
-     */
-    public void checkUnlockLevel(){
-        if (LevelsScreen.unlock.size() < 3)
-        {
-            LevelsScreen.unlock.add(1);
         }
     }
 }
