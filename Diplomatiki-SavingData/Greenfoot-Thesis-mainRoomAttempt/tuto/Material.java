@@ -55,16 +55,16 @@ public class Material extends Actor
     }
 
     public void checkWorld(){
-        if (getWorld() instanceof Level_0){
+        if (getWorld() instanceof Level1){
             version = 0;
         }
-        if (getWorld() instanceof Level_1){
+        if (getWorld() instanceof Level3){
             version = 1;
         }
         if (getWorld() instanceof mainHouseRoom){
             version = 2;
         }
-        if (getWorld() instanceof Level_02){
+        if (getWorld() instanceof Level2){
             version = 3;
         }
     }

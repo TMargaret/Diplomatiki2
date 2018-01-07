@@ -7,7 +7,7 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Level_022 extends World
+public class DragonLevel extends World
 {
 
     SpriteSheet spriteSheet = new SpriteSheet();
@@ -27,7 +27,7 @@ public class Level_022 extends World
      * Constructor for objects of class Level_022.
      * 
      */
-    public Level_022()
+    public DragonLevel()
     {
         super(1000, 600, 1);
         alex = new Alex();
@@ -36,7 +36,7 @@ public class Level_022 extends World
 
     }
 
-    public Level_022(Alex oldAlex, int chooseDragon)
+    public DragonLevel(Alex oldAlex, int chooseDragon)
     {
         super(1000, 600, 1);
         alex = oldAlex;

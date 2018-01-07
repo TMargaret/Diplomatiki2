@@ -1,11 +1,11 @@
 #BlueJ class context
-comment0.target=Level_022
+comment0.target=DragonLevel
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Level_022\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
-comment1.target=Level_022()
+comment1.target=DragonLevel()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Level_022.\r\n\ \r\n
 comment2.params=oldAlex\ chooseDragon
-comment2.target=Level_022(Alex,\ int)
+comment2.target=DragonLevel(Alex,\ int)
 comment3.params=
 comment3.target=void\ act()
 comment4.params=

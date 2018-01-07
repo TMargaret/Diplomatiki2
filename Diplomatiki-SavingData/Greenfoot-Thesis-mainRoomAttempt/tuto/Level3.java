@@ -8,7 +8,7 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Level_1 extends World
+public class Level3 extends World
 {
     public int X_ROAD_HUT = 130;
     public int X_ROAD_HOUSE = 550;
@@ -48,7 +48,7 @@ public class Level_1 extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    public Level_1()
+    public Level3()
     {    
         // Create a new world with 1000x600 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1);
@@ -58,12 +58,12 @@ public class Level_1 extends World
         lvl.playLoop();
     }
 
-    public Level_1(Level_1 level1, mainHouseRoom oldMainHouseRoom)
+    public Level3(Level3 level3, mainHouseRoom oldMainHouseRoom)
     {
         super(1000, 600, 1);
         //alex = oldAlex;
         mainHouseRoom = oldMainHouseRoom;
-        level1.prepare();
+        level3.prepare();
     }
 
     /**
@@ -100,7 +100,7 @@ public class Level_1 extends World
             }
         }
         for(Material material : matList){
-            if(material.getWorldOfType(Level_1.class) == null){
+            if(material.getWorldOfType(Level3.class) == null){
                 pickUpList.add(material);
                 mat = material; //save material to mat so as to remove without concurrent exception
 

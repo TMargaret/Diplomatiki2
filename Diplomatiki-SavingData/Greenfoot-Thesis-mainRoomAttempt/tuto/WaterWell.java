@@ -146,7 +146,7 @@ public class WaterWell extends Actor
     }
 
     public void checkHealthBar(){
-        Level_1 lvl1 = (Level_1)getWorld();
+        Level3 lvl3 = (Level3)getWorld();
         getWorld().removeObject(textField);
         if (!wrongCommand){
             wrongCommand = true;

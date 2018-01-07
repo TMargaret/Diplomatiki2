@@ -37,7 +37,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     private static String[] items;
     public double time;
     static int alexHealth = 6;
-    Level_1 level1;
+    Level3 level3;
     boolean isAdded = false;
 
     ArrayList<Material> materialList;
@@ -106,21 +106,21 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     }
 
     public void checkWorld(){
-        if (getWorld() instanceof Level_1){
-            level1 = (Level_1) getWorld();
-            materialList = level1.getMaterialList();
+        if (getWorld() instanceof Level3){
+            level3 = (Level3) getWorld();
+            materialList = level3.getMaterialList();
         }
         if (getWorld() instanceof mainHouseRoom){
             mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
             materialList = mainHouseRoom.getMaterialList();
         }
-        if (getWorld() instanceof Level_0){
-            Level_0 level0 = (Level_0)getWorld();
-            materialList = level0.getMaterialList();
+        if (getWorld() instanceof Level1){
+            Level1 level1 = (Level1)getWorld();
+            materialList = level1.getMaterialList();
         }
-        if (getWorld() instanceof Level_02){
-            Level_02 level02 = (Level_02)getWorld();
-            materialList = level02.getMaterialList();
+        if (getWorld() instanceof Level2){
+            Level2 level2 = (Level2)getWorld();
+            materialList = level2.getMaterialList();
         }
         if (getWorld() instanceof mainHutRoom){
             mainHutRoom mainHutRoom = (mainHutRoom)getWorld();
@@ -421,10 +421,10 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         if (Greenfoot.mouseClicked(exitBtn))
         {
             Greenfoot.setWorld(new LevelsScreen());
-            Level_0.level0Sound.stop();
-            Level_1.lvl.stop();
-            Level_02.lvlSound.stop();
-            Level_022.suspenseSound.stop();
+            Level1.level0Sound.stop();
+            Level3.lvl.stop();
+            Level2.lvlSound.stop();
+            DragonLevel.suspenseSound.stop();
         }
 
     }

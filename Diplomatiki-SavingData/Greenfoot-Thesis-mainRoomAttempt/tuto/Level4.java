@@ -142,7 +142,7 @@ public class Level4 extends World
         if ((alex.getAnIntersectingObject(DoorBlock.class) != null)){
             counter--;
             if (counter<0){
-                Greenfoot.setWorld(new Level_022(alex,4));
+                Greenfoot.setWorld(new DragonLevel(alex,4));
             }
         }
     }

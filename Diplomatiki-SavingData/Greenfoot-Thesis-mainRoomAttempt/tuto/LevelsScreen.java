@@ -103,17 +103,17 @@ public class LevelsScreen extends World implements ButtonResponder
         if (Greenfoot.mouseClicked(hoverFrame1)){ 
             StartScreen.startSound.stop();
             enterSound.play();
-            Greenfoot.setWorld(new Level_0());
+            Greenfoot.setWorld(new Level1());
         }
         if (Greenfoot.mouseClicked(hoverFrame2) && !(getObjects(LockLevel.class).contains(locklevel2))){ 
             StartScreen.startSound.stop();
             enterSound.play();
-            Greenfoot.setWorld(new Level_02());
+            Greenfoot.setWorld(new Level2());
         }
         if (Greenfoot.mouseClicked(hoverFrame3) && !(getObjects(LockLevel.class).contains(locklevel3))){ 
             StartScreen.startSound.stop();
             enterSound.play();
-            Greenfoot.setWorld(new Level_1());
+            Greenfoot.setWorld(new Level3());
         }
     }
 

@@ -43,16 +43,16 @@ public class TextPanel extends Actor implements Serializable
     }
 
     protected void addedToWorld(World w){
-        if (w instanceof Level_0 || w instanceof Level_02){
+        if (w instanceof Level1 || w instanceof Level2){
             makeTextL0();
         }
-        if (w instanceof Level_02){
+        if (w instanceof Level2){
             makeTextL1();
         }
-        if (w instanceof Level_1 || w instanceof mainHouseRoom || w instanceof mainHutRoom){
+        if (w instanceof Level3 || w instanceof mainHouseRoom || w instanceof mainHutRoom){
             makeTextL2();
         }
-        if (w instanceof Level_022){
+        if (w instanceof DragonLevel){
             makeTextL22();
         }
         if (w instanceof Level4){
