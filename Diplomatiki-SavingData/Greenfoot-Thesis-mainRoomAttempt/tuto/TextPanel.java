@@ -55,7 +55,7 @@ public class TextPanel extends Actor implements Serializable
         if (w instanceof DragonLevel){
             makeTextL22();
         }
-        if (w instanceof Level4){
+        if (w instanceof Level4 || w instanceof DLevel_4){
             makeTextL4();
         }
     }
@@ -311,6 +311,10 @@ public class TextPanel extends Actor implements Serializable
         if (status == "youLost"){
             String mytext = text.youLost();
             makeImage(mytext, "unicorn");
+        }
+        //method for debug messages
+        if (status == "wrongKey"){
+            makeImage(debugMsg, "unicorn");
         }
     }
 

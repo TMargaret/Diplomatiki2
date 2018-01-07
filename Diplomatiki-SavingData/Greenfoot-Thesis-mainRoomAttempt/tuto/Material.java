@@ -67,6 +67,9 @@ public class Material extends Actor
         if (getWorld() instanceof Level2){
             version = 3;
         }
+        if (getWorld() instanceof Level4){
+            version = 4;
+        }
     }
 
     public void materialCreation(){

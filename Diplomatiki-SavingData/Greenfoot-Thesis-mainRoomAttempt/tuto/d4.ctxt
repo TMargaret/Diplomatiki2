@@ -10,6 +10,4 @@ comment3.params=
 comment3.target=void\ dragonDialogue()
 comment4.params=
 comment4.target=void\ endGame()
-comment5.params=
-comment5.target=boolean\ endLevel()
-numComments=6
+numComments=5

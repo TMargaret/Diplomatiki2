@@ -16,8 +16,12 @@ public class Level4 extends World
     Actor tile;
     int counter = 150;
     private ArrayList<SignBlock> sbList = new ArrayList<SignBlock>();
+    private ArrayList<Material> materialList = new ArrayList<Material>();
+    private ArrayList <Material> pickUpList = new ArrayList<Material>();
     GreenfootSound lvl4 = new GreenfootSound("level4.wav");
     Unicorn unicorn = new Unicorn();
+    Material mat;
+    Axe axe, axe2, axe3;
     private final static int SWIDTH = 1000;
     private final static int SHEIGHT = 600;
     private final static int WWIDTH = 3800;
@@ -61,6 +65,12 @@ public class Level4 extends World
     {
         addWall();
         alex = new Alex();
+        axe = new Axe();
+        axe2 = new Axe();
+        axe3 = new Axe();
+        materialList.add(axe);
+        materialList.add(axe2);
+        materialList.add(axe3);
         addObject(alex, 450, 250);
         addObject(unicorn, 800,520);
         addObject(new Ant(), 2330,500);
@@ -77,6 +87,15 @@ public class Level4 extends World
         }
         for(SignBlock act : sbList){
             if ((act.getTalking())){
+                doNotMove  = true;
+            }
+        }
+        for (Material material : materialList){
+            if(material.getWorldOfType(Level4.class) == null){
+                pickUpList.add(material);
+                mat = material; //save to material to mat so as to remove without concurrent exception
+            }
+            if (material.getActive()){
                 doNotMove  = true;
             }
         }

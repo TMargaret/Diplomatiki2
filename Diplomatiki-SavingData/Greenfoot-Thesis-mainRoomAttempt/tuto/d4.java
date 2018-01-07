@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class d4 extends Dragon
 {
-    boolean endLevel = false;
+    
     int counter = 30;
     TextPanel textPanel;
     int count_enter = 0;
@@ -20,7 +20,7 @@ public class d4 extends Dragon
         isTrans=false;
         i=255;
         count_enter = 0;
-        endLevel = false;
+ 
         counter = 30;
     }
     /**
@@ -75,7 +75,6 @@ public class d4 extends Dragon
             }          
         }
         if (Greenfoot.isKeyDown("enter") && count_enter == 5 && counter < 0){
-            //endLevel = true;
             counter = 50;
             getWorld().removeObject(textPanel);
             count_enter=6;
@@ -99,7 +98,5 @@ public class d4 extends Dragon
 
     }
 
-    public boolean endLevel(){
-        return endLevel;
-    }
+
 }

@@ -16,19 +16,26 @@ public class SignBlock extends ScrollingObstacle
     private final int HS_OFFSET_Y = 0;
     private int counter = 10, eyes_counter, me = 0;
     private boolean isActive = false, doNotMoveWhileTalking = false, isEDown = false;
+    ArrayList<HoverFrame> hoverFrame = new ArrayList<HoverFrame>();
+    HoverFrame hoverFrame1, hoverFrame2;
     int count_enter = 0;
     private boolean doneDialogue = false;
     private TextPanel taskText;
-    
+    Button btn1, btn2;
+    boolean mouseOver = false, mouseOver2 = false;
+
+    public SignBlock(){
+
+    }
     /**
      * Act - do whatever the SignBlock wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        signDialogue();
+        signDialogue();     
     } 
-    
+
     protected void addedToWorld(World w)
     {
         addHiddenSprite(w);
@@ -38,7 +45,7 @@ public class SignBlock extends ScrollingObstacle
         hs = new HiddenSprite(this, hsWidth , hsHeight/2, HS_OFFSET_X, HS_OFFSET_Y, true);  
         w.addObject(hs, getX(), getY()); 
     }
-    
+
     public void signDialogue(){
 
         if( hs.getWorld() != null ) {   
@@ -61,6 +68,8 @@ public class SignBlock extends ScrollingObstacle
                             setActive(true);
                             setTalking(true);
                             count_enter = 1;
+                            createImageButton();
+                            
                         }
                         if (Greenfoot.isKeyDown("enter") && count_enter == 1 && counter<0 && isEDown){
                             counter = 20;
@@ -76,14 +85,24 @@ public class SignBlock extends ScrollingObstacle
         }
     }
 
+ public void createImageButton(){
+     if (taskText.getWorld()!=null){
+         btn1 = new Button(taskText.getImage().getWidth()/2, taskText.getImage().getHeight());
+         getWorld().addObject(btn1, taskText.getX()-taskText.getImage().getWidth()/4, taskText.getY());
+         if (Greenfoot.mouseClicked(btn1)){
+             System.out.println("ok");
+            }
+        }
+    }
+
     public void actionInDialogue(){
         getWorld().removeObject(taskText);
         taskText = new TextPanel(getTextMessage());
         getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
     }
-    
+
     public void extraAction(){
-        
+
     }
 
     public int getCount_Enter(){

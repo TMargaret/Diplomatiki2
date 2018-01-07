@@ -47,7 +47,6 @@ public class LevelsScreen extends World implements ButtonResponder
         planetHover();
         setLevel();  
         unlockLevel();
-        System.out.println(unlock.size());
     }
 
     public void prepare(){
