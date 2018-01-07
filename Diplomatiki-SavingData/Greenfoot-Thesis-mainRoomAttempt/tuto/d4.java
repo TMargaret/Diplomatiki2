@@ -12,6 +12,17 @@ public class d4 extends Dragon
     int counter = 30;
     TextPanel textPanel;
     int count_enter = 0;
+    int i=255;
+    boolean isTrans=false;
+    private SimpleTimer timer = new SimpleTimer();
+    
+    public d4(){
+        isTrans=false;
+        i=255;
+        count_enter = 0;
+        endLevel = false;
+        counter = 30;
+    }
     /**
      * Act - do whatever the d4 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -20,7 +31,7 @@ public class d4 extends Dragon
     {
         animation();
         dragonDialogue();
-
+        endGame();
     } 
 
     public void dragonDialogue(){
@@ -52,8 +63,41 @@ public class d4 extends Dragon
             count_enter = 4;
         }
     }
-    
-    
+
+    public void endGame(){
+        counter--;
+        if (QuizPic.endLevel()){
+            if (count_enter == 4 && counter <0){
+                counter = 30;
+                textPanel = new TextPanel("dragon3");
+                getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                count_enter = 5;
+            }          
+        }
+        if (Greenfoot.isKeyDown("enter") && count_enter == 5 && counter < 0){
+            //endLevel = true;
+            counter = 50;
+            getWorld().removeObject(textPanel);
+            count_enter=6;
+        }
+
+        if (count_enter==6){
+            if (!isTrans){
+                isTrans = true;
+                timer.mark();
+            }
+            if (timer.millisElapsed()>10 && i>=0){               
+                isTrans = false;
+                getImage().setTransparency(i);
+                timer.mark();
+                i--;
+            }
+            if (i<0){
+                getWorld().removeObject(this);
+            }
+        }
+
+    }
 
     public boolean endLevel(){
         return endLevel;
