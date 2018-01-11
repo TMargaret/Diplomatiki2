@@ -18,6 +18,7 @@ public class ImageTheory extends Actor
     private int count_image = 1;
     private String quiz = "quiz";
     boolean isOn = false;
+    private int slides = 13;
 
     public ImageTheory(){
         setImage(img);
@@ -37,10 +38,10 @@ public class ImageTheory extends Actor
     }
 
     public void addButtons(){
-        count_button.setTitle("1/7");
-        getWorld().addObject(count_button, 665, count_button.getImage().getHeight()+count_button.getImage().getHeight()/4);
+        count_button.setTitle("1/"+slides);
+        getWorld().addObject(count_button, 670, 50);
         next_button.setTitle("ΕΠΟΜΕΝΟ");
-        getWorld().addObject(next_button, 665, 530);
+        getWorld().addObject(next_button, 670, 550);
     }
 
     public void checkImage()
@@ -48,18 +49,18 @@ public class ImageTheory extends Actor
         if (Greenfoot.mouseClicked(next_button))
         {
             
-            if (count_image < 7){
+            if (count_image < slides){
                 count_image++;
                 getImage().clear();
                 setImage(new GreenfootImage("inhe"+count_image+".jpg"));
-                count_button.setTitle(count_image+"/7");
+                count_button.setTitle(count_image+"/"+slides);
             }
-            if (count_image == 7){          
+            if (count_image == slides){          
                 next_button.setTitle("ΤΕΛΟΣ");
                 count_image++;
                 
             }
-            else if (count_image > 7){
+            else if (count_image > slides){
                 removeButton();
                 getWorld().removeObject(this);
 
