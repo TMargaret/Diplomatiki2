@@ -25,6 +25,7 @@ public class SignBlock extends ScrollingObstacle
     Button bb = new Button();
     int signNum = 0;
     boolean sb = false;
+    String correctAnswer;
 
     public SignBlock(){
 
@@ -76,6 +77,7 @@ public class SignBlock extends ScrollingObstacle
                             setTalking(false);
                             isEDown = false;
                             removeButton();
+                            sb = false;
                         } 
                         if (Greenfoot.mouseClicked(ba)){
                             counter = 20;
@@ -85,6 +87,8 @@ public class SignBlock extends ScrollingObstacle
                             setTalking(false);
                             sb = false;
                             isEDown = false;
+                            setCorrectAnswer("0");
+                            getWorld().removeObject(this);
                         }
                         if (Greenfoot.mouseClicked(bb)){
                             counter = 20;
@@ -94,12 +98,22 @@ public class SignBlock extends ScrollingObstacle
                             setTalking(false);
                             sb = false;
                             isEDown = false;
+                            setCorrectAnswer("1");
+                            getWorld().removeObject(this);
                         }
                     }
 
                 }
             }
         }
+    }
+    
+    public void setCorrectAnswer(String ca){
+        correctAnswer = ca;
+    }
+    
+    public String getCorrectAnswer(){
+        return correctAnswer;
     }
 
     public void drawText(){

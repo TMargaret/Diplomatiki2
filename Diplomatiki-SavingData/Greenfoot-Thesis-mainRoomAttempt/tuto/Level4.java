@@ -13,6 +13,7 @@ public class Level4 extends World
     //private alex alex;
     private Alex alex;
     private boolean found, isOn = false;
+    String correctAns;
     Actor tile;
     int signNum = 0;
     int counter = 150;
