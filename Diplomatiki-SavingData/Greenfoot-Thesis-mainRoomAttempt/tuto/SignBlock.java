@@ -14,26 +14,30 @@ public class SignBlock extends ScrollingObstacle
     public int hsHeight = 70;
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
-    private int counter = 10, eyes_counter, me = 0;
+    private int counter = 10;
     private boolean isActive = false, doNotMoveWhileTalking = false, isEDown = false;
     ArrayList<HoverFrame> hoverFrame = new ArrayList<HoverFrame>();
     HoverFrame hoverFrame1, hoverFrame2;
-    int count_enter = 0;
     private boolean doneDialogue = false;
     private TextPanel taskText;
     Button btn1, btn2;
-    boolean mouseOver = false, mouseOver2 = false;
+    Button ba = new Button();
+    Button bb = new Button();
+    int signNum = 0;
+    boolean sb = false;
 
     public SignBlock(){
 
     }
+
     /**
      * Act - do whatever the SignBlock wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        signDialogue();     
+        signDialogue();  
+
     } 
 
     protected void addedToWorld(World w)
@@ -60,23 +64,36 @@ public class SignBlock extends ScrollingObstacle
                         counter--;
                         if (Greenfoot.isKeyDown("e")){
                             isEDown = true;
-                        }
-                        if (counter<0 && !isActive && isEDown && count_enter == 0){
-                            taskText = new TextPanel("hello");
-                            taskText.setImage("q1.png");
-                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                        }                       
+                        if (counter<0  && isEDown){
+                            drawText();
                             setActive(true);
                             setTalking(true);
-                            count_enter = 1;
-                            createImageButton();
-                            
                         }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 1 && counter<0 && isEDown){
-                            counter = 20;
-                            getWorld().removeObject(taskText);
+                        if (Greenfoot.isKeyDown("escape") && isEDown && taskText!=null){
+                            getWorld().removeObject(taskText); 
                             setActive(false);
                             setTalking(false);
-                            count_enter = 2;
+                            isEDown = false;
+                            removeButton();
+                        } 
+                        if (Greenfoot.mouseClicked(ba)){
+                            counter = 20;
+                            getWorld().removeObject(taskText);
+                            removeButton();
+                            setActive(false);
+                            setTalking(false);
+                            sb = false;
+                            isEDown = false;
+                        }
+                        if (Greenfoot.mouseClicked(bb)){
+                            counter = 20;
+                            getWorld().removeObject(taskText);
+                            removeButton();
+                            setActive(false);
+                            setTalking(false);
+                            sb = false;
+                            isEDown = false;
                         }
                     }
 
@@ -85,33 +102,79 @@ public class SignBlock extends ScrollingObstacle
         }
     }
 
- public void createImageButton(){
-     if (taskText.getWorld()!=null){
-         btn1 = new Button(taskText.getImage().getWidth()/2, taskText.getImage().getHeight());
-         getWorld().addObject(btn1, taskText.getX()-taskText.getImage().getWidth()/4, taskText.getY());
-         if (Greenfoot.mouseClicked(btn1)){
-             System.out.println("ok");
+    public void drawText(){
+
+        switch (signNum){
+            case 1:
+            if (!sb){
+                sb = true;
+                taskText = new TextPanel("hello");
+                taskText.setImage("bk"+signNum+".png");            
+                getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                addButtons();
+                //correct 1
+                setBtnTitle("SubSpaceShip method\nSuperSpaceShip method", "SuperSpaceShip method\nSubSpaceShip method");
             }
+            break;
+            case 2:
+            if (!sb){
+                sb = true;
+                taskText = new TextPanel("hello");
+                taskText.setImage("bk"+signNum+".png");            
+                getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                addButtons();
+                //correct 1
+                setBtnTitle("SubSpaceShip method", "SuperSpaceShip method");
+            } 
+            break;
+            case 3:
+            if (!sb){
+                sb = true;
+                taskText = new TextPanel("hello");
+                taskText.setImage("bk"+signNum+".png");            
+                getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                addButtons();
+                //correct 2
+                setBtnTitle("SubSpaceShip\nSuperSpaceShip", "SuperSpaceShip\nSubSpaceShip");
+            }
+            break;
+            case 4:
+            if (!sb){
+                sb = true;
+                taskText = new TextPanel("hello");
+                taskText.setImage("bk"+signNum+".png");            
+                getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+                addButtons();
+                //correct 2
+                setBtnTitle("SubSpaceShip and SuperSpaceShip", "SuperSpaceShip and SubSpaceShip");
+            }
+            break;
+        }
+    }
+    
+    public void removeButton(){
+        if (getWorld().getObjects(Button.class) != null){
+            getWorld().removeObjects(getWorld().getObjects(Button.class));
         }
     }
 
-    public void actionInDialogue(){
-        getWorld().removeObject(taskText);
-        taskText = new TextPanel(getTextMessage());
-        getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
-    }
-
-    public void extraAction(){
+    public void setSignNum(int sn){
+        signNum = sn;
 
     }
 
-    public int getCount_Enter(){
-        return count_enter;
+    public int getSignNum(){
+        return signNum;
     }
 
-    public String getTextMessage(){
-        String textMsg = "";
-        return textMsg;
+    public void setBtnTitle(String ba1, String bb1){
+        ba.setTitle(ba1);
+        bb.setTitle(bb1);
+    }
+
+    public void addButtons(){
+        getWorld().addObject(ba, 700, 390);      
+        getWorld().addObject(bb, 700, 470);
     }
 
     //if isItTalking is true, then alex can't move

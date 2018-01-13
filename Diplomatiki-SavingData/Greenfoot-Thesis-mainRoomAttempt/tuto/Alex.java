@@ -89,8 +89,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
 
         getWorld().addObject(exitBar,984,18);
         getWorld().addObject(exitBtn, 984, 18);
-        getWorld().addObject(hintBar, 910, 18);
-        getWorld().addObject(hintBtn, 910, 18);
+       // getWorld().addObject(hintBar, 910, 18);
+      //  getWorld().addObject(hintBtn, 910, 18);
 
     }
 

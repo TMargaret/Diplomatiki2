@@ -18,7 +18,7 @@ public class ImageTheory extends Actor
     private int count_image = 1;
     private String quiz = "quiz";
     boolean isOn = false;
-    private int slides = 13;
+    private int slides = 16;
 
     public ImageTheory(){
         setImage(img);

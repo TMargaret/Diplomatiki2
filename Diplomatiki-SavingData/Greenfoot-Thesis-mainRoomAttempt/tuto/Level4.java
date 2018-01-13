@@ -12,8 +12,9 @@ public class Level4 extends World
     private int xOffset = 0;
     //private alex alex;
     private Alex alex;
-    private boolean found;
+    private boolean found, isOn = false;
     Actor tile;
+    int signNum = 0;
     int counter = 150;
     private ArrayList<SignBlock> sbList = new ArrayList<SignBlock>();
     private ArrayList<Material> materialList = new ArrayList<Material>();
@@ -88,6 +89,11 @@ public class Level4 extends World
         for(SignBlock act : sbList){
             if ((act.getTalking())){
                 doNotMove  = true;
+                if (!isOn) {
+                    isOn = true;
+                    signNum++;
+                    act.setSignNum(signNum);                  
+                }
             }
         }
         for (Material material : materialList){
@@ -99,8 +105,11 @@ public class Level4 extends World
                 doNotMove  = true;
             }
         }
+        if (doNotMove==false){
+            isOn = false;
+        }
         endGame();
-        alex.setCanMove(!doNotMove);
+        alex.setCanMove(!doNotMove);      
     }
 
     public void shiftWorld(int dx) {
