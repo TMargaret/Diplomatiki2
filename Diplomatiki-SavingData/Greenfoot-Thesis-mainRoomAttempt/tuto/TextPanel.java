@@ -271,43 +271,43 @@ public class TextPanel extends Actor implements Serializable
             makeImage(mytext, "dragon");
         }
     }
-    
-        private void makeTextL4(){
-            if (status == "welcomeMsgL4") {
-            String mytext = text.welcomeMsgL02();
-            count_slide = 1;
-            makeImage(mytext, "unicorn");
-        }
-        if (status == "taskText1L4") {
-            String mytext = text.taskText1L02();
-            count_slide = 2;
-            makeImage(mytext, "unicorn");
-        }
-        if (status == "taskText2L4") {
-            String mytext = text.taskText2L02();
-            count_slide = 3;
-            makeImage(mytext, "unicorn");
-        }
-        if (status == "taskText3L4") {
-            String mytext = text.taskText3L02();
-            count_slide = 4;
-            makeImage(mytext, "unicorn");
-        }
-        if (status == "taskText4L4") {
-            String mytext = text.taskText4L02();
-            count_slide = 5;
-            makeImage(mytext, "unicorn");
-        }
-        if (status == "taskText5L4") {
-            String mytext = text.taskText5L02();
-            count_slide = 6;
-            makeImage(mytext, "unicorn");
-        }
-        if (status == "taskText6L4") {
-            String mytext = text.taskText6L02();
-            count_slide = 7;
-            makeImage(mytext, "unicorn");
-        }
+
+    private void makeTextL4(){
+        // if (status == "welcomeMsgL4") {
+            // String mytext = text.welcomeMsgL02();
+            // count_slide = 1;
+            // makeImage(mytext, "unicorn");
+        // }
+        // if (status == "taskText1L4") {
+            // String mytext = text.taskText1L02();
+            // count_slide = 2;
+            // makeImage(mytext, "unicorn");
+        // }
+        // if (status == "taskText2L4") {
+            // String mytext = text.taskText2L02();
+            // count_slide = 3;
+            // makeImage(mytext, "unicorn");
+        // }
+        // if (status == "taskText3L4") {
+            // String mytext = text.taskText3L02();
+            // count_slide = 4;
+            // makeImage(mytext, "unicorn");
+        // }
+        // if (status == "taskText4L4") {
+            // String mytext = text.taskText4L02();
+            // count_slide = 5;
+            // makeImage(mytext, "unicorn");
+        // }
+        // if (status == "taskText5L4") {
+            // String mytext = text.taskText5L02();
+            // count_slide = 6;
+            // makeImage(mytext, "unicorn");
+        // }
+        // if (status == "taskText6L4") {
+            // String mytext = text.taskText6L02();
+            // count_slide = 7;
+            // makeImage(mytext, "unicorn");
+        // }
         if (status == "youLost"){
             String mytext = text.youLost();
             makeImage(mytext, "unicorn");
@@ -315,6 +315,14 @@ public class TextPanel extends Actor implements Serializable
         //method for debug messages
         if (status == "wrongKey"){
             makeImage(debugMsg, "unicorn");
+        }
+        if (status == "playOrLeave"){
+            String mytext = text.repeatOrLeave();
+            makeImage(mytext, "unicorn");
+        }
+        if (status == "notEnough"){
+            String mytext = text.notEnough();
+            makeImage(mytext, "unicorn");
         }
     }
 
@@ -415,12 +423,13 @@ public class TextPanel extends Actor implements Serializable
             image.setFont(new Font("Serif", 29));
             image.setColor(Color.LIGHT_GRAY);          
 
-            if (status == "welcomeMsgL4" || status == "taskText1L4" || status == "taskText2L4" || status=="taskText3L4") 
-            {
-                image.drawString("Πάτα ENTER", 30, 290);
-                image.drawString(count_slide+"/7", 450, 290);
-            }
+            // if (status == "welcomeMsgL4" || status == "taskText1L4" || status == "taskText2L4" || status=="taskText3L4") 
+            // {
+            // image.drawString("Πάτα ENTER", 30, 290);
+            // image.drawString(count_slide+"/7", 450, 290);
+            // }
             if (status=="youLost") image.drawString("Πάτα SPACE", 30, 290);
+            if (status=="notEnough") image.drawString("Πάτα ENTER", 30, 290);
         }
         image.drawString(title, 30, 50);
         setImage(image);

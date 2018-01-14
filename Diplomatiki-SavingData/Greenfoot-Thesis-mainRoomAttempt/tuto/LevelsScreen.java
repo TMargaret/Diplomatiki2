@@ -24,6 +24,7 @@ public class LevelsScreen extends World implements ButtonResponder
                 add(1);
                 add(1);
                 add(1);
+                add(1);
             }
         }; //1 for unlocked level0
 

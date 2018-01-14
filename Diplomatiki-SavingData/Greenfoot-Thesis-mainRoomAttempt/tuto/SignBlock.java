@@ -16,6 +16,7 @@ public class SignBlock extends ScrollingObstacle
     private final int HS_OFFSET_Y = 0;
     private int counter = 10;
     private boolean isActive = false, doNotMoveWhileTalking = false, isEDown = false;
+    GreenfootSound pickupSound = new GreenfootSound("pickUp.wav");
     ArrayList<HoverFrame> hoverFrame = new ArrayList<HoverFrame>();
     HoverFrame hoverFrame1, hoverFrame2;
     private boolean doneDialogue = false;
@@ -99,6 +100,7 @@ public class SignBlock extends ScrollingObstacle
                             sb = false;
                             isEDown = false;
                             setCorrectAnswer("1");
+                            pickupSound.play();
                             getWorld().removeObject(this);
                         }
                     }
@@ -107,6 +109,7 @@ public class SignBlock extends ScrollingObstacle
             }
         }
     }
+    
     
     public void setCorrectAnswer(String ca){
         correctAnswer = ca;

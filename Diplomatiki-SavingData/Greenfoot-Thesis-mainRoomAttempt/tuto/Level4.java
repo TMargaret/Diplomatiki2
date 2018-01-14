@@ -12,18 +12,25 @@ public class Level4 extends World
     private int xOffset = 0;
     //private alex alex;
     private Alex alex;
-    private boolean found, isOn = false;
+    private boolean found, isOn = false, getAnswer = false, notEnough = false;
+    boolean isOnDoor = false, evaluate = false;
     String correctAns;
     Actor tile;
     int signNum = 0;
     int counter = 150;
+    String answer = "";
+    String wrightAnswer = "0011";
     private ArrayList<SignBlock> sbList = new ArrayList<SignBlock>();
     private ArrayList<Material> materialList = new ArrayList<Material>();
     private ArrayList <Material> pickUpList = new ArrayList<Material>();
     GreenfootSound lvl4 = new GreenfootSound("level4.wav");
     Unicorn unicorn = new Unicorn();
     Material mat;
+    SignBlock signB;
     Axe axe, axe2, axe3;
+    TextPanel textPanel;
+    Button btn1 = new Button();
+    Button btn2 = new Button();
     private final static int SWIDTH = 1000;
     private final static int SHEIGHT = 600;
     private final static int WWIDTH = 3800;
@@ -53,8 +60,7 @@ public class Level4 extends World
      * 
      */
     public Level4()
-    {    
-        //super(1000, 600, 1, false); 
+    {     
         super(SWIDTH, SHEIGHT, 1, false);       
         createWorldFromTiles();
         shiftWorld(0);
@@ -84,10 +90,11 @@ public class Level4 extends World
 
     public void act(){
         boolean doNotMove = false;
-        if (unicorn.getTalking() || (alex.getAnIntersectingObject(DoorBlock.class) != null)){
+        if (unicorn.getTalking() || isOnDoor){
             doNotMove  = true;
         }
-        for(SignBlock act : sbList){
+
+        for (SignBlock act : sbList){
             if ((act.getTalking())){
                 doNotMove  = true;
                 if (!isOn) {
@@ -96,7 +103,16 @@ public class Level4 extends World
                     act.setSignNum(signNum);                  
                 }
             }
+            if(act.getWorldOfType(Level4.class) == null){
+                signB = act;
+                if (!getAnswer){
+                    getAnswer = true;
+                    answer += act.getCorrectAnswer();
+                }
+                getAnswer = false;
+            }
         }
+        sbList.remove(signB);
         for (Material material : materialList){
             if(material.getWorldOfType(Level4.class) == null){
                 pickUpList.add(material);
@@ -110,7 +126,8 @@ public class Level4 extends World
             isOn = false;
         }
         endGame();
-        alex.setCanMove(!doNotMove);      
+        alex.setCanMove(!doNotMove); 
+        System.out.println(answer);
     }
 
     public void shiftWorld(int dx) {
@@ -167,12 +184,51 @@ public class Level4 extends World
     public void endGame(){
 
         if ((alex.getAnIntersectingObject(DoorBlock.class) != null)){
+            isOnDoor = true;
             counter--;
-            if (counter<0){               
-                Greenfoot.setWorld(new DLevel_4(alex));
-
+            if (answer.length() < wrightAnswer.length() && !notEnough && isOnDoor){
+                notEnough = true;
+                textPanel = new TextPanel("notEnough");            
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+            }
+            if (Greenfoot.isKeyDown("enter") && notEnough){
+                removeObject(textPanel);
+                isOnDoor = false;
+                notEnough =false;
+                counter = 50;
+                alex.setLocation(alex.getX() - 10, alex.getY());
+            }
+            if (answer.length() == wrightAnswer.length() && !(answer.contentEquals(wrightAnswer)) && counter<0 && !evaluate){
+                evaluate = true;
+                textPanel = new TextPanel("playOrLeave");            
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+                addButton2();
+                setBtn2();
+                counter = 50;
+            }
+            if (Greenfoot.mouseClicked(btn1)){
+                initVar();
+                Greenfoot.setWorld(new Level4());                
+            }
+            if (Greenfoot.mouseClicked(btn2)){
+                initVar();
+                Greenfoot.setWorld(new LevelsScreen());              
+            }
+            if (answer.length() == wrightAnswer.length() && answer.contentEquals(wrightAnswer) && counter<0){               
+                initVar();
+                Greenfoot.setWorld(new DLevel_4(alex));               
             }
         }
+    }
+
+    public void addButton2(){
+        addObject(btn1, textPanel.getImage().getWidth(), textPanel.getImage().getHeight());
+        addObject(btn2, textPanel.getImage().getWidth(), textPanel.getImage().getHeight()+40);
+    }
+
+    public void setBtn2(){
+        btn1.setTitle("NAI");
+        btn2.setTitle("OXI");
     }
 
     public int getTileWidth() {
@@ -220,10 +276,12 @@ public class Level4 extends World
     }
 
     public void initVar(){
-        if (HealthBar.getHealth()<=0){
-            //lvl.stop();
-            //found = false;
-        }
+        lvl4.stop();
+        int signNum = 0;
+        int counter = 150;
+        String answer = "";
+        evaluate = false;
+
     }
 
 }

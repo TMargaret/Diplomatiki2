@@ -34,7 +34,7 @@ public class Material extends Actor
         hsWidth = getImage().getWidth() + getImage().getWidth()/2;
     }
 
-    /**
+    /**F
      * Act - do whatever the Material wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
