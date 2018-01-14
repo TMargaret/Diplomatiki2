@@ -1,5 +1,5 @@
 import greenfoot.*;
-  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+// (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.io.*;
 
 /**
@@ -45,7 +45,7 @@ public class HealthBar extends Actor
         looseHealthSound.play();
         health--;
     }
-    
+
     public void setHealth(int alexHealth){
         health = alexHealth;
     }

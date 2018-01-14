@@ -21,7 +21,7 @@ public class Hut extends Actor implements Serializable
     boolean wrongCommand = false;
     boolean buildHouse = false;
     boolean enterHut = false;
-    Level_1 lvl_1;
+    Level3 lvl3;
     TextField textField;
     String my_text = "";
     GreenfootImage bH = new GreenfootImage("fixedHut.png");
@@ -147,7 +147,7 @@ public class Hut extends Actor implements Serializable
     }
 
     public void checkHealthBar(){
-        Level_1 lvl1 = (Level_1)getWorld();
+        Level3 lvl3 = (Level3)getWorld();
         getWorld().removeObject(textField);
         if (!wrongCommand){
             wrongCommand = true;

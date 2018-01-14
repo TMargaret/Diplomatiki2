@@ -17,6 +17,14 @@ public class HoverFrame extends Actor
         frame.setTransparency(0);
         setImage(frame);
     }
+    
+    public HoverFrame(int x, int y){
+        frame = new GreenfootImage(x, y);
+        frame.setColor(Color.LIGHT_GRAY);
+        frame.fill();
+        frame.setTransparency(0);
+        setImage(frame);
+    }
     /**
      * Act - do whatever the HoverFrame wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

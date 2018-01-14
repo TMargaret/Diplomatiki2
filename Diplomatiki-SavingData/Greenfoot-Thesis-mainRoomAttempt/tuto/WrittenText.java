@@ -18,7 +18,7 @@ public class WrittenText implements Serializable
     public WrittenText(){
     }  
 
-    //level_0
+    //level1
     public String welcomeMsgL0(){
         return "Καλώς ήρθες στον πλανήτη μου Methodius!\n\nΕίμαι ο πλανητάρχης Methodis και μπορώ \nνα σε "+
         "βοηθήσω να φύγεις αρκεί να κάνεις \nκάτι για μένα.";
@@ -84,7 +84,7 @@ public class WrittenText implements Serializable
         return "Έχασες όλη σου την ενέργεια!\nΞαναπροσπάθησε!";
     }
 
-    //level_02
+    //level3
     public String welcomeMsgL02(){
         return "Καλώς ήρθες στον πλανήτη μου Objectus!\n\nΕίμαι ο πλανητάρχης Objectis και μπορώ \nνα σε "+
         "βοηθήσω να φύγεις αρκεί να κάνεις \nκάτι για μένα.";
@@ -114,7 +114,7 @@ public class WrittenText implements Serializable
     }
 
     public String taskText5L02(){
-        return "new όνομα_κλάσης();\n-Το \"new\" υποδηλώνει τη δημιουργία του\nνέου αντικειμένου, οποιασδήποτε κλάσης."
+        return "new όνομα_κλάσης();\n-Με το \"new\" καλείται μια ειδική λειτουργία\nκλάσης, που έχει το ίδιο όνομα με αυτή και\nονομάζεται κατασκευαστής."
         +"\n-Οι παρενθέσεις συνοδεύουν πάντα το\nόνομα της κλάσης.\n-Το ερωτηματικό μπαίνει απαραίτητα στο\nτέλος κάθε γραμμής κώδικα!";
     }
 
@@ -128,7 +128,7 @@ public class WrittenText implements Serializable
         return "Τα κατάφερες! \nΜπορείς να επισκεφθείς το σπίτι μου\nπριν φύγεις.";
     }
 
-    //level_1
+    //level3
     public String brokenHut(){
 
         return "Η καλύβα αυτή φαίνεται ετοιμόρροπη.\nΚαλύτερα να τη φτιάξω πριν μπω.\n\nΧρειάζομαι ξύλο και άχυρο.";
@@ -203,6 +203,7 @@ public class WrittenText implements Serializable
     public String lockedDoor(){
         return "Είναι κλειδωμένη...\n\nΆραγε μπορώ να την ανοίξω...;";
     }
+
     public String wellDone2(){
         return "Τα κατάφερες!\n\nΤώρα μπορείς να αποχωρήσεις"
         +" από τον\nParametrus.\n\nLive long and prosper!";
@@ -224,6 +225,18 @@ public class WrittenText implements Serializable
 
     public String dragon3(){
         return "Εμείς οι δύο δεν έχουμε τελειώσει...\n";
+    }
+
+    //level4
+    public String repeatOrLeave(){
+        return "Δεν έχεις μαζέψει τα σωστά ανταλλακτικά.\n\nΘέλεις να αρχίσεις ξανά;";
+    }
+    public String notEnough(){
+        return "Δεν έχεις μαζέψει όλα τα ανταλλακτικά.\n\nΣυνέχισε την αναζήτηση...";
+    }
+    
+    public String wellDone4(){
+        return "Τα κατάφερες!\n\nLive long and prosper!";
     }
 
 }

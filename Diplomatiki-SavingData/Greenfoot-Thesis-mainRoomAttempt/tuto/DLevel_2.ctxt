@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=DLevel_2
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Level2\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=DLevel_2()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Level2.\r\n\ \r\n
+comment2.params=oldAlex
+comment2.target=DLevel_2(Alex)
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ endGame()
+comment5.params=
+comment5.target=void\ checkUnlockLevel()
+comment5.text=\r\n\ Method\ checkUnlockLevel\ is\ to\ set\ the\ unlocked\ level\ only\ once,\ no\ matter\ how\ many\ times\ the\r\n\ player\ will\ play\ the\ same\ level\r\n
+numComments=6

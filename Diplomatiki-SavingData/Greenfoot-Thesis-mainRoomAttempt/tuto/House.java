@@ -19,7 +19,7 @@ public class House extends Actor
     boolean wrongCommand = false;
     boolean buildHouse = false;
     private TextPanel textPanel;
-    Level_0 lvl_0;
+    Level1 lvl1;
     TextField textField;
     String my_text = "";
     GreenfootImage bH = new GreenfootImage("fixedHouse.png");
@@ -153,7 +153,7 @@ public class House extends Actor
     }
 
     public void checkHealthBar(){
-        Level_0 lvl0 = (Level_0)getWorld();
+        Level1 lvl1 = (Level1)getWorld();
         getWorld().removeObject(textField);
         if (!wrongCommand){
             wrongCommand = true;

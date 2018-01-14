@@ -24,6 +24,7 @@ public class LevelsScreen extends World implements ButtonResponder
                 add(1);
                 add(1);
                 add(1);
+                add(1);
             }
         }; //1 for unlocked level0
 
@@ -103,17 +104,22 @@ public class LevelsScreen extends World implements ButtonResponder
         if (Greenfoot.mouseClicked(hoverFrame1)){ 
             StartScreen.startSound.stop();
             enterSound.play();
-            Greenfoot.setWorld(new Level_0());
+            Greenfoot.setWorld(new Level1());
         }
         if (Greenfoot.mouseClicked(hoverFrame2) && !(getObjects(LockLevel.class).contains(locklevel2))){ 
             StartScreen.startSound.stop();
             enterSound.play();
-            Greenfoot.setWorld(new Level_02());
+            Greenfoot.setWorld(new Level2());
         }
         if (Greenfoot.mouseClicked(hoverFrame3) && !(getObjects(LockLevel.class).contains(locklevel3))){ 
             StartScreen.startSound.stop();
             enterSound.play();
-            Greenfoot.setWorld(new Level_1());
+            Greenfoot.setWorld(new Level3());
+        }
+        if (Greenfoot.mouseClicked(hoverFrame4) && !(getObjects(LockLevel.class).contains(locklevel4))){ 
+            StartScreen.startSound.stop();
+            enterSound.play();
+            Greenfoot.setWorld(new Level4());
         }
     }
 
@@ -133,6 +139,9 @@ public class LevelsScreen extends World implements ButtonResponder
             removeObject(locklevel4);
             break;
             case 5:
+            removeObject(locklevel2);
+            removeObject(locklevel3);
+            removeObject(locklevel4);
             removeObject(locklevel5);
             break;
             case 6:

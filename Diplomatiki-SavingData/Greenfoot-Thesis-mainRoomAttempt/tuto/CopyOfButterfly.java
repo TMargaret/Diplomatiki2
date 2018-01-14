@@ -16,11 +16,11 @@ public class CopyOfButterfly extends SmoothMover
     final int IMG_WIDTH = butterfly.getWidth()/10;
     final int IMG_HEIGHT = butterfly.getHeight()/10;
     int count = 0;
-
+    private boolean isGrabbed;
     public CopyOfButterfly(){
 
         //GreenfootImage img = getImage();
-   
+
         //img.scale(img.getWidth()/10, img.getHeight()/10);
     }
 
@@ -30,7 +30,35 @@ public class CopyOfButterfly extends SmoothMover
      */
     public void act() 
     {
- 
+
+        /* in the 'act' method in the class of the Actor object to be dragged */
+        // check for initial pressing down of mouse button
+        if (Greenfoot.mousePressed(this) && !isGrabbed)
+        {
+            // grab the object
+            isGrabbed = true;
+            // the rest of this block will avoid this object being dragged UNDER other objects
+            World world = getWorld();
+            MouseInfo mi = Greenfoot.getMouseInfo();
+            world.removeObject(this);
+            world.addObject(this, mi.getX(), mi.getY());
+            return;
+        }
+        // check for actual dragging of the object
+        if ((Greenfoot.mouseDragged(this)) && isGrabbed)
+        {
+            // follow the mouse
+            MouseInfo mi = Greenfoot.getMouseInfo();
+            setLocation(mi.getX(), mi.getY());
+            return;
+        }
+        // check for mouse button release
+        if (Greenfoot.mouseDragEnded(this) && isGrabbed)
+        {
+            // release the object
+            isGrabbed = false;
+            return;
+        }
     }
 
     public void butterflyAnimation(){

@@ -52,7 +52,8 @@ public class Button extends Actor
     public Button(int x, int y)
     {
         createBackgroundImage(x, y);
-        //refreshImage();
+        title = "afdg";
+        refreshImage(30);
     }
 
     //general buttons
@@ -75,7 +76,7 @@ public class Button extends Actor
         GreenfootImage img = new GreenfootImage(x, y);
         img.setColor(Color.BLACK);
         img.fill();
-        img.setTransparency(0);
+        img.setTransparency(50);
         this.backgroundImage = img;
         setImage(this.backgroundImage);
     }

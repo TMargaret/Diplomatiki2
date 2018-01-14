@@ -32,7 +32,7 @@ public class mainHouseRoom extends World
     private ArrayList <Material> pickUpList = new ArrayList<Material>();
     private static String[] items;
     public double time;
-    Level_1 level1;
+    Level3 level3;
     Material mat;
     boolean flag2 = false;
 
@@ -48,11 +48,11 @@ public class mainHouseRoom extends World
 
     }
 
-    public mainHouseRoom(Alex oldAlex, Level_1 oldLevel1)
+    public mainHouseRoom(Alex oldAlex, Level3 oldLevel3)
     {
         super(1000, 600, 1);
         alex = oldAlex;
-        level1 = oldLevel1;
+        level3 = oldLevel3;
         prepare();
     }
 
@@ -243,9 +243,9 @@ public class mainHouseRoom extends World
             initVariables();
             alex.setImage(spriteSheet.getSprite(alexImg, img_cell*3,  img_cell*2, img_cell*4, img_cell*3, 64, 64));
             alex.setLocation(alex.getX() + 100, alex.getY());
-            level1.setAlex(alex);
-            level1.setmainHouseRoom(this);
-            Greenfoot.setWorld(level1);
+            level3.setAlex(alex);
+            level3.setmainHouseRoom(this);
+            Greenfoot.setWorld(level3);
         }      
     }
 

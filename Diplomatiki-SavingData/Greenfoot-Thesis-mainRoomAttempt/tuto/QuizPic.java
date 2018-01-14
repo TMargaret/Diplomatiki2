@@ -23,9 +23,13 @@ public class QuizPic extends Actor
     boolean isOn = false;
     String text = null;
     static boolean endFlag = false;
+    int fontSize = 28;
 
     public QuizPic(){
-
+        questNum = 1;
+        isOn = false;
+        text = null;
+        endFlag = false;
     }
 
     /**
@@ -35,6 +39,16 @@ public class QuizPic extends Actor
     public void act() 
     {
         drawText();
+        lostGame();
+    }
+
+    public void lostGame(){
+        if (HealthBar.getHealth()<=0){
+            questNum=8;
+            getImage().clear();
+            removeButton();
+
+        }
     }
 
     public void drawText(){
@@ -72,12 +86,16 @@ public class QuizPic extends Actor
         }
         if (!isOn){
             isOn = true;           
-            getImage().setFont(new Font("Lucida Sans Unicode", 28));
+            getImage().setFont(new Font("Lucida Sans Unicode", getFont()));
             getImage().drawString(question + questNum, getImage().getWidth()/3, 40);
             getImage().drawString(text, 30, 80);
             addButton4();
             text = "";
         }
+    }
+
+    public int getFont(){
+        return fontSize;
     }
 
     public void repeatOrLeave(){
@@ -98,7 +116,7 @@ public class QuizPic extends Actor
             endFlag = true;
             removeButton();
             getWorld().removeObject(this);
-            
+
         }
     }
 
@@ -187,7 +205,7 @@ public class QuizPic extends Actor
 
     public String quiz4(){
         return "Με τη γραμμή κώδικα:\n"
-        +"clay = new Clay();"
+        +"Clay clay = new Clay();"
         +"\nΤι από τα παρακάτω θα συμβεί;";
     }
 
@@ -229,22 +247,20 @@ public class QuizPic extends Actor
         String text3 = "Χρησιμοποιούμε μια μέθοδο, "
             +"όμως συμβαίνει\nκαι κάτι άλλο.";
         String text4 = "Μπράβο!\nΕδώ έχουμε συνδυασμό πραγμάτων.\nΑρχικά"
-            +" δημιουργούμε ένα νέο στιγμιότυπο\nδράκου και στη συνέχεια μαζέυουμε αυτό\nτο αντικείμενο."
-            +"\nΣτον προγραμματισμό τα πράγματα"
-            +"\nσυμβαίνουν από δεξιά προς τα αριστέρα!";
+            +" δημιουργούμε ένα νέο στιγμιότυπο\nδράκου και στη συνέχεια μαζέυουμε αυτό\nτο αντικείμενο.";
         getAnswer(order,text1, text2, text3, text4);
     }
 
     public void getAnswer4(){
         String order = "0100";
         String text1 = "Δεν υπάρχει συντακτικό λάθος.";            
-        String text2 = "\nH clay είναι μια μεταβλητή στην οποία"
-            +"\nέχουμε εκχωρήσει από πριν το στιγμιότυπο\nτου πηλού."
-            +"\nΘυμήσου! Στον προγραμματισμό τα πράγματα"
-            +"\nσυμβαίνουν από δεξιά προς τα αριστέρα!";
+        String text2 = "\nH clay είναι μια μεταβλητή τύπου Clay στην\nοποία"
+            +" εκχωρούμε το στιγμιότυπο του πηλού."
+            +"\nΣτην εκχώρηση τιμής η διαδικασία"
+            +"\nγίνεται από δεξιά προς τα αριστέρα!";
         String text3 = "Η διαφορά είναι λεπτή αλλά σημαντική."
-            +"\nΣτον προγραμματισμό τα πράγματα"
-            +"\nσυμβαίνουν από δεξιά προς τα αριστέρα!";
+            +"\nΣτην εκχώρηση τιμής η διαδικασία"
+            +"\nγίνεται από δεξιά προς τα αριστέρα!";
         String text4 = "Όχι, είναι τελείως λάθος αυτό.";
         getAnswer(order,text1, text2, text3, text4);
     }

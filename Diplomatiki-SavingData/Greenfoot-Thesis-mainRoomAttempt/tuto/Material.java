@@ -34,7 +34,7 @@ public class Material extends Actor
         hsWidth = getImage().getWidth() + getImage().getWidth()/2;
     }
 
-    /**
+    /**F
      * Act - do whatever the Material wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
@@ -55,17 +55,20 @@ public class Material extends Actor
     }
 
     public void checkWorld(){
-        if (getWorld() instanceof Level_0){
+        if (getWorld() instanceof Level1){
             version = 0;
         }
-        if (getWorld() instanceof Level_1){
+        if (getWorld() instanceof Level3){
             version = 1;
         }
         if (getWorld() instanceof mainHouseRoom){
             version = 2;
         }
-        if (getWorld() instanceof Level_02){
+        if (getWorld() instanceof Level2){
             version = 3;
+        }
+        if (getWorld() instanceof Level4){
+            version = 4;
         }
     }
 
@@ -89,7 +92,7 @@ public class Material extends Actor
                         }
                         if (counter<0 && isEDown && !thisLvl)
                         {
-                           extraAction();
+                            extraAction();
                         }
                         if (counter<0 && !isActive && isEDown && thisLvl){
                             isActive = true;
@@ -104,7 +107,7 @@ public class Material extends Actor
                             isEDown = false;
                         }   
 
-                        if (thisLvl && Greenfoot.isKeyDown("enter") && isEDown){
+                        if (thisLvl && Greenfoot.isKeyDown("enter") && isEDown && !tryAgainOrLeave){
                             isEDown = false;
                             counter = 30;
                             db = new Debugger(textField.getText(), this.checkMaterial());
@@ -119,7 +122,7 @@ public class Material extends Actor
                                     textPanel= new TextPanel("wrongKey", db.feedback());
                                     getWorld().addObject(textPanel, getWorld().getWidth()/2, getWorld().getHeight()/2);
                                     tryAgainOrLeave = true;
-                                    isEDown = false;
+                                    //isEDown = false;
                                 }
                             }
                         }
@@ -136,7 +139,7 @@ public class Material extends Actor
             }
         }
     }
-    
+
     public void extraAction(){
         thisLvl = true;
     }
@@ -169,6 +172,17 @@ public class Material extends Actor
         if (!wrongCommand){
             wrongCommand = true;
             HealthBar.looseHealth();
+        }
+        if (HealthBar.getHealth()<=0){
+            isActive = false;
+            isEDown = false;
+            tryAgainOrLeave = false;
+            wrongCommand = false;
+            thisLvl = false;
+            int counter = 30;
+            int version = 0;
+            my_text = "";
+            addToInv = false;
         }
     }
 
