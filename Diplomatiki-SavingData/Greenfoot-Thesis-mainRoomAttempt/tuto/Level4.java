@@ -127,7 +127,6 @@ public class Level4 extends World
         }
         endGame();
         alex.setCanMove(!doNotMove); 
-        System.out.println(answer);
     }
 
     public void shiftWorld(int dx) {

@@ -324,6 +324,10 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.notEnough();
             makeImage(mytext, "unicorn");
         }
+        if (status == "wellDone2"){
+            String mytext = text.wellDone4();
+            makeImage(mytext, "unicorn");
+        }
     }
 
     private void makeImage(String title)
@@ -429,7 +433,7 @@ public class TextPanel extends Actor implements Serializable
             // image.drawString(count_slide+"/7", 450, 290);
             // }
             if (status=="youLost") image.drawString("Πάτα SPACE", 30, 290);
-            if (status=="notEnough") image.drawString("Πάτα ENTER", 30, 290);
+            if ((status=="notEnough") || (status=="wellDone2")) image.drawString("Πάτα ENTER", 30, 290);
         }
         image.drawString(title, 30, 50);
         setImage(image);

@@ -139,6 +139,9 @@ public class LevelsScreen extends World implements ButtonResponder
             removeObject(locklevel4);
             break;
             case 5:
+            removeObject(locklevel2);
+            removeObject(locklevel3);
+            removeObject(locklevel4);
             removeObject(locklevel5);
             break;
             case 6:

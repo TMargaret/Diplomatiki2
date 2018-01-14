@@ -64,7 +64,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         //check if objects already added
         if (!isAdded){
             isAdded = true;
-            healthBar = new HealthBar(alexHealth);
+            healthBar = new HealthBar(alexHealth);  
 
             healthLogo = new HealthLogo();
 

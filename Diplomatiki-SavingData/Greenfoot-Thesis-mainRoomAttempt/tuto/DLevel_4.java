@@ -12,9 +12,13 @@ public class DLevel_4 extends DragonLevel
     boolean endLevel = false;
     int counter = 50;
     boolean isTrans = false;
+    int countDown = 200;
     int i = 0;
     private SimpleTimer timer = new SimpleTimer();
     SpaceShip spaceship = new SpaceShip();
+    GreenfootSound thankSound = new GreenfootSound("thank.wav");
+    TextPanel textPanel;
+    boolean displayMessage = false;
 
     /**
      * Constructor for objects of class Level_4.
@@ -23,6 +27,7 @@ public class DLevel_4 extends DragonLevel
     public DLevel_4()
     {
         initVar();
+
     }
 
     public DLevel_4(Alex oldAlex)
@@ -31,7 +36,7 @@ public class DLevel_4 extends DragonLevel
         alex = oldAlex;        
         alex.setCanMove(false);
         initVar();
-        //suspenseSound.playLoop();
+        suspenseSound.playLoop();
     }
 
     public void initVar(){
@@ -46,15 +51,10 @@ public class DLevel_4 extends DragonLevel
     }
 
     public void act(){
-        endGame();
+        checkEnd();
         checkDragon();
-    }
-
-    public void endGame(){
-        if (endLevel()){
-            Greenfoot.setWorld(new LevelsScreen());
-            suspenseSound.stop();
-            checkUnlockLevel();
+        if (dragon4.getWorldOfType(DLevel_4.class)!=null){
+            specialEffect();
         }
     }
 
@@ -79,8 +79,24 @@ public class DLevel_4 extends DragonLevel
         }
     }
 
-    public boolean endLevel(){
-        return endLevel;
+    public void checkEnd(){
+
+        if (spaceship.getIsDone()){
+            countDown--;
+            if (countDown<0 && !displayMessage){
+                thankSound.play();
+                displayMessage = true;
+                textPanel = new TextPanel("wellDone2");
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+            }
+            if (Greenfoot.isKeyDown("enter") && displayMessage){
+                removeObject(textPanel);
+                Greenfoot.setWorld(new LevelsScreen());
+                suspenseSound.stop();
+                spaceship.stopSound();
+                checkUnlockLevel();
+            }
+        }
     }
 
     /**

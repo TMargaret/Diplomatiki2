@@ -32,7 +32,7 @@ public class DragonLevel extends World
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
-        //suspenseSound.playLoop();
+        suspenseSound.playLoop();
 
     }
 
@@ -41,7 +41,7 @@ public class DragonLevel extends World
         super(1000, 600, 1);
         alex = oldAlex;
         prepare();       
-        //suspenseSound.playLoop();
+        suspenseSound.playLoop();
     }
 
     public void act(){
