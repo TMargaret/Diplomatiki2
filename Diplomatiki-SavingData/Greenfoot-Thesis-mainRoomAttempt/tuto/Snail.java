@@ -16,6 +16,7 @@ public class Snail extends SmoothMover
     final int IMG_WIDTH = snail.getWidth()/6;
     final int IMG_HEIGHT = snail.getHeight()/3;
     int count = 0;
+    int counter=0;
 
     public Snail(){
         super(new Vector(-3.0, 0));
@@ -44,15 +45,18 @@ public class Snail extends SmoothMover
     }
 
     public void explosion(){
+        counter++;
         if (getX() <= 0){         
             getWorld().addObject(exp, getX(), getY());
             getWorld().removeObject(this);
         }
-        else if (isTouching(Alex.class)){
+        else if (isTouching(Alex.class) && counter > 300){
             HealthBar.looseHealth();
+            counter = 0;
             getWorld().addObject(exp, getX(), getY());
             getWorld().removeObject(this);
         }
+
     }
 }
 
