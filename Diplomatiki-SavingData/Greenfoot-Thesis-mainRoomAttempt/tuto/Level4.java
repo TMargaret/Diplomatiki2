@@ -65,7 +65,7 @@ public class Level4 extends World
         createWorldFromTiles();
         shiftWorld(0);
         prepare();
-        //lvl4.playLoop();
+        lvl4.playLoop();
 
     }
 

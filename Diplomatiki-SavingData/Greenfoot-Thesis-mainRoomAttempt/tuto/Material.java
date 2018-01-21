@@ -16,7 +16,7 @@ public class Material extends Actor
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
 
-    public boolean isEDown = false, isActive = false, tryAgainOrLeave = false;
+    boolean isEDown = false, isActive = false, tryAgainOrLeave = false;
     boolean wrongCommand = false;
     boolean thisLvl = false;
     TextField textField;

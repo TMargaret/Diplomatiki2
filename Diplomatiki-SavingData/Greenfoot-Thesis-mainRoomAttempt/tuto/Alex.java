@@ -200,6 +200,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         (getOneIntersectingObject(Barrel.class) != null) ||  
         (getOneIntersectingObject(Grass.class) != null) ||  
         (getOneIntersectingObject(Material.class) != null) ||
+        (getOneIntersectingObject(SpaceShip.class) != null) ||
         (getOneIntersectingObject(Unicorn.class) != null) ||
         (getOneIntersectingObject(Locals.class) !=null) ||
         (getX() < getImage().getWidth()/2) ||
@@ -230,7 +231,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         (getOneIntersectingObject(Crate.class) != null) ||  
         (getOneIntersectingObject(Barrel.class) != null) || 
         (getOneIntersectingObject(SignBlock.class) != null)||
-        (getOneIntersectingObject(Wall2.class) != null) 
+        (getOneIntersectingObject(Wall2.class) != null) ||
+        (getOneIntersectingObject(SpaceShip.class) != null) 
         || (getOneIntersectingObject(Grass.class) != null)  
         || (getOneIntersectingObject(Material.class) != null)
         || (getOneIntersectingObject(Unicorn.class) != null)
