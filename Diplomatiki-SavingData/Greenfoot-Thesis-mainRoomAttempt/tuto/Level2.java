@@ -75,7 +75,7 @@ public class Level2 extends World
                 butterfly.stop();
             }
         }
-        if (redalien.getTalking()){
+        if (redalien.getTalking() || alex.getIsExit()){
             found = true;
         }
         matList.remove(mat);

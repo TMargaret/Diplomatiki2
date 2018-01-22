@@ -23,6 +23,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     static boolean flagForRemovedItem = false;
     private static final int BOUNDARY = 40;
     List<Bubble> bbl;
+    TextPanel tp;
+    boolean isExit = false;
 
     HealthLogo healthLogo;
     HealthBar healthBar;
@@ -69,28 +71,28 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             healthLogo = new HealthLogo();
 
             invBar = new InvBar();
-            inventoryBtn = new Button(invBar.getImage().getWidth(), invBar.getImage().getHeight());
+            inventoryBtn = new Button(invBar.getImage().getWidth()-5, invBar.getImage().getHeight()-5);
             inventoryBtn.setResponder(this);
 
             exitBar = new ExitBar();
-            exitBtn = new Button(exitBar.getImage().getWidth(), exitBar.getImage().getHeight());
+            exitBtn = new Button(exitBar.getImage().getWidth()-5, exitBar.getImage().getHeight()-5);
             exitBtn.setResponder(this);
 
             hintBar = new HintBar();
-            hintBtn = new Button(hintBar.getImage().getWidth(), hintBar.getImage().getHeight());
+            hintBtn = new Button(hintBar.getImage().getWidth()-5, hintBar.getImage().getHeight()-5);
             hintBtn.setResponder(this);
 
         }
         getWorld().addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
         getWorld().addObject(healthLogo,21,19);
-        getWorld().addObject(invBar,947,18);
+        getWorld().addObject(invBar,940,18);
 
-        getWorld().addObject(inventoryBtn, 947, 18);
+        getWorld().addObject(inventoryBtn, 940, 20);
 
         getWorld().addObject(exitBar,984,18);
-        getWorld().addObject(exitBtn, 984, 18);
-        getWorld().addObject(hintBar, 910, 18);
-        getWorld().addObject(hintBtn, 910, 18);
+        getWorld().addObject(exitBtn, 984, 20);
+        //getWorld().addObject(hintBar, 900, 18);
+        //getWorld().addObject(hintBtn, 900, 20);
 
     }
 
@@ -103,6 +105,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         gameOver();
         addToInventory();
         checkWorld();
+        isExit();
     }
 
     public void checkWorld(){
@@ -140,7 +143,6 @@ public class Alex extends SpriteSheet implements ButtonResponder{
      */
     public void move(int moveAmt){
 
- 
         if (!canMove){
             return;
         }
@@ -214,15 +216,14 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                 bbl = getWorld().getObjects(Bubble.class);
                 if (bbl !=null){
                     for(Bubble bbls: bbl){
-                    getWorld().removeObject(bbls);
-                }
+                        getWorld().removeObject(bbls);
+                    }
                 }
             } if( (getX() < (getWorld().getWidth()/2)) &&(getKey == "left" || getKeyBoth=="upLeft" || getKeyBoth=="downLeft")) {
                 ((Level4)getWorld()).shiftWorld(-dx/2);
                 setLocation(getX()-dx, getY());
-             }
+            }
         }
-        
 
         // setLocation(getX(), getY() + dy);
         if ((getOneIntersectingObject(Wall.class) != null)||
@@ -240,7 +241,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         (getY() < getImage().getHeight()/2) ||
         (getY() > getWorld().getHeight() - getImage().getHeight()/2)){
             setLocation(getX(), getY() - dy);
-    }
+        }
         //initializes the getKey variables
         initGetKey();
     }
@@ -420,16 +421,37 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             invIsOpen = false;
         }
         //exitButton
-        if (Greenfoot.mouseClicked(exitBtn))
+        if (Greenfoot.mouseClicked(exitBtn) && !isExit)
         {
-            Greenfoot.setWorld(new LevelsScreen());
+            isExit = true;
+            tp = new TextPanel("exit");
+            getWorld().addObject(tp, getWorld().getWidth()/2, getWorld().getHeight()/2);            
+
+        }
+    }
+    
+    public boolean getIsExit(){
+        return isExit;
+    }
+    
+    public void isExit(){
+        if (Greenfoot.isKeyDown("Y") && isExit){
+            getWorld().removeObject(tp);
+            setCanMove(true);
+            Greenfoot.setWorld(new LevelsScreen());          
             Level1.level0Sound.stop();
             Level3.lvl.stop();
             Level2.lvlSound.stop();
+            Level4.lvl4.stop();
             DragonLevel.suspenseSound.stop();
         }
-
+        if (Greenfoot.isKeyDown("N") && isExit){         
+            getWorld().removeObject(tp);
+            isExit = false;
+            setCanMove(true);
+        }
     }
+
 
     public void addToInventory(){
 

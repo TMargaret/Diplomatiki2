@@ -72,7 +72,7 @@ public class mainHouseRoom extends World
         exitRoom();
         //checkAxe();
         boolean doNotMove = false;
-        if (elder.getTalking() || (flag == 1) || (isActive)){
+        if (elder.getTalking() || (flag == 1) || (isActive) || alex.getIsExit()){
             doNotMove  = true;
         }
         for(Door door : doorList){

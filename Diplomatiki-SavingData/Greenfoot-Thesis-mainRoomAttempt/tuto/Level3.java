@@ -99,6 +99,9 @@ public class Level3 extends World
 
             }
         }
+        if (alex.getIsExit()){
+            found = true;
+        }
         for(Material material : matList){
             if(material.getWorldOfType(Level3.class) == null){
                 pickUpList.add(material);

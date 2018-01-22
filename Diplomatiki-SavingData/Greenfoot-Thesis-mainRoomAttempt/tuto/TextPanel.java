@@ -58,6 +58,10 @@ public class TextPanel extends Actor implements Serializable
         if (w instanceof Level4 || w instanceof DLevel_4){
             makeTextL4();
         }
+        
+        if (w instanceof Level5){
+            makeTextL5();
+        }
     }
 
     private void makeTextL0(){
@@ -116,6 +120,10 @@ public class TextPanel extends Actor implements Serializable
         if (status == "youLost"){
             String mytext = text.youLost();
             makeImage(mytext, "alien");
+        }
+        if (status == "exit"){
+            String mytext = text.exit();
+            makeImage(mytext);
         }
 
     }
@@ -176,6 +184,11 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.wellDonelvl2();
             makeImage(mytext, "alien");
         }
+        if (status == "exit"){
+            String mytext = text.exit();
+            makeImage(mytext);
+        }
+
 
     }
 
@@ -252,6 +265,11 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.youLost();
             makeImage(mytext, "elder");
         }
+        if (status == "exit"){
+            String mytext = text.exit();
+            makeImage(mytext);
+        }
+
     }
 
     private void makeTextL22(){
@@ -275,6 +293,11 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.youLost();
             makeImage(mytext, "dragon");
         }
+        if (status == "exit"){
+            String mytext = text.exit();
+            makeImage(mytext);
+        }
+
     }
 
     private void makeTextL4(){
@@ -299,6 +322,14 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.wellDone4();
             makeImage(mytext, "unicorn");
         }
+        if (status == "exit"){
+            String mytext = text.exit();
+            makeImage(mytext);
+        }
+
+    }
+    
+    private void makeTextL5(){
     }
 
     private void makeImage(String title)
@@ -320,7 +351,7 @@ public class TextPanel extends Actor implements Serializable
         || (status == "welcomeMsg")) image.drawString("Πάτα ENTER", 30, 290);
         if (status == "lockedDoor" || status=="houseMsgL0") image.drawString("Πάτα ENTER", 30, 290);
         if (status == "allMaterial")  image.drawString("Πάτα ENTER", 30, 290);
-        // if (status == "start2") image.drawString("Πάτα ENTER", 200, 280);
+        if (status == "exit") image.drawString("ΝΑΙ - Πάτησε Y \n\nΟΧΙ - Πάτησε Ν", 200, 150);
         // if (status == "start_quiz") image.drawString("Πάτα ENTER", 200, 280);
         // if (status == "start_quiz2") image.drawString("Πάτα ENTER για να ξεκινήσεις", 60, 280);
         setImage(image);

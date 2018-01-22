@@ -23,7 +23,7 @@ public class Level4 extends World
     private ArrayList<SignBlock> sbList = new ArrayList<SignBlock>();
     private ArrayList<Material> materialList = new ArrayList<Material>();
     private ArrayList <Material> pickUpList = new ArrayList<Material>();
-    GreenfootSound lvl4 = new GreenfootSound("level4.wav");
+    static GreenfootSound lvl4 = new GreenfootSound("level4.wav");
     Unicorn unicorn = new Unicorn();
     Material mat;
     SignBlock signB;
@@ -90,7 +90,7 @@ public class Level4 extends World
 
     public void act(){
         boolean doNotMove = false;
-        if (unicorn.getTalking() || isOnDoor){
+        if (unicorn.getTalking() || isOnDoor || alex.getIsExit()){
             doNotMove  = true;
         }
 

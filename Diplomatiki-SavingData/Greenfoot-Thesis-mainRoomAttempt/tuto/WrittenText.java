@@ -18,6 +18,9 @@ public class WrittenText implements Serializable
     public WrittenText(){
     }  
 
+    public String exit(){
+        return "Έξοδος;";
+    }
     //level1
     public String welcomeMsgL0(){
         return "Καλώς ήρθες στον πλανήτη μου Methodius!\n\nΕίμαι ο πλανητάρχης Methodis και μπορώ \nνα σε "+

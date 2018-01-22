@@ -64,6 +64,7 @@ public class Level5 extends World
 
     public void act(){
         boolean found = false;
+       // || alex.getIsExit()
         // for(Material material : matList){
             // if(material.getWorldOfType(Level5.class) == null){
                 // pickUpList.add(material);
