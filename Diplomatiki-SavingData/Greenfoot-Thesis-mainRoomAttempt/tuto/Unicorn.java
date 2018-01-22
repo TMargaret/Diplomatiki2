@@ -76,7 +76,7 @@ public class Unicorn extends ScrollingObstacle
                         }
                         if (counter<0 && !isActive && isEDown && count_enter == 0){
                            // taskText = new TextPanel(getTextMessage());
-                           ImageTheory imgT = new ImageTheory();
+                           ImageTheory imgT = new ImageTheory("inhe",16, "jpg");
                             getWorld().addObject(imgT, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             setActive(true);
                             setTalking(true);

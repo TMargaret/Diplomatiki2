@@ -191,7 +191,7 @@ public class WrittenText implements Serializable
     public String taskText6(){
         return "Τέλος, μια μέθοδος μπορεί να πάρει όσες\nπαραμέτρους χρειαζόμαστε:"
         +"\nH υπογραφή της μεθόδου use θα ήταν:\npublic void use(Object wood, Object straw)\n{}\n"
-        +"\nκαι αντίστοιχα η κλήση της θα ήταν:\nAlex.use(wood, straw);";
+        +"\nκαι αντίστοιχα η κλήση της θα ήταν:\nAlex.use(wood,straw);";
     }
 
     public String taskText7(){

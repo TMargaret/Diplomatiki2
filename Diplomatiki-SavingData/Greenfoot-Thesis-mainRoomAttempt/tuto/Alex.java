@@ -147,39 +147,39 @@ public class Alex extends SpriteSheet implements ButtonResponder{
 
         int dx = 0, dy = 0;
         //checking which button(s) is/are pressed
-        if (Greenfoot.isKeyDown("down") && Greenfoot.isKeyDown("right")) {
+        if (Greenfoot.isKeyDown("s") && Greenfoot.isKeyDown("d")) {
             getKeyBoth = "downRight";
             animation();
         }
-        if (Greenfoot.isKeyDown("down") && Greenfoot.isKeyDown("left")) {
+        if (Greenfoot.isKeyDown("s") && Greenfoot.isKeyDown("a")) {
             getKeyBoth = "downLeft";
             animation();
         }
-        if (Greenfoot.isKeyDown("up") && Greenfoot.isKeyDown("right")) {
+        if (Greenfoot.isKeyDown("w") && Greenfoot.isKeyDown("d")) {
             getKeyBoth = "upRight";
             animation();
         }
-        if (Greenfoot.isKeyDown("up") && Greenfoot.isKeyDown("left")) {
+        if (Greenfoot.isKeyDown("w") && Greenfoot.isKeyDown("a")) {
             getKeyBoth = "upLeft";
             animation();
         }
-        if (Greenfoot.isKeyDown("right")) {
+        if (Greenfoot.isKeyDown("d")) {
             dx = 4;
             getKey = "right";
             animation();
 
         }
-        if (Greenfoot.isKeyDown("left")) {
+        if (Greenfoot.isKeyDown("a")) {
             dx = -4;
             getKey = "left";
             animation();
         }
-        if (Greenfoot.isKeyDown("down")) {
+        if (Greenfoot.isKeyDown("s")) {
             dy = 4;
             getKey = "down";
             animation();
         }
-        if (Greenfoot.isKeyDown("up")) {
+        if (Greenfoot.isKeyDown("w")) {
             dy = -4;
             getKey = "up";
             animation();

@@ -29,7 +29,8 @@ public class Locals extends Actor
     {
 
         localsDialogue();
-        blink();   
+        blink(); 
+        
     }
 
     protected void addedToWorld(World w){
@@ -75,39 +76,27 @@ public class Locals extends Actor
                             getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             setActive(true);
                             setTalking(true);
-                            count_enter = 1;
+                            //count_enter = 1;
                         }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 1 && counter<0 && isEDown){
-                            counter = 20;
-                            actionInDialogue();
-                            count_enter = 2;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 2 && counter <0 && isEDown){
+                        if (Greenfoot.isKeyDown("right") && count_enter < getCountEnterTotal() && counter <0 && isEDown){
+                            count_enter++;
                             counter = 30;
                             actionInDialogue();
-                            count_enter = 3;
+                            
                         }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 3 && counter <0 && isEDown){
+                        if (Greenfoot.isKeyDown("left") && count_enter >= 1 && counter <0 && isEDown){
+                            count_enter--;
                             counter = 30;
                             actionInDialogue();
-                            count_enter = 4;
+                            
                         }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 4 && counter <0 && isEDown){
+                        if (Greenfoot.isKeyDown("left") && count_enter <= 0 && counter <0 && isEDown){
+                            //count_enter--;
                             counter = 30;
-                            actionInDialogue();
-                            count_enter = 5;                            
+                           // actionInDialogue();
+                            
                         }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 5 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();                          
-                            count_enter = 6;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 6 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();
-                            count_enter = 7;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 7 && counter <0 && isEDown){
+                        if (Greenfoot.isKeyDown("right") && count_enter >= getCountEnterTotal() && counter <0 && isEDown){
                             counter = 30;
                             getWorld().removeObject(taskText);
                             count_enter = 0;
@@ -122,6 +111,10 @@ public class Locals extends Actor
                 }
             }
         }
+    }
+    
+    public int getCountEnterTotal(){
+        return 1;
     }
 
     public void actionInDialogue(){

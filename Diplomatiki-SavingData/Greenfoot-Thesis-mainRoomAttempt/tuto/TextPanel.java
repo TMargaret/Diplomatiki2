@@ -231,6 +231,11 @@ public class TextPanel extends Actor implements Serializable
             count_slide = 7;
             makeImage(mytext, "elder");
         }
+        if (status == "taskText7") {
+            String mytext = text.taskText7();
+            count_slide = 8;
+            makeImage(mytext, "elder");
+        }
         if (status == "lockedDoor") {
             String mytext = text.lockedDoor();
             makeImage(mytext);
@@ -273,41 +278,7 @@ public class TextPanel extends Actor implements Serializable
     }
 
     private void makeTextL4(){
-        // if (status == "welcomeMsgL4") {
-            // String mytext = text.welcomeMsgL02();
-            // count_slide = 1;
-            // makeImage(mytext, "unicorn");
-        // }
-        // if (status == "taskText1L4") {
-            // String mytext = text.taskText1L02();
-            // count_slide = 2;
-            // makeImage(mytext, "unicorn");
-        // }
-        // if (status == "taskText2L4") {
-            // String mytext = text.taskText2L02();
-            // count_slide = 3;
-            // makeImage(mytext, "unicorn");
-        // }
-        // if (status == "taskText3L4") {
-            // String mytext = text.taskText3L02();
-            // count_slide = 4;
-            // makeImage(mytext, "unicorn");
-        // }
-        // if (status == "taskText4L4") {
-            // String mytext = text.taskText4L02();
-            // count_slide = 5;
-            // makeImage(mytext, "unicorn");
-        // }
-        // if (status == "taskText5L4") {
-            // String mytext = text.taskText5L02();
-            // count_slide = 6;
-            // makeImage(mytext, "unicorn");
-        // }
-        // if (status == "taskText6L4") {
-            // String mytext = text.taskText6L02();
-            // count_slide = 7;
-            // makeImage(mytext, "unicorn");
-        // }
+
         if (status == "youLost"){
             String mytext = text.youLost();
             makeImage(mytext, "unicorn");
@@ -372,16 +343,18 @@ public class TextPanel extends Actor implements Serializable
             || status == "taskText3L0" || status == "taskText4L0" || status == "taskText5L0"
             || status == "taskText6L0" )
             {
-                image.drawString("Πάτα ENTER", 30, 290);
-                image.drawString(count_slide+"/7", 450, 290);
+                image.drawString("ΕΠΟΜΕΝΟ\n->", 420, 290);
+                image.drawString("ΠΙΣΩ\n<-", 40, 290);
+                image.drawString(count_slide+"/7", 490, 30);
             }
             if (status == "wrongKey" || status=="wellDone") image.drawString("Πάτα ENTER", 30, 290);
             if (status == "welcomeMsgL02" || status == "taskText1L02" || status == "taskText2L02"
             || status == "taskText3L02" || status == "taskText4L02" || status == "taskText5L02"
             || status == "taskText6L02" )
             {
-                image.drawString("Πάτα ENTER", 30, 290);
-                image.drawString(count_slide+"/7", 450, 290);
+                image.drawString("ΕΠΟΜΕΝΟ\n->", 420, 290);
+                image.drawString("ΠΙΣΩ\n<-", 40, 290);
+                image.drawString(count_slide+"/7", 490, 30);
             }
             if (status == "wrongKey" || status=="wellDone" || status=="wellDonelvl2") image.drawString("Πάτα ENTER", 30, 290);
             if (status=="youLost") image.drawString("Πάτα SPACE", 30, 290);
@@ -398,9 +371,10 @@ public class TextPanel extends Actor implements Serializable
             image.setColor(Color.WHITE);          
 
             if (status == "welcomeMsg" || status == "taskText1" || status == "taskText2" || 
-            status == "taskText3" || status == "taskText4" || status == "taskText5" || status == "taskText6"){
-                image.drawString("Πάτα ENTER", 30, 290);
-                image.drawString(count_slide+"/7", 450, 290);
+            status == "taskText3" || status == "taskText4" || status == "taskText5" || status == "taskText6" || status == "taskText7"){
+                image.drawString("ΕΠΟΜΕΝΟ\n->", 420, 290);
+                image.drawString("ΠΙΣΩ\n<-", 40, 290);
+                image.drawString(count_slide+"/8", 490, 30);
             }
             if ((status == "wrongKey") || (status == "wellDone2") ) image.drawString("Πάτα ENTER", 30, 290);
             if (status=="youLost") image.drawString("Πάτα SPACE", 30, 290);

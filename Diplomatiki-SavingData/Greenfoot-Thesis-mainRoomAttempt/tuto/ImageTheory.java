@@ -15,14 +15,23 @@ public class ImageTheory extends Actor
     private Button before_button = new Button();
     Button count_button = new Button();
     private boolean flag_for_menu, flag_forward, flag_backward;
-    private GreenfootImage img = new GreenfootImage("inhe1.jpg");
+    private GreenfootImage img;
     private int count_image = 1;
-    private String quiz = "quiz";
     boolean isOn = false;
-    private int slides = 16;
+    private int slides = 0;
     boolean isTwo = false;
+    String myImg;
+    String typeOfImg;
 
     public ImageTheory(){
+        setImage(img);
+    }
+    
+    public ImageTheory(String image, int slideNum, String typeOfImage){
+        myImg = image;
+        typeOfImg = typeOfImage;
+        img = new GreenfootImage(myImg + count_image + "." + typeOfImg);
+        slides = slideNum;
         setImage(img);
     }
 
@@ -51,7 +60,7 @@ public class ImageTheory extends Actor
     public void checkImage()
     {
         next_button.setTitle("ΕΠΟΜΕΝΟ");
-        if (count_image==1 && before_button.getWorldOfType(Level4.class)!=null){
+        if (count_image==1 && before_button.getWorldOfType(getWorld().getClass())!=null){
             isTwo=false;
             getWorld().removeObject(before_button);
         }
@@ -65,7 +74,7 @@ public class ImageTheory extends Actor
                 
                 count_image++;
                 getImage().clear();
-                setImage(new GreenfootImage("inhe"+count_image+".jpg"));
+                setImage(new GreenfootImage(myImg + count_image + "." + typeOfImg));
                 count_button.setTitle(count_image+"/"+slides);
             }
             if (count_image == slides){          
