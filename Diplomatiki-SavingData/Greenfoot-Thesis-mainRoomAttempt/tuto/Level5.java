@@ -64,6 +64,10 @@ public class Level5 extends World
 
     public void act(){
         boolean found = false;
+        if (camel.getTalking() ||alex.getIsExit()){
+            found  = true;
+        }
+        alex.setCanMove(!found);
        // || alex.getIsExit()
         // for(Material material : matList){
             // if(material.getWorldOfType(Level5.class) == null){
@@ -77,7 +81,7 @@ public class Level5 extends World
             // }
         // }
         // matList.remove(mat);
-        // alex.setCanMove(!found);
+         
         // enterInRoom();
         // //isBridgeFixed();
         // if (!found && camel.getDoneWithDialogue() && !displayMessage){

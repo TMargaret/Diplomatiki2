@@ -128,6 +128,10 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         if (getWorld() instanceof mainHutRoom){
             mainHutRoom mainHutRoom = (mainHutRoom)getWorld();
             materialList = mainHutRoom.getMaterialList();
+        }       
+        if (getWorld() instanceof Level5){
+            Level5 level5 = (Level5)getWorld();
+            materialList = level5.getMaterialList();
         }
     }
 

@@ -57,8 +57,7 @@ public class TextPanel extends Actor implements Serializable
         }
         if (w instanceof Level4 || w instanceof DLevel_4){
             makeTextL4();
-        }
-        
+        }       
         if (w instanceof Level5){
             makeTextL5();
         }
@@ -330,6 +329,10 @@ public class TextPanel extends Actor implements Serializable
     }
     
     private void makeTextL5(){
+        if (status == "exit"){
+            String mytext = text.exit();
+            makeImage(mytext);
+        }
     }
 
     private void makeImage(String title)

@@ -18,9 +18,27 @@ public class Camel extends Locals
     {
         localsDialogue();
         blink();
-    }   
-    
-        public void setImage1(){
+    }  
+
+    @Override
+    public void inAction(){
+        if (super.counter<0 && !super.isActive && super.isEDown && super.count_enter == 0){
+            ImageTheory imgT = new ImageTheory("inhe",16, "jpg");
+            getWorld().addObject(imgT, getWorld().getWidth()/2, getWorld().getHeight()/2);
+            setActive(true);
+            setTalking(true);
+            count_enter = 1;
+            counter = 30;
+        }
+        if ((getWorld().getObjects(ImageTheory.class).size() == 0) && count_enter == 1 && counter<0 && isEDown){
+            counter = 20;
+            setActive(false);
+            setTalking(false);
+            isEDown = false;
+        }
+    }
+
+    public void setImage1(){
         setImage(img);
 
     }

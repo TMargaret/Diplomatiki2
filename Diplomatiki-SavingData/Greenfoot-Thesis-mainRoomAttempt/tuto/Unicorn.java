@@ -75,7 +75,6 @@ public class Unicorn extends ScrollingObstacle
                             getWorld().removeObject(bubble);
                         }
                         if (counter<0 && !isActive && isEDown && count_enter == 0){
-                           // taskText = new TextPanel(getTextMessage());
                            ImageTheory imgT = new ImageTheory("inhe",16, "jpg");
                             getWorld().addObject(imgT, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             setActive(true);
@@ -95,20 +94,7 @@ public class Unicorn extends ScrollingObstacle
                 }
             }
         }
-    }
-    
-    
-
-
-    public void actionInDialogue(){
-        getWorld().removeObject(taskText);
-        taskText = new TextPanel(getTextMessage());
-        getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
-    }
-
-    public void extraAction(){
-
-    }
+    }  
 
     public int getCount_Enter(){
         return count_enter;
@@ -146,28 +132,6 @@ public class Unicorn extends ScrollingObstacle
             setImage2();
             count = 0;
         }
-    }
-
-    public String getTextMessage(){
-        String text = "";
-        int textCase = getCount_Enter();
-        switch (textCase){
-            case 0: text = "welcomeMsgL4";
-            break;
-            case 1: text = "taskText1L4";
-            break;
-            case 2: text = "taskText2L4";
-            break;
-            case 3: text = "taskText3L4";
-            break;
-            case 4: text = "taskText4L4";
-            break;
-            case 5: text = "taskText5L4";
-            break;
-            case 6: text = "taskText6L4";
-            break;
-        }
-        return text;
     }
 
     public void setImage1(){
