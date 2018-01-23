@@ -32,6 +32,7 @@ public class Level5 extends World
     private TextPanel textPanel;
     int count_item = 0;
     int counterEnd = 200;
+    Boat boat;
     boolean displayMessage = false;
     public static GreenfootSound lvlSound = new GreenfootSound("level02.mp3");
     private GreenfootSound thankSound = new GreenfootSound("thank.wav");
@@ -68,24 +69,24 @@ public class Level5 extends World
             found  = true;
         }
         alex.setCanMove(!found);
-       // || alex.getIsExit()
+        // || alex.getIsExit()
         // for(Material material : matList){
-            // if(material.getWorldOfType(Level5.class) == null){
-                // pickUpList.add(material);
-                // mat = material; //save material to mat so as to remove without concurrent exception
+        // if(material.getWorldOfType(Level5.class) == null){
+        // pickUpList.add(material);
+        // mat = material; //save material to mat so as to remove without concurrent exception
 
-            // }
-            // if (material.getActive()){
-                // found  = true;
-                // butterfly.stop();
-            // }
+        // }
+        // if (material.getActive()){
+        // found  = true;
+        // butterfly.stop();
+        // }
         // }
         // matList.remove(mat);
-         
+
         // enterInRoom();
         // //isBridgeFixed();
         // if (!found && camel.getDoneWithDialogue() && !displayMessage){
-           // butterfly();
+        // butterfly();
         // }
         // endGame();
     }
@@ -98,30 +99,40 @@ public class Level5 extends World
     {
         addGrass();
         addWall();
-        
+        Grass grass49 = new Grass();
+        addObject(grass49,488,428);
+        Grass grass50 = new Grass();
+        addObject(grass50,626,424);
+
         addObject(alex,79,525);
 
         camel = new Camel();
-        addObject(camel,315,540);
+        addObject(camel,315,240);
 
-        // Sign sign = new Sign();
-        // addObject(sign,347,380);
+        Sign sign = new Sign();
+        sign.getImage().scale(sign.getImage().getWidth()/2, sign.getImage().getHeight()/2);
+        addObject(sign,950,380);
 
         // Sign sign2 = new Sign();
         // addObject(sign2,347,560);
 
-        // lumber = new Lumber(1);
-        // lumber.getImage().scale(lumber.getImage().getWidth()/2, lumber.getImage().getHeight()/2);
-        // addObject(lumber,342,550);
-        // clay = new Clay(1);
-        // clay.getImage().scale(clay.getImage().getWidth()/2, clay.getImage().getHeight()/2);
-        // addObject(clay,342,375);
+        Lumber lumber = new Lumber(1);
+        lumber.getImage().scale(lumber.getImage().getWidth()/2, lumber.getImage().getHeight()/2);
+        addObject(lumber,342,550);
+        Clay clay = new Clay(1);
+        clay.getImage().scale(clay.getImage().getWidth()/2, clay.getImage().getHeight()/2);
+        addObject(clay,342,375);
 
         //butterfly = new Butterfly();
 
         matList.add(bridge);
         matList.add(lumber);
         matList.add(clay);     
+
+        boat = new Boat(alex);
+        addObject(boat,430,430);
+
+        
 
     }
 
@@ -149,10 +160,11 @@ public class Level5 extends World
         addObject(grass236,395,320);
         Grass grass246 = new Grass();
         addObject(grass246,390,360);
+        
         Grass grass26 = new Grass();
-        addObject(grass26,385,400);
+        addObject(grass26,450,480);
         grass27 = new Grass();
-        addObject(grass27,380,440);
+        addObject(grass27,500,480);
         grass28 = new Grass();
         addObject(grass28,375,480);
         Grass grass29 = new Grass();
@@ -168,10 +180,11 @@ public class Level5 extends World
         addObject(grass336,685,320);
         Grass grass346 = new Grass();
         addObject(grass346,690,360);
+        
         Grass grass30 = new Grass();
-        addObject(grass30,695,400);
+        addObject(grass30,650,480);
         grass31 = new Grass();
-        addObject(grass31,700,440);
+        addObject(grass31,600,480);
         grass32 = new Grass();
         addObject(grass32,705,480);
         Grass grass33 = new Grass();
@@ -181,14 +194,17 @@ public class Level5 extends World
         Grass grass37 = new Grass();
         addObject(grass37,725,600);
         Grass grass75 = new Grass();
-        addObject(grass75,464,390);
+        
+        addObject(grass75,550,480);
         Grass grass76 = new Grass();
-        addObject(grass76,547,390);
+        addObject(grass76,450,350);
         Grass grass77 = new Grass();
-        addObject(grass77,470,529);
+        addObject(grass77,500,350);
         Grass grass78 = new Grass();
-       addObject(grass78,557,533);
-  
+        addObject(grass78,557,350);
+        Grass grass548 = new Grass();
+        addObject(grass548,624,358);
+
         //creates a new array that holds the grass actor
         Grass[] grass =new Grass[25];
         Grass[] grass2 =new Grass[25];
@@ -241,23 +257,23 @@ public class Level5 extends World
     }
 
     // public void isBridgeFixed(){
-        // if (bridge.getIsFixed()){
-            // removeObject(grass27);
-            // removeObject(grass28);
-            // removeObject(grass31);
-            // removeObject(grass32);
-            // for (Material mat: matList){
-                // Alex.flagForRemovedItem = false;
-                // Alex.removeFromInv(true);
-            // }
-        // }
+    // if (bridge.getIsFixed()){
+    // removeObject(grass27);
+    // removeObject(grass28);
+    // removeObject(grass31);
+    // removeObject(grass32);
+    // for (Material mat: matList){
+    // Alex.flagForRemovedItem = false;
+    // Alex.removeFromInv(true);
     // }
-    
+    // }
+    // }
+
     public int getRandomNumber(int start,int end)
-{
-       int normal = Greenfoot.getRandomNumber(end-start+1);
-       return normal+start;
-}
+    {
+        int normal = Greenfoot.getRandomNumber(end-start+1);
+        return normal+start;
+    }
 
     public void butterfly(){
         //makes the butterfly appear within the borders
@@ -277,8 +293,8 @@ public class Level5 extends World
             }
         }
     }
-    
-        public void endGame(){
+
+    public void endGame(){
         if (bridge.getIsFixed()){
             counterEnd--;
             if (counterEnd<0 && !displayMessage){

@@ -1,15 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SpaceShipSparePart here.
+ * Write a description of class CopyOfSpaceShipSparePart here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SpaceShipSparePart extends Material
+public class CopyOfSpaceShipSparePart extends Material
 {
     /**
-     * Act - do whatever the SpaceShipSparePart wants to do. This method is called whenever
+     * Act - do whatever the CopyOfSpaceShipSparePart wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
