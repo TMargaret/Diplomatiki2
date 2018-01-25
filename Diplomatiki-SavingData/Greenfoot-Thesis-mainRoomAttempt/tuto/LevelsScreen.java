@@ -51,7 +51,7 @@ public class LevelsScreen extends World implements ButtonResponder
     }
 
     public void prepare(){
-        lbl = new Label("Μενού", 50);
+        lbl = new Label("Menu", 50);
         lbl.setFillColor(Color.WHITE);
         addObject(lbl, 70, 30);
 
