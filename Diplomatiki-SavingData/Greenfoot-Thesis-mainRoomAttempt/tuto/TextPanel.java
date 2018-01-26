@@ -9,8 +9,8 @@ import java.io.*;
 public class TextPanel extends Actor implements Serializable
 {
     public static final float FONT_SIZE = 24.0f;
-    public static final int WIDTH = 540;
-    public static final int HEIGHT = 330;
+    public static int WIDTH = 540;
+    public static int HEIGHT = 330;
     // public static final int TOTAL_ANSWERS = 6;
     private String status = null;
     private WrittenText text;
@@ -27,6 +27,16 @@ public class TextPanel extends Actor implements Serializable
         text = new WrittenText();
         //this.iScore = iScore;
         //wrong_answers = TOTAL_ANSWERS - iScore;
+
+    }
+    
+        public TextPanel(String status, int width, int height)
+    {
+        this.status = status;
+        text = new WrittenText();
+        WIDTH = width;
+        HEIGHT = height;
+        
 
     }
 
@@ -333,6 +343,16 @@ public class TextPanel extends Actor implements Serializable
             String mytext = text.exit();
             makeImage(mytext);
         }
+        if (status == "boat"){
+            String mytext = text.boat();
+            makeImage(mytext);
+        }
+        if (status == "wrongKey"){
+            makeImage(debugMsg);
+        }
+        if (status == "wrong"){
+            makeImage("Wrong arraylist size");
+        }
     }
 
     private void makeImage(String title)
@@ -355,11 +375,13 @@ public class TextPanel extends Actor implements Serializable
         if (status == "lockedDoor" || status=="houseMsgL0") image.drawString("Πάτα ENTER", 30, 290);
         if (status == "allMaterial")  image.drawString("Πάτα ENTER", 30, 290);
         if (status == "exit") image.drawString("ΝΑΙ - Πάτησε Y \n\nΟΧΙ - Πάτησε Ν", 200, 150);
+        if (status == "wrongKey") image.drawString("Πάτα ENTER", 30, 290);
         // if (status == "start_quiz") image.drawString("Πάτα ENTER", 200, 280);
         // if (status == "start_quiz2") image.drawString("Πάτα ENTER για να ξεκινήσεις", 60, 280);
         setImage(image);
 
     }
+    
 
     private void makeImage(String title, String icon)
     //δημιουργείται η εικόνα του ScoreBoard

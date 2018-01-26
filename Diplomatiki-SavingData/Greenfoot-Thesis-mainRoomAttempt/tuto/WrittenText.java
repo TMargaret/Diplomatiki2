@@ -234,12 +234,32 @@ public class WrittenText implements Serializable
     public String repeatOrLeave(){
         return "Δεν έχεις μαζέψει τα σωστά ανταλλακτικά.\n\nΘέλεις να αρχίσεις ξανά;";
     }
+
     public String notEnough(){
         return "Δεν έχεις μαζέψει όλα τα ανταλλακτικά.\n\nΣυνέχισε την αναζήτηση...";
     }
-    
+
     public String wellDone4(){
         return "Τα κατάφερες!\n\nLive long and prosper!";
+    }
+
+    //level5
+    public String boat(){
+        return
+        "public class Boat {\n"+
+        "  public static void main(String args[]) {\n"+
+        "     ArrayList<String> cargo = new ArrayList<String>();\n"+
+        "     cargo.add(\"wood\");\n"+
+        "     cargo.add(\"clay\");\n"+
+        "     cargo.add(\"brick\");\n"+
+        "     cargo.set(2,\"wood\");\n"+
+        "     cargo.add(\"straw\");\n"+
+        "     cargo.remove(1);\n"+
+        "     cargo.add(\"brick\");\n"+
+        "     cargo.remove(0);\n"+
+        "     System.out.println(cargo.size());\n"+
+        "    }\n"+
+        " }\n\nΤι θα τυπωθεί;";
     }
 
 }

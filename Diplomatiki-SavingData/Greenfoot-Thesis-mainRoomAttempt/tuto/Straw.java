@@ -9,12 +9,24 @@ import java.util.List;
  */
 public class Straw extends Material
 {
+
+    private String myAnswer;
+    private int version = 0;
     /**
      * Straw Constructor
      *
      */
     public Straw(){
+        myAnswer = "Alex.pickUp(straw);";
+    }
 
+    public Straw(int newObjectVersion) 
+    {       
+        GreenfootImage image = getImage();
+        image.scale(image.getWidth() - 10, image.getHeight() - 10);
+        setImage(image);  
+        version = newObjectVersion;
+        myAnswer = "Alex.pickUp();";
     }
 
     /**
@@ -37,15 +49,14 @@ public class Straw extends Material
         return material;
     }
 
+
     /**
      * Method checkMaterial
      *
      * @return The correct answer value to be check
      */
     public String checkMaterial(){
-        String materialAnswer = "Alex.pickUp(straw);";
-        //String materialAnswer = "";
-        return materialAnswer;
+        return myAnswer;
     }
 
 }

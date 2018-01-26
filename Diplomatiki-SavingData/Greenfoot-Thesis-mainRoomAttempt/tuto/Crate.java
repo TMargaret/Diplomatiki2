@@ -9,9 +9,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Crate extends Actor
 {
     
+    
     public Crate(){
         GreenfootImage img = getImage();  
         img.scale(img.getWidth()/10, img.getHeight()/10);
+    }
+    
+    public Crate(String img){
+        GreenfootImage myImg = new GreenfootImage("opencrate.png");  
+        setImage(myImg);
+        //myImg.scale(myImg.getWidth()/2, myImg.getHeight()/2);
     }
     /**
      * Act - do whatever the Crate wants to do. This method is called whenever

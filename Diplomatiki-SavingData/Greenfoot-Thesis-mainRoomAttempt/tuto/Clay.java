@@ -37,7 +37,7 @@ public class Clay extends Material
         GreenfootImage image = getImage();
         image.scale(image.getWidth() - 10, image.getHeight() - 10);
         setImage(image);
-        myAnswer = "new Clay();";
+       // myAnswer = "new Clay();";
     }
 
     /**
@@ -81,6 +81,7 @@ public class Clay extends Material
             super.actionMat();
             break;
             case 1:
+            myAnswer = "new Clay();";
             newClay = new Clay();
             getWorld().addObject(newClay, 80, 485);
             Level2.matList.add(newClay);
@@ -88,6 +89,10 @@ public class Clay extends Material
             getWorld().removeObject(this);
             pickupSound.play();
             break;
+            case 2:
+            myAnswer = "Alex.pickUp(clay);";
+            super.actionMat();
+            
         }
     }
 
@@ -105,6 +110,9 @@ public class Clay extends Material
             break;
             case 1:
             msg = "Δημιούργησε ένα αντικείμενο " + getMaterial() + " και πάτα enter";
+            break;
+            case 2:
+            msg =  super.getTextFieldMessage();
             break;
         }
         return msg;

@@ -15,14 +15,11 @@ public class Level5 extends World
     public int X_ROAD_HOUSE = 550;
     public int X_ROAD_HUT2 = 885;
     private Alex alex;
-    Clay clay;
-    Lumber lumber;
-    Bridge bridge;
-    House2 house2;
+    Material clay,lumber,straw,brick;
     Camel camel;
     Grass grass27, grass28, grass31, grass32;
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
-    public static ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
+    ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
 
     private ArrayList <Material> pickUpList = new ArrayList<Material>(); //this is the list that Alex is retrieving
     boolean isEDown = false;
@@ -36,6 +33,7 @@ public class Level5 extends World
     boolean displayMessage = false;
     public static GreenfootSound lvlSound = new GreenfootSound("level02.mp3");
     private GreenfootSound thankSound = new GreenfootSound("thank.wav");
+    Crate crate1, crate2;
 
     Material mat;
     Butterfly butterfly;
@@ -60,29 +58,29 @@ public class Level5 extends World
      */
     public void setAlex(Alex oldAlex){
         alex = oldAlex;
-        addObject(alex,79,525);
+        addObject(alex,105,425);
     }
 
     public void act(){
         boolean found = false;
-        if (camel.getTalking() ||alex.getIsExit()){
+        if (camel.getTalking() ||alex.getIsExit() || boat.getActive()){
             found  = true;
         }
-        alex.setCanMove(!found);
+
         // || alex.getIsExit()
-        // for(Material material : matList){
-        // if(material.getWorldOfType(Level5.class) == null){
-        // pickUpList.add(material);
-        // mat = material; //save material to mat so as to remove without concurrent exception
+        for(Material material : matList){
+            if(material.getWorldOfType(Level5.class) == null){
+                pickUpList.add(material);
+                mat = material; //save material to mat so as to remove without concurrent exception
 
-        // }
-        // if (material.getActive()){
-        // found  = true;
-        // butterfly.stop();
-        // }
-        // }
-        // matList.remove(mat);
-
+            }
+            if (material.getActive()){
+                found  = true;
+                //butterfly.stop();
+            }
+        }
+        matList.remove(mat);
+        alex.setCanMove(!found);
         // enterInRoom();
         // //isBridgeFixed();
         // if (!found && camel.getDoneWithDialogue() && !displayMessage){
@@ -104,35 +102,36 @@ public class Level5 extends World
         Grass grass50 = new Grass();
         addObject(grass50,626,424);
 
-        addObject(alex,79,525);
+        addObject(alex,150,425);
 
         camel = new Camel();
         addObject(camel,315,240);
 
-        Sign sign = new Sign();
-        sign.getImage().scale(sign.getImage().getWidth()/2, sign.getImage().getHeight()/2);
-        addObject(sign,950,380);
-
-        // Sign sign2 = new Sign();
-        // addObject(sign2,347,560);
-
-        Lumber lumber = new Lumber(1);
-        lumber.getImage().scale(lumber.getImage().getWidth()/2, lumber.getImage().getHeight()/2);
-        addObject(lumber,342,550);
-        Clay clay = new Clay(1);
-        clay.getImage().scale(clay.getImage().getWidth()/2, clay.getImage().getHeight()/2);
-        addObject(clay,342,375);
-
-        //butterfly = new Butterfly();
-
-        matList.add(bridge);
-        matList.add(lumber);
-        matList.add(clay);     
-
         boat = new Boat(alex);
         addObject(boat,430,430);
 
+        crate1 = new Crate("open");
+        addObject(crate1, 940, 280);
+
+        crate2 = new Crate("open");
+        addObject(crate2, 940, 520);
+
+        lumber = new Lumber();
+        addObject(lumber,47,287);
+        clay = new Clay();
+        addObject(clay,284,579);
+        straw = new Straw(1);
+        addObject(straw,40,573);
+        brick = new Brick();
+        addObject(brick,37,390);
         
+        TextField t = new TextField(80,30);
+        addObject(t,50,490);
+
+        matList.add(lumber);
+        matList.add(clay); 
+        matList.add(straw);
+        matList.add(brick);
 
     }
 
@@ -160,7 +159,7 @@ public class Level5 extends World
         addObject(grass236,395,320);
         Grass grass246 = new Grass();
         addObject(grass246,390,360);
-        
+
         Grass grass26 = new Grass();
         addObject(grass26,450,480);
         grass27 = new Grass();
@@ -180,7 +179,7 @@ public class Level5 extends World
         addObject(grass336,685,320);
         Grass grass346 = new Grass();
         addObject(grass346,690,360);
-        
+
         Grass grass30 = new Grass();
         addObject(grass30,650,480);
         grass31 = new Grass();
@@ -194,7 +193,7 @@ public class Level5 extends World
         Grass grass37 = new Grass();
         addObject(grass37,725,600);
         Grass grass75 = new Grass();
-        
+
         addObject(grass75,550,480);
         Grass grass76 = new Grass();
         addObject(grass76,450,350);
@@ -294,18 +293,18 @@ public class Level5 extends World
         }
     }
 
-    public void endGame(){
-        if (bridge.getIsFixed()){
-            counterEnd--;
-            if (counterEnd<0 && !displayMessage){
-                thankSound.play();
-                displayMessage = true;
-                textPanel = new TextPanel("wellDonelvl2");
-                addObject(textPanel, getWidth()/2, getHeight()/2);
-            }
-            if (Greenfoot.isKeyDown("enter") && displayMessage){
-                removeObject(textPanel);
-            }
-        }
-    }	
+    // public void endGame(){
+    // if (bridge.getIsFixed()){
+    // counterEnd--;
+    // if (counterEnd<0 && !displayMessage){
+    // thankSound.play();
+    // displayMessage = true;
+    // textPanel = new TextPanel("wellDonelvl2");
+    // addObject(textPanel, getWidth()/2, getHeight()/2);
+    // }
+    // if (Greenfoot.isKeyDown("enter") && displayMessage){
+    // removeObject(textPanel);
+    // }
+    // }
+    // }	
 }
