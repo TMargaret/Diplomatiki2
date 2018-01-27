@@ -10,14 +10,17 @@ public class Boat extends Actor
 {
     boolean eIsDown = false;
     int count_enter=0;
+    int rightMat = 3;
     Alex alex;
     TextPanel tp;
+    int endGame = -1;
     boolean isActive = false;
     boolean tryAgainOrLeave = false;
     boolean wrongCommand = false;
     boolean flag = false;    
     TextField textField;
     int counter = 30;
+    int countMat = 0;
     String my_text = "";
     Debugger db;
     Button btn1, btn2;
@@ -59,14 +62,19 @@ public class Boat extends Actor
             alex.setLocation(getX(),getY()-10);
         }
         else if (flag && getX()>= 680){
-          isActive = false;  
+            isActive = false;  
         }
     } 
 
     public void moveBoat(){
         if (Greenfoot.mouseClicked(btn2) && isActive && eIsDown){
-            removeObj();
-            flag = true;          
+            if (getCheckList()!= rightMat){
+                setEnd(0);
+            }
+            else{
+                removeObj();
+                flag = true; 
+            }
         }
     }
 
@@ -148,5 +156,21 @@ public class Boat extends Actor
 
     public boolean getActive(){
         return isActive;
+    }
+
+    public void setCheckList(int count_mat){
+        countMat = count_mat;
+    }
+
+    public int getCheckList(){
+        return countMat;
+    }
+
+    public void setEnd(int end){
+        endGame = end;
+    }
+
+    public int getEnd(){
+        return endGame;
     }
 }

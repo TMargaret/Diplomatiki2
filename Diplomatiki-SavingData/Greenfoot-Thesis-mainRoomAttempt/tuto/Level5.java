@@ -18,7 +18,6 @@ public class Level5 extends World
     Material clay,lumber,straw,brick;
     Camel camel;
     Grass grass27, grass28, grass31, grass32;
-    private ArrayList <Hut> hutList = new ArrayList<Hut>();
     ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
 
     private ArrayList <Material> pickUpList = new ArrayList<Material>(); //this is the list that Alex is retrieving
@@ -29,6 +28,7 @@ public class Level5 extends World
     private TextPanel textPanel;
     int count_item = 0;
     int counterEnd = 100;
+    int count = 0;
     Boat boat;
     boolean displayMessage = false;
     public static GreenfootSound lvlSound = new GreenfootSound("level02.mp3");
@@ -36,7 +36,6 @@ public class Level5 extends World
     Crate crate1, crate2;
 
     Material mat;
-    Butterfly butterfly;
     LevelsScreen lvlScreen;
 
     /**
@@ -75,6 +74,7 @@ public class Level5 extends World
                 found  = true;
             }
         }
+        setBoatList(checkMatList());
         matList.remove(mat);
         alex.setCanMove(!found);
         endGame();
@@ -240,5 +240,39 @@ public class Level5 extends World
                 //suspenseSound.stop();
             }
         }
-    }	
+        if (boat.getEnd()==0){
+            counterEnd--;
+            if (counterEnd<0 && !displayMessage){
+                displayMessage = true;
+                textPanel = new TextPanel("youLostLvl5");
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+            }
+            if (Greenfoot.isKeyDown("enter") && displayMessage){
+                removeObject(textPanel);
+                Greenfoot.setWorld(new LevelsScreen());
+                //suspenseSound.stop();
+            }
+        }
+    }
+    
+        public int checkMatList(){
+        if (pickUpList != null){
+            for (Material mat: pickUpList){
+                if (mat.getMaterial() == "Wood"){
+                    count++;
+                }
+                if (mat.getMaterial() == "Straw"){
+                    count++;
+                }
+                if (mat.getMaterial() == "Brick"){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public void setBoatList(int count){
+        boat.setCheckList(count);
+    }
 }
