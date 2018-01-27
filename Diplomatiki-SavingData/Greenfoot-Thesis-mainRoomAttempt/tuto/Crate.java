@@ -12,6 +12,7 @@ public class Crate extends Actor
     boolean isEDown = false;
     TextPanel tp;
     boolean isActive = false;
+    int endGame = -1;
     private HiddenSprite hs;
     private int hsWidth = 150; 
     private int hsHeight = 290;
@@ -83,9 +84,14 @@ public class Crate extends Actor
                             getWorld().addObject(tp, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             addEditor();
                         }
-                        if (Greenfoot.mouseClicked(btnOK)){
+                        if (Greenfoot.mouseClicked(btnOK)){                          
                             if (evaluate().compareTo("111111")==0){
-                                
+                                removeSome();
+                                setEnd(1);
+                            }
+                            else {
+                                removeSome();
+                                setEnd(0);
                             }
                         }
                     }
@@ -134,4 +140,21 @@ public class Crate extends Actor
     public boolean getActive(){
         return isActive;
     }
+
+    public void setEnd(int end){
+        endGame = end;
+    }
+
+    public int getEnd(){
+        return endGame;
+    }
+
+    public void removeSome(){
+        getWorld().removeObject(tp);
+        getWorld().removeObject(btnOK);
+        if (getWorld().getObjects(TextField.class) != null){
+            getWorld().removeObjects(getWorld().getObjects(TextField.class));
+        }
+    }
+
 }

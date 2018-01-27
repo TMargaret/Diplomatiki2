@@ -25,6 +25,7 @@ public class LevelsScreen extends World implements ButtonResponder
                 add(1);
                 add(1);
                 add(1);
+                add(1);
             }
         }; //1 for unlocked level0
 
@@ -144,9 +145,9 @@ public class LevelsScreen extends World implements ButtonResponder
             removeObject(locklevel4);
             removeObject(locklevel5);
             break;
-            case 6:
-            removeObject(locklevel6);
-            break;
+           // case 6:
+           // removeObject(locklevel6);
+           // break;
         }
 
     }

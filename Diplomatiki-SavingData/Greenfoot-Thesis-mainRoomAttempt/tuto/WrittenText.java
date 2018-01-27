@@ -276,4 +276,8 @@ public class WrittenText implements Serializable
         "     --------------  .add(\"straw\");\n\n"+
         "     unloadCargo.add(\"   --------------  \");\n\n";
     }
+    
+    public String youLostLvl5(){
+        return "Η λύση δεν ήταν σωστή.\n\nΞαναπροσπάθησε!";
+    }
 }

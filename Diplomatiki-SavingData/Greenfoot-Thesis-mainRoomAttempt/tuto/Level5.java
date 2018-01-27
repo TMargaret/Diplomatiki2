@@ -28,7 +28,7 @@ public class Level5 extends World
     boolean isActive = false;
     private TextPanel textPanel;
     int count_item = 0;
-    int counterEnd = 200;
+    int counterEnd = 100;
     Boat boat;
     boolean displayMessage = false;
     public static GreenfootSound lvlSound = new GreenfootSound("level02.mp3");
@@ -66,27 +66,18 @@ public class Level5 extends World
         if (camel.getTalking() ||alex.getIsExit() || boat.getActive() || crate1.getActive()){
             found  = true;
         }
-
-        // || alex.getIsExit()
         for(Material material : matList){
             if(material.getWorldOfType(Level5.class) == null){
                 pickUpList.add(material);
                 mat = material; //save material to mat so as to remove without concurrent exception
-
             }
             if (material.getActive()){
                 found  = true;
-                //butterfly.stop();
             }
         }
         matList.remove(mat);
         alex.setCanMove(!found);
-        // enterInRoom();
-        // //isBridgeFixed();
-        // if (!found && camel.getDoneWithDialogue() && !displayMessage){
-        // butterfly();
-        // }
-        // endGame();
+        endGame();
     }
 
     /**
@@ -113,9 +104,6 @@ public class Level5 extends World
         crate1 = new Crate("open");
         addObject(crate1, 940, 280);
 
-        // crate2 = new Crate("open");
-        // addObject(crate2, 940, 520);
-
         lumber = new Lumber();
         addObject(lumber,47,287);
         clay = new Clay();
@@ -124,9 +112,6 @@ public class Level5 extends World
         addObject(straw,40,573);
         brick = new Brick();
         addObject(brick,37,390);
-        
-        // TextField t = new TextField(80,30);
-        // addObject(t,50,490);
 
         matList.add(lumber);
         matList.add(clay); 
@@ -217,34 +202,6 @@ public class Level5 extends World
         }
     }
 
-    /**
-     * shows a message before entering the house
-     */
-    public void enterInRoom(){
-        if (alex.getAnIntersectingObject(House2.class) != null){
-            counter--;
-            if (Greenfoot.isKeyDown("e")){
-                isEDown = true;
-            }
-
-            if (isEDown && !isActive){
-                counter = 100;
-                textPanel = new TextPanel("enteringRoom");
-                addObject(textPanel, getWidth()/2, getHeight()/2);
-                isActive = true;
-            }
-            if (counter < 0 && isEDown && isActive){
-                removeObject(textPanel);
-                counter = 100;
-                isActive = false;
-                isEDown = false;
-                alex.setLocation(alex.getX(), alex.getY() + 100);
-                lvlSound.stop();
-                Greenfoot.setWorld(new DLevel_2(alex));
-            }  
-
-        } 
-    }
 
     /**
      * Method getMaterialList
@@ -255,56 +212,33 @@ public class Level5 extends World
         return pickUpList;
     }
 
-    // public void isBridgeFixed(){
-    // if (bridge.getIsFixed()){
-    // removeObject(grass27);
-    // removeObject(grass28);
-    // removeObject(grass31);
-    // removeObject(grass32);
-    // for (Material mat: matList){
-    // Alex.flagForRemovedItem = false;
-    // Alex.removeFromInv(true);
-    // }
-    // }
-    // }
-
-    public int getRandomNumber(int start,int end)
-    {
-        int normal = Greenfoot.getRandomNumber(end-start+1);
-        return normal+start;
-    }
-
-    public void butterfly(){
-        //makes the butterfly appear within the borders
-        if (butterfly.getSpeed() == 0){
-            butterfly.addForce(new Vector(-3.0, 0));
-        }
-        int random_y = getRandomNumber(getHeight()/2, getHeight()-butterfly.getImage().getHeight()/2);
-        random_y += 20;
-        int random = Greenfoot.getRandomNumber(1);
-        count_item++;
-        for (int i = 0; i < 4; i++)
-        {
-            if (random == 0 & count_item == 80)
-            {             
-                addObject(butterfly, getWidth(), random_y);
-                count_item = 0;
+    public void endGame(){
+        if (crate1.getEnd()==1){
+            counterEnd--;
+            if (counterEnd<0 && !displayMessage){
+                thankSound.play();
+                displayMessage = true;
+                textPanel = new TextPanel("wellDone4");
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+            }
+            if (Greenfoot.isKeyDown("enter") && displayMessage){
+                removeObject(textPanel);
+                Greenfoot.setWorld(new LevelsScreen());
+                //suspenseSound.stop();
             }
         }
-    }
-
-    // public void endGame(){
-    // if (bridge.getIsFixed()){
-    // counterEnd--;
-    // if (counterEnd<0 && !displayMessage){
-    // thankSound.play();
-    // displayMessage = true;
-    // textPanel = new TextPanel("wellDonelvl2");
-    // addObject(textPanel, getWidth()/2, getHeight()/2);
-    // }
-    // if (Greenfoot.isKeyDown("enter") && displayMessage){
-    // removeObject(textPanel);
-    // }
-    // }
-    // }	
+        if (crate1.getEnd()==0){
+            counterEnd--;
+            if (counterEnd<0 && !displayMessage){
+                displayMessage = true;
+                textPanel = new TextPanel("youLostLvl5");
+                addObject(textPanel, getWidth()/2, getHeight()/2);
+            }
+            if (Greenfoot.isKeyDown("enter") && displayMessage){
+                removeObject(textPanel);
+                Greenfoot.setWorld(new LevelsScreen());
+                //suspenseSound.stop();
+            }
+        }
+    }	
 }
