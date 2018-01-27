@@ -11,13 +11,14 @@ public class Crate extends Actor
 {
     boolean isEDown = false;
     TextPanel tp;
-    public HiddenSprite hs;
-    public int hsWidth = 150; 
-    public int hsHeight = 290;
+    boolean isActive = false;
+    private HiddenSprite hs;
+    private int hsWidth = 150; 
+    private int hsHeight = 290;
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
     TextField t1,t2,t3,t4,t5,t6;
-    ArrayList<String> rightAnswer = new ArrayList<String>(){
+    private ArrayList<String> rightAnswer = new ArrayList<String>(){
             {
                 add("main");
                 add("new");
@@ -27,7 +28,7 @@ public class Crate extends Actor
                 add("brick");
             }
         };
-    Button btn;
+    private Button btnOK;
 
     public Crate(){
         GreenfootImage img = getImage();  
@@ -58,7 +59,6 @@ public class Crate extends Actor
     {
         if (getWorld().getClass().getName()=="Level5"){
             actionBox();
-            evaluate();
         }
     }  
 
@@ -75,13 +75,18 @@ public class Crate extends Actor
                         continue;
                     }
                     if( a instanceof Alex) {
-                        if (Greenfoot.isKeyDown("e") && !isEDown){
-                            isEDown = true;
+                        if (Greenfoot.isKeyDown("e") && !isEDown && !isActive){
                             Greenfoot.getKey().replaceAll("e", "");
+                            isEDown = true;       
+                            isActive = true;
                             tp = new TextPanel("crate",800,480);
                             getWorld().addObject(tp, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             addEditor();
-
+                        }
+                        if (Greenfoot.mouseClicked(btnOK)){
+                            if (evaluate().compareTo("111111")==0){
+                                
+                            }
                         }
                     }
                 }
@@ -103,13 +108,30 @@ public class Crate extends Actor
         t6 = new TextField(110,30);
         getWorld().addObject(t6,380,373);
 
-        btn = new Button("OK");
-        getWorld().addObject(btn, 500, 450);
+        btnOK = new Button("OK");
+        getWorld().addObject(btnOK, 500, 470);
     }
 
-    public void evaluate(){
-        for (String str:rightAnswer){
-            System.out.println(str);
+    public String evaluate(){
+        String eval = "";
+        ArrayList<String> gt = new ArrayList<String>();
+        gt.add(t1.getText());
+        gt.add(t2.getText());
+        gt.add(t3.getText());
+        gt.add(t4.getText());
+        gt.add(t5.getText());
+        gt.add(t6.getText());      
+        for(int i=0;i<gt.size();i++){
+            String temp = gt.get(i).replaceAll("\\s+","");
+            if (temp.equals(rightAnswer.get(i))){
+                eval +=1;
+            }
+            else eval+=0;
         }
+        return eval;
+    }
+
+    public boolean getActive(){
+        return isActive;
     }
 }

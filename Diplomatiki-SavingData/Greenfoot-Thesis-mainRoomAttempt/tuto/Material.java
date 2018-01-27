@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Material extends Actor 
 {
-    public HiddenSprite hs;
+    private HiddenSprite hs;
     public int hsWidth = 0; 
     public int hsHeight = 70;
     private final int HS_OFFSET_X = 0;

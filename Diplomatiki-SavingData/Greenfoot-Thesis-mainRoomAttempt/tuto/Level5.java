@@ -63,7 +63,7 @@ public class Level5 extends World
 
     public void act(){
         boolean found = false;
-        if (camel.getTalking() ||alex.getIsExit() || boat.getActive()){
+        if (camel.getTalking() ||alex.getIsExit() || boat.getActive() || crate1.getActive()){
             found  = true;
         }
 
