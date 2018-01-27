@@ -113,8 +113,8 @@ public class Level5 extends World
         crate1 = new Crate("open");
         addObject(crate1, 940, 280);
 
-        crate2 = new Crate("open");
-        addObject(crate2, 940, 520);
+        // crate2 = new Crate("open");
+        // addObject(crate2, 940, 520);
 
         lumber = new Lumber();
         addObject(lumber,47,287);

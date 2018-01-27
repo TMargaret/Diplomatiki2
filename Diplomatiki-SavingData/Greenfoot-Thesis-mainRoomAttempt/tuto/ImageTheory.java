@@ -98,7 +98,7 @@ public class ImageTheory extends Actor
                 
                 count_image--;
                 getImage().clear();
-                setImage(new GreenfootImage("inhe"+count_image+".jpg"));
+                setImage(new GreenfootImage(myImg+count_image+".jpg"));
                 count_button.setTitle(count_image+"/"+slides);
             }
 

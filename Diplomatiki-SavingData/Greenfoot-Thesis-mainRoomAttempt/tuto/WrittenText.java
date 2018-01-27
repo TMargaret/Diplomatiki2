@@ -261,5 +261,10 @@ public class WrittenText implements Serializable
         "    }\n"+
         " }\n\nΤι θα τυπωθεί;";
     }
+    
+    public String moveOrStudy(){
+        return "Πίεσε\n\n1 για να ελέγξεις το φορτίο"+
+        "\n\n2 για να περάσεις απένταντι";
+    }
 
 }

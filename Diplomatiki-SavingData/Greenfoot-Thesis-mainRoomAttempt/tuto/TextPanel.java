@@ -353,6 +353,11 @@ public class TextPanel extends Actor implements Serializable
         if (status == "wrong"){
             makeImage("Wrong arraylist size");
         }
+        if (status == "moveOrStudy"){
+            //String mytext = text.moveOrStudy();
+            makeImage(" ");
+        }
+        
     }
 
     private void makeImage(String title)

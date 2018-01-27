@@ -20,6 +20,7 @@ public class Boat extends Actor
     int counter = 30;
     String my_text = "";
     Debugger db;
+    Button btn1, btn2;
     GreenfootSound pickupSound = new GreenfootSound("pickUp.wav");
 
     public Boat(Alex alex){
@@ -33,23 +34,43 @@ public class Boat extends Actor
      */
     public void act() 
     {
-        if (isTouching(Alex.class) && count_enter==0){
+        if (isTouching(Alex.class) && Greenfoot.isKeyDown("e") && !eIsDown && !isActive){
+            eIsDown = true;
+            isActive = true;
+            tp = new TextPanel("moveOrStudy", 650, 480);
+            getWorld().addObject(tp, getWorld().getWidth()/2, getWorld().getHeight()/2);
+            btn1 = new Button();
+            btn1.setTitle("Έλεγχος φορτίου βάρκας");
+            getWorld().addObject(btn1, 500, 200);
+            btn2 = new Button();
+            btn2.setTitle("Θέλω να περάσω απέναντι");
+            getWorld().addObject(btn2, 500, 400);
+            
 
-            // count_enter++;
+            // if (Greenfoot.isKeyDown("1") && count_enter){
+            // getWorld().removeObject(tp);
+            // printAnswer();
+            // }
+            // if (Greenfoot.isKeyDown("2")){
             // move(1);
             // alex.setLocation(getX(),getY()-10);
-            printAnswer();
-
+            // }
         }
+        if (Greenfoot.isKeyDown("escape") && eIsDown && isActive){
+                getWorld().removeObject(btn1);
+                getWorld().removeObject(btn2);
+                getWorld().removeObject(tp);
+                isActive = false;
+                eIsDown = false;
+            }
     } 
 
     public void printAnswer(){
-        counter--;
-                     
-        if (Greenfoot.isKeyDown("e") && !isActive && !eIsDown){
-            isActive = true;
-            eIsDown = true; 
-            /*count_enter++;*/
+        counter--;                     
+        if (Greenfoot.mouseClicked(btn1) && isActive && eIsDown){
+            getWorld().removeObject(tp);
+            getWorld().removeObject(btn1);
+            getWorld().removeObject(btn2);
             textFieldCreation();
             tp = new TextPanel("boat", 650, 480);
             getWorld().addObject(tp, getWorld().getWidth()/2, getWorld().getHeight()/2);
