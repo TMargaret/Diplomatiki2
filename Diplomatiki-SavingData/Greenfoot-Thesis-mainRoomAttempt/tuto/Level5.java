@@ -125,8 +125,8 @@ public class Level5 extends World
         brick = new Brick();
         addObject(brick,37,390);
         
-        TextField t = new TextField(80,30);
-        addObject(t,50,490);
+        // TextField t = new TextField(80,30);
+        // addObject(t,50,490);
 
         matList.add(lumber);
         matList.add(clay); 
