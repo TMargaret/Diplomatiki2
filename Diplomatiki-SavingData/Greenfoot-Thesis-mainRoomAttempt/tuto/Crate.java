@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.List;
+import java.util.*;
 
 /**
  * Write a description of class Crate here.
@@ -16,6 +16,18 @@ public class Crate extends Actor
     public int hsHeight = 290;
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
+    TextField t1,t2,t3,t4,t5,t6;
+    ArrayList<String> rightAnswer = new ArrayList<String>(){
+            {
+                add("main");
+                add("new");
+                add("Material");
+                add("wood");
+                add("unloadCargo");
+                add("brick");
+            }
+        };
+    Button btn;
 
     public Crate(){
         GreenfootImage img = getImage();  
@@ -46,6 +58,7 @@ public class Crate extends Actor
     {
         if (getWorld().getClass().getName()=="Level5"){
             actionBox();
+            evaluate();
         }
     }  
 
@@ -75,19 +88,28 @@ public class Crate extends Actor
             }
         }
     }
-    
+
     public void addEditor(){
-        TextField t = new TextField(70,30);
-        getWorld().addObject(t,320,137);        
-        TextField t2 = new TextField(60,30);
+        t1 = new TextField(70,30);
+        getWorld().addObject(t1,320,137);        
+        t2 = new TextField(60,30);
         getWorld().addObject(t2,510,195);
-        TextField t3 = new TextField(115,30);
+        t3 = new TextField(115,30);
         getWorld().addObject(t3,717,195);
-        TextField t4 = new TextField(115,30);
+        t4 = new TextField(115,30);
         getWorld().addObject(t4,390,255);
-        TextField t5 = new TextField(110,30);
+        t5 = new TextField(110,30);
         getWorld().addObject(t5,188,313);
-        TextField t6 = new TextField(110,30);
+        t6 = new TextField(110,30);
         getWorld().addObject(t6,380,373);
+
+        btn = new Button("OK");
+        getWorld().addObject(btn, 500, 450);
+    }
+
+    public void evaluate(){
+        for (String str:rightAnswer){
+            System.out.println(str);
+        }
     }
 }
