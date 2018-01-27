@@ -447,6 +447,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             Level3.lvl.stop();
             Level2.lvlSound.stop();
             Level4.lvl4.stop();
+            Level5.lvlSound.stop();
             DragonLevel.suspenseSound.stop();
         }
         if (Greenfoot.isKeyDown("N") && isExit){         

@@ -68,12 +68,13 @@ public class Boat extends Actor
 
     public void moveBoat(){
         if (Greenfoot.mouseClicked(btn2) && isActive && eIsDown){
-            if (getCheckList()!= rightMat){
-                setEnd(0);
+            if (getCheckList()==rightMat){
+                removeObj();
+                flag = true;                 
             }
             else{
                 removeObj();
-                flag = true; 
+                setEnd(0);              
             }
         }
     }

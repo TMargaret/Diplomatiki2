@@ -27,11 +27,11 @@ public class Level5 extends World
     boolean isActive = false;
     private TextPanel textPanel;
     int count_item = 0;
-    int counterEnd = 100;
+    int counterEnd = 50;
     int count = 0;
     Boat boat;
     boolean displayMessage = false;
-    public static GreenfootSound lvlSound = new GreenfootSound("level02.mp3");
+    public static GreenfootSound lvlSound = new GreenfootSound("level5.wav");
     private GreenfootSound thankSound = new GreenfootSound("thank.wav");
     Crate crate1, crate2;
 
@@ -48,7 +48,8 @@ public class Level5 extends World
         super(1000, 600, 1);
         alex = new Alex();
         prepare();
-        //lvlSound.playLoop();
+        lvlSound.setVolume(40);
+        lvlSound.playLoop();
     }
 
     /**
@@ -244,13 +245,13 @@ public class Level5 extends World
             counterEnd--;
             if (counterEnd<0 && !displayMessage){
                 displayMessage = true;
-                textPanel = new TextPanel("youLostLvl5");
+                textPanel = new TextPanel("youLostBoat");
                 addObject(textPanel, getWidth()/2, getHeight()/2);
             }
             if (Greenfoot.isKeyDown("enter") && displayMessage){
                 removeObject(textPanel);
                 Greenfoot.setWorld(new LevelsScreen());
-                //suspenseSound.stop();
+                lvlSound.stop();
             }
         }
     }
@@ -266,6 +267,9 @@ public class Level5 extends World
                 }
                 if (mat.getMaterial() == "Brick"){
                     count++;
+                }
+                if (mat.getMaterial() == "Clay"){
+                    count--;
                 }
             }
         }

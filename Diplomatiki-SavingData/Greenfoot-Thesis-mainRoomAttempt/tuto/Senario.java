@@ -8,8 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Senario extends World
 {
-    int counter = 1500;
+    int counter = 1600;
     Label lbl;
+    TextMessage tm = new TextMessage("HOPE",1100);
 
     /**
      * Constructor for objects of class Senario.
@@ -23,9 +24,11 @@ public class Senario extends World
         addObject(new TextMessage("HELP US",250),620,150);
         addObject(new TextMessage("PLEASE",430),280,250);
 
-        addObject(new TextMessage("YOU ARE",600),400,300);
-        addObject(new TextMessage("OUR ONLY",850),620,380);
-        addObject(new TextMessage("HOPE",1100),850,420);
+        addObject(new TextMessage("YOU ARE",600),100,300);
+        addObject(new TextMessage("OUR ONLY",850),820,380);
+        
+        tm.getImage().scale(tm.getImage().getWidth()*5, tm.getImage().getHeight()*5);
+        addObject(tm,500,300);
 
         lbl = new Label("press enter", 30);
         lbl.setFillColor(Color.WHITE);

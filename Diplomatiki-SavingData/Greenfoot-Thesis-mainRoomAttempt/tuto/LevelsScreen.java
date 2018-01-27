@@ -9,8 +9,8 @@ import java.util.ArrayList;
  */
 public class LevelsScreen extends World implements ButtonResponder
 {
-    Label lbl;
-    Button menuBtn; 
+    Label lbl, lbl1;
+    Button menuBtn, menuBtn1; 
     HoverFrame hoverFrame1, hoverFrame2, hoverFrame3, hoverFrame4, hoverFrame5, hoverFrame6;
     LockLevel locklevel6, locklevel2, locklevel3, locklevel4, locklevel5;
 
@@ -59,6 +59,14 @@ public class LevelsScreen extends World implements ButtonResponder
         menuBtn = new Button(lbl.getImage().getWidth(), lbl.getImage().getHeight());
         addObject(menuBtn, 70, 30);
         menuBtn.setResponder(this);
+        
+        lbl1 = new Label("Rules", 50);
+        lbl1.setFillColor(Color.WHITE);
+        addObject(lbl1, 900, 30);
+
+        menuBtn1 = new Button(lbl1.getImage().getWidth(), lbl1.getImage().getHeight());
+        addObject(menuBtn1, 900, 30);
+        menuBtn1.setResponder(this);
 
         locklevel2 = new LockLevel();
         addObject(locklevel2,473,170);      
@@ -122,6 +130,11 @@ public class LevelsScreen extends World implements ButtonResponder
             enterSound.play();
             Greenfoot.setWorld(new Level4());
         }
+        if (Greenfoot.mouseClicked(hoverFrame5) && !(getObjects(LockLevel.class).contains(locklevel5))){ 
+            StartScreen.startSound.stop();
+            enterSound.play();
+            Greenfoot.setWorld(new Level5());
+        }
     }
 
     public void unlockLevel(){
@@ -163,6 +176,16 @@ public class LevelsScreen extends World implements ButtonResponder
             lbl.setFillColor(Color.WHITE);
             mouseOver = false;
         }
+        if (Greenfoot.mouseMoved(menuBtn1))
+        {
+            lbl1.setFillColor(new Color(128,128,128));
+            mouseOver = true;
+        }
+        if (mouseOver && !Greenfoot.mouseMoved(menuBtn1) && Greenfoot.mouseMoved(null))
+        {
+            lbl1.setFillColor(Color.WHITE);
+            mouseOver = false;
+        }
     }
 
     public void planetHover(){
@@ -188,6 +211,8 @@ public class LevelsScreen extends World implements ButtonResponder
         if (Greenfoot.mouseClicked(menuBtn)){
             Greenfoot.setWorld(new StartScreen());
         }
-
+        if (Greenfoot.mouseClicked(menuBtn1)){
+            Greenfoot.setWorld(new Rules());
+        }
     }
 }

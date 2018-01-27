@@ -280,4 +280,8 @@ public class WrittenText implements Serializable
     public String youLostLvl5(){
         return "Η λύση δεν ήταν σωστή.\n\nΞαναπροσπάθησε!";
     }
+    
+    public String youLostBoat(){
+        return "Το φορτίο σου δεν είναι το σωστό.\n\nΞαναπροσπάθησε!";
+    }
 }
