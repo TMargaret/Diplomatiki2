@@ -60,6 +60,7 @@ public class House extends Actor
         {
             counter--;
             if (Greenfoot.isKeyDown("e")){
+                Greenfoot.getKey().replaceAll("e", "");
                 isEDown = true;
             }
             if (getCheckList()< 4){

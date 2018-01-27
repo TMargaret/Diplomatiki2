@@ -47,6 +47,7 @@ public class Hut extends Actor implements Serializable
         {
             counter--;
             if (Greenfoot.isKeyDown("e")){
+                
                 isEDown = true;
             }
             if (getCheckList() < 2){

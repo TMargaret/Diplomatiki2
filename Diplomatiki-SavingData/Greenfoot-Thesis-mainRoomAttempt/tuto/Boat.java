@@ -15,7 +15,7 @@ public class Boat extends Actor
     boolean isActive = false;
     boolean tryAgainOrLeave = false;
     boolean wrongCommand = false;
-    boolean thisLvl = false;
+    boolean flag = false;    
     TextField textField;
     int counter = 30;
     String my_text = "";
@@ -37,6 +37,7 @@ public class Boat extends Actor
         if (isTouching(Alex.class) && Greenfoot.isKeyDown("e") && !eIsDown && !isActive){
             eIsDown = true;
             isActive = true;
+            Greenfoot.getKey().replaceAll("e", "");
             tp = new TextPanel("moveOrStudy", 650, 480);
             getWorld().addObject(tp, getWorld().getWidth()/2, getWorld().getHeight()/2);
             btn1 = new Button();
@@ -44,44 +45,49 @@ public class Boat extends Actor
             getWorld().addObject(btn1, 500, 200);
             btn2 = new Button();
             btn2.setTitle("Θέλω να περάσω απέναντι");
-            getWorld().addObject(btn2, 500, 400);
-            
-
-            // if (Greenfoot.isKeyDown("1") && count_enter){
-            // getWorld().removeObject(tp);
-            // printAnswer();
-            // }
-            // if (Greenfoot.isKeyDown("2")){
-            // move(1);
-            // alex.setLocation(getX(),getY()-10);
-            // }
+            getWorld().addObject(btn2, 500, 400);           
         }
         if (Greenfoot.isKeyDown("escape") && eIsDown && isActive){
-                getWorld().removeObject(btn1);
-                getWorld().removeObject(btn2);
-                getWorld().removeObject(tp);
-                isActive = false;
-                eIsDown = false;
-            }
+            removeObj();
+            isActive = false;
+            eIsDown = false;
+        }
+        printAnswer();
+        moveBoat();
+        if (flag && getX()< 680){
+            move(1);
+            alex.setLocation(getX(),getY()-10);
+        }
+        else if (flag && getX()>= 680){
+          isActive = false;  
+        }
     } 
+
+    public void moveBoat(){
+        if (Greenfoot.mouseClicked(btn2) && isActive && eIsDown){
+            removeObj();
+            flag = true;          
+        }
+    }
+
+    public void removeObj(){
+        getWorld().removeObject(btn1);
+        getWorld().removeObject(btn2);
+        getWorld().removeObject(tp);
+        getWorld().removeObject(textField);
+    }
 
     public void printAnswer(){
         counter--;                     
-        if (Greenfoot.mouseClicked(btn1) && isActive && eIsDown){
+        if (Greenfoot.mouseClicked(btn1) && isActive && eIsDown){          
             getWorld().removeObject(tp);
             getWorld().removeObject(btn1);
             getWorld().removeObject(btn2);
             textFieldCreation();
             tp = new TextPanel("boat", 650, 480);
             getWorld().addObject(tp, getWorld().getWidth()/2, getWorld().getHeight()/2);
-        }
-        if (Greenfoot.isKeyDown("escape") && eIsDown){
-            getWorld().removeObject(textField); 
-            getWorld().removeObject(tp);
-            isActive = false;
-            eIsDown = false;
-        }   
-        if (Greenfoot.isKeyDown("enter") && eIsDown && !tryAgainOrLeave){
+        }  
+        if (Greenfoot.isKeyDown("enter") && eIsDown && !tryAgainOrLeave && !flag){
             eIsDown = false;
             counter = 30;
             db = new Debugger(textField.getText(), "3");
@@ -95,7 +101,6 @@ public class Boat extends Actor
                     tp= new TextPanel("wrong");
                     getWorld().addObject(tp, getWorld().getWidth()/2, getWorld().getHeight()/2);
                     tryAgainOrLeave = true;
-                    //eIsDown = false;
                 }
             }
         }
@@ -110,7 +115,7 @@ public class Boat extends Actor
         wrongCommand = false;
     }
 
-    public void textFieldCreation(){
+    public void textFieldCreation(){       
         textField = new TextField(700, 45,"");
         getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
     }

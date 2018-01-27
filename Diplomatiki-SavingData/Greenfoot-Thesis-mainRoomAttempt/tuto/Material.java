@@ -89,6 +89,7 @@ public class Material extends Actor
                         if (Greenfoot.isKeyDown("e") && !isEDown){
                             isEDown = true;
                             counter = 20;
+                            Greenfoot.getKey().replaceAll("e", "");
                         }
                         if (counter<0 && isEDown && !thisLvl)
                         {

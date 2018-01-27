@@ -261,10 +261,19 @@ public class WrittenText implements Serializable
         "    }\n"+
         " }\n\nΤι θα τυπωθεί;";
     }
-    
+
     public String moveOrStudy(){
         return "Πίεσε\n\n1 για να ελέγξεις το φορτίο"+
         "\n\n2 για να περάσεις απένταντι";
     }
 
+    public String crate(){
+        return
+        "public class Box {\n\n"+
+        "  public static void  --------- (String args[]) {\n\n"+
+        "     ArrayList<Material> unloadCargo =  -------  ArrayList<   ---------------    >();\n\n"+
+        "     unloadCargo.add( \"   ---------------  \" );\n\n"+
+        "     --------------  .add(\"straw\");\n\n"+
+        "     unloadCargo.add(\"   --------------  \");\n\n";
+    }
 }

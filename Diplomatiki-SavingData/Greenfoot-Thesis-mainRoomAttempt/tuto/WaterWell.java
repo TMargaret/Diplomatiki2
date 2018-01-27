@@ -49,6 +49,7 @@ public class WaterWell extends Actor
         {
             counter--;
             if (Greenfoot.isKeyDown("e")){
+                Greenfoot.getKey().replaceAll("e", "");
                 isEDown = true;
             }
             if (getCheckList() < 2){

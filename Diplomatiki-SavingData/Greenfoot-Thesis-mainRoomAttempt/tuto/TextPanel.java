@@ -29,17 +29,15 @@ public class TextPanel extends Actor implements Serializable
         //wrong_answers = TOTAL_ANSWERS - iScore;
 
     }
-    
-        public TextPanel(String status, int width, int height)
+
+    public TextPanel(String status, int width, int height)
     {
         this.status = status;
         text = new WrittenText();
         WIDTH = width;
         HEIGHT = height;
-        
 
     }
-
     public TextPanel(String status, String debugMsg)
     {
         this.status = status;
@@ -198,9 +196,7 @@ public class TextPanel extends Actor implements Serializable
             makeImage(mytext);
         }
 
-
     }
-
     private void makeTextL2(){
         if (status == "BrokenHutMessage") {
             String mytext = text.brokenHut();
@@ -337,7 +333,7 @@ public class TextPanel extends Actor implements Serializable
         }
 
     }
-    
+
     private void makeTextL5(){
         if (status == "exit"){
             String mytext = text.exit();
@@ -357,7 +353,11 @@ public class TextPanel extends Actor implements Serializable
             //String mytext = text.moveOrStudy();
             makeImage(" ");
         }
-        
+        if (status == "crate"){
+            String mytext = text.crate();
+            makeImage(mytext);
+        }
+
     }
 
     private void makeImage(String title)
@@ -380,13 +380,12 @@ public class TextPanel extends Actor implements Serializable
         if (status == "lockedDoor" || status=="houseMsgL0") image.drawString("Πάτα ENTER", 30, 290);
         if (status == "allMaterial")  image.drawString("Πάτα ENTER", 30, 290);
         if (status == "exit") image.drawString("ΝΑΙ - Πάτησε Y \n\nΟΧΙ - Πάτησε Ν", 200, 150);
-        if (status == "wrongKey") image.drawString("Πάτα ENTER", 30, 290);
+        if (status == "wrong") image.drawString("Πάτα ENTER", 30, 290);
         // if (status == "start_quiz") image.drawString("Πάτα ENTER", 200, 280);
         // if (status == "start_quiz2") image.drawString("Πάτα ENTER για να ξεκινήσεις", 60, 280);
         setImage(image);
 
     }
-    
 
     private void makeImage(String title, String icon)
     //δημιουργείται η εικόνα του ScoreBoard
