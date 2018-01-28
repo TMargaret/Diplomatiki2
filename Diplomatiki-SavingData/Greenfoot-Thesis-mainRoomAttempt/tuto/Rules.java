@@ -31,9 +31,12 @@ public class Rules extends World implements ButtonResponder
         addObject(menuBtn, 70, 30);
         menuBtn.setResponder(this);
 
-        rules = new Label(myRules(),50);
+        rules = new Label(myRules(),30);
         rules.setFillColor(Color.WHITE);
         addObject(rules, 500, 300);
+        
+        Button btn = new Button("ΚΟΥΜΠΙ");
+        addObject(btn, 334, 474);
     }   
 
     public void buttonClicked(Button button){
@@ -46,6 +49,10 @@ public class Rules extends World implements ButtonResponder
         return "Το όνομά σου είναι Alex.\nΘα σου χρειαστεί για να καλείς μεθόδους\nπχ Alex.pickUp();"+
         "\n\nwasd : Πλοήγηση του Alex"+
         "\n\ne: Αλληλεπίδραση με αντικείμενα"+
-        "\n\nescape: έξοδος από δραστηριότητες";
+        "\n\nescape: έξοδος από δραστηριότητες"+
+        "\n\nenter: επαλήθευση κώδικα στον επεξεργαστή, κλείσιμο μηνυμάτων"+
+        "\n\nspace: κλείσιμο μηνυμάτων ήττας"+
+        "\n\nκλικ με το ποντίκι"+
+        "\n\n<-   ->   πλοήγηση με τα βελάκια αριστερά-δεξιά";
     }
 }

@@ -382,11 +382,11 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             lostMessage = true;
             theEnd = new TextPanel("youLost");
             getWorld().addObject(theEnd, getWorld().getWidth()/2, getWorld().getHeight()/2);
-            
+
         }
         if (Greenfoot.isKeyDown("space") && lostMessage){
             Greenfoot.setWorld(new LevelsScreen());
-            //canMove = true;
+            canMove = true;
             stopSounds();
         }
     }
