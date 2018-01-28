@@ -108,9 +108,9 @@ public class Level5 extends World
         lumber = new Lumber();
         addObject(lumber,47,287);
         clay = new Clay();
-        addObject(clay,284,579);
+        addObject(clay,284,570);
         straw = new Straw(1);
-        addObject(straw,40,573);
+        addObject(straw,40,555);
         brick = new Brick();
         addObject(brick,37,390);
 
