@@ -382,11 +382,22 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             lostMessage = true;
             theEnd = new TextPanel("youLost");
             getWorld().addObject(theEnd, getWorld().getWidth()/2, getWorld().getHeight()/2);
+            
         }
         if (Greenfoot.isKeyDown("space") && lostMessage){
             Greenfoot.setWorld(new LevelsScreen());
-            canMove = true;
+            //canMove = true;
+            stopSounds();
         }
+    }
+
+    public void stopSounds(){
+        Level1.level0Sound.stop();
+        Level3.lvl.stop();
+        Level2.lvlSound.stop();
+        Level4.lvl4.stop();
+        Level5.lvlSound.stop();
+        DragonLevel.suspenseSound.stop();
     }
 
     /**
@@ -433,22 +444,17 @@ public class Alex extends SpriteSheet implements ButtonResponder{
 
         }
     }
-    
+
     public boolean getIsExit(){
         return isExit;
     }
-    
+
     public void isExit(){
         if (Greenfoot.isKeyDown("Y") && isExit){
             getWorld().removeObject(tp);
             setCanMove(true);
             Greenfoot.setWorld(new LevelsScreen());          
-            Level1.level0Sound.stop();
-            Level3.lvl.stop();
-            Level2.lvlSound.stop();
-            Level4.lvl4.stop();
-            Level5.lvlSound.stop();
-            DragonLevel.suspenseSound.stop();
+            stopSounds();
         }
         if (Greenfoot.isKeyDown("N") && isExit){         
             getWorld().removeObject(tp);
@@ -457,9 +463,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         }
     }
 
-
     public void addToInventory(){
-
         if (materialList != null){
             if(System.currentTimeMillis() > time + 500){
                 for (Material myMat : materialList){

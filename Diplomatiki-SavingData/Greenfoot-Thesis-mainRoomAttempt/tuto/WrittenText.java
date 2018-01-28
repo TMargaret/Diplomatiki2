@@ -87,7 +87,7 @@ public class WrittenText implements Serializable
         return "Έχασες όλη σου την ενέργεια!\nΞαναπροσπάθησε!";
     }
 
-    //level3
+    //level2
     public String welcomeMsgL02(){
         return "Καλώς ήρθες στον πλανήτη μου Objectus!\n\nΕίμαι ο πλανητάρχης Objectis και μπορώ \nνα σε "+
         "βοηθήσω να φύγεις αρκεί να κάνεις \nκάτι για μένα.";

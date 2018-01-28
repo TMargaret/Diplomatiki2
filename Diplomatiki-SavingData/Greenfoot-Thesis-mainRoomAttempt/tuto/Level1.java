@@ -46,7 +46,7 @@ public class Level1 extends World
 
     public void act(){
         boolean doNotMove = false;
-        if (alien.getTalking() || house.getActive() || house.getEndOfUse() || alex.getIsExit()){
+        if (alien.getTalking() || house.getActive() || house.getEndOfUse() || alex.getIsExit() || HealthBar.getHealth()<=0){
             doNotMove  = true;
             fireBall.stop();
         }

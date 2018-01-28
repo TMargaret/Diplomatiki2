@@ -90,7 +90,7 @@ public class Level4 extends World
 
     public void act(){
         boolean doNotMove = false;
-        if (unicorn.getTalking() || isOnDoor || alex.getIsExit()){
+        if (unicorn.getTalking() || isOnDoor || alex.getIsExit() || HealthBar.getHealth()<=0){
             doNotMove  = true;
         }
 

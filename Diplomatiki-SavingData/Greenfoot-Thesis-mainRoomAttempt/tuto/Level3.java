@@ -94,12 +94,12 @@ public class Level3 extends World
     public void act(){
         found = false;
         for(Hut hut : hutList){
-            if ((hut.getActive()) || (isActive) || waterwell.getActive()){
+            if ((hut.getActive()) || (isActive) || waterwell.getActive() ){
                 found  = true;
 
             }
         }
-        if (alex.getIsExit()){
+        if (alex.getIsExit() || HealthBar.getHealth()<=0){
             found = true;
         }
         for(Material material : matList){
