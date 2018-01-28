@@ -23,7 +23,7 @@ public class Camel extends Locals
     @Override
     public void inAction(){
         if (super.counter<0 && !super.isActive && super.isEDown && super.count_enter == 0){
-            ImageTheory imgT = new ImageTheory("array",12, "jpg");
+            ImageTheory imgT = new ImageTheory("array",11, "jpg");
             getWorld().addObject(imgT, getWorld().getWidth()/2, getWorld().getHeight()/2);
             setActive(true);
             setTalking(true);
