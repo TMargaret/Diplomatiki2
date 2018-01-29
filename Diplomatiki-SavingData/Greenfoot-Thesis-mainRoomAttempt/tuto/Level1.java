@@ -216,9 +216,9 @@ public class Level1 extends World
             }
             if (Greenfoot.isKeyDown("enter") && displayMessage){
                 removeObject(textPanel);
-                Greenfoot.setWorld(new LevelsScreen());
                 level0Sound.stop();
                 checkUnlockLevel();
+                Greenfoot.setWorld(new LevelsScreen());              
             }
         }
     }	
