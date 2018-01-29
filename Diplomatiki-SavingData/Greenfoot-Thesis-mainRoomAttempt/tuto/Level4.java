@@ -27,7 +27,6 @@ public class Level4 extends World
     Unicorn unicorn = new Unicorn();
     Material mat;
     SignBlock signB;
-    Axe axe, axe2, axe3;
     TextPanel textPanel;
     Button btn1 = new Button();
     Button btn2 = new Button();
@@ -73,12 +72,6 @@ public class Level4 extends World
     {
         addWall();
         alex = new Alex();
-        axe = new Axe();
-        axe2 = new Axe();
-        axe3 = new Axe();
-        materialList.add(axe);
-        materialList.add(axe2);
-        materialList.add(axe3);
         addObject(alex, 450, 250);
         addObject(unicorn, 800,520);
         addObject(new Ant(), 2330,500);
