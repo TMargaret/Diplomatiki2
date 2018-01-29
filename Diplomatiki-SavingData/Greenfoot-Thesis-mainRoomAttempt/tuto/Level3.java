@@ -121,7 +121,7 @@ public class Level3 extends World
         enterInRoom();
         snail();
         endGame();
-        initVar();
+        initVar();  
     }
 
     /**
@@ -366,9 +366,9 @@ public class Level3 extends World
             }
             if (Greenfoot.isKeyDown("enter") && displayMessage){
                 removeObject(textPanel);
-                Greenfoot.setWorld(new LevelsScreen());
                 lvl.stop();
                 checkUnlockLevel();
+                Greenfoot.setWorld(new LevelsScreen());               
             }
         }
     }

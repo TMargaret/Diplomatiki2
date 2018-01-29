@@ -35,6 +35,7 @@ public class mainHouseRoom extends World
     Level3 level3;
     Material mat;
     boolean flag2 = false;
+    StoneOven stoneoven;
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -141,8 +142,9 @@ public class mainHouseRoom extends World
         materialList.add(brick);
         materialList.add(brick2);
 
-        StoneOven stoneoven = new StoneOven();
+        stoneoven = new StoneOven();
         addObject(stoneoven,910,129);
+        materialList.add(stoneoven);
     }
 
     public void addWall(){

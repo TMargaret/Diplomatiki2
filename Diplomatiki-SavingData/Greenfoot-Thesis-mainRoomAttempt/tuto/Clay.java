@@ -36,7 +36,7 @@ public class Clay extends Material
         version = newObjectVersion;
         GreenfootImage image = getImage();
         image.scale(image.getWidth() - 10, image.getHeight() - 10);
-        setImage(image);
+        setImage(image);       
        // myAnswer = "new Clay();";
     }
 
@@ -47,6 +47,9 @@ public class Clay extends Material
     public void act() 
     {
         materialCreation();
+        if (version==1){
+            myAnswer = "new Clay();";
+        }
     } 
 
     /**
@@ -80,8 +83,7 @@ public class Clay extends Material
             case 0:
             super.actionMat();
             break;
-            case 1:
-            myAnswer = "new Clay();";
+            case 1:           
             newClay = new Clay();
             getWorld().addObject(newClay, 80, 485);
             Level2.matList.add(newClay);
