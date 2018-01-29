@@ -36,7 +36,7 @@ public class Rules extends World implements ButtonResponder
         addObject(rules, 500, 300);
         
         Button btn = new Button("ΚΟΥΜΠΙ");
-        addObject(btn, 334, 474);
+        addObject(btn, 334, 444);
     }   
 
     public void buttonClicked(Button button){
@@ -53,6 +53,7 @@ public class Rules extends World implements ButtonResponder
         "\n\nenter: επαλήθευση κώδικα στον επεξεργαστή, κλείσιμο μηνυμάτων"+
         "\n\nspace: κλείσιμο μηνυμάτων ήττας"+
         "\n\nκλικ με το ποντίκι"+
-        "\n\n<-   ->   πλοήγηση με τα βελάκια αριστερά-δεξιά";
+        "\n\n<-   ->   πλοήγηση με τα βελάκια αριστερά-δεξιά"+
+        "\n\nμε κλικ στον editor, σβήνει μονομιάς το κείμενο";
     }
 }

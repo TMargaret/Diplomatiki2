@@ -21,11 +21,11 @@ public class LevelsScreen extends World implements ButtonResponder
     ArrayList<HoverFrame> hoverFrame = new ArrayList<HoverFrame>();
     public static ArrayList<Integer> unlock = new ArrayList<Integer>(){
             {
-                add(1);
-                add(1);
-                add(1);
-                add(1);
-                add(1);
+                //add(1);
+                //add(1);
+                //add(1);
+                //add(1);
+                //add(1);
             }
         }; //1 for unlocked level0
 
