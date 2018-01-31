@@ -10,7 +10,6 @@ import java.util.List;
 
 public class ImageTheory extends Actor
 {
-    private static Counter counterLife;
     private Button next_button = new Button();
     private Button before_button = new Button();
     Button count_button = new Button();

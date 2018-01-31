@@ -7,7 +7,7 @@ import java.awt.Font;
  * @author erdelf
  * @version 1.0
  */
-public class Inventory extends DragAndDrop
+public class Inventory extends Actor
 {
     private int[] item1PosX = {15, 53, 90, 128, 166, 204, 242, 15, 53, 90, 128, 166, 204, 242};
     private int[] item1PosY = {36, 36, 36, 36, 36, 36, 36, 71, 71, 71, 71, 71, 71, 71};
@@ -81,73 +81,6 @@ public class Inventory extends DragAndDrop
         }
         //drag();
         redraw();
-    }
-
-    public void drag()
-    {
-        if(mouseOver() && leftMousePress())
-        {
-            //has started dragging this menu
-            dragging = true;
-            dragX = Greenfoot.getMouseInfo().getX() - getX();
-            dragY = Greenfoot.getMouseInfo().getY() - getY();
-        }
-        else if(leftMouseRelease())
-        {
-            //dragging as ended
-            dragging = false;
-        }
-
-        if(dragging && Greenfoot.getMouseInfo() != null)
-        {
-            int newX = Greenfoot.getMouseInfo().getX() - dragX;
-            // System.out.println(Greenfoot.getMouseInfo().getX() - dragX);
-            int newY = Greenfoot.getMouseInfo().getY() - dragY;
-            // System.out.println(Greenfoot.getMouseInfo().getY() - dragY);
-            if(newX - getImage().getWidth()/2 < 0)//makes sure x inbound
-            {
-                newX = getImage().getWidth()/2;
-            }
-            if(newX + getImage().getWidth()/2 > getWorld().getWidth()-1)
-            {
-                newX = getWorld().getWidth()-1 - getImage().getWidth()/2;
-            }
-            if(newY - getImage().getHeight()/2 < 0)//makes sure y inbound
-            {
-                newY = getImage().getHeight()/2;
-            }
-            // if(newY + height - barHeight/2 > getWorld().getHeight()-1)
-            // {
-            // newY = getWorld().getHeight()-1 - height + barHeight/2;
-            // }
-
-            setLocation(newX, newY);
-        }
-    }
-
-    public boolean mouseOver()
-    {
-        if(Greenfoot.getMouseInfo() == null) return false;
-        int mouseX = Greenfoot.getMouseInfo().getX();
-        int mouseY = Greenfoot.getMouseInfo().getY();
-        // System.out.println(Greenfoot.getMouseInfo().getActor());
-
-        // for(int i = 0;  i < item1PosX.length; i++)
-        // {
-        // if (Greenfoot.getMouseInfo().getX() == item1PosX[i])
-
-        // System.out.println(item1PosX[i]);
-        // //System.out.println(item1PosY[i]);
-        // }
-
-        // int mouseX = Greenfoot.getMouseInfo().getX();
-        // System.out.println(mouseX);
-        // int mouseY = Greenfoot.getMouseInfo().getY();
-        // return mouseX > getX() - getImage().getWidth()/2 && 
-        // mouseX < getX() + getImage().getWidth()/2 &&
-        // mouseY > getY() - getImage().getHeight()/2 && 
-        // mouseY < getY() + getImage().getHeight()/2 ;
-        return false;
     }
 
     public static void setOpen(boolean opens)

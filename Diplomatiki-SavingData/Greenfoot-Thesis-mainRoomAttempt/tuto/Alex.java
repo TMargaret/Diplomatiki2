@@ -30,9 +30,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     HealthBar healthBar;
     InvBar invBar;
     Inventory inv;
-    HintBar hintBar;
     ExitBar exitBar;
-    HintRules hintRules;
     boolean invIsOpen = false, hintIsOpen = false;
     boolean lostMessage;
     Button inventoryBtn, hintBtn, exitBtn;
@@ -78,9 +76,9 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             exitBtn = new Button(exitBar.getImage().getWidth()-5, exitBar.getImage().getHeight()-5);
             exitBtn.setResponder(this);
 
-            hintBar = new HintBar();
-            hintBtn = new Button(hintBar.getImage().getWidth()-5, hintBar.getImage().getHeight()-5);
-            hintBtn.setResponder(this);
+            // hintBar = new HintBar();
+            // hintBtn = new Button(hintBar.getImage().getWidth()-5, hintBar.getImage().getHeight()-5);
+            // hintBtn.setResponder(this);
 
         }
         getWorld().addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
@@ -409,18 +407,18 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     public void buttonClicked(Button button)
     {   
         //opens the hint dialogue
-        if (Greenfoot.mouseClicked(hintBtn) && !hintIsOpen){
-            hintRules = new HintRules();
-            getWorld().addObject(hintRules, hintBar.getX() - (hintRules.getImage().getWidth()/2), 
-                hintBar.getY() + (hintBar.getImage().getHeight()/3) + (hintRules.getImage().getHeight()/2));
-            hintIsOpen = true;
-        }
-        //closes the hint dialogue
-        else if (Greenfoot.mouseClicked(hintBtn) && hintIsOpen)
-        {
-            getWorld().removeObject(hintRules);
-            hintIsOpen = false;
-        }
+        // if (Greenfoot.mouseClicked(hintBtn) && !hintIsOpen){
+            // hintRules = new HintRules();
+            // getWorld().addObject(hintRules, hintBar.getX() - (hintRules.getImage().getWidth()/2), 
+                // hintBar.getY() + (hintBar.getImage().getHeight()/3) + (hintRules.getImage().getHeight()/2));
+            // hintIsOpen = true;
+        // }
+        // //closes the hint dialogue
+        // else if (Greenfoot.mouseClicked(hintBtn) && hintIsOpen)
+        // {
+            // getWorld().removeObject(hintRules);
+            // hintIsOpen = false;
+        // }
         //opens the inventory
         if (Greenfoot.mouseClicked(inventoryBtn) && !invIsOpen)
         {
