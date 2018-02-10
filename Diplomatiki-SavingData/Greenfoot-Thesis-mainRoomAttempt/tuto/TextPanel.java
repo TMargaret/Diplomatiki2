@@ -38,6 +38,7 @@ public class TextPanel extends Actor implements Serializable
         HEIGHT = height;
 
     }
+
     public TextPanel(String status, String debugMsg)
     {
         this.status = status;
@@ -68,6 +69,9 @@ public class TextPanel extends Actor implements Serializable
         }       
         if (w instanceof Level5){
             makeTextL5();
+        }
+        if (w instanceof Fun){
+            makeTextFun();
         }
     }
 
@@ -197,6 +201,7 @@ public class TextPanel extends Actor implements Serializable
         }
 
     }
+
     private void makeTextL2(){
         if (status == "BrokenHutMessage") {
             String mytext = text.brokenHut();
@@ -372,8 +377,14 @@ public class TextPanel extends Actor implements Serializable
         if (status == "youLost"){
             String mytext = text.youLost();
             makeImage(mytext);
-        }
+        }     
+    }
 
+    private void makeTextFun(){
+        if (status == "start"){
+            String mytext = text.start();
+            makeImage(mytext);
+        }
     }
 
     private void makeImage(String title)

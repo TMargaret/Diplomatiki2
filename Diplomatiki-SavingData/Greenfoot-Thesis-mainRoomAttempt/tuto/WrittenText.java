@@ -284,4 +284,10 @@ public class WrittenText implements Serializable
     public String youLostBoat(){
         return "Το φορτίο σου δεν είναι το σωστό.\n\nΞαναπροσπάθησε!";
     }
+    
+    //level6
+    public String start(){
+        return "Πίεσε\n\n1 για να ελέγξεις το φορτίο"+
+        "\n\n2 για να περάσεις απέναντι"; 
+    }
 }
