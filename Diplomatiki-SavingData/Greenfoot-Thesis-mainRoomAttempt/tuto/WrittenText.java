@@ -287,7 +287,6 @@ public class WrittenText implements Serializable
     
     //level6
     public String start(){
-        return "Πίεσε\n\n1 για να ελέγξεις το φορτίο"+
-        "\n\n2 για να περάσεις απέναντι"; 
+        return "Eδώ θα μάθεις βασικά στοιχεία προγραμματισμού\nπου θα σε βοηθήσουν στο ταξίδι σου!"; 
     }
 }

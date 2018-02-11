@@ -410,7 +410,7 @@ public class TextPanel extends Actor implements Serializable
         if (status == "wrong" || status=="wrongKey") image.drawString("Πάτα ENTER", 30, 290);
         if ((status == "wellDone4") || status=="youLostLvl5" || status=="youLostBoat") image.drawString("Πάτα ENTER", 200, 280);
         if (status=="youLost") image.drawString("Πάτα SPACE", 30, 290);
-        // if (status == "start_quiz2") image.drawString("Πάτα ENTER για να ξεκινήσεις", 60, 280);
+        if (status == "start") image.drawString("Πάτα ENTER για να ξεκινήσεις", 60, 280);
         setImage(image);
 
     }

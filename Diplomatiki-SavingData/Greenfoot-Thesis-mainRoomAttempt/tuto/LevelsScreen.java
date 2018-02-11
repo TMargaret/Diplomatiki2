@@ -80,8 +80,8 @@ public class LevelsScreen extends World implements ButtonResponder
         locklevel5 = new LockLevel();
         addObject(locklevel5,471,440);
 
-        locklevel6 = new LockLevel();
-        addObject(locklevel6,806,440);
+        //locklevel6 = new LockLevel();
+        //addObject(locklevel6,806,440);
 
         hoverFrame1 = new HoverFrame();
         addObject(hoverFrame1,165,200);
@@ -134,6 +134,11 @@ public class LevelsScreen extends World implements ButtonResponder
             StartScreen.startSound.stop();
             enterSound.play();
             Greenfoot.setWorld(new Level5());
+        }
+        if (Greenfoot.mouseClicked(hoverFrame6)){ 
+            StartScreen.startSound.stop();
+            enterSound.play();
+            Greenfoot.setWorld(new Fun());
         }
     }
 

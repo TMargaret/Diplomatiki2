@@ -14,6 +14,7 @@ public class Fun extends World
     private GreenfootImage fun_bk_img = new GreenfootImage("fun1.jpg");
     private int count_image;
     private String fun = "fun";
+    private int imgNum = 5;
 
     /**
      * Constructor for objects of class Fun.
@@ -69,16 +70,16 @@ public class Fun extends World
         if (((Greenfoot.isKeyDown("enter")) & (flag_for_menu == false)))
         {
             removeObject(startImage);
-            count_button.setTitle("1/14");
+            count_button.setTitle(count_image+"/"+imgNum);
             flag_forward = true;
         }
         //forwarding images
-        if (count_image < 14){
+        if (count_image < imgNum){
             if ((Greenfoot.mouseClicked(forward_button) & (flag_forward == true)))
             {
                 count_image++;
                 this.setBackground(fun+count_image+".jpg");
-                count_button.setTitle(count_image+"/14");
+                count_button.setTitle(count_image+"/"+imgNum);
                 flag_backward = true;
             }
         }
@@ -89,10 +90,10 @@ public class Fun extends World
                 count_image--;
                 forward_button.setTitle("ΕΠΟΜΕΝΟ");
                 this.setBackground(fun+count_image+".jpg");
-                count_button.setTitle(count_image+"/14");
+                count_button.setTitle(count_image+"/"+imgNum);
             }
         }
-        if (count_image >= 14){
+        if (count_image >= imgNum){
             forward_button.setTitle("ΤΕΛΟΣ");
         }
     }
