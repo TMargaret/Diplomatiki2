@@ -46,7 +46,7 @@ public class Level1 extends World
 
     public void act(){
         boolean doNotMove = false;
-        if (alien.getTalking() || house.getActive() || house.getEndOfUse()){
+        if (alien.getTalking() || house.getActive() || house.getEndOfUse() || alex.getIsExit() || (HealthBar.getHealth()<=0)){
             doNotMove  = true;
             fireBall.stop();
         }
@@ -116,7 +116,7 @@ public class Level1 extends World
         Grass grass35 = new Grass();
         addObject(grass35,859,445);
 
-        setPaintOrder(Button.class,HealthLogo.class,HealthBar.class, HintBar.class,
+        setPaintOrder(Button.class,HealthLogo.class,HealthBar.class,
             InvBar.class, ExitBar.class,Wall.class);
     }
 
@@ -216,9 +216,9 @@ public class Level1 extends World
             }
             if (Greenfoot.isKeyDown("enter") && displayMessage){
                 removeObject(textPanel);
-                Greenfoot.setWorld(new LevelsScreen());
                 level0Sound.stop();
                 checkUnlockLevel();
+                Greenfoot.setWorld(new LevelsScreen());              
             }
         }
     }	

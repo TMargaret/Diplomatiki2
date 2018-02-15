@@ -23,14 +23,14 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     static boolean flagForRemovedItem = false;
     private static final int BOUNDARY = 40;
     List<Bubble> bbl;
+    TextPanel tp;
+    boolean isExit = false;
 
     HealthLogo healthLogo;
     HealthBar healthBar;
     InvBar invBar;
     Inventory inv;
-    HintBar hintBar;
     ExitBar exitBar;
-    HintRules hintRules;
     boolean invIsOpen = false, hintIsOpen = false;
     boolean lostMessage;
     Button inventoryBtn, hintBtn, exitBtn;
@@ -69,28 +69,28 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             healthLogo = new HealthLogo();
 
             invBar = new InvBar();
-            inventoryBtn = new Button(invBar.getImage().getWidth(), invBar.getImage().getHeight());
+            inventoryBtn = new Button(invBar.getImage().getWidth()-5, invBar.getImage().getHeight()-5);
             inventoryBtn.setResponder(this);
 
             exitBar = new ExitBar();
-            exitBtn = new Button(exitBar.getImage().getWidth(), exitBar.getImage().getHeight());
+            exitBtn = new Button(exitBar.getImage().getWidth()-5, exitBar.getImage().getHeight()-5);
             exitBtn.setResponder(this);
 
-            hintBar = new HintBar();
-            hintBtn = new Button(hintBar.getImage().getWidth(), hintBar.getImage().getHeight());
-            hintBtn.setResponder(this);
+            // hintBar = new HintBar();
+            // hintBtn = new Button(hintBar.getImage().getWidth()-5, hintBar.getImage().getHeight()-5);
+            // hintBtn.setResponder(this);
 
         }
         getWorld().addObject(healthBar, healthBar.getImage().getWidth(), healthBar.getImage().getHeight());
         getWorld().addObject(healthLogo,21,19);
-        getWorld().addObject(invBar,947,18);
+        getWorld().addObject(invBar,940,18);
 
-        getWorld().addObject(inventoryBtn, 947, 18);
+        getWorld().addObject(inventoryBtn, 940, 20);
 
         getWorld().addObject(exitBar,984,18);
-        getWorld().addObject(exitBtn, 984, 18);
-        getWorld().addObject(hintBar, 910, 18);
-        getWorld().addObject(hintBtn, 910, 18);
+        getWorld().addObject(exitBtn, 984, 20);
+        //getWorld().addObject(hintBar, 900, 18);
+        //getWorld().addObject(hintBtn, 900, 20);
 
     }
 
@@ -103,6 +103,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         gameOver();
         addToInventory();
         checkWorld();
+        isExit();
     }
 
     public void checkWorld(){
@@ -125,6 +126,10 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         if (getWorld() instanceof mainHutRoom){
             mainHutRoom mainHutRoom = (mainHutRoom)getWorld();
             materialList = mainHutRoom.getMaterialList();
+        }       
+        if (getWorld() instanceof Level5){
+            Level5 level5 = (Level5)getWorld();
+            materialList = level5.getMaterialList();
         }
     }
 
@@ -140,46 +145,45 @@ public class Alex extends SpriteSheet implements ButtonResponder{
      */
     public void move(int moveAmt){
 
- 
         if (!canMove){
             return;
         }
 
         int dx = 0, dy = 0;
         //checking which button(s) is/are pressed
-        if (Greenfoot.isKeyDown("down") && Greenfoot.isKeyDown("right")) {
+        if (Greenfoot.isKeyDown("s") && Greenfoot.isKeyDown("d")) {
             getKeyBoth = "downRight";
             animation();
         }
-        if (Greenfoot.isKeyDown("down") && Greenfoot.isKeyDown("left")) {
+        if (Greenfoot.isKeyDown("s") && Greenfoot.isKeyDown("a")) {
             getKeyBoth = "downLeft";
             animation();
         }
-        if (Greenfoot.isKeyDown("up") && Greenfoot.isKeyDown("right")) {
+        if (Greenfoot.isKeyDown("w") && Greenfoot.isKeyDown("d")) {
             getKeyBoth = "upRight";
             animation();
         }
-        if (Greenfoot.isKeyDown("up") && Greenfoot.isKeyDown("left")) {
+        if (Greenfoot.isKeyDown("w") && Greenfoot.isKeyDown("a")) {
             getKeyBoth = "upLeft";
             animation();
         }
-        if (Greenfoot.isKeyDown("right")) {
+        if (Greenfoot.isKeyDown("d")) {
             dx = 4;
             getKey = "right";
             animation();
 
         }
-        if (Greenfoot.isKeyDown("left")) {
+        if (Greenfoot.isKeyDown("a")) {
             dx = -4;
             getKey = "left";
             animation();
         }
-        if (Greenfoot.isKeyDown("down")) {
+        if (Greenfoot.isKeyDown("s")) {
             dy = 4;
             getKey = "down";
             animation();
         }
-        if (Greenfoot.isKeyDown("up")) {
+        if (Greenfoot.isKeyDown("w")) {
             dy = -4;
             getKey = "up";
             animation();
@@ -200,6 +204,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         (getOneIntersectingObject(Barrel.class) != null) ||  
         (getOneIntersectingObject(Grass.class) != null) ||  
         (getOneIntersectingObject(Material.class) != null) ||
+        (getOneIntersectingObject(SpaceShip.class) != null) ||
         (getOneIntersectingObject(Unicorn.class) != null) ||
         (getOneIntersectingObject(Locals.class) !=null) ||
         (getX() < getImage().getWidth()/2) ||
@@ -213,15 +218,14 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                 bbl = getWorld().getObjects(Bubble.class);
                 if (bbl !=null){
                     for(Bubble bbls: bbl){
-                    getWorld().removeObject(bbls);
-                }
+                        getWorld().removeObject(bbls);
+                    }
                 }
             } if( (getX() < (getWorld().getWidth()/2)) &&(getKey == "left" || getKeyBoth=="upLeft" || getKeyBoth=="downLeft")) {
                 ((Level4)getWorld()).shiftWorld(-dx/2);
                 setLocation(getX()-dx, getY());
-             }
+            }
         }
-        
 
         // setLocation(getX(), getY() + dy);
         if ((getOneIntersectingObject(Wall.class) != null)||
@@ -230,7 +234,8 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         (getOneIntersectingObject(Crate.class) != null) ||  
         (getOneIntersectingObject(Barrel.class) != null) || 
         (getOneIntersectingObject(SignBlock.class) != null)||
-        (getOneIntersectingObject(Wall2.class) != null) 
+        (getOneIntersectingObject(Wall2.class) != null) ||
+        (getOneIntersectingObject(SpaceShip.class) != null) 
         || (getOneIntersectingObject(Grass.class) != null)  
         || (getOneIntersectingObject(Material.class) != null)
         || (getOneIntersectingObject(Unicorn.class) != null)
@@ -238,7 +243,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         (getY() < getImage().getHeight()/2) ||
         (getY() > getWorld().getHeight() - getImage().getHeight()/2)){
             setLocation(getX(), getY() - dy);
-    }
+        }
         //initializes the getKey variables
         initGetKey();
     }
@@ -375,11 +380,22 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             lostMessage = true;
             theEnd = new TextPanel("youLost");
             getWorld().addObject(theEnd, getWorld().getWidth()/2, getWorld().getHeight()/2);
+
         }
         if (Greenfoot.isKeyDown("space") && lostMessage){
             Greenfoot.setWorld(new LevelsScreen());
             canMove = true;
+            stopSounds();
         }
+    }
+
+    public void stopSounds(){
+        Level1.level0Sound.stop();
+        Level3.lvl.stop();
+        Level2.lvlSound.stop();
+        Level4.lvl4.stop();
+        Level5.lvlSound.stop();
+        DragonLevel.suspenseSound.stop();
     }
 
     /**
@@ -391,18 +407,18 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     public void buttonClicked(Button button)
     {   
         //opens the hint dialogue
-        if (Greenfoot.mouseClicked(hintBtn) && !hintIsOpen){
-            hintRules = new HintRules();
-            getWorld().addObject(hintRules, hintBar.getX() - (hintRules.getImage().getWidth()/2), 
-                hintBar.getY() + (hintBar.getImage().getHeight()/3) + (hintRules.getImage().getHeight()/2));
-            hintIsOpen = true;
-        }
-        //closes the hint dialogue
-        else if (Greenfoot.mouseClicked(hintBtn) && hintIsOpen)
-        {
-            getWorld().removeObject(hintRules);
-            hintIsOpen = false;
-        }
+        // if (Greenfoot.mouseClicked(hintBtn) && !hintIsOpen){
+            // hintRules = new HintRules();
+            // getWorld().addObject(hintRules, hintBar.getX() - (hintRules.getImage().getWidth()/2), 
+                // hintBar.getY() + (hintBar.getImage().getHeight()/3) + (hintRules.getImage().getHeight()/2));
+            // hintIsOpen = true;
+        // }
+        // //closes the hint dialogue
+        // else if (Greenfoot.mouseClicked(hintBtn) && hintIsOpen)
+        // {
+            // getWorld().removeObject(hintRules);
+            // hintIsOpen = false;
+        // }
         //opens the inventory
         if (Greenfoot.mouseClicked(inventoryBtn) && !invIsOpen)
         {
@@ -418,19 +434,34 @@ public class Alex extends SpriteSheet implements ButtonResponder{
             invIsOpen = false;
         }
         //exitButton
-        if (Greenfoot.mouseClicked(exitBtn))
+        if (Greenfoot.mouseClicked(exitBtn) && !isExit)
         {
-            Greenfoot.setWorld(new LevelsScreen());
-            Level1.level0Sound.stop();
-            Level3.lvl.stop();
-            Level2.lvlSound.stop();
-            DragonLevel.suspenseSound.stop();
-        }
+            isExit = true;
+            tp = new TextPanel("exit");
+            getWorld().addObject(tp, getWorld().getWidth()/2, getWorld().getHeight()/2);            
 
+        }
+    }
+
+    public boolean getIsExit(){
+        return isExit;
+    }
+
+    public void isExit(){
+        if (Greenfoot.isKeyDown("Y") && isExit){
+            getWorld().removeObject(tp);
+            setCanMove(true);
+            Greenfoot.setWorld(new LevelsScreen());          
+            stopSounds();
+        }
+        if (Greenfoot.isKeyDown("N") && isExit){         
+            getWorld().removeObject(tp);
+            isExit = false;
+            setCanMove(true);
+        }
     }
 
     public void addToInventory(){
-
         if (materialList != null){
             if(System.currentTimeMillis() > time + 500){
                 for (Material myMat : materialList){

@@ -9,8 +9,8 @@ import java.util.ArrayList;
  */
 public class LevelsScreen extends World implements ButtonResponder
 {
-    Label lbl;
-    Button menuBtn; 
+    Label lbl, lbl1;
+    Button menuBtn, menuBtn1; 
     HoverFrame hoverFrame1, hoverFrame2, hoverFrame3, hoverFrame4, hoverFrame5, hoverFrame6;
     LockLevel locklevel6, locklevel2, locklevel3, locklevel4, locklevel5;
 
@@ -21,6 +21,7 @@ public class LevelsScreen extends World implements ButtonResponder
     ArrayList<HoverFrame> hoverFrame = new ArrayList<HoverFrame>();
     public static ArrayList<Integer> unlock = new ArrayList<Integer>(){
             {
+                add(1);
                 add(1);
                 add(1);
                 add(1);
@@ -51,13 +52,21 @@ public class LevelsScreen extends World implements ButtonResponder
     }
 
     public void prepare(){
-        lbl = new Label("Μενού", 50);
+        lbl = new Label("Menu", 50);
         lbl.setFillColor(Color.WHITE);
         addObject(lbl, 70, 30);
 
         menuBtn = new Button(lbl.getImage().getWidth(), lbl.getImage().getHeight());
         addObject(menuBtn, 70, 30);
         menuBtn.setResponder(this);
+        
+        lbl1 = new Label("Rules", 50);
+        lbl1.setFillColor(Color.WHITE);
+        addObject(lbl1, 900, 30);
+
+        menuBtn1 = new Button(lbl1.getImage().getWidth(), lbl1.getImage().getHeight());
+        addObject(menuBtn1, 900, 30);
+        menuBtn1.setResponder(this);
 
         locklevel2 = new LockLevel();
         addObject(locklevel2,473,170);      
@@ -71,8 +80,8 @@ public class LevelsScreen extends World implements ButtonResponder
         locklevel5 = new LockLevel();
         addObject(locklevel5,471,440);
 
-        locklevel6 = new LockLevel();
-        addObject(locklevel6,806,440);
+        //locklevel6 = new LockLevel();
+        //addObject(locklevel6,806,440);
 
         hoverFrame1 = new HoverFrame();
         addObject(hoverFrame1,165,200);
@@ -121,6 +130,16 @@ public class LevelsScreen extends World implements ButtonResponder
             enterSound.play();
             Greenfoot.setWorld(new Level4());
         }
+        if (Greenfoot.mouseClicked(hoverFrame5) && !(getObjects(LockLevel.class).contains(locklevel5))){ 
+            StartScreen.startSound.stop();
+            enterSound.play();
+            Greenfoot.setWorld(new Level5());
+        }
+        if (Greenfoot.mouseClicked(hoverFrame6)){ 
+            StartScreen.startSound.stop();
+            enterSound.play();
+            Greenfoot.setWorld(new Fun());
+        }
     }
 
     public void unlockLevel(){
@@ -144,9 +163,9 @@ public class LevelsScreen extends World implements ButtonResponder
             removeObject(locklevel4);
             removeObject(locklevel5);
             break;
-            case 6:
-            removeObject(locklevel6);
-            break;
+           // case 6:
+           // removeObject(locklevel6);
+           // break;
         }
 
     }
@@ -160,6 +179,16 @@ public class LevelsScreen extends World implements ButtonResponder
         if (mouseOver && !Greenfoot.mouseMoved(menuBtn) && Greenfoot.mouseMoved(null))
         {
             lbl.setFillColor(Color.WHITE);
+            mouseOver = false;
+        }
+        if (Greenfoot.mouseMoved(menuBtn1))
+        {
+            lbl1.setFillColor(new Color(128,128,128));
+            mouseOver = true;
+        }
+        if (mouseOver && !Greenfoot.mouseMoved(menuBtn1) && Greenfoot.mouseMoved(null))
+        {
+            lbl1.setFillColor(Color.WHITE);
             mouseOver = false;
         }
     }
@@ -187,6 +216,8 @@ public class LevelsScreen extends World implements ButtonResponder
         if (Greenfoot.mouseClicked(menuBtn)){
             Greenfoot.setWorld(new StartScreen());
         }
-
+        if (Greenfoot.mouseClicked(menuBtn1)){
+            Greenfoot.setWorld(new Rules());
+        }
     }
 }

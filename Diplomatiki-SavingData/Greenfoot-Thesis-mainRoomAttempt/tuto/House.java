@@ -59,7 +59,7 @@ public class House extends Actor
         if (getOneIntersectingObject(Alex.class) != null)
         {
             counter--;
-            if (Greenfoot.isKeyDown("e")){
+            if (Greenfoot.isKeyDown("e")){               
                 isEDown = true;
             }
             if (getCheckList()< 4){
@@ -76,8 +76,9 @@ public class House extends Actor
                     getWorld().removeObject(textPanel);
                 }
             }
-            if (getCheckList() == 4 && !endOfUse){
+            if (getCheckList() == 4 && !endOfUse){              
                 if (isEDown && !isActive && !endOfUse){
+                    Greenfoot.getKey().replaceAll("e", "");
                     isActive = true;
                     counter = 20;
                     textFieldCreation();

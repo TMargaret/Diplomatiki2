@@ -10,9 +10,9 @@ import java.util.List;
 public class Locals extends Actor
 {    
     private HiddenSprite hs;
-    private int counter = 10, eyes_counter, me = 0;
-    private boolean isActive = false, doNotMoveWhileTalking = false, isEDown = false;
-    int count_enter = 0;
+    protected int counter = 10, eyes_counter, me = 0;
+    protected boolean isActive = false, doNotMoveWhileTalking = false, isEDown = false;
+    protected int count_enter = 0;
     private boolean doneDialogue = false;
     private TextPanel taskText;
     Bubble bubble;
@@ -29,7 +29,8 @@ public class Locals extends Actor
     {
 
         localsDialogue();
-        blink();   
+        blink(); 
+
     }
 
     protected void addedToWorld(World w){
@@ -70,53 +71,8 @@ public class Locals extends Actor
                             isEDown = true;
                             getWorld().removeObject(bubble);
                         }
-                        if (counter<0 && !isActive && isEDown && count_enter == 0){
-                            taskText = new TextPanel(getTextMessage());
-                            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
-                            setActive(true);
-                            setTalking(true);
-                            count_enter = 1;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 1 && counter<0 && isEDown){
-                            counter = 20;
-                            actionInDialogue();
-                            count_enter = 2;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 2 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();
-                            count_enter = 3;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 3 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();
-                            count_enter = 4;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 4 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();
-                            count_enter = 5;                            
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 5 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();                          
-                            count_enter = 6;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 6 && counter <0 && isEDown){
-                            counter = 30;
-                            actionInDialogue();
-                            count_enter = 7;
-                        }
-                        if (Greenfoot.isKeyDown("enter") && count_enter == 7 && counter <0 && isEDown){
-                            counter = 30;
-                            getWorld().removeObject(taskText);
-                            count_enter = 0;
-                            isEDown = false;
-                            setActive(false);
-                            setTalking(false);
-                            setDialogue(true);
+                        inAction();
 
-                        }
                     }
 
                 }
@@ -124,14 +80,56 @@ public class Locals extends Actor
         }
     }
 
+    public void inAction(){
+        if (counter<0 && !isActive && isEDown && count_enter == 0){
+            taskText = new TextPanel(getTextMessage());
+            getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
+            setActive(true);
+            setTalking(true);
+            //count_enter = 1;
+        }
+        if (Greenfoot.isKeyDown("right") && count_enter < getCountEnterTotal() && counter <0 && isEDown){
+            count_enter++;
+            counter = 30;
+            actionInDialogue();
+
+        }
+        if (Greenfoot.isKeyDown("left") && count_enter >= 1 && counter <0 && isEDown){
+            count_enter--;
+            counter = 30;
+            actionInDialogue();
+
+        }
+        if (Greenfoot.isKeyDown("left") && count_enter <= 0 && counter <0 && isEDown){
+            //count_enter--;
+            counter = 30;
+            // actionInDialogue();
+
+        }
+        if (Greenfoot.isKeyDown("right") && count_enter >= getCountEnterTotal() && counter <0 && isEDown){
+            counter = 30;
+            getWorld().removeObject(taskText);
+            count_enter = 0;
+            isEDown = false;
+            setActive(false);
+            setTalking(false);
+            setDialogue(true);
+
+        }
+    }
+
+    public int getCountEnterTotal(){
+        return 1;
+    }
+
     public void actionInDialogue(){
         getWorld().removeObject(taskText);
         taskText = new TextPanel(getTextMessage());
         getWorld().addObject(taskText, getWorld().getWidth()/2, getWorld().getHeight()/2);
     }
-    
+
     public void extraAction(){
-        
+
     }
 
     public int getCount_Enter(){

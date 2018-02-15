@@ -48,7 +48,7 @@ public class WaterWell extends Actor
         if (isTouching(Alex.class))
         {
             counter--;
-            if (Greenfoot.isKeyDown("e")){
+            if (Greenfoot.isKeyDown("e")){               
                 isEDown = true;
             }
             if (getCheckList() < 2){
@@ -121,6 +121,7 @@ public class WaterWell extends Actor
     }
 
     public void textFieldCreation(){
+        Greenfoot.getKey().replaceAll("e", "");
         textField = new TextField(700, 45,"Χρησιμοποίησε τα υλικά μαζί..");
         getWorld().addObject(textField, textField.getImage().getWidth()/2, getWorld().getHeight() - textField.getImage().getHeight()/2);
     }

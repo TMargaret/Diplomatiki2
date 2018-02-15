@@ -35,6 +35,7 @@ public class mainHouseRoom extends World
     Level3 level3;
     Material mat;
     boolean flag2 = false;
+    StoneOven stoneoven;
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -72,7 +73,7 @@ public class mainHouseRoom extends World
         exitRoom();
         //checkAxe();
         boolean doNotMove = false;
-        if (elder.getTalking() || (flag == 1) || (isActive)){
+        if (elder.getTalking() || (flag == 1) || (isActive) || alex.getIsExit()){
             doNotMove  = true;
         }
         for(Door door : doorList){
@@ -141,8 +142,9 @@ public class mainHouseRoom extends World
         materialList.add(brick);
         materialList.add(brick2);
 
-        StoneOven stoneoven = new StoneOven();
+        stoneoven = new StoneOven();
         addObject(stoneoven,910,129);
+        materialList.add(stoneoven);
     }
 
     public void addWall(){
@@ -267,7 +269,7 @@ public class mainHouseRoom extends World
             }
         }
     }
-    
+
     public int checkWellList(){
         return count;
     }

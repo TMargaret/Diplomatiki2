@@ -18,6 +18,9 @@ public class WrittenText implements Serializable
     public WrittenText(){
     }  
 
+    public String exit(){
+        return "Έξοδος;";
+    }
     //level1
     public String welcomeMsgL0(){
         return "Καλώς ήρθες στον πλανήτη μου Methodius!\n\nΕίμαι ο πλανητάρχης Methodis και μπορώ \nνα σε "+
@@ -84,7 +87,7 @@ public class WrittenText implements Serializable
         return "Έχασες όλη σου την ενέργεια!\nΞαναπροσπάθησε!";
     }
 
-    //level3
+    //level2
     public String welcomeMsgL02(){
         return "Καλώς ήρθες στον πλανήτη μου Objectus!\n\nΕίμαι ο πλανητάρχης Objectis και μπορώ \nνα σε "+
         "βοηθήσω να φύγεις αρκεί να κάνεις \nκάτι για μένα.";
@@ -191,7 +194,7 @@ public class WrittenText implements Serializable
     public String taskText6(){
         return "Τέλος, μια μέθοδος μπορεί να πάρει όσες\nπαραμέτρους χρειαζόμαστε:"
         +"\nH υπογραφή της μεθόδου use θα ήταν:\npublic void use(Object wood, Object straw)\n{}\n"
-        +"\nκαι αντίστοιχα η κλήση της θα ήταν:\nAlex.use(wood, straw);";
+        +"\nκαι αντίστοιχα η κλήση της θα ήταν:\nAlex.use(wood,straw);";
     }
 
     public String taskText7(){
@@ -231,12 +234,61 @@ public class WrittenText implements Serializable
     public String repeatOrLeave(){
         return "Δεν έχεις μαζέψει τα σωστά ανταλλακτικά.\n\nΘέλεις να αρχίσεις ξανά;";
     }
+
     public String notEnough(){
         return "Δεν έχεις μαζέψει όλα τα ανταλλακτικά.\n\nΣυνέχισε την αναζήτηση...";
     }
-    
+
     public String wellDone4(){
-        return "Τα κατάφερες!\n\nLive long and prosper!";
+        return "GAME OVER\n\nΜπράβο! Έσωσες όλους τους πλανήτες από"+
+        " τον εχθρό DragonDrop.\n\nΗ αποστολή σου ολοκληρώθηκε, όμως μπορείς"+
+        " να συνεχίσεις να παίζεις\nγια εξάσκηση!";
     }
 
+    //level5
+    public String boat(){
+        return
+        "public class Boat {\n"+
+        "  public static void main(String args[]) {\n"+
+        "     ArrayList<String> cargo = new ArrayList<String>();\n"+
+        "     cargo.add(\"wood\");\n"+
+        "     cargo.add(\"clay\");\n"+
+        "     cargo.add(\"brick\");\n"+
+        "     cargo.set(2,\"wood\");\n"+
+        "     cargo.add(\"straw\");\n"+
+        "     cargo.remove(1);\n"+
+        "     cargo.add(\"brick\");\n"+
+        "     cargo.remove(0);\n"+
+        "     System.out.println(cargo.size());\n"+
+        "    }\n"+
+        " }\n\nΤι θα τυπωθεί;";
+    }
+
+    public String moveOrStudy(){
+        return "Πίεσε\n\n1 για να ελέγξεις το φορτίο"+
+        "\n\n2 για να περάσεις απένταντι";
+    }
+
+    public String crate(){
+        return
+        "public class Box {\n\n"+
+        "  public static void  --------- (String args[]) {\n\n"+
+        "     ArrayList<Material> unloadCargo =  -------  ArrayList<   ---------------    >();\n\n"+
+        "     unloadCargo.add( \"   ---------------  \" );\n\n"+
+        "     --------------  .add(\"straw\");\n\n"+
+        "     unloadCargo.add(\"   --------------  \");\n\n";
+    }
+    
+    public String youLostLvl5(){
+        return "Η λύση δεν ήταν σωστή.\n\nΞαναπροσπάθησε!";
+    }
+    
+    public String youLostBoat(){
+        return "Το φορτίο σου δεν είναι το σωστό.\n\nΞαναπροσπάθησε!";
+    }
+    
+    //level6
+    public String start(){
+        return "Eδώ θα μάθεις βασικά στοιχεία προγραμματισμού\nπου θα σε βοηθήσουν στο ταξίδι σου!"; 
+    }
 }

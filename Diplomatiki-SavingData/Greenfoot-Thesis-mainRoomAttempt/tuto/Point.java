@@ -14,3 +14,4 @@ public class Point {
         return (p.row == row) && (p.col == col);
     }
 }
+

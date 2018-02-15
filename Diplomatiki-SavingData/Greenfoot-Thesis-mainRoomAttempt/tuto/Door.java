@@ -27,6 +27,7 @@ public class Door extends Material
     {
         checkWorld();
         materialCreation();
+        System.out.println(materialList);
     } 
 
     @Override
@@ -34,8 +35,8 @@ public class Door extends Material
         for (Material mat: materialList){
             if (mat.getMaterial()=="Key")
             {
-                mainHouseRoom.doorList.remove(this);
-                getWorld().removeObject(this);
+                setLocation(getX(),getY()-getImage().getHeight());
+                mainHouseRoom.doorList.remove(this);               
                 pickupSound.play();
             }
         }

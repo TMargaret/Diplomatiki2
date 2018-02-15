@@ -11,6 +11,7 @@ public class RedAlien extends Locals
 
     private GreenfootImage img = getImage();
     private GreenfootImage img_eyes = new GreenfootImage("alienRed2.png");
+    int countEnterTotal = 6;
     /**
      * Act - do whatever the RedAlien wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -50,5 +51,9 @@ public class RedAlien extends Locals
 
     public void setImage2(){       
         setImage(img_eyes);
+    }
+    
+    public int getCountEnterTotal(){
+        return countEnterTotal;
     }
 }

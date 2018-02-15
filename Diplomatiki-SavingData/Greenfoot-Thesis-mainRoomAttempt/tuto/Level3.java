@@ -20,7 +20,7 @@ public class Level3 extends World
     private ArrayList <Hut> hutList = new ArrayList<Hut>();
     public static ArrayList <Material> matList = new ArrayList<Material>();//this is the initial list that holds the world's materials
     public static GreenfootSound lvl = new GreenfootSound("level3.mp3");
-    private static ArrayList <Material> pickUpList = new ArrayList<Material>(); //this is the list that Alex is retrieving
+    private static ArrayList <Material> pickUpList; //this is the list that Alex is retrieving
     boolean isEDown = false;
     boolean noMaterial = false;
     int counter = 100, btn_counter = 50;
@@ -55,6 +55,7 @@ public class Level3 extends World
         alex = new Alex();
         prepare();
         //found = false;
+        pickUpList = new ArrayList<Material>();
         lvl.playLoop();
     }
 
@@ -94,10 +95,13 @@ public class Level3 extends World
     public void act(){
         found = false;
         for(Hut hut : hutList){
-            if ((hut.getActive()) || (isActive) || waterwell.getActive()){
+            if ((hut.getActive()) || (isActive) || waterwell.getActive() ){
                 found  = true;
 
             }
+        }
+        if (alex.getIsExit() || HealthBar.getHealth()<=0){
+            found = true;
         }
         for(Material material : matList){
             if(material.getWorldOfType(Level3.class) == null){
@@ -118,7 +122,7 @@ public class Level3 extends World
         enterInRoom();
         snail();
         endGame();
-        initVar();
+        initVar();  
     }
 
     /**
@@ -363,9 +367,9 @@ public class Level3 extends World
             }
             if (Greenfoot.isKeyDown("enter") && displayMessage){
                 removeObject(textPanel);
-                Greenfoot.setWorld(new LevelsScreen());
                 lvl.stop();
                 checkUnlockLevel();
+                Greenfoot.setWorld(new LevelsScreen());               
             }
         }
     }

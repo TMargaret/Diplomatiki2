@@ -14,4 +14,6 @@ comment5.params=
 comment5.target=void\ setImage1()
 comment6.params=
 comment6.target=void\ setImage2()
-numComments=7
+comment7.params=
+comment7.target=int\ getCountEnterTotal()
+numComments=8

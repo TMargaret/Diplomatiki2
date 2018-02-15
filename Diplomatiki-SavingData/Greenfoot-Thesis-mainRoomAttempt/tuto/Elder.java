@@ -11,7 +11,7 @@ public class Elder extends Locals
 {
     private GreenfootImage knight = getImage();
     private GreenfootImage knight_eyes = new GreenfootImage("knight41.png");
-    boolean addAxe = false;
+    int countEnterTotal = 7;
 
     public Elder(){
     }
@@ -51,15 +51,15 @@ public class Elder extends Locals
         return text;
     }
 
-    // public boolean addAxe(){
-    // return addAxe;
-    // }
-
     public void setImage1(){
         setImage(knight);
     }
 
     public void setImage2(){
         setImage(knight_eyes);
+    }
+    
+    public int getCountEnterTotal(){
+        return countEnterTotal;
     }
 }

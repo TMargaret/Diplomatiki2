@@ -1,12 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
- * Write a description of class Windmill here.
+ *
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SpaceShip extends Material
+public class SpaceShip extends Actor
 {
     GreenfootImage ss = new GreenfootImage("spaceship.png");
     GreenfootImage ss2 = new GreenfootImage("spaceship2.png");
@@ -18,13 +19,13 @@ public class SpaceShip extends Material
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
     boolean isDone = false;
+    boolean isEDown = false, isActive = false;
+    int counter = 30;
 
     public SpaceShip(){
         setImage(ss);
         getImage().scale(getImage().getWidth()/2, getImage().getHeight()/2);
         ss2.scale(ss2.getWidth()/2, ss2.getHeight()/2);
-        super.hsHeight = 650;
-        super.hsWidth = 320;
     }
 
     /**
@@ -36,21 +37,44 @@ public class SpaceShip extends Material
         materialCreation();
         finish();
     } 
-
-    /**
-     * Method checkMaterial
-     *
-     * @return The correct answer value to be check
-     */
-    public String checkMaterial(){
-        String materialAnswer = "Alex.useAll();";
-        return materialAnswer;
-
+    
+      protected void addedToWorld(World w)
+    {
+        addHiddenSprite(w);
     }
 
+    public void addHiddenSprite(World w) {   
+        hs = new HiddenSprite(this, 650 , 320, HS_OFFSET_X, HS_OFFSET_Y, true);  
+        w.addObject(hs, getX(), getY()); 
+    }
+
+    public void materialCreation(){
+        if( hs.getWorld() != null ) {   
+            List<Actor> things = hs.getHitBoxIntersections();    
+            if( things.size() > 1 ) {      
+
+                Actor a = null;
+                // int infront = 0;      // TODO Show list of intersecting objects. Pick the one to interact with 1,2,3,4...1
+                for(int i=0; i < things.size(); i++ ) { 
+                    a = things.get(i);
+                    if(a instanceof HiddenSprite)  {     
+                        continue;
+                    }
+                    if( a instanceof Alex) {
+                        counter--;
+                        if (Greenfoot.isKeyDown("e") && !isEDown){
+                            isEDown = true;
+                            counter = 20;
+                            actionMat();
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     public void actionMat(){
         buildSound.play();
-        getWorld().removeObject(textField);
         setImage(ss2);
         isDone = true;
     }

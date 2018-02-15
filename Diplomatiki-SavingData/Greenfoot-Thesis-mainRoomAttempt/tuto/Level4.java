@@ -23,11 +23,10 @@ public class Level4 extends World
     private ArrayList<SignBlock> sbList = new ArrayList<SignBlock>();
     private ArrayList<Material> materialList = new ArrayList<Material>();
     private ArrayList <Material> pickUpList = new ArrayList<Material>();
-    GreenfootSound lvl4 = new GreenfootSound("level4.wav");
+    static GreenfootSound lvl4 = new GreenfootSound("level4.wav");
     Unicorn unicorn = new Unicorn();
     Material mat;
     SignBlock signB;
-    Axe axe, axe2, axe3;
     TextPanel textPanel;
     Button btn1 = new Button();
     Button btn2 = new Button();
@@ -65,7 +64,7 @@ public class Level4 extends World
         createWorldFromTiles();
         shiftWorld(0);
         prepare();
-        //lvl4.playLoop();
+        lvl4.playLoop();
 
     }
 
@@ -73,12 +72,6 @@ public class Level4 extends World
     {
         addWall();
         alex = new Alex();
-        axe = new Axe();
-        axe2 = new Axe();
-        axe3 = new Axe();
-        materialList.add(axe);
-        materialList.add(axe2);
-        materialList.add(axe3);
         addObject(alex, 450, 250);
         addObject(unicorn, 800,520);
         addObject(new Ant(), 2330,500);
@@ -90,7 +83,7 @@ public class Level4 extends World
 
     public void act(){
         boolean doNotMove = false;
-        if (unicorn.getTalking() || isOnDoor){
+        if (unicorn.getTalking() || isOnDoor || alex.getIsExit() || HealthBar.getHealth()<=0){
             doNotMove  = true;
         }
 

@@ -11,6 +11,7 @@ public class Alien extends Locals
 
     private GreenfootImage img = getImage();
     private GreenfootImage img_eyes = new GreenfootImage("alien2.png");
+    int countEnterTotal = 6;
 
     public Alien(){
         scaleImage();
@@ -62,5 +63,9 @@ public class Alien extends Locals
 
     public void setImage2(){       
         setImage(img_eyes);
+    }
+    
+    public int getCountEnterTotal(){
+        return countEnterTotal;
     }
 }

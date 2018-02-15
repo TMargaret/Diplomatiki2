@@ -72,7 +72,7 @@ public class mainHutRoom extends World
         exitRoom();
         //checkAxe();
         boolean doNotMove = false;
-        if ((flag == 1) || (isActive)){
+        if ((flag == 1) || (isActive) || alex.getIsExit()){
             doNotMove  = true;
         }
         for (Material material : materialList){

@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class Material extends Actor 
 {
-    public HiddenSprite hs;
+    private HiddenSprite hs;
     public int hsWidth = 0; 
     public int hsHeight = 70;
     private final int HS_OFFSET_X = 0;
     private final int HS_OFFSET_Y = 0;
 
-    public boolean isEDown = false, isActive = false, tryAgainOrLeave = false;
+    boolean isEDown = false, isActive = false, tryAgainOrLeave = false;
     boolean wrongCommand = false;
     boolean thisLvl = false;
     TextField textField;
@@ -25,13 +25,14 @@ public class Material extends Actor
     String my_text = "";
     TextPanel textPanel;
     static boolean addToInv = false;
-    public static ArrayList<Material> materialList = new ArrayList<Material>();
+    public static ArrayList<Material> materialList;
     InvBar invBar = new InvBar();
     Debugger db;
     GreenfootSound pickupSound = new GreenfootSound("pickUp.wav");
 
     public Material(){
         hsWidth = getImage().getWidth() + getImage().getWidth()/2;
+        materialList = new ArrayList<Material>();
     }
 
     /**F
@@ -88,7 +89,8 @@ public class Material extends Actor
                         counter--;
                         if (Greenfoot.isKeyDown("e") && !isEDown){
                             isEDown = true;
-                            counter = 20;
+                            counter = 20; 
+                            Greenfoot.getKey().replaceAll("e", "");
                         }
                         if (counter<0 && isEDown && !thisLvl)
                         {
@@ -109,7 +111,7 @@ public class Material extends Actor
 
                         if (thisLvl && Greenfoot.isKeyDown("enter") && isEDown && !tryAgainOrLeave){
                             isEDown = false;
-                            counter = 30;
+                            //counter = 30;
                             db = new Debugger(textField.getText(), this.checkMaterial());
                             if (db.checkSpelling())
                             {
