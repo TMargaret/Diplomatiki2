@@ -269,7 +269,7 @@ public class mainHouseRoom extends World
             }
         }
     }
-    
+
     public int checkWellList(){
         return count;
     }

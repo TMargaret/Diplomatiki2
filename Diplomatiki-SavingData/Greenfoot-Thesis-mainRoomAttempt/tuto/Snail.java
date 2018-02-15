@@ -19,7 +19,7 @@ public class Snail extends SmoothMover
     int counter=0;
 
     public Snail(){
-        super(new Vector(-3.0, 0));
+        super(new Vector(-2.0, 0));
         setImage(SpriteSheet.getSprite(snail, img_cell,  img_cell*3, img_cell*2, img_cell*4, IMG_WIDTH, IMG_HEIGHT));
     }
 

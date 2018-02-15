@@ -203,7 +203,6 @@ public class Level5 extends World
         }
     }
 
-
     /**
      * Method getMaterialList
      *
@@ -225,7 +224,7 @@ public class Level5 extends World
             if (Greenfoot.isKeyDown("enter") && displayMessage){
                 removeObject(textPanel);
                 Greenfoot.setWorld(new LevelsScreen());
-                //suspenseSound.stop();
+                lvlSound.stop();
             }
         }
         if (crate1.getEnd()==0){
@@ -238,7 +237,7 @@ public class Level5 extends World
             if (Greenfoot.isKeyDown("enter") && displayMessage){
                 removeObject(textPanel);
                 Greenfoot.setWorld(new LevelsScreen());
-                //suspenseSound.stop();
+                lvlSound.stop();
             }
         }
         if (boat.getEnd()==0){
@@ -255,8 +254,8 @@ public class Level5 extends World
             }
         }
     }
-    
-        public int checkMatList(){
+
+    public int checkMatList(){
         if (pickUpList != null){
             for (Material mat: pickUpList){
                 if (mat.getMaterial() == "Wood"){

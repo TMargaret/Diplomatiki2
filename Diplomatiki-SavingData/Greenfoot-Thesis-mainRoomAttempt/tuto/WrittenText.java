@@ -240,7 +240,9 @@ public class WrittenText implements Serializable
     }
 
     public String wellDone4(){
-        return "Τα κατάφερες!\n\nLive long and prosper!";
+        return "GAME OVER\n\nΜπράβο! Έσωσες όλους τους πλανήτες από"+
+        " τον εχθρό DragonDrop.\n\nΗ αποστολή σου ολοκληρώθηκε, όμως μπορείς"+
+        " να συνεχίσεις να παίζεις\nγια εξάσκηση!";
     }
 
     //level5

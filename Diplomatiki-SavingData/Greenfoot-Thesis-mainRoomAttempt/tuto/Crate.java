@@ -84,6 +84,7 @@ public class Crate extends Actor
                             getWorld().addObject(tp, getWorld().getWidth()/2, getWorld().getHeight()/2);
                             addEditor();
                         }
+
                         if (Greenfoot.mouseClicked(btnOK)){                          
                             if (evaluate().compareTo("111111")==0){
                                 removeSome();
@@ -113,7 +114,6 @@ public class Crate extends Actor
         getWorld().addObject(t5,188,313);
         t6 = new TextField(110,30);
         getWorld().addObject(t6,380,373);
-
         btnOK = new Button("OK");
         getWorld().addObject(btnOK, 500, 470);
     }

@@ -25,13 +25,14 @@ public class Material extends Actor
     String my_text = "";
     TextPanel textPanel;
     static boolean addToInv = false;
-    public static ArrayList<Material> materialList = new ArrayList<Material>();
+    public static ArrayList<Material> materialList;
     InvBar invBar = new InvBar();
     Debugger db;
     GreenfootSound pickupSound = new GreenfootSound("pickUp.wav");
 
     public Material(){
         hsWidth = getImage().getWidth() + getImage().getWidth()/2;
+        materialList = new ArrayList<Material>();
     }
 
     /**F
@@ -110,7 +111,7 @@ public class Material extends Actor
 
                         if (thisLvl && Greenfoot.isKeyDown("enter") && isEDown && !tryAgainOrLeave){
                             isEDown = false;
-                            counter = 30;
+                            //counter = 30;
                             db = new Debugger(textField.getText(), this.checkMaterial());
                             if (db.checkSpelling())
                             {
