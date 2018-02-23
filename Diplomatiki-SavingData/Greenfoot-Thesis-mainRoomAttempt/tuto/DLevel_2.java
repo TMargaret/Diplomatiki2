@@ -39,9 +39,10 @@ public class DLevel_2 extends DragonLevel
 
     public void endGame(){
         if (dragon2.endLevel()){
+            LevelsScreen.writefile(3);
             Greenfoot.setWorld(new LevelsScreen());
             suspenseSound.stop();
-            checkUnlockLevel();
+            //checkUnlockLevel();
         }
     }
     

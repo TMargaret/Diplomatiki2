@@ -217,21 +217,22 @@ public class Level1 extends World
             if (Greenfoot.isKeyDown("enter") && displayMessage){
                 removeObject(textPanel);
                 level0Sound.stop();
-                checkUnlockLevel();
+                LevelsScreen.writefile(2);
+               // checkUnlockLevel();
                 Greenfoot.setWorld(new LevelsScreen());              
             }
         }
     }	
 
-    /**
-     * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
-     * player will play the same level
-     */
-    public void checkUnlockLevel(){
-        if (LevelsScreen.unlock.size() < 2)
-        {
-            LevelsScreen.unlock.add(1);
-        }
-    }
+    // /**
+     // * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
+     // * player will play the same level
+     // */
+    // public void checkUnlockLevel(){
+        // if (LevelsScreen.unlock.size() < 2)
+        // {
+            // LevelsScreen.unlock.add(1);
+        // }
+    // }
 
 }

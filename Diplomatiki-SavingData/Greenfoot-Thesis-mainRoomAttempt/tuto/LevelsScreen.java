@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.io.*;
 
 /**
  * Write a description of class LevelsScreen here.
@@ -25,9 +26,11 @@ public class LevelsScreen extends World implements ButtonResponder
                 add(1);
                 add(1);
                 add(1);
-                add(1);
+                //add(1);
             }
         }; //1 for unlocked level0
+    SaveState st;
+    private int lvlState = 0;
 
     /**
      * Constructor for objects of class LevelsScreen.
@@ -48,7 +51,7 @@ public class LevelsScreen extends World implements ButtonResponder
         menuHover();
         planetHover();
         setLevel();  
-        unlockLevel();
+        unlockLevel(); 
     }
 
     public void prepare(){
@@ -59,7 +62,7 @@ public class LevelsScreen extends World implements ButtonResponder
         menuBtn = new Button(lbl.getImage().getWidth(), lbl.getImage().getHeight());
         addObject(menuBtn, 70, 30);
         menuBtn.setResponder(this);
-        
+
         lbl1 = new Label("Rules", 50);
         lbl1.setFillColor(Color.WHITE);
         addObject(lbl1, 900, 30);
@@ -143,7 +146,7 @@ public class LevelsScreen extends World implements ButtonResponder
     }
 
     public void unlockLevel(){
-        int size = unlock.size();
+        int size = readfile();
         switch (size){
             case 2:
             removeObject(locklevel2);
@@ -163,9 +166,9 @@ public class LevelsScreen extends World implements ButtonResponder
             removeObject(locklevel4);
             removeObject(locklevel5);
             break;
-           // case 6:
-           // removeObject(locklevel6);
-           // break;
+            // case 6:
+            // removeObject(locklevel6);
+            // break;
         }
 
     }
@@ -220,4 +223,48 @@ public class LevelsScreen extends World implements ButtonResponder
             Greenfoot.setWorld(new Rules());
         }
     }
+
+  public static void writefile(int lvlSize)
+    {
+        FileWriter fw = null;
+        try
+        {
+            fw = new FileWriter("data.txt");
+            fw.write(Integer.toString(lvlSize));
+        }
+        catch (Exception e){ e.printStackTrace(); }
+        finally
+        {
+            if(fw != null)
+            {
+                try { fw.close(); }
+                catch (Exception e) { e.printStackTrace(); }
+            }
+        }
+    }
+
+    public static int readfile()
+    {
+        String line = null;
+        int value=0;
+        FileReader file = null;
+        try
+        {
+            file = new FileReader("data.txt");
+            BufferedReader reader = new BufferedReader(file);
+            line = reader.readLine();
+            value = Integer.parseInt(line);
+        }
+        catch (FileNotFoundException e) {throw new RuntimeException("Error");}
+        catch (IOException e) {throw new RuntimeException("Error");}
+        finally
+        {
+            if(file != null)
+                try {file.close();}
+                catch (IOException e) {e.printStackTrace();}
+        }
+
+        return value;
+    }
+
 }

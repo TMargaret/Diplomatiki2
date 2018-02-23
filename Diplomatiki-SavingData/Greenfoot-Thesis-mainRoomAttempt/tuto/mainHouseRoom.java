@@ -1,4 +1,4 @@
-import greenfoot.*;
+	import greenfoot.*;
 import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**

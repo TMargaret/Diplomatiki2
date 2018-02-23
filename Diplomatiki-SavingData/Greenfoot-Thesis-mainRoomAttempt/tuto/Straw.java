@@ -17,7 +17,8 @@ public class Straw extends Material
      *
      */
     public Straw(){
-        myAnswer = "Alex.pickUp(straw);";
+        //myAnswer = "Alex.pickUp(straw);";
+        myAnswer = "";
     }
 
     public Straw(int newObjectVersion) 
