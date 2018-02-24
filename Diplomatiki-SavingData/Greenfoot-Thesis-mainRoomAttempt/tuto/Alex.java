@@ -36,7 +36,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     Button inventoryBtn, hintBtn, exitBtn;
     private static String[] items;
     public double time;
-    static int alexHealth = 6;
+    int alexHealth = 6;
     Level3 level3;
     boolean isAdded = false;
 

@@ -15,6 +15,7 @@ public class Fun extends World
     private int count_image;
     private String fun = "fun";
     private int imgNum = 5;
+    private boolean isTwo = false;
 
     /**
      * Constructor for objects of class Fun.
@@ -44,7 +45,7 @@ public class Fun extends World
 
         backward_button = new Button();
         backward_button.setTitle("ΠΡΟΗΓΟΥΜΕΝΟ");
-        addObject(backward_button, backward_button.getImage().getWidth()/2, getHeight() - backward_button.getImage().getHeight()/2);
+        //addObject(backward_button, backward_button.getImage().getWidth()/2, getHeight() - backward_button.getImage().getHeight()/2);
 
         this.startImage = new TextPanel("start");
         addObject(startImage, getWidth()/2, getHeight()/2);
@@ -74,9 +75,17 @@ public class Fun extends World
             flag_forward = true;
         }
         //forwarding images
-        if (count_image < imgNum){
-            if ((Greenfoot.mouseClicked(forward_button) & (flag_forward == true)))
-            {
+        if (count_image==1 && backward_button.getWorld()!=null){
+            isTwo=false;
+            removeObject(backward_button);
+        }
+        if (count_image==2 && !isTwo){
+            isTwo=true;
+            addObject(backward_button, backward_button.getImage().getWidth()/2, getHeight() - backward_button.getImage().getHeight()/2);
+        }
+        if ((Greenfoot.mouseClicked(forward_button) & (flag_forward == true)))
+        {
+            if (count_image < imgNum){
                 count_image++;
                 this.setBackground(fun+count_image+".jpg");
                 count_button.setTitle(count_image+"/"+imgNum);
@@ -85,6 +94,10 @@ public class Fun extends World
         }
         //backwarding images
         if (count_image>1){
+            if (forward_button.getWorld()==null){
+                forward_button.setTitle("ΕΠΟΜΕΝΟ");
+                addObject(forward_button, getWidth() - forward_button.getImage().getWidth()/2, getHeight() - forward_button.getImage().getHeight()/2);
+            }
             if ((Greenfoot.mouseClicked(backward_button) & (flag_backward==true)))
             {
                 count_image--;
@@ -94,7 +107,7 @@ public class Fun extends World
             }
         }
         if (count_image >= imgNum){
-            forward_button.setTitle("ΤΕΛΟΣ");
+            removeObject(forward_button);
         }
     }
 }

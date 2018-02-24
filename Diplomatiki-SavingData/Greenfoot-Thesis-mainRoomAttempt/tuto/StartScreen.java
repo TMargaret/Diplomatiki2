@@ -35,7 +35,7 @@ public class StartScreen extends World
             Greenfoot.setWorld(new Senario());
         }
         if (Greenfoot.isKeyDown("escape")){
-            System.exit(0);
+            System.exit(1);
         }
     }
     
