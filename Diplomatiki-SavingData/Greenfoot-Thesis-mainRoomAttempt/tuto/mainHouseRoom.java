@@ -1,4 +1,4 @@
-	import greenfoot.*;
+import greenfoot.*;
 import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -36,6 +36,7 @@ public class mainHouseRoom extends World
     Material mat;
     boolean flag2 = false;
     StoneOven stoneoven;
+    ArrayList<Material> myList;
 
     /**
      * Constructor for objects of class mainHouseRoom.
@@ -55,6 +56,7 @@ public class mainHouseRoom extends World
         alex = oldAlex;
         level3 = oldLevel3;
         prepare();
+        myList = alex.getMaterialList();
     }
 
     /**
@@ -98,6 +100,7 @@ public class mainHouseRoom extends World
         checkMatWellList();       
         materialList.remove(mat);
         alex.setCanMove(!doNotMove);
+
     }
 
     /**
@@ -272,5 +275,9 @@ public class mainHouseRoom extends World
 
     public int checkWellList(){
         return count;
+    }
+    
+    public ArrayList<Material> getInvList(){
+        return myList;
     }
 }

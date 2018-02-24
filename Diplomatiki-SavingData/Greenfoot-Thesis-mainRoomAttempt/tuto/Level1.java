@@ -19,7 +19,7 @@ public class Level1 extends World
     Material mat;
     int count = 0;
     int count_item = 0;
-    int counterEnd = 300;
+    int counterEnd = 100;
     TextPanel textPanel;
     boolean displayMessage = false;
     //private int OFFSET = alien.getImage().getWidth();
@@ -218,21 +218,9 @@ public class Level1 extends World
                 removeObject(textPanel);
                 level0Sound.stop();
                 LevelsScreen.writefile(2);
-               // checkUnlockLevel();
                 Greenfoot.setWorld(new LevelsScreen());              
             }
         }
     }	
-
-    // /**
-     // * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
-     // * player will play the same level
-     // */
-    // public void checkUnlockLevel(){
-        // if (LevelsScreen.unlock.size() < 2)
-        // {
-            // LevelsScreen.unlock.add(1);
-        // }
-    // }
 
 }

@@ -49,8 +49,7 @@ public class Brick extends Material
      *
      * @return The correct answer value to be check
      */
-    public String checkMaterial(){
-        
+    public String checkMaterial(){      
         return myAnswer;
 
     } 

@@ -40,7 +40,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     Level3 level3;
     boolean isAdded = false;
 
-    ArrayList<Material> materialList;
+    ArrayList<Material> materialList2;
     Material myMaterial;
     static ArrayList<Material>  inventoryList = new ArrayList<Material>();
     TextPanel theEnd;
@@ -109,27 +109,27 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     public void checkWorld(){
         if (getWorld() instanceof Level3){
             level3 = (Level3) getWorld();
-            materialList = level3.getMaterialList();
+            materialList2 = level3.getMaterialList();
         }
         if (getWorld() instanceof mainHouseRoom){
             mainHouseRoom mainHouseRoom = (mainHouseRoom)getWorld();
-            materialList = mainHouseRoom.getMaterialList();
+            materialList2 = mainHouseRoom.getMaterialList();
         }
         if (getWorld() instanceof Level1){
             Level1 level1 = (Level1)getWorld();
-            materialList = level1.getMaterialList();
+            materialList2 = level1.getMaterialList();
         }
         if (getWorld() instanceof Level2){
             Level2 level2 = (Level2)getWorld();
-            materialList = level2.getMaterialList();
+            materialList2 = level2.getMaterialList();
         }
         if (getWorld() instanceof mainHutRoom){
             mainHutRoom mainHutRoom = (mainHutRoom)getWorld();
-            materialList = mainHutRoom.getMaterialList();
+            materialList2 = mainHutRoom.getMaterialList();
         }       
         if (getWorld() instanceof Level5){
             Level5 level5 = (Level5)getWorld();
-            materialList = level5.getMaterialList();
+            materialList2 = level5.getMaterialList();
         }
     }
 
@@ -462,9 +462,9 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     }
 
     public void addToInventory(){
-        if (materialList != null){
+        if (materialList2 != null){
             if(System.currentTimeMillis() > time + 500){
-                for (Material myMat : materialList){
+                for (Material myMat : materialList2){
                     if(myMat.getAddToInv())
                     {
                         invBar.specialEffect();
@@ -473,11 +473,11 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                         myMaterial = myMat; 
                         time = System.currentTimeMillis();
                         //this list holds the items in total
-                        inventoryList.add(myMat);
+                        inventoryList.add(myMaterial);
                     }
                 }
             }
-            materialList.remove(myMaterial);
+           materialList2.remove(myMaterial);
         }       
     }
 

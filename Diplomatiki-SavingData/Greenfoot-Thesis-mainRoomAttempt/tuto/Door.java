@@ -1,5 +1,5 @@
 import greenfoot.*; 
-import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Door here.
@@ -10,6 +10,7 @@ import java.util.List; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo
 public class Door extends Material
 {
     int count = 0;
+    private ArrayList<Material> myList2;
 
     /**
      * Door Constructor
@@ -27,17 +28,19 @@ public class Door extends Material
     {
         checkWorld();
         materialCreation();
-        System.out.println(materialList);
+        myList2 = getWorldOfType(mainHouseRoom.class).getInvList();
     } 
 
     @Override
-    public void actionMat(){
-        for (Material mat: materialList){
-            if (mat.getMaterial()=="Key")
-            {
-                setLocation(getX(),getY()-getImage().getHeight());
-                mainHouseRoom.doorList.remove(this);               
-                pickupSound.play();
+    public void actionMat(){  
+        if (myList2 !=null){
+            for (Material mat: myList2){
+                if (mat.getMaterial()=="Key")
+                {
+                    setLocation(getX(),getY()-getImage().getHeight());
+                    mainHouseRoom.doorList.remove(this);               
+                    pickupSound.play();
+                }
             }
         }
     }

@@ -118,7 +118,7 @@ public class Material extends Actor
                                 actionSpelling();
                                 actionMat();
                             }
-                            else {
+                            else {     
                                 checkHealthBar();
                                 if (HealthBar.getHealth()>0){
                                     textPanel= new TextPanel("wrongKey", db.feedback());

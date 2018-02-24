@@ -42,6 +42,8 @@ public class Level3 extends World
     Material mat;
     private GreenfootSound thankSound = new GreenfootSound("thank.wav");
     Snail snail;
+    boolean w = false;
+    boolean s = false;
     
 
     /**
@@ -303,11 +305,13 @@ public class Level3 extends World
     public int checkMatHutList(){
         if (pickUpList != null){
             for (Material mat: pickUpList){
-                if (mat.getMaterial() == "Wood"){
+                if (mat.getMaterial() == "Wood" && !w){
                     count++;
+                    w = true;
                 }
-                if (mat.getMaterial() == "Straw"){
+                if (mat.getMaterial() == "Straw" && !s){
                     count++;
+                    s = true;
                 }
             }
         }

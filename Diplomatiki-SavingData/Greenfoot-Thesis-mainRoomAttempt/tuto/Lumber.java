@@ -51,8 +51,8 @@ public class Lumber extends Material
         image.scale(image.getWidth() - 10, image.getHeight() - 10);
         setImage(image);  
         version = newObjectVersion;
-        //myAnswer = "Alex.pickUp(wood);";
-        myAnswer = "";
+        myAnswer = "Alex.pickUp(wood);";
+        //myAnswer = "";
     }
 
 
