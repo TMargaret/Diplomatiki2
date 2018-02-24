@@ -111,7 +111,7 @@ public class Material extends Actor
 
                         if (thisLvl && Greenfoot.isKeyDown("enter") && isEDown && !tryAgainOrLeave){
                             isEDown = false;
-                            //counter = 30;
+                            counter = 30;
                             db = new Debugger(textField.getText(), this.checkMaterial());
                             if (db.checkSpelling())
                             {

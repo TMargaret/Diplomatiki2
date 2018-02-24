@@ -22,7 +22,18 @@ public class Brick extends Material
     public Brick(int num) 
     {
         this.num = num;
-        myAnswer = "Alex.pickUp(brick);";
+        switch(num){
+            case 1:
+            myAnswer = "Alex.pickUp(brick);";
+            break;
+            case 2:
+            myAnswer = "Alex.pickUp(brick1);";
+            break;
+            case 3:
+            myAnswer = "Alex.pickUp(brick2);";
+            break;
+        }
+        //myAnswer = "Alex.pickUp(brick);";
     }
 
     /**

@@ -67,10 +67,7 @@ public class mainHutRoom extends World
     }
 
     public void act(){
-        //gameOver();
-        //enterRoomText();
         exitRoom();
-        //checkAxe();
         boolean doNotMove = false;
         if ((flag == 1) || (isActive) || alex.getIsExit()){
             doNotMove  = true;

@@ -372,21 +372,11 @@ public class Level3 extends World
             if (Greenfoot.isKeyDown("enter") && displayMessage){
                 removeObject(textPanel);
                 lvl.stop();
-                checkUnlockLevel();
+                LevelsScreen.writefile(4);
                 Greenfoot.setWorld(new LevelsScreen());               
             }
         }
     }
 
-    /**
-     * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
-     * player will play the same level
-     */
-    public void checkUnlockLevel(){
-        if (LevelsScreen.unlock.size() < 4)
-        {
-            LevelsScreen.unlock.add(1);
-        }
-    }
 
 }

@@ -70,10 +70,7 @@ public class mainHouseRoom extends World
     }
 
     public void act(){
-        //gameOver();
-        //enterRoomText();
         exitRoom();
-        //checkAxe();
         boolean doNotMove = false;
         if (elder.getTalking() || (flag == 1) || (isActive) || alex.getIsExit()){
             doNotMove  = true;
