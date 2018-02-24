@@ -83,7 +83,7 @@ public class WaterWell extends Actor
                 if (counter < 0 && Greenfoot.isKeyDown("enter") && isEDown){
                     counter = 30;
                     //db = new Debugger(textField.getText(),"1");
-                    db = new Debugger(textField.getText(),"Alex.use(brick,brick);");
+                    db = new Debugger(textField.getText(),"Alex.use(brick,2);");
                     if (db.checkSpelling())
                     {
                         Alex.removeFromInv(true);

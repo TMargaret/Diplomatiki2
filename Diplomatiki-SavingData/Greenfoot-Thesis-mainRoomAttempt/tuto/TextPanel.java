@@ -259,6 +259,11 @@ public class TextPanel extends Actor implements Serializable
             count_slide = 8;
             makeImage(mytext, "elder");
         }
+        if (status == "taskText8") {
+            String mytext = text.taskText8();
+            count_slide = 9;
+            makeImage(mytext, "elder");
+        }
         if (status == "lockedDoor") {
             String mytext = text.lockedDoor();
             makeImage(mytext);
@@ -459,10 +464,10 @@ public class TextPanel extends Actor implements Serializable
             image.setColor(Color.WHITE);          
 
             if (status == "welcomeMsg" || status == "taskText1" || status == "taskText2" || 
-            status == "taskText3" || status == "taskText4" || status == "taskText5" || status == "taskText6" || status == "taskText7"){
+            status == "taskText3" || status == "taskText4" || status == "taskText5" || status == "taskText6" || status == "taskText7" || status == "taskText8"){
                 image.drawString("ΕΠΟΜΕΝΟ\n->", 420, 290);
                 image.drawString("ΠΙΣΩ\n<-", 40, 290);
-                image.drawString(count_slide+"/8", 490, 30);
+                image.drawString(count_slide+"/9", 490, 30);
             }
             if ((status == "wrongKey") || (status == "wellDone2") ) image.drawString("Πάτα ENTER", 30, 290);
             if (status=="youLost") image.drawString("Πάτα SPACE", 30, 290);

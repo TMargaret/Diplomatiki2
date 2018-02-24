@@ -38,7 +38,7 @@ public class Level3 extends World
     int count_item = 0;
     mainHouseRoom mainHouseRoom;
     mainHutRoom mainHutRoom;
-    int counterEnd = 300;
+    int counterEnd = 100;
     Material mat;
     private GreenfootSound thankSound = new GreenfootSound("thank.wav");
     Snail snail;

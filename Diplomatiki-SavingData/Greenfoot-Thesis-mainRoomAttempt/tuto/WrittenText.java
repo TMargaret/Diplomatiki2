@@ -159,7 +159,7 @@ public class WrittenText implements Serializable
         return "Το χωριό μου δέχτηκε επίθεση από το\nφοβερό εχθρό DragonDrop.\n"
         +"Το πηγάδι και η αποθήκη με τα τρόφιμα\nκαταστράφηκαν, για να τα φτιάξεις, θα\nχρειαστείς Τούβλα, Ξύλο και Άχυρο."
         +"\nEυτυχώς ο φούρνος που φτιάχνει"
-        +" τα τούβλα\nλειτουργεί ακόμα, όμως δε θυμάμαι που\nέβαλα το κλειδί για την πόρτα.";
+        +" τα τούβλα\nλειτουργεί ακόμα, όμως δε θυμάμαι που\nέβαλα το κλειδί(key) για την πόρτα.";
     } 
 
     public String taskText2(){
@@ -185,21 +185,27 @@ public class WrittenText implements Serializable
 
     public String taskText5(){
         return "Η λειτουργία της μεθόδου εξαρτάται\nαπό το τι περιέχει το σώμα της. Π.χ:"
-        +"\npublic void use(Object material){\n   delete(material);   \n}"
+        +"\npublic void use(Material material){\n   delete(material);   \n}"
         +"\nΚαλώντας την παραπάνω μέθοδο ως εξής:"
         +"\nuse(straw);\n"
-        +"Στην ουσία προκαλούμε τη διαγραφή του\nαντικειμένου straw.";
+        +"Στην ουσία προκαλούμε τη διαγραφή του\nαντικειμένου straw (άχυρο).";
     }
 
     public String taskText6(){
-        return "Τέλος, μια μέθοδος μπορεί να πάρει όσες\nπαραμέτρους χρειαζόμαστε:"
-        +"\nH υπογραφή της μεθόδου use θα ήταν:\npublic void use(Object wood, Object straw)\n{}\n"
+        return "Mια μέθοδος μπορεί να πάρει όσες\nπαραμέτρους χρειαζόμαστε:"
+        +"\nH υπογραφή της μεθόδου use θα ήταν:\npublic void use(Wood wood, Straw straw)\n{}\n"
         +"\nκαι αντίστοιχα η κλήση της θα ήταν:\nAlex.use(wood,straw);";
     }
 
     public String taskText7(){
+        return "Σε περίπτωση που μαζέψεις δύο ίδια υλικά\n"
+        +"θα σου φανεί χρήσιμη η εξής εντολή:\nAlex.use(brick, 2);"
+        +"\n\nΈτσι χρησιμοποιείς τo τούβλο δύο φορές!"
+        +"\nH υπογραφή της μεθόδου use θα ήταν:\npublic void use(Brick brick, int numberOf)\n{}\n";
+    }
+    
+    public String taskText8(){
         return "Είσαι έτοιμος για την αποστολή σου.\n\n"
-        +"Ο φούρνος που φτιάχνει τούβλα ευτυχώς\nλειτουργεί."
         +"\nΚαλή τύχη.";
     }
 

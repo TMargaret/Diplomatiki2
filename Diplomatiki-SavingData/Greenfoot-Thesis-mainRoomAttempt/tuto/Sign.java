@@ -10,8 +10,6 @@ import java.util.List;
  */
 public class Sign extends Material
 {
-    //GreenfootImage imgW = new GreenfootImage("signW.png");
-    //GreenfootImage imgC = new GreenfootImage("signC.png");
 
     public Sign(){
         super.hsWidth = 10;
@@ -19,7 +17,6 @@ public class Sign extends Material
     }
 
     public Sign(GreenfootImage img){
-        // setImage(img);
     }
 
     /**
@@ -28,17 +25,9 @@ public class Sign extends Material
      */
     public void act() 
     {
-        // checkWorld();
-        //materialCreation();
-        // check();
+
 
     } 
-
-    // public void check(){
-    // if (getImage().equals(imgW)){
-    // System.out.println("ok");
-    // }
-    // }
 
 
 }

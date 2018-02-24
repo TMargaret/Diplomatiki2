@@ -11,7 +11,7 @@ public class Elder extends Locals
 {
     private GreenfootImage knight = getImage();
     private GreenfootImage knight_eyes = new GreenfootImage("knight41.png");
-    int countEnterTotal = 7;
+    int countEnterTotal = 8;
 
     public Elder(){
     }
@@ -46,6 +46,8 @@ public class Elder extends Locals
             case 6: text = "taskText6";
             break;
             case 7: text = "taskText7";
+            break;
+            case 8: text = "taskText8";
             break;
         }
         return text;

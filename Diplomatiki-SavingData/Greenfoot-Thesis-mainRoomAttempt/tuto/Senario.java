@@ -21,13 +21,13 @@ public class Senario extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1);
         addObject(new TextMessage("ALEX",50),380,50);
-        addObject(new TextMessage("HELP US",250),620,150);
-        addObject(new TextMessage("PLEASE",430),280,250);
+        addObject(new TextMessage("PLEASE",250),620,150);
+        addObject(new TextMessage("HELP US",430),280,250);
 
         addObject(new TextMessage("YOU ARE",600),100,300);
         addObject(new TextMessage("OUR ONLY",850),820,380);
         
-        tm.getImage().scale(tm.getImage().getWidth()*5, tm.getImage().getHeight()*5);
+        tm.getImage().scale(tm.getImage().getWidth()*4, tm.getImage().getHeight()*4);
         addObject(tm,500,300);
 
         lbl = new Label("press enter", 30);
