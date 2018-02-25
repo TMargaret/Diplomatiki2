@@ -368,7 +368,7 @@ public class TextPanel extends Actor implements Serializable
             makeImage(mytext);
         }
         if (status == "wellDone4"){
-            String mytext = text.wellDone4();
+            String mytext = text.wellDone5();
             makeImage(mytext);
         }
         if (status=="youLostLvl5"){

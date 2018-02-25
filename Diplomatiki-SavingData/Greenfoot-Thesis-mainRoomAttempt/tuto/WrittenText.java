@@ -246,9 +246,8 @@ public class WrittenText implements Serializable
     }
 
     public String wellDone4(){
-        return "GAME OVER\n\nΜπράβο! Έσωσες όλους τους πλανήτες από"+
-        " τον εχθρό DragonDrop.\n\nΗ αποστολή σου ολοκληρώθηκε, όμως μπορείς"+
-        " να συνεχίσεις να παίζεις\nγια εξάσκηση!";
+        return "Τα κατάφερες!\n\nΤώρα μπορείς να αποχωρήσεις"
+        +" από τον\nInheritus.\n\nLive long and prosper!";
     }
 
     //level5
@@ -293,8 +292,16 @@ public class WrittenText implements Serializable
         return "Το φορτίο σου δεν είναι το σωστό.\n\nΞαναπροσπάθησε!";
     }
     
+    public String wellDone5(){
+        return "GAME OVER\n\nΜπράβο! Έσωσες όλους τους πλανήτες από"+
+        " τον εχθρό DragonDrop.\n\nΗ αποστολή σου ολοκληρώθηκε, όμως μπορείς"+
+        " να συνεχίσεις να παίζεις\nγια εξάσκηση!";
+    }
+    
     //level6
     public String start(){
         return "Eδώ θα μάθεις βασικά στοιχεία προγραμματισμού\nπου θα σε βοηθήσουν στο ταξίδι σου!"; 
     }
+    
+    
 }

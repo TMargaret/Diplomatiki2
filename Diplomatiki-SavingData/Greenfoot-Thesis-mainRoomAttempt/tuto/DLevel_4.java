@@ -91,22 +91,11 @@ public class DLevel_4 extends DragonLevel
             }
             if (Greenfoot.isKeyDown("enter") && displayMessage){
                 removeObject(textPanel);
-                Greenfoot.setWorld(new LevelsScreen());
+                LevelsScreen.writefile(5);
                 suspenseSound.stop();
                 spaceship.stopSound();
-                checkUnlockLevel();
+                Greenfoot.setWorld(new LevelsScreen());
             }
-        }
-    }
-
-    /**
-     * Method checkUnlockLevel is to set the unlocked level only once, no matter how many times the
-     * player will play the same level
-     */
-    public void checkUnlockLevel(){
-        if (LevelsScreen.unlock.size() < 5)
-        {
-            LevelsScreen.unlock.add(1);
         }
     }
 }

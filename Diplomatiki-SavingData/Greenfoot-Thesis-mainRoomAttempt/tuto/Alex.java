@@ -383,6 +383,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
 
         }
         if (Greenfoot.isKeyDown("space") && lostMessage){
+            inventoryList.clear();
             Greenfoot.setWorld(new LevelsScreen());
             canMove = true;
             stopSounds();
@@ -408,16 +409,16 @@ public class Alex extends SpriteSheet implements ButtonResponder{
     {   
         //opens the hint dialogue
         // if (Greenfoot.mouseClicked(hintBtn) && !hintIsOpen){
-            // hintRules = new HintRules();
-            // getWorld().addObject(hintRules, hintBar.getX() - (hintRules.getImage().getWidth()/2), 
-                // hintBar.getY() + (hintBar.getImage().getHeight()/3) + (hintRules.getImage().getHeight()/2));
-            // hintIsOpen = true;
+        // hintRules = new HintRules();
+        // getWorld().addObject(hintRules, hintBar.getX() - (hintRules.getImage().getWidth()/2), 
+        // hintBar.getY() + (hintBar.getImage().getHeight()/3) + (hintRules.getImage().getHeight()/2));
+        // hintIsOpen = true;
         // }
         // //closes the hint dialogue
         // else if (Greenfoot.mouseClicked(hintBtn) && hintIsOpen)
         // {
-            // getWorld().removeObject(hintRules);
-            // hintIsOpen = false;
+        // getWorld().removeObject(hintRules);
+        // hintIsOpen = false;
         // }
         //opens the inventory
         if (Greenfoot.mouseClicked(inventoryBtn) && !invIsOpen)
@@ -451,6 +452,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
         if (Greenfoot.isKeyDown("Y") && isExit){
             getWorld().removeObject(tp);
             setCanMove(true);
+            inventoryList.clear();
             Greenfoot.setWorld(new LevelsScreen());          
             stopSounds();
         }
@@ -477,7 +479,7 @@ public class Alex extends SpriteSheet implements ButtonResponder{
                     }
                 }
             }
-           materialList2.remove(myMaterial);
+            materialList2.remove(myMaterial);
         }       
     }
 

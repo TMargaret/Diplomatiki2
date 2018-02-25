@@ -10,7 +10,7 @@ import java.util.ArrayList; // (World, Actor, GreenfootImage, Greenfoot and Mous
 public class Door extends Material
 {
     int count = 0;
-    private ArrayList<Material> myList2;
+    private ArrayList<Material> myList2 = new ArrayList<Material>();
 
     /**
      * Door Constructor
@@ -28,16 +28,17 @@ public class Door extends Material
     {
         checkWorld();
         materialCreation();
-        myList2 = getWorldOfType(mainHouseRoom.class).getInvList();
     } 
 
     @Override
     public void actionMat(){  
         if (myList2 !=null){
+            myList2 = getWorldOfType(mainHouseRoom.class).getInvList();
             for (Material mat: myList2){
                 if (mat.getMaterial()=="Key")
                 {
                     setLocation(getX(),getY()-getImage().getHeight());
+                    //getWorld().removeObject(this);
                     mainHouseRoom.doorList.remove(this);               
                     pickupSound.play();
                 }
